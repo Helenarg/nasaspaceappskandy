@@ -1,131 +1,312 @@
-import React from 'react';
-import { View, Text, StyleSheet, ScrollView, TextInput, Pressable, Platform, Dimensions } from 'react-native';
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  TextInput,
+  Pressable,
+  Platform,
+  ActivityIndicator,
+  useWindowDimensions,
+} from 'react-native';
+import PageMeta from '../components/PageMeta';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { colors } from '../theme/colors';
+import { fonts } from '../theme/typography';
+import { 
+  Mail, 
+  MapPin, 
+  Send, 
+  CheckCircle2, 
+  MessageSquare, 
+  Radio 
+} from '../components/icons';
 import { Ionicons } from '@expo/vector-icons';
+import FormField from '../components/FormField';
+import Honeypot from '../components/Honeypot';
+import { useFormSubmit } from '../lib/useFormSubmit';
+import { isEmail, required, tooLong, type Errors } from '../lib/validation';
+
+
+const SUBJECTS = ['General Inquiry', 'Sponsorship & Partners', 'Media & Press', 'Team Question'];
 
 export default function ContactPage() {
+  const { width } = useWindowDimensions();
+  const styles = useMemo(() => makeStyles(width), [width]);
+
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [subject, setSubject] = useState(SUBJECTS[0]);
+  const [message, setMessage] = useState('');
+
+  const emailRef = useRef<TextInput>(null);
+  const messageRef = useRef<TextInput>(null);
+
+  type Field = 'name' | 'email' | 'message';
+
+  const validate = useCallback((): Errors<Field> => {
+    const e: Errors<Field> = {};
+    if (!required(name)) e.name = 'Tell us your name.';
+    if (!required(email)) e.email = 'We need an email to reply to.';
+    else if (!isEmail(email)) e.email = 'That email address does not look right.';
+    if (!required(message)) e.message = 'Add a message so we know how to help.';
+    else if (tooLong(message, 2000)) e.message = 'Please keep it under 2000 characters.';
+    return e;
+  }, [name, email, message]);
+
+  const build = useCallback(
+    () => ({
+      name: name.trim(),
+      email: email.trim().toLowerCase(),
+      subject,
+      message: message.trim(),
+    }),
+    [name, email, subject, message]
+  );
+
+  const { errors, clearError, submitting, submitted, formError, submit, reset, trap, setTrap } =
+    useFormSubmit<Field>({ kind: 'messages', validate, build });
+
+  const sent = submitted;
+
   return (
-    <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+    <ScrollView
+      style={styles.container}
+      contentContainerStyle={styles.contentContainer}
+      keyboardShouldPersistTaps="handled"
+      keyboardDismissMode="on-drag"
+      automaticallyAdjustKeyboardInsets
+    >
+      <PageMeta
+        title="Contact | NASA Space Apps Sri Lanka"
+        description="Reach the NASA Space Apps Sri Lanka organising committee in Kandy. We reply within 24 hours."
+        path="/contact"
+      />
       <Navbar />
-      
+
+      {/* Header Section */}
       <View style={styles.header}>
+        <View style={styles.badge}>
+          <MessageSquare size={14} color={colors.primary} />
+          <Text style={styles.badgeText}>GET IN TOUCH • 24H RESPONSE</Text>
+        </View>
+
         <Text style={styles.title}>
           CONTACT NASA SPACE APPS <Text style={styles.titleGlow}>SRI LANKA</Text>
         </Text>
         <Text style={styles.subtitle}>
-          Questions? Reach out to our organizing committee in Kandy. We are{'\n'}
-          here to help you launch your innovation journey.
+          Have inquiries about the hackathon, partnerships, or provincial outreach? Reach out to our organizing committee headquarters in Kandy.
         </Text>
-        <View style={styles.divider} />
       </View>
 
       <View style={styles.mainContent}>
+        {/* Left Column: Contact Details & High-Tech Map Graphic */}
         <View style={styles.leftColumn}>
           {/* Info Card */}
           <View style={styles.card}>
             <View style={styles.infoRow}>
               <View style={styles.iconBox}>
-                <Ionicons name="mail-outline" size={20} color={colors.primary} />
+                <Mail size={20} color={colors.primary} />
               </View>
               <View>
-                <Text style={styles.infoLabel}>EMAIL US</Text>
+                <Text style={styles.infoLabel}>DIRECT EMAIL</Text>
                 <Text style={styles.infoValue}>info@nasaspaceapps.lk</Text>
               </View>
             </View>
 
             <View style={styles.infoRow}>
-              <View style={styles.iconBox}>
-                <Ionicons name="location-outline" size={20} color={colors.primary} />
+              <View style={[styles.iconBox, { borderColor: 'rgba(255, 107, 53, 0.3)' }]}>
+                <MapPin size={20} color={colors.secondary} />
               </View>
               <View>
-                <Text style={styles.infoLabel}>LOCATION</Text>
+                <Text style={styles.infoLabel}>ORGANIZING HEADQUARTERS</Text>
                 <Text style={styles.infoValue}>University of Peradeniya Campus, Kandy</Text>
                 <Text style={styles.infoSubValue}>Central Province, Sri Lanka</Text>
               </View>
             </View>
 
-            <Text style={[styles.infoLabel, { marginTop: 20, marginBottom: 10 }]}>CONNECT WITH US</Text>
+            <Text style={[styles.infoLabel, { marginTop: 20, marginBottom: 10 }]}>CONNECT ON SOCIAL</Text>
             <View style={styles.socialIcons}>
-              <View style={styles.socialBox}><Ionicons name="logo-facebook" size={16} color={colors.textMuted} /></View>
-              <View style={styles.socialBox}><Ionicons name="logo-linkedin" size={16} color={colors.textMuted} /></View>
-              <View style={styles.socialBox}><Ionicons name="logo-instagram" size={16} color={colors.textMuted} /></View>
-              <View style={styles.socialBox}><Ionicons name="close" size={16} color={colors.textMuted} /></View>
+              <Pressable accessibilityRole="button" style={styles.socialBox} accessibilityLabel="Facebook">
+                <Ionicons name="logo-facebook" size={16} color={colors.textMuted} />
+              </Pressable>
+              <Pressable accessibilityRole="button" style={styles.socialBox} accessibilityLabel="LinkedIn">
+                <Ionicons name="logo-linkedin" size={16} color={colors.textMuted} />
+              </Pressable>
+              <Pressable accessibilityRole="button" style={styles.socialBox} accessibilityLabel="Instagram">
+                <Ionicons name="logo-instagram" size={16} color={colors.textMuted} />
+              </Pressable>
+              <Pressable accessibilityRole="button" style={styles.socialBox} accessibilityLabel="Twitter / X">
+                <Ionicons name="logo-twitter" size={16} color={colors.textMuted} />
+              </Pressable>
             </View>
           </View>
 
-          {/* Map Graphic Card */}
+          {/* High-Tech Radar Map Card */}
           <View style={styles.mapCard}>
+            <View style={styles.mapHeaderRow}>
+              <View style={styles.livePulseDot} />
+              <Text style={styles.mapHeaderTag}>KANDY RADAR BEACON • ACTIVE</Text>
+            </View>
+
             <View style={styles.mapGraphic}>
-              {/* Simplified curves/lines representing map */}
-              <View style={styles.mapCurve1} />
-              <View style={styles.mapCurve2} />
-              <View style={styles.mapNode} />
+              <View style={styles.mapOrbitCircle} />
+              <View style={styles.mapOrbitInnerCircle} />
+              <View style={styles.mapCrossH} />
+              <View style={styles.mapCrossV} />
+
+              {/* Pulsing Beacon Center */}
+              <View style={styles.beaconPulse}>
+                <View style={styles.mapNode} />
+              </View>
+
               <View style={styles.mapNodeLabelBox}>
-                 <Text style={styles.mapNodeLabel}>HUB: KANDY</Text>
+                <Text style={styles.mapNodeLabel}>HUB: KANDY HQ</Text>
               </View>
             </View>
-            <Text style={styles.mapFooterText}>
-              <Text style={{color: '#4B5563'}}>COORD: 7.29° N, 80.63° E  |  </Text>
-              <Text style={{color: '#059669'}}>STATUS: ACTIVE</Text>
-            </Text>
+
+            <View style={styles.mapFooter}>
+              <Text style={styles.mapFooterText}>
+                COORD: 7.29° N, 80.63° E  |  STATUS: ACTIVE
+              </Text>
+            </View>
           </View>
         </View>
 
-        {/* Right Column Form */}
+        {/* Right Column: Inquiry Form */}
         <View style={[styles.card, styles.formCard]}>
-          <Text style={styles.formTitle}>
-            SEND US A <Text style={{ color: colors.primary }}>MESSAGE</Text>
-          </Text>
-
-          <View style={styles.formRow}>
-            <View style={styles.inputGroup}>
-              <Text style={styles.inputLabel}>FULL NAME</Text>
-              <TextInput 
-                style={styles.input} 
-                placeholder="John Doe" 
-                placeholderTextColor={colors.textMuted} 
-              />
+          {sent ? (
+            <View style={styles.successContainer}>
+              <CheckCircle2 size={56} color="#10B981" style={{ marginBottom: 16 }} />
+              <Text style={styles.successTitle}>MESSAGE DISPATCHED!</Text>
+              <Text style={styles.successText}>
+                Thank you, <Text style={{ color: colors.text, fontWeight: '700' }}>{name}</Text>. Your message concerning <Text style={{ color: colors.primary }}>{subject}</Text> has been received by our Kandy organizing secretariat.
+              </Text>
+              <Text style={styles.successSub}>
+                We will reply to <Text style={{ color: colors.text }}>{email}</Text> within 24 hours.
+              </Text>
+              <Pressable
+                accessibilityRole="button"
+                style={styles.resetBtn}
+                onPress={() => {
+                  reset();
+                  setName('');
+                  setEmail('');
+                  setMessage('');
+                }}
+              >
+                <Text style={styles.resetBtnText}>SEND ANOTHER MESSAGE</Text>
+              </Pressable>
             </View>
-            <View style={styles.inputGroup}>
-              <Text style={styles.inputLabel}>EMAIL ADDRESS</Text>
-              <TextInput 
-                style={styles.input} 
-                placeholder="john@example.com" 
-                placeholderTextColor={colors.textMuted} 
+          ) : (
+            <>
+              <Text style={styles.formTitle}>
+                SEND US A <Text style={{ color: colors.primary }}>MESSAGE</Text>
+              </Text>
+              <Text style={styles.formSubtitle}>
+                Our team monitors communications around the clock during hackathon preparations.
+              </Text>
+
+              <FormField
+                label="FULL NAME"
+                required
+                placeholder="e.g. Priyantha Dissanayake"
+                value={name}
+                error={errors.name}
+                onChangeText={(v) => {
+                  setName(v);
+                  clearError('name');
+                }}
+                autoComplete="name"
+                textContentType="name"
+                returnKeyType="next"
+                onSubmitEditing={() => emailRef.current?.focus()}
               />
-            </View>
-          </View>
 
-          <View style={[styles.inputGroup, { width: '100%' }]}>
-            <Text style={styles.inputLabel}>SUBJECT</Text>
-            <TextInput 
-              style={styles.input} 
-              placeholder="General Inquiry" 
-              placeholderTextColor={colors.textMuted} 
-            />
-          </View>
+              <FormField
+                ref={emailRef}
+                label="EMAIL ADDRESS"
+                required
+                placeholder="priyantha@example.com"
+                value={email}
+                error={errors.email}
+                onChangeText={(v) => {
+                  setEmail(v);
+                  clearError('email');
+                }}
+                keyboardType="email-address"
+                autoCapitalize="none"
+                autoComplete="email"
+                textContentType="emailAddress"
+                returnKeyType="next"
+                onSubmitEditing={() => messageRef.current?.focus()}
+              />
 
-          <View style={[styles.inputGroup, { width: '100%', flex: 1 }]}>
-            <Text style={styles.inputLabel}>MESSAGE</Text>
-            <TextInput 
-              style={[styles.input, styles.textArea]} 
-              placeholder="How can we help you?" 
-              placeholderTextColor={colors.textMuted} 
-              multiline
-              textAlignVertical="top"
-            />
-          </View>
+              <View style={styles.inputGroup}>
+                <Text style={styles.inputLabel}>SUBJECT CATEGORY</Text>
+                <View style={styles.subjectsRow}>
+                  {SUBJECTS.map((sub, idx) => {
+                    const isSelected = subject === sub;
+                    return (
+                      <Pressable
+                        accessibilityRole="button"
+                        key={idx}
+                        style={[styles.subjectChip, isSelected && styles.subjectChipActive]}
+                        onPress={() => setSubject(sub)}
+                      >
+                        <Text style={[styles.subjectChipText, isSelected && styles.subjectChipTextActive]}>
+                          {sub}
+                        </Text>
+                      </Pressable>
+                    );
+                  })}
+                </View>
+              </View>
 
-          <Pressable style={styles.submitBtn}>
-            <Text style={styles.submitBtnText}>SEND MESSAGE</Text>
-            <Ionicons name="send-outline" size={16} color="#000" style={{ marginLeft: 8 }} />
-          </Pressable>
+              <FormField
+                ref={messageRef}
+                label="MESSAGE"
+                required
+                placeholder="How can our organizing committee assist you?"
+                value={message}
+                error={errors.message}
+                onChangeText={(v) => {
+                  setMessage(v);
+                  clearError('message');
+                }}
+                multiline
+                numberOfLines={4}
+                maxLength={2000}
+              />
 
-          <Text style={styles.formFooterText}>
-            OUR ORGANIZING COMMITTEE TYPICALLY RESPONDS WITHIN 24 HOURS.
-          </Text>
+              <Honeypot value={trap} onChangeText={setTrap} />
+
+              {formError ? (
+                <Text style={styles.formError} accessibilityRole="alert">
+                  {formError}
+                </Text>
+              ) : null}
+
+              <Pressable
+                style={[styles.submitBtn, submitting && styles.submitBtnDisabled]}
+                onPress={submit}
+                disabled={submitting}
+                accessibilityRole="button"
+                accessibilityState={{ disabled: submitting, busy: submitting }}
+              >
+                <Text style={styles.submitBtnText}>
+                  {submitting ? 'SENDING\u2026' : 'SEND MESSAGE'}
+                </Text>
+                {submitting ? (
+                  <ActivityIndicator size="small" color="#050912" style={{ marginLeft: 8 }} />
+                ) : (
+                  <Send size={16} color="#050912" style={{ marginLeft: 8 }} />
+                )}
+              </Pressable>
+            </>
+          )}
         </View>
       </View>
 
@@ -134,239 +315,387 @@ export default function ContactPage() {
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (width: number) =>
+  StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.background,
+    backgroundColor: Platform.OS === 'web' ? 'transparent' : colors.background,
   },
   contentContainer: {
     flexGrow: 1,
   },
   header: {
-    paddingVertical: 60,
-    paddingHorizontal: 20,
     alignItems: 'center',
-    textAlign: 'center',
+    paddingTop: 60,
+    paddingBottom: 40,
+    paddingHorizontal: Platform.OS === 'web' ? '5%' : 16,
+    maxWidth: 900,
+    alignSelf: 'center',
+    width: '100%',
+  },
+  badge: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+    backgroundColor: 'rgba(0, 229, 255, 0.08)',
+    borderWidth: 1,
+    borderColor: 'rgba(0, 229, 255, 0.25)',
+    paddingHorizontal: 12,
+    paddingVertical: 5,
+    borderRadius: 20,
+    marginBottom: 20,
+  },
+  badgeText: {
+    color: colors.primary,
+    fontSize: 10,
+    fontWeight: '800',
+    fontFamily: fonts.display,
+    letterSpacing: 1.2,
   },
   title: {
-    fontSize: Platform.OS === 'web' ? 48 : 32,
-    fontWeight: 'bold',
+    fontSize: width > 768 ? 44 : width > 480 ? 32 : 27,
+    fontWeight: '900',
+    fontFamily: fonts.display,
     color: colors.text,
     textAlign: 'center',
+    letterSpacing: -0.5,
     marginBottom: 16,
   },
   titleGlow: {
     color: colors.primary,
+    textShadow: '0px 0px 16px rgba(0, 229, 255, 0.4)',
   },
   subtitle: {
-    fontSize: 16,
+    fontFamily: fonts.body,
     color: colors.textMuted,
+    fontSize: 15,
     textAlign: 'center',
-    lineHeight: 24,
-    marginBottom: 24,
-  },
-  divider: {
-    width: 60,
-    height: 4,
-    backgroundColor: colors.primary,
-    borderRadius: 2,
+    lineHeight: 25,
+    maxWidth: 680,
   },
   mainContent: {
-    flexDirection: Platform.OS === 'web' && Dimensions.get('window').width > 768 ? 'row' : 'column',
-    paddingHorizontal: Platform.OS === 'web' ? '5%' : 20,
-    paddingBottom: 60,
-    gap: 20,
-    alignItems: 'stretch',
+    flexDirection: width > 900 ? 'row' : 'column',
+    paddingHorizontal: Platform.OS === 'web' ? '5%' : 16,
+    paddingVertical: 30,
+    maxWidth: 1300,
+    alignSelf: 'center',
+    width: '100%',
+    gap: 30,
   },
   leftColumn: {
-    flex: 1,
-    gap: 20,
+    flex: width > 900 ? 1 : undefined,
+    gap: 24,
   },
   card: {
-    backgroundColor: colors.surface,
-    borderRadius: 16,
-    padding: 30,
+    backgroundColor: 'rgba(10, 15, 31, 0.85)',
     borderWidth: 1,
-    borderColor: colors.border,
+    borderColor: 'rgba(255, 255, 255, 0.08)',
+    borderRadius: 22,
+    padding: 26,
+    boxShadow: '0px 8px 16px rgba(0, 0, 0, 0.3)',
   },
   infoRow: {
     flexDirection: 'row',
-    marginBottom: 24,
     alignItems: 'flex-start',
+    gap: 16,
+    marginBottom: 22,
   },
   iconBox: {
-    width: 40,
-    height: 40,
-    borderRadius: 8,
-    backgroundColor: 'rgba(0, 255, 255, 0.1)',
+    width: 44,
+    height: 44,
+    borderRadius: 12,
+    backgroundColor: 'rgba(0, 229, 255, 0.08)',
+    borderWidth: 1,
+    borderColor: 'rgba(0, 229, 255, 0.25)',
     alignItems: 'center',
     justifyContent: 'center',
-    marginRight: 16,
   },
   infoLabel: {
-    fontSize: 10,
-    fontWeight: 'bold',
     color: colors.textMuted,
+    fontSize: 10,
+    fontWeight: '800',
+    fontFamily: fonts.display,
     letterSpacing: 1,
     marginBottom: 4,
   },
   infoValue: {
-    fontSize: 16,
-    fontWeight: 'bold',
+    fontFamily: fonts.bodyBold,
     color: colors.text,
+    fontSize: 15,
+    fontWeight: '700',
   },
   infoSubValue: {
-    fontSize: 12,
+    fontFamily: fonts.body,
     color: colors.textMuted,
-    marginTop: 4,
+    fontSize: 12,
+    marginTop: 2,
   },
   socialIcons: {
     flexDirection: 'row',
     gap: 12,
   },
   socialBox: {
-    width: 36,
-    height: 36,
-    borderRadius: 8,
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: 'rgba(255, 255, 255, 0.04)',
     borderWidth: 1,
-    borderColor: colors.border,
+    borderColor: 'rgba(255, 255, 255, 0.08)',
     alignItems: 'center',
     justifyContent: 'center',
   },
   mapCard: {
-    backgroundColor: colors.surface,
-    borderRadius: 16,
+    backgroundColor: 'rgba(5, 9, 18, 0.9)',
     borderWidth: 1,
-    borderColor: colors.border,
-    height: 200,
-    overflow: 'hidden',
-    position: 'relative',
-    padding: 20,
-    justifyContent: 'flex-end',
-  },
-  mapGraphic: {
-    ...StyleSheet.absoluteFillObject,
-    justifyContent: 'center',
+    borderColor: 'rgba(0, 229, 255, 0.25)',
+    borderRadius: 22,
+    padding: 24,
     alignItems: 'center',
   },
-  mapCurve1: {
-    position: 'absolute',
-    width: 300,
-    height: 150,
-    borderTopWidth: 1,
-    borderColor: colors.primary,
-    borderStyle: 'dashed',
-    borderRadius: 150,
-    top: 50,
-    left: -50,
-    opacity: 0.5,
+  mapHeaderRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+    marginBottom: 20,
+    alignSelf: 'flex-start',
   },
-  mapCurve2: {
+  livePulseDot: {
+    width: 8,
+    height: 8,
+    borderRadius: 4,
+    backgroundColor: '#10B981',
+  },
+  mapHeaderTag: {
+    color: '#10B981',
+    fontSize: 10,
+    fontWeight: '800',
+    fontFamily: fonts.display,
+    letterSpacing: 0.8,
+  },
+  mapGraphic: {
+    width: 240,
+    height: 180,
+    position: 'relative',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'rgba(10, 15, 31, 0.6)',
+    borderRadius: 16,
+    borderWidth: 1,
+    borderColor: 'rgba(255, 255, 255, 0.06)',
+  },
+  mapOrbitCircle: {
     position: 'absolute',
-    width: 200,
-    height: 100,
-    borderBottomWidth: 1,
-    borderColor: colors.primary,
+    width: 160,
+    height: 160,
+    borderRadius: 80,
+    borderWidth: 1,
+    borderColor: 'rgba(0, 229, 255, 0.15)',
+  },
+  mapOrbitInnerCircle: {
+    position: 'absolute',
+    width: 80,
+    height: 80,
+    borderRadius: 40,
+    borderWidth: 1,
     borderStyle: 'dashed',
-    borderRadius: 100,
-    bottom: 50,
-    right: -20,
-    opacity: 0.3,
+    borderColor: 'rgba(255, 107, 53, 0.2)',
+  },
+  mapCrossH: {
+    position: 'absolute',
+    width: '100%',
+    height: 1,
+    backgroundColor: 'rgba(255, 255, 255, 0.05)',
+  },
+  mapCrossV: {
+    position: 'absolute',
+    height: '100%',
+    width: 1,
+    backgroundColor: 'rgba(255, 255, 255, 0.05)',
+  },
+  beaconPulse: {
+    width: 28,
+    height: 28,
+    borderRadius: 14,
+    backgroundColor: 'rgba(0, 229, 255, 0.2)',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   mapNode: {
-    width: 16,
-    height: 16,
-    borderRadius: 8,
-    backgroundColor: colors.secondary,
-    shadowColor: colors.secondary,
-    shadowOpacity: 1,
-    shadowRadius: 10,
-    position: 'absolute',
-    top: '45%',
-    left: '55%',
+    width: 12,
+    height: 12,
+    borderRadius: 6,
+    backgroundColor: colors.primary,
+    boxShadow: '0px 0px 10px rgba(0, 229, 255, 1)',
   },
   mapNodeLabelBox: {
     position: 'absolute',
-    top: '55%',
-    left: '50%',
-    backgroundColor: '#000',
+    bottom: 24,
+    backgroundColor: 'rgba(0, 0, 0, 0.7)',
     paddingHorizontal: 8,
-    paddingVertical: 4,
+    paddingVertical: 3,
     borderRadius: 4,
     borderWidth: 1,
-    borderColor: colors.secondary,
+    borderColor: colors.primary,
   },
   mapNodeLabel: {
-    color: colors.secondary,
-    fontSize: 10,
-    fontWeight: 'bold',
+    color: colors.primary,
+    fontSize: 11,
+    fontWeight: '800',
+    fontFamily: fonts.display,
+    letterSpacing: 0.8,
+  },
+  mapFooter: {
+    marginTop: 16,
+    paddingTop: 12,
+    borderTopWidth: 1,
+    borderTopColor: 'rgba(255, 255, 255, 0.08)',
+    width: '100%',
+    alignItems: 'center',
   },
   mapFooterText: {
-    fontSize: 10,
-    fontWeight: 'bold',
+    color: colors.textMuted,
+    fontSize: 11,
+    fontFamily: Platform.OS === 'ios' ? 'Courier' : 'monospace',
+    letterSpacing: 0.8,
   },
   formCard: {
-    flex: 1.5,
+    flex: width > 900 ? 1.2 : undefined,
+    backgroundColor: 'rgba(10, 15, 31, 0.9)',
+    borderWidth: 1,
+    borderColor: 'rgba(0, 229, 255, 0.25)',
   },
   formTitle: {
-    fontSize: 24,
-    fontWeight: 'bold',
     color: colors.text,
-    marginBottom: 30,
+    fontSize: 22,
+    fontWeight: '900',
+    fontFamily: fonts.display,
+    letterSpacing: -0.3,
+    marginBottom: 6,
   },
-  formRow: {
-    flexDirection: Platform.OS === 'web' && Dimensions.get('window').width > 768 ? 'row' : 'column',
-    gap: 16,
-    marginBottom: 16,
+  formSubtitle: {
+    fontFamily: fonts.body,
+    color: colors.textMuted,
+    fontSize: 13,
+    marginBottom: 24,
   },
   inputGroup: {
-    flex: 1,
     marginBottom: 16,
   },
   inputLabel: {
-    fontSize: 10,
-    fontWeight: 'bold',
     color: colors.textMuted,
+    fontSize: 10,
+    fontWeight: '800',
+    fontFamily: fonts.display,
     letterSpacing: 1,
     marginBottom: 8,
   },
   input: {
-    backgroundColor: '#111827',
+    fontFamily: fonts.body,
+    backgroundColor: 'rgba(255, 255, 255, 0.04)',
     borderWidth: 1,
-    borderColor: colors.border,
-    borderRadius: 8,
-    paddingHorizontal: 16,
+    borderColor: 'rgba(255, 255, 255, 0.12)',
+    borderRadius: 10,
+    paddingHorizontal: 14,
     paddingVertical: 12,
     color: colors.text,
     fontSize: 14,
   },
   textArea: {
-    minHeight: 120,
-    paddingTop: 16,
+    height: 100,
+    textAlignVertical: 'top',
+  },
+  subjectsRow: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 8,
+  },
+  subjectChip: {
+    backgroundColor: 'rgba(255, 255, 255, 0.04)',
+    borderWidth: 1,
+    borderColor: 'rgba(255, 255, 255, 0.1)',
+    paddingHorizontal: 12,
+    paddingVertical: 7,
+    borderRadius: 8,
+  },
+  subjectChipActive: {
+    backgroundColor: 'rgba(0, 229, 255, 0.12)',
+    borderColor: colors.primary,
+  },
+  subjectChipText: {
+    fontFamily: fonts.bodyMedium,
+    color: colors.textMuted,
+    fontSize: 11,
+    fontWeight: '600',
+  },
+  subjectChipTextActive: {
+    color: colors.primary,
+    fontWeight: '700',
   },
   submitBtn: {
     backgroundColor: colors.primary,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: 16,
-    borderRadius: 8,
-    marginTop: 10,
-    shadowColor: colors.primary,
-    shadowOffset: { width: 0, height: 0 },
-    shadowOpacity: 0.4,
-    shadowRadius: 10,
+    paddingVertical: 15,
+    borderRadius: 12,
+    boxShadow: '0px 0px 16px rgba(0, 229, 255, 0.5)',
+    marginTop: 8,
+  },
+  submitBtnDisabled: {
+    opacity: 0.6,
+  },
+  formError: {
+    color: colors.secondary,
+    fontSize: 13,
+    fontFamily: fonts.bodyMedium,
+    marginBottom: 12,
   },
   submitBtnText: {
-    color: '#000',
-    fontWeight: 'bold',
-    fontSize: 14,
+    color: '#050912',
+    fontWeight: '800',
+    fontFamily: fonts.display,
+    fontSize: 13,
+    letterSpacing: 0.8,
   },
-  formFooterText: {
-    color: colors.textMuted,
-    fontSize: 10,
-    textAlign: 'center',
-    marginTop: 20,
+  successContainer: {
+    alignItems: 'center',
+    paddingVertical: 36,
+  },
+  successTitle: {
+    color: '#10B981',
+    fontSize: 22,
+    fontWeight: '900',
+    fontFamily: fonts.display,
     letterSpacing: 0.5,
-  }
+    marginBottom: 8,
+  },
+  successText: {
+    fontFamily: fonts.body,
+    color: colors.textMuted,
+    fontSize: 14,
+    textAlign: 'center',
+    lineHeight: 22,
+    marginBottom: 10,
+  },
+  successSub: {
+    fontFamily: fonts.body,
+    color: colors.textMuted,
+    fontSize: 12,
+    textAlign: 'center',
+    marginBottom: 24,
+  },
+  resetBtn: {
+    borderWidth: 1,
+    borderColor: colors.primary,
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    borderRadius: 8,
+  },
+  resetBtnText: {
+    fontFamily: fonts.bodyBold,
+    color: colors.primary,
+    fontSize: 11,
+    fontWeight: '700',
+    letterSpacing: 0.8,
+  },
 });

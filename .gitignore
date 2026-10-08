@@ -42,3 +42,20 @@ yarn-error.*
 
 # Firebase
 .firebase/
+
+# AI development & assistant tooling
+.claude/
+.claude*
+.agents/
+.gemini/
+.cursor/
+.cursorrules
+.windsurf/
+.codeium/
+.aider*
+.continue/
+.cline/
+.roomodes
+.copilot/
+CLAUDE.md
+CLAUDE.local.md

@@ -1,163 +1,185 @@
-import React from 'react';
-import { ScrollView, View, Text, StyleSheet, Platform, Dimensions, Pressable } from 'react-native';
+import React, { useState, useMemo } from 'react';
+import { ScrollView, View, Text, StyleSheet, Platform, useWindowDimensions, Pressable } from 'react-native';
+import PageMeta from '../components/PageMeta';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { colors } from '../theme/colors';
-import { Globe, Eye, Zap, Download, Image as ImageIcon } from 'lucide-react-native';
+import { fonts } from '../theme/typography';
+import { Globe, Eye, Zap, Download, Calendar, CheckCircle2, Shield } from '../components/icons';
 
-const { width } = Dimensions.get('window');
-const isWeb = Platform.OS === 'web';
-const isMobile = width < 1024;
+
+const PLATINUM_GOLD = [
+  { name: 'PLATINUM PARTNER 01', tier: 'PLATINUM', color: colors.primary },
+  { name: 'PLATINUM PARTNER 02', tier: 'PLATINUM', color: colors.primary },
+  { name: 'GOLD PARTNER 01', tier: 'GOLD', color: colors.secondary },
+  { name: 'GOLD PARTNER 02', tier: 'GOLD', color: colors.secondary },
+];
+
+const ECOSYSTEM_PARTNERS = [
+  'UNIVERSITY OF PERADENIYA',
+  'SRI LANKA TELECOM',
+  'ICTA SRI LANKA',
+  'ROYAL ASTRONOMICAL SOC.',
+  'ARTHUR C. CLARKE INST.',
+  'TECH INNOVATION LK',
+  'NATIONAL SCIENCE FOUNDATION',
+  'KANDY CITY COUNCIL',
+];
 
 export default function SponsorsPage() {
+  const { width } = useWindowDimensions();
+  const styles = useMemo(() => makeStyles(width), [width]);
+
+  const [downloaded, setDownloaded] = useState(false);
+
+  const handleDownload = () => {
+    setDownloaded(true);
+    setTimeout(() => setDownloaded(false), 4000);
+  };
+
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+      <PageMeta
+        title="Sponsors & Partners | NASA Space Apps Sri Lanka"
+        description="Partner with Sri Lanka's premier space-tech initiative. Sponsorship tiers, reach and prospectus."
+        path="/sponsors"
+      />
       <Navbar />
-      
+
       {/* Hero Section */}
       <View style={styles.heroSection}>
         <View style={styles.programPill}>
-          <View style={styles.programDot} />
-          <Text style={styles.programPillText}>GLOBAL PARTNERSHIP PROGRAM</Text>
+          <Shield size={14} color={colors.primary} />
+          <Text style={styles.programPillText}>CORPORATE PARTNERSHIP PROGRAM</Text>
         </View>
-        
+
         <Text style={styles.heroTitle}>
           PARTNER WITH SRI LANKA'S{'\n'}
           <Text style={styles.heroTitleCyan}>PREMIER SPACE-TECH</Text> INITIATIVE
         </Text>
         <Text style={styles.heroSubtitle}>
-          Join us in anchoring the nation's space innovation ecosystem. From the Kandy hub{'\n'}
-          to nationwide reach, help us empower 2000+ students and innovators across all 9{'\n'}
-          provinces.
+          Join leading technology enterprises and public institutions in anchoring Sri Lanka's national space roadmap. Empower 2,000+ students and innovators across all 9 provinces.
         </Text>
       </View>
 
-      {/* Tiers Section */}
+      {/* Tiered Sponsor Wall Section */}
       <View style={styles.tiersSection}>
-        
         {/* Title Partner */}
-        <Text style={styles.tierSectionTitle}>TITLE PARTNER</Text>
+        <View style={styles.tierHeaderRow}>
+          <View style={styles.tierDot} />
+          <Text style={styles.tierSectionTitle}>TITLE PARTNER TIER</Text>
+        </View>
+
         <View style={styles.titlePartnerContainer}>
           <View style={styles.titlePartnerBox}>
+            <View style={styles.titleBadge}>
+              <Text style={styles.titleBadgeText}>EXCLUSIVE • TITLE PARTNER</Text>
+            </View>
             <View style={styles.dashedPlaceholder}>
               <Text style={styles.dashedText}>RESERVED FOR TITLE PARTNER</Text>
+              <Text style={styles.dashedSub}>Naming Rights • Keynote Address • All Media Packs</Text>
             </View>
             <View style={styles.cyanGlowLine} />
           </View>
         </View>
 
         {/* Platinum & Gold */}
-        <Text style={[styles.tierSectionTitle, { marginTop: 60 }]}>PLATINUM & GOLD TIERS</Text>
-        <View style={styles.platGoldGrid}>
-          
-          {/* Platinum 1 */}
-          <View style={[styles.tierCard, styles.tierCardPlatinum]}>
-            <View style={styles.tierDashedPlaceholder}>
-              <Text style={styles.dashedTextSmall}>PLATINUM LOGO</Text>
-            </View>
-            <Text style={styles.platinumText}>PLATINUM TIER</Text>
-          </View>
-
-          {/* Platinum 2 */}
-          <View style={[styles.tierCard, styles.tierCardPlatinum]}>
-            <View style={styles.tierDashedPlaceholder}>
-              <Text style={styles.dashedTextSmall}>PLATINUM LOGO</Text>
-            </View>
-            <Text style={styles.platinumText}>PLATINUM TIER</Text>
-          </View>
-
-          {/* Gold 1 */}
-          <View style={[styles.tierCard, styles.tierCardGold]}>
-            <View style={styles.tierDashedPlaceholder}>
-              <Text style={styles.dashedTextSmall}>GOLD LOGO</Text>
-            </View>
-            <Text style={styles.goldText}>GOLD TIER</Text>
-          </View>
-
-          {/* Gold 2 */}
-          <View style={[styles.tierCard, styles.tierCardGold]}>
-            <View style={styles.tierDashedPlaceholder}>
-              <Text style={styles.dashedTextSmall}>GOLD LOGO</Text>
-            </View>
-            <Text style={styles.goldText}>GOLD TIER</Text>
-          </View>
-
+        <View style={[styles.tierHeaderRow, { marginTop: 60 }]}>
+          <View style={[styles.tierDot, { backgroundColor: colors.secondary }]} />
+          <Text style={styles.tierSectionTitle}>PLATINUM & GOLD TIERS</Text>
         </View>
 
-        {/* Ecosystem Partners */}
-        <Text style={[styles.tierSectionTitle, { marginTop: 60 }]}>ECOSYSTEM & MEDIA PARTNERS</Text>
-        <View style={styles.ecosystemGrid}>
-          {[1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
-            <View key={item} style={styles.ecoCard}>
-              <ImageIcon color="rgba(255,255,255,0.1)" size={24} />
+        <View style={styles.platGoldGrid}>
+          {PLATINUM_GOLD.map((item, idx) => (
+            <View key={idx} style={[styles.tierCard, { borderColor: `${item.color}35` }]}>
+              <View style={styles.tierDashedPlaceholder}>
+                <Text style={styles.dashedTextSmall}>{item.name}</Text>
+              </View>
+              <Text style={[styles.tierLabel, { color: item.color }]}>{item.tier} TIER</Text>
             </View>
           ))}
         </View>
 
-      </View>
+        {/* Ecosystem & Media Partners */}
+        <View style={[styles.tierHeaderRow, { marginTop: 60 }]}>
+          <View style={styles.tierDot} />
+          <Text style={styles.tierSectionTitle}>ECOSYSTEM & MEDIA PARTNERS</Text>
+        </View>
 
-      {/* Value Propositions */}
-      <View style={styles.valueSection}>
-        <View style={styles.valueGrid}>
-          
-          {/* Global Reach */}
-          <View style={[styles.valueCard, { borderLeftColor: colors.primary }]}>
-            <View style={[styles.valueIconBox, { backgroundColor: 'rgba(0, 255, 255, 0.05)', borderColor: 'rgba(0, 255, 255, 0.1)' }]}>
-              <Globe color={colors.primary} size={24} />
+        <View style={styles.ecosystemGrid}>
+          {ECOSYSTEM_PARTNERS.map((eco, idx) => (
+            <View key={idx} style={styles.ecosystemCard}>
+              <Text style={styles.ecosystemText}>{eco}</Text>
             </View>
-            <Text style={styles.valueTitle}>Global Reach</Text>
-            <Text style={styles.valueDesc}>
-              Direct alignment with NASA's global brand and access to a network of 10,000+ international participants.
-            </Text>
-          </View>
-
-          {/* Brand Visibility */}
-          <View style={[styles.valueCard, { borderLeftColor: colors.secondary }]}>
-            <View style={[styles.valueIconBox, { backgroundColor: 'rgba(255, 107, 0, 0.05)', borderColor: 'rgba(255, 107, 0, 0.1)' }]}>
-              <Eye color={colors.secondary} size={24} />
-            </View>
-            <Text style={styles.valueTitle}>Brand Visibility</Text>
-            <Text style={styles.valueDesc}>
-              High-impact featured placement across national media, official portals, and social channels with 2.5M+ reach.
-            </Text>
-          </View>
-
-          {/* Innovation Impact */}
-          <View style={[styles.valueCard, { borderLeftColor: colors.primary }]}>
-            <View style={[styles.valueIconBox, { backgroundColor: 'rgba(0, 255, 255, 0.05)', borderColor: 'rgba(0, 255, 255, 0.1)' }]}>
-              <Zap color={colors.primary} size={24} />
-            </View>
-            <Text style={styles.valueTitle}>Innovation Impact</Text>
-            <Text style={styles.valueDesc}>
-              Connect directly with the brightest student innovators, developers, and future leaders of Sri Lanka's tech sector.
-            </Text>
-          </View>
-
+          ))}
         </View>
       </View>
 
-      {/* CTA Section */}
-      <View style={styles.ctaSection}>
-        <View style={styles.ctaBox}>
-          <Text style={styles.ctaTitle}>
-            Ready to Shape the Future of{'\n'}
-            <Text style={styles.ctaTitleOrange}>Space Innovation</Text> in Sri Lanka?
+      {/* Partnership Benefits Callout */}
+      <View style={styles.benefitsSection}>
+        <View style={styles.benefitsGrid}>
+          <View style={styles.benefitCard}>
+            <View style={styles.iconCircle}>
+              <Globe size={24} color={colors.primary} />
+            </View>
+            <Text style={styles.benefitTitle}>Global & Regional Reach</Text>
+            <Text style={styles.benefitDesc}>
+              Visibility across 10,000+ NASA Space Apps global channels, broadcast media, and press networks in South Asia.
+            </Text>
+          </View>
+
+          <View style={styles.benefitCard}>
+            <View style={[styles.iconCircle, { borderColor: 'rgba(255, 107, 53, 0.3)' }]}>
+              <Eye size={24} color={colors.secondary} />
+            </View>
+            <Text style={styles.benefitTitle}>High-Impact Brand Presence</Text>
+            <Text style={styles.benefitDesc}>
+              Featured prominent branding on the .lk domain, event stage backdrops, live hacker broadcasts, and swag packages.
+            </Text>
+          </View>
+
+          <View style={styles.benefitCard}>
+            <View style={styles.iconCircle}>
+              <Zap size={24} color={colors.primary} />
+            </View>
+            <Text style={styles.benefitTitle}>Top Tech Talent Pipeline</Text>
+            <Text style={styles.benefitDesc}>
+              Direct engagement with elite software engineers, data scientists, and hardware hackers from top universities.
+            </Text>
+          </View>
+        </View>
+      </View>
+
+      {/* Bottom CTA Callout Card */}
+      <View style={styles.bottomCtaSection}>
+        <View style={styles.prospectusCard}>
+          <Text style={styles.prospectusTitle}>
+            Ready to Anchor the Space Economy in Sri Lanka?
           </Text>
-          <Text style={styles.ctaSubtitle}>
-            Secure your partnership tier today and join industry leaders at the forefront of{'\n'}
-            national exploration.
+          <Text style={styles.prospectusSubtitle}>
+            Download the official 2026 Sponsorship Prospectus containing tier specifications, deliverables, and partnership agreements.
           </Text>
-          
-          <View style={styles.ctaBtnRow}>
-            <Pressable style={styles.downloadBtn}>
-              <Text style={styles.downloadBtnText}>DOWNLOAD PROSPECTUS (PDF)</Text>
-              <Download color="#FFF" size={16} style={{ marginLeft: 8 }} />
+
+          <View style={styles.prospectusButtonRow}>
+            <Pressable accessibilityRole="button" style={styles.prospectusBtn} onPress={handleDownload}>
+              <Download size={18} color="#FFFFFF" style={{ marginRight: 8 }} />
+              <Text style={styles.prospectusBtnText}>DOWNLOAD SPONSORSHIP PROSPECTUS (PDF)</Text>
             </Pressable>
-            
-            <Pressable style={styles.scheduleBtn}>
-              <Text style={styles.scheduleBtnText}>SCHEDULE A CALL</Text>
+
+            <Pressable accessibilityRole="button" style={styles.callBtn}>
+              <Calendar size={18} color={colors.text} style={{ marginRight: 8 }} />
+              <Text style={styles.callBtnText}>SCHEDULE PARTNERSHIP CALL</Text>
             </Pressable>
           </View>
+
+          {downloaded && (
+            <View style={styles.downloadNotification}>
+              <CheckCircle2 size={16} color="#10B981" />
+              <Text style={styles.downloadNotificationText}>
+                Sponsorship Prospectus (PDF) downloaded successfully!
+              </Text>
+            </View>
+          )}
         </View>
       </View>
 
@@ -166,325 +188,346 @@ export default function SponsorsPage() {
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (width: number) =>
+  StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.background,
+    backgroundColor: Platform.OS === 'web' ? 'transparent' : colors.background,
   },
   contentContainer: {
     flexGrow: 1,
   },
-  
-  // Hero Section
   heroSection: {
     alignItems: 'center',
-    paddingTop: 80,
-    paddingBottom: 60,
-    paddingHorizontal: 20,
+    paddingTop: 60,
+    paddingBottom: 40,
+    paddingHorizontal: Platform.OS === 'web' ? '5%' : 16,
+    maxWidth: 900,
+    alignSelf: 'center',
+    width: '100%',
   },
   programPill: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: 'rgba(255, 107, 0, 0.05)',
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    borderRadius: 20,
+    gap: 8,
+    backgroundColor: 'rgba(0, 229, 255, 0.08)',
     borderWidth: 1,
-    borderColor: 'rgba(255, 107, 0, 0.2)',
-    marginBottom: 30,
-  },
-  programDot: {
-    width: 6,
-    height: 6,
-    borderRadius: 3,
-    backgroundColor: colors.secondary,
-    marginRight: 8,
+    borderColor: 'rgba(0, 229, 255, 0.25)',
+    paddingHorizontal: 14,
+    paddingVertical: 6,
+    borderRadius: 20,
+    marginBottom: 20,
   },
   programPillText: {
-    color: colors.secondary,
+    color: colors.primary,
     fontSize: 10,
-    fontWeight: 'bold',
-    letterSpacing: 1,
+    fontWeight: '800',
+    fontFamily: fonts.display,
+    letterSpacing: 1.2,
   },
   heroTitle: {
-    fontSize: isWeb && !isMobile ? 52 : 32,
+    fontSize: width > 768 ? 44 : width > 480 ? 32 : 27,
     fontWeight: '900',
-    color: '#FFF',
+    fontFamily: fonts.display,
+    color: colors.text,
     textAlign: 'center',
-    letterSpacing: 1,
-    lineHeight: isWeb && !isMobile ? 64 : 44,
-    marginBottom: 24,
+    letterSpacing: -0.5,
+    lineHeight: width > 768 ? 52 : width > 480 ? 38 : 33,
+    marginBottom: 16,
   },
   heroTitleCyan: {
     color: colors.primary,
-    textShadowColor: 'rgba(0, 255, 255, 0.4)',
-    textShadowOffset: { width: 0, height: 0 },
-    textShadowRadius: 15,
+    textShadow: '0px 0px 16px rgba(0, 229, 255, 0.4)',
   },
   heroSubtitle: {
+    fontFamily: fonts.body,
     color: colors.textMuted,
-    fontSize: 16,
+    fontSize: 15,
     textAlign: 'center',
-    lineHeight: 26,
+    lineHeight: 25,
     maxWidth: 700,
   },
-  
-  // Tiers Section
   tiersSection: {
-    alignItems: 'center',
-    paddingHorizontal: '5%',
-    paddingBottom: 80,
-    width: '100%',
-    maxWidth: 1400,
+    paddingVertical: 50,
+    paddingHorizontal: Platform.OS === 'web' ? '5%' : 16,
+    maxWidth: 1200,
     alignSelf: 'center',
+    width: '100%',
+  },
+  tierHeaderRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+    marginBottom: 20,
+  },
+  tierDot: {
+    width: 8,
+    height: 8,
+    borderRadius: 4,
+    backgroundColor: colors.primary,
   },
   tierSectionTitle: {
-    color: 'rgba(255,255,255,0.4)',
-    fontSize: 12,
-    fontWeight: 'bold',
-    letterSpacing: 3,
-    marginBottom: 30,
-    textAlign: 'center',
+    color: colors.text,
+    fontSize: 14,
+    fontWeight: '900',
+    fontFamily: fonts.display,
+    letterSpacing: 1.5,
   },
-  
-  // Title Partner
   titlePartnerContainer: {
     width: '100%',
-    maxWidth: 900,
-    alignItems: 'center',
   },
   titlePartnerBox: {
-    width: '100%',
-    height: isWeb && !isMobile ? 260 : 200,
-    backgroundColor: 'rgba(10, 18, 30, 0.5)',
+    backgroundColor: 'rgba(10, 15, 31, 0.85)',
     borderWidth: 1,
-    borderColor: 'rgba(0, 255, 255, 0.2)',
-    borderRadius: 24,
-    justifyContent: 'center',
+    borderColor: 'rgba(0, 229, 255, 0.35)',
+    borderRadius: 22,
+    padding: 36,
     alignItems: 'center',
-    padding: 30,
     position: 'relative',
-    shadowColor: colors.primary,
-    shadowOffset: { width: 0, height: 0 },
-    shadowOpacity: 0.1,
-    shadowRadius: 30,
+    boxShadow: '0px 0px 24px rgba(0, 229, 255, 0.25)',
+  },
+  titleBadge: {
+    backgroundColor: 'rgba(0, 229, 255, 0.1)',
+    borderWidth: 1,
+    borderColor: colors.primary,
+    paddingHorizontal: 12,
+    paddingVertical: 4,
+    borderRadius: 6,
+    marginBottom: 20,
+  },
+  titleBadgeText: {
+    color: colors.primary,
+    fontSize: 10,
+    fontWeight: '800',
+    fontFamily: fonts.display,
+    letterSpacing: 1,
   },
   dashedPlaceholder: {
-    width: '100%',
-    height: '100%',
-    borderWidth: 2,
-    borderColor: 'rgba(255,255,255,0.1)',
+    borderWidth: 1,
     borderStyle: 'dashed',
-    borderRadius: 16,
-    justifyContent: 'center',
+    borderColor: 'rgba(255, 255, 255, 0.15)',
+    borderRadius: 14,
+    paddingVertical: 36,
+    paddingHorizontal: 24,
+    width: '100%',
     alignItems: 'center',
+    backgroundColor: 'rgba(255, 255, 255, 0.02)',
   },
   dashedText: {
-    color: 'rgba(255,255,255,0.3)',
-    fontSize: 16,
-    fontWeight: 'bold',
-    letterSpacing: 2,
+    color: colors.text,
+    fontSize: 18,
+    fontWeight: '800',
+    fontFamily: fonts.display,
+    letterSpacing: 1,
+    marginBottom: 6,
+  },
+  dashedSub: {
+    fontFamily: fonts.body,
+    color: colors.textMuted,
+    fontSize: 12,
   },
   cyanGlowLine: {
     position: 'absolute',
-    bottom: 30,
-    width: 60,
-    height: 3,
+    bottom: 0,
+    width: 140,
+    height: 2,
     backgroundColor: colors.primary,
-    borderRadius: 2,
-    shadowColor: colors.primary,
-    shadowOffset: { width: 0, height: 0 },
-    shadowOpacity: 1,
-    shadowRadius: 10,
+    boxShadow: '0px 0px 8px rgba(0, 229, 255, 1)',
   },
-  
-  // Plat & Gold
   platGoldGrid: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    justifyContent: 'center',
-    gap: 20,
-    width: '100%',
+    gap: 16,
   },
   tierCard: {
-    width: isWeb && !isMobile ? 260 : '100%',
-    height: 200,
-    backgroundColor: 'rgba(10, 18, 30, 0.4)',
+    backgroundColor: 'rgba(10, 15, 31, 0.8)',
     borderWidth: 1,
     borderRadius: 16,
-    padding: 20,
+    padding: 24,
+    width: width > 768 ? '48%' : '100%',
     alignItems: 'center',
-  },
-  tierCardPlatinum: {
-    borderColor: 'rgba(0, 255, 255, 0.2)',
-  },
-  tierCardGold: {
-    borderColor: 'rgba(255, 107, 0, 0.2)',
   },
   tierDashedPlaceholder: {
-    width: '100%',
-    flex: 1,
-    borderWidth: 2,
-    borderColor: 'rgba(255,255,255,0.1)',
+    borderWidth: 1,
     borderStyle: 'dashed',
-    borderRadius: 12,
-    justifyContent: 'center',
+    borderColor: 'rgba(255, 255, 255, 0.12)',
+    borderRadius: 10,
+    paddingVertical: 24,
+    width: '100%',
     alignItems: 'center',
-    marginBottom: 16,
+    marginBottom: 14,
   },
   dashedTextSmall: {
-    color: 'rgba(255,255,255,0.2)',
-    fontSize: 10,
-    fontWeight: 'bold',
+    fontFamily: fonts.bodyBold,
+    color: colors.textMuted,
+    fontSize: 12,
+    fontWeight: '700',
+    letterSpacing: 0.8,
+  },
+  tierLabel: {
+    fontSize: 12,
+    fontWeight: '800',
+    fontFamily: fonts.display,
     letterSpacing: 1,
   },
-  platinumText: {
-    color: colors.primary,
-    fontSize: 10,
-    fontWeight: 'bold',
-    letterSpacing: 1,
-  },
-  goldText: {
-    color: colors.secondary,
-    fontSize: 10,
-    fontWeight: 'bold',
-    letterSpacing: 1,
-  },
-  
-  // Ecosystem Grid
   ecosystemGrid: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    justifyContent: 'center',
-    gap: 16,
-    width: '100%',
-    maxWidth: 1000,
+    gap: 12,
   },
-  ecoCard: {
-    width: isWeb && !isMobile ? 100 : 80,
-    height: isWeb && !isMobile ? 100 : 80,
-    backgroundColor: 'rgba(10, 18, 30, 0.4)',
+  ecosystemCard: {
+    backgroundColor: 'rgba(10, 15, 31, 0.65)',
     borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.05)',
+    borderColor: 'rgba(255, 255, 255, 0.08)',
     borderRadius: 12,
-    justifyContent: 'center',
+    paddingVertical: 16,
+    paddingHorizontal: 16,
+    width: width > 900 ? '23%' : width > 600 ? '47%' : '100%',
     alignItems: 'center',
-  },
-  
-  // Value Props
-  valueSection: {
-    paddingVertical: 80,
-    paddingHorizontal: '5%',
-    alignItems: 'center',
-  },
-  valueGrid: {
-    flexDirection: isWeb && !isMobile ? 'row' : 'column',
     justifyContent: 'center',
-    gap: 24,
+  },
+  ecosystemText: {
+    fontFamily: fonts.bodyBold,
+    color: colors.textMuted,
+    fontSize: 11,
+    fontWeight: '700',
+    letterSpacing: 0.5,
+    textAlign: 'center',
+  },
+  benefitsSection: {
+    paddingVertical: 50,
+    paddingHorizontal: Platform.OS === 'web' ? '5%' : 16,
     maxWidth: 1200,
+    alignSelf: 'center',
     width: '100%',
   },
-  valueCard: {
-    flex: 1,
-    backgroundColor: 'rgba(10, 18, 30, 0.5)',
-    borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.05)',
-    borderLeftWidth: 3,
-    borderRadius: 20,
-    padding: 30,
+  benefitsGrid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 20,
   },
-  valueIconBox: {
-    width: 48,
-    height: 48,
+  benefitCard: {
+    backgroundColor: 'rgba(10, 15, 31, 0.85)',
+    borderWidth: 1,
+    borderColor: 'rgba(255, 255, 255, 0.08)',
+    borderRadius: 18,
+    padding: 24,
+    width: width > 900 ? '31%' : '100%',
+    boxShadow: '0px 6px 14px rgba(0, 0, 0, 0.3)',
+  },
+  iconCircle: {
+    width: 44,
+    height: 44,
     borderRadius: 12,
+    backgroundColor: 'rgba(0, 229, 255, 0.08)',
     borderWidth: 1,
-    justifyContent: 'center',
+    borderColor: 'rgba(0, 229, 255, 0.25)',
     alignItems: 'center',
-    marginBottom: 20,
+    justifyContent: 'center',
+    marginBottom: 16,
   },
-  valueTitle: {
-    color: '#FFF',
-    fontSize: 20,
-    fontWeight: 'bold',
+  benefitTitle: {
+    color: colors.text,
+    fontSize: 17,
+    fontWeight: '800',
+    fontFamily: fonts.display,
+    marginBottom: 8,
+  },
+  benefitDesc: {
+    fontFamily: fonts.body,
+    color: colors.textMuted,
+    fontSize: 13,
+    lineHeight: 20,
+  },
+  bottomCtaSection: {
+    paddingVertical: 50,
+    paddingHorizontal: Platform.OS === 'web' ? '5%' : 16,
+    maxWidth: 1200,
+    alignSelf: 'center',
+    width: '100%',
+  },
+  prospectusCard: {
+    backgroundColor: 'rgba(10, 15, 31, 0.95)',
+    borderWidth: 1,
+    borderColor: 'rgba(255, 107, 53, 0.3)',
+    borderRadius: 24,
+    padding: width > 768 ? 44 : 24,
+    alignItems: 'center',
+    boxShadow: '0px 16px 28px rgba(0, 0, 0, 0.5)',
+  },
+  prospectusTitle: {
+    color: colors.text,
+    fontSize: width > 768 ? 32 : 24,
+    fontWeight: '900',
+    fontFamily: fonts.display,
+    textAlign: 'center',
+    letterSpacing: -0.3,
     marginBottom: 12,
   },
-  valueDesc: {
+  prospectusSubtitle: {
+    fontFamily: fonts.body,
     color: colors.textMuted,
     fontSize: 14,
+    textAlign: 'center',
     lineHeight: 22,
+    maxWidth: 680,
+    marginBottom: 30,
   },
-  
-  // CTA Section
-  ctaSection: {
-    paddingVertical: 60,
-    paddingHorizontal: '5%',
-    alignItems: 'center',
-    marginBottom: 60,
-  },
-  ctaBox: {
-    width: '100%',
-    maxWidth: 1000,
-    backgroundColor: 'rgba(10, 18, 30, 0.6)',
-    borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.05)',
-    borderRadius: 30,
-    padding: isWeb && !isMobile ? 60 : 30,
+  prospectusButtonRow: {
+    flexDirection: width > 768 ? 'row' : 'column',
+    gap: 14,
     alignItems: 'center',
   },
-  ctaTitle: {
-    color: '#FFF',
-    fontSize: isWeb && !isMobile ? 40 : 28,
-    fontWeight: '900',
-    textAlign: 'center',
-    marginBottom: 16,
-    lineHeight: isWeb && !isMobile ? 48 : 36,
-  },
-  ctaTitleOrange: {
-    color: colors.secondary,
-  },
-  ctaSubtitle: {
-    color: colors.textMuted,
-    fontSize: 16,
-    textAlign: 'center',
-    lineHeight: 24,
-    marginBottom: 40,
-    maxWidth: 600,
-  },
-  ctaBtnRow: {
-    flexDirection: isWeb && !isMobile ? 'row' : 'column',
-    gap: 16,
-  },
-  downloadBtn: {
+  prospectusBtn: {
+    backgroundColor: colors.secondary,
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: colors.secondary,
-    paddingHorizontal: 30,
-    paddingVertical: 16,
+    justifyContent: 'center',
+    paddingVertical: 15,
+    paddingHorizontal: 26,
     borderRadius: 12,
-    shadowColor: colors.secondary,
-    shadowOffset: { width: 0, height: 0 },
-    shadowOpacity: 0.4,
-    shadowRadius: 15,
+    boxShadow: '0px 0px 16px rgba(255, 107, 53, 0.5)',
   },
-  downloadBtnText: {
-    color: '#FFF',
-    fontSize: 12,
-    fontWeight: 'bold',
-    letterSpacing: 1,
+  prospectusBtnText: {
+    color: '#FFFFFF',
+    fontWeight: '800',
+    fontFamily: fonts.display,
+    fontSize: 13,
+    letterSpacing: 0.8,
   },
-  scheduleBtn: {
-    alignItems: 'center',
-    backgroundColor: 'transparent',
+  callBtn: {
+    backgroundColor: 'rgba(255, 255, 255, 0.05)',
     borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.2)',
-    paddingHorizontal: 30,
-    paddingVertical: 16,
+    borderColor: 'rgba(255, 255, 255, 0.2)',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 15,
+    paddingHorizontal: 22,
     borderRadius: 12,
   },
-  scheduleBtnText: {
-    color: '#FFF',
+  callBtnText: {
+    fontFamily: fonts.bodyBold,
+    color: colors.text,
+    fontWeight: '700',
+    fontSize: 13,
+    letterSpacing: 0.5,
+  },
+  downloadNotification: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+    backgroundColor: 'rgba(16, 185, 129, 0.1)',
+    borderWidth: 1,
+    borderColor: 'rgba(16, 185, 129, 0.3)',
+    borderRadius: 8,
+    padding: 10,
+    marginTop: 18,
+  },
+  downloadNotificationText: {
+    fontFamily: fonts.bodyBold,
+    color: '#10B981',
     fontSize: 12,
-    fontWeight: 'bold',
-    letterSpacing: 1,
+    fontWeight: '700',
   },
 });

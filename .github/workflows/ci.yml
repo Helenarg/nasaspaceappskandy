@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Build web
+        run: npm run build:web
+
+      # Cloudflare Pages builds from the repo itself; this job is the gate that the
+      # build is not broken before a deploy is triggered.
+      - name: Check the export produced the routes
+        run: |
+          test -f dist/index.html
+          test -f dist/register.html
+          test -f dist/contact.html

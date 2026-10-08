@@ -1,0 +1,85 @@
+rules_version = '2';
+
+// Public site, no user accounts: anyone may CREATE a submission, nobody may read,
+// update or delete from the client. Organisers read in the Firebase console or with
+// the Admin SDK. Deploy with:  npx firebase-tools deploy --only firestore:rules
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isFresh() {
+      // Blocks back-dated or future-dated writes from a crafted client.
+      return request.resource.data.createdAt == request.time;
+    }
+
+    function baseShape() {
+      return isFresh()
+        && request.resource.data.status == 'new'
+        && request.resource.data.keys().size() <= 20;
+    }
+
+    function str(field, maxLen) {
+      return request.resource.data[field] is string
+        && request.resource.data[field].size() > 0
+        && request.resource.data[field].size() <= maxLen;
+    }
+
+    function optionalStr(field, maxLen) {
+      return !(field in request.resource.data.keys())
+        || request.resource.data[field] == null
+        || (request.resource.data[field] is string && request.resource.data[field].size() <= maxLen);
+    }
+
+    match /registrations/{id} {
+      allow create: if baseShape()
+        && str('leadName', 120)
+        && str('leadEmail', 200)
+        && request.resource.data.track in ['team', 'solo']
+        && request.resource.data.agreedToCodeOfConduct == true
+        && optionalStr('teamName', 120)
+        && optionalStr('leadPhone', 30)
+        && optionalStr('institution', 200)
+        && optionalStr('challengePref', 120);
+      allow read, update, delete: if false;
+    }
+
+    match /volunteers/{id} {
+      allow create: if baseShape()
+        && str('fullName', 120)
+        && str('email', 200)
+        && request.resource.data.role in ['volunteer', 'mentor']
+        && request.resource.data.skills is list
+        && request.resource.data.skills.size() <= 20
+        && request.resource.data.availability is list
+        && optionalStr('phone', 30)
+        && optionalStr('affiliation', 200);
+      allow read, update, delete: if false;
+    }
+
+    match /ambassadors/{id} {
+      allow create: if baseShape()
+        && str('fullName', 120)
+        && str('email', 200)
+        && str('institution', 200)
+        && str('motivation', 1000)
+        && request.resource.data.agreedToCommitment == true
+        && optionalStr('phone', 30)
+        && optionalStr('province', 80)
+        && optionalStr('academicYear', 80);
+      allow read, update, delete: if false;
+    }
+
+    match /messages/{id} {
+      allow create: if baseShape()
+        && str('name', 120)
+        && str('email', 200)
+        && str('message', 2000)
+        && optionalStr('subject', 120);
+      allow read, update, delete: if false;
+    }
+
+    // Everything else is closed.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

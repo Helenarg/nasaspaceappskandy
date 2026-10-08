@@ -1,192 +1,201 @@
-import React from 'react';
-import { ScrollView, View, Text, StyleSheet, Platform, Dimensions, Pressable } from 'react-native';
+import React, { useState, useMemo } from 'react';
+import { ScrollView, View, Text, StyleSheet, Platform, useWindowDimensions, Pressable } from 'react-native';
+import PageMeta from '../components/PageMeta';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { colors } from '../theme/colors';
+import { fonts } from '../theme/typography';
 import { 
   Rocket, 
   Globe, 
   Orbit, 
-  ArrowRight,
-  FileText,
-  Image as ImageIcon,
-  LayoutTemplate,
-  Archive,
-  Download,
-  Layers,
-  PenTool,
-  Share2,
-  Palette
-} from 'lucide-react-native';
+  ArrowRight, 
+  FileText, 
+  Image as ImageIcon, 
+  LayoutTemplate, 
+  Archive, 
+  Download, 
+  Layers, 
+  Share2, 
+  CheckCircle2, 
+  Newspaper 
+} from '../components/icons';
 
-const { width } = Dimensions.get('window');
-const isWeb = Platform.OS === 'web';
-const isMobile = width < 1024;
 
 const PRESS_RELEASES = [
   {
     id: 1,
     icon: Rocket,
-    date: 'OCT 15, 2024',
+    date: 'OCT 15, 2026',
     title: 'NASA Space Apps Kandy 2026 Registration Opens',
-    desc: 'We are officially open for participant registrations for the biggest hackathon event in Kandy. Join the mission to solve global challenges.'
+    desc: 'Official registration opens for the largest global hackathon in Kandy. Innovators can join from anywhere across Sri Lanka with mentor support.',
+    tag: 'ANNOUNCEMENT',
   },
   {
     id: 2,
     icon: Globe,
-    date: 'SEP 28, 2024',
-    title: '50+ Schools Join National Innovation Roadmap',
-    desc: 'Over 50 schools and higher education institutes have officially partnered with our all-island expansion initiative starting this month.'
+    date: 'SEP 28, 2026',
+    title: '50+ Schools & Universities Join National Roadmap',
+    desc: 'High schools, technical colleges, and premier universities officially partner with the Kandy Hub to establish regional space-tech labs.',
+    tag: 'EXPANSION',
   },
   {
     id: 3,
     icon: Orbit,
-    date: 'SEP 10, 2024',
-    title: 'Kandy Hub Expands to 9 Provinces Nationwide',
-    desc: 'A strategic milestone reached as Kandy Hub officially anchors our national network, establishing regional nodes in all 9 provinces.'
-  }
+    date: 'SEP 10, 2026',
+    title: 'Kandy Hub Extends Innovation Network to 9 Provinces',
+    desc: 'A strategic milestone reached as Kandy anchors our national network, establishing certified participant nodes in all 9 provinces.',
+    tag: 'PARTNERSHIP',
+  },
+];
+
+const ASSETS = [
+  { name: 'Brand Guidelines', format: 'PDF', icon: FileText, size: '4.8 MB' },
+  { name: 'Official Logo Pack', format: 'PNG/SVG', icon: ImageIcon, size: '12.4 MB' },
+  { name: 'Press Release Template', format: 'DOCX', icon: LayoutTemplate, size: '820 KB' },
+  { name: 'Social Media Kit', format: 'ZIP', icon: Archive, size: '28.5 MB' },
 ];
 
 export default function NewsPage() {
+  const { width } = useWindowDimensions();
+  const styles = useMemo(() => makeStyles(width), [width]);
+
+  const [downloadedZip, setDownloadedZip] = useState(false);
+
+  const handleDownloadZip = () => {
+    setDownloadedZip(true);
+    setTimeout(() => setDownloadedZip(false), 4000);
+  };
+
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+      <PageMeta
+        title="News & Media Kit | NASA Space Apps Sri Lanka"
+        description="Press releases, brand assets and the official media kit for NASA Space Apps Challenge Sri Lanka."
+        path="/news"
+      />
       <Navbar />
-      
+
       {/* Hero Section */}
       <View style={styles.heroSection}>
         <View style={styles.pillContainer}>
-          <View style={styles.pillDot} />
+          <Newspaper size={14} color={colors.primary} />
           <Text style={styles.pillText}>MEDIA & PRESS CENTER</Text>
         </View>
-        
+
         <Text style={styles.heroTitle}>
-          NEWS & <Text style={styles.heroTitleCyan}>MEDIA</Text> HUB
+          NEWS & <Text style={styles.heroTitleCyan}>MEDIA HUB</Text>
         </Text>
         <Text style={styles.heroSubtitle}>
-          Explore official announcements, project milestones, and access our comprehensive brand toolkit for{'\n'}media partners.
+          Official press releases, national roadmap announcements, and brand assets for media coverage of NASA Space Apps Sri Lanka.
         </Text>
       </View>
 
-      {/* Press Releases Section */}
-      <View style={styles.pressSection}>
+      {/* Top Section - News Grid (3 Cards) */}
+      <View style={styles.newsSection}>
         <View style={styles.sectionHeaderRow}>
-          <Text style={styles.sectionTitle}>Latest Press Releases</Text>
-          <Pressable style={styles.viewAllBtn}>
-            <Text style={styles.viewAllText}>VIEW ALL NEWS</Text>
-            <ArrowRight color={colors.primary} size={16} style={{ marginLeft: 6 }} />
-          </Pressable>
+          <View style={styles.liveDot} />
+          <Text style={styles.sectionHeaderTitle}>LATEST PRESS RELEASES</Text>
         </View>
 
-        <View style={styles.cardsGrid}>
-          {PRESS_RELEASES.map(item => {
+        <View style={styles.newsGrid}>
+          {PRESS_RELEASES.map((item) => {
             const IconComp = item.icon;
             return (
-              <View key={item.id} style={styles.pressCard}>
-                <View style={styles.cardTopHalf}>
-                  <IconComp color="rgba(0, 255, 255, 0.4)" size={32} />
+              <View key={item.id} style={styles.newsCard}>
+                <View style={styles.newsCardTop}>
+                  <View style={styles.newsIconBox}>
+                    <IconComp size={20} color={colors.primary} />
+                  </View>
+                  <View style={styles.newsTagBadge}>
+                    <Text style={styles.newsTagText}>{item.tag}</Text>
+                  </View>
                 </View>
-                <View style={styles.cardBottomHalf}>
-                  <Text style={styles.cardDate}>{item.date}</Text>
-                  <Text style={styles.cardTitle}>{item.title}</Text>
-                  <Text style={styles.cardDesc}>{item.desc}</Text>
-                  <Pressable style={styles.readMoreBtn}>
-                    <Text style={styles.readMoreText}>Read More</Text>
-                    <ArrowRight color="#FFF" size={14} style={{ marginLeft: 6 }} />
-                  </Pressable>
-                </View>
+
+                <Text style={styles.newsDate}>{item.date}</Text>
+                <Text style={styles.newsCardTitle}>{item.title}</Text>
+                <Text style={styles.newsCardDesc}>{item.desc}</Text>
+
+                <Pressable accessibilityRole="button" style={styles.readMoreBtn}>
+                  <Text style={styles.readMoreText}>READ FULL STATEMENT</Text>
+                  <ArrowRight size={14} color={colors.primary} style={{ marginLeft: 6 }} />
+                </Pressable>
               </View>
             );
           })}
         </View>
       </View>
 
-      {/* Media Kit Section */}
+      {/* Bottom Section - Official Media Kit Container */}
       <View style={styles.mediaKitSection}>
-        <View style={styles.mediaKitBox}>
-          
-          {/* Left: Assets Grid */}
-          <View style={styles.mediaKitLeft}>
+        <View style={styles.mediaKitCard}>
+          <View style={styles.mediaKitHeader}>
+            <View style={styles.mediaKitBadge}>
+              <Text style={styles.mediaKitBadgeText}>PRESS DOWNLOADS</Text>
+            </View>
             <Text style={styles.mediaKitTitle}>
-              OFFICIAL MEDIA KIT{'\n'}& BRAND ASSETS
+              OFFICIAL MEDIA KIT & <Text style={{ color: colors.secondary }}>BRAND ASSETS</Text>
             </Text>
-            <View style={styles.mediaKitTitleUnderline} />
-            
-            <View style={styles.assetsGrid}>
-              
-              <View style={styles.assetItem}>
-                <View style={styles.assetIconBox}>
-                  <FileText color="rgba(255,255,255,0.4)" size={24} />
-                </View>
-                <View style={styles.assetTextRow}>
-                  <Text style={styles.assetName}>Brand Guidelines</Text>
-                  <Text style={styles.assetMeta}>PDF | 12.4 MB</Text>
-                </View>
-              </View>
-
-              <View style={styles.assetItem}>
-                <View style={styles.assetIconBox}>
-                  <ImageIcon color="rgba(255,255,255,0.4)" size={24} />
-                </View>
-                <View style={styles.assetTextRow}>
-                  <Text style={styles.assetName}>Logo Pack</Text>
-                  <Text style={styles.assetMeta}>PNG / SVG / EPS</Text>
-                </View>
-              </View>
-
-              <View style={styles.assetItem}>
-                <View style={styles.assetIconBox}>
-                  <LayoutTemplate color="rgba(255,255,255,0.4)" size={24} />
-                </View>
-                <View style={styles.assetTextRow}>
-                  <Text style={styles.assetName}>Press Template</Text>
-                  <Text style={styles.assetMeta}>DOCX | 2.1 MB</Text>
-                </View>
-              </View>
-
-              <View style={styles.assetItem}>
-                <View style={styles.assetIconBox}>
-                  <Archive color="rgba(255,255,255,0.4)" size={24} />
-                </View>
-                <View style={styles.assetTextRow}>
-                  <Text style={styles.assetName}>Social Assets</Text>
-                  <Text style={styles.assetMeta}>ZIP | 45.8 MB</Text>
-                </View>
-              </View>
-
-            </View>
+            <View style={styles.coralLine} />
+            <Text style={styles.mediaKitSubtitle}>
+              Approved logo marks, typography guides, and high-resolution visuals for journalists and partners.
+            </Text>
           </View>
 
-          {/* Right: Download panel */}
-          <View style={styles.mediaKitRight}>
-            <Pressable style={styles.downloadBigBtn}>
-              <Text style={styles.downloadBigBtnText}>DOWNLOAD MEDIA KIT (.ZIP)</Text>
-              <Download color="#FFF" size={20} style={{ marginLeft: 12 }} />
-            </Pressable>
-            
-            <Text style={styles.downloadDesc}>
-              Includes complete brand assets, visual guidelines, and press{'\n'}templates in a single high-resolution package.
-            </Text>
+          <View style={styles.mediaKitSplit}>
+            {/* Left Column: 2x2 Asset Preview Grid */}
+            <View style={styles.assetGridCol}>
+              <Text style={styles.colLabel}>INCLUDED IN MEDIA PACKAGE</Text>
+              <View style={styles.assetGrid2x2}>
+                {ASSETS.map((asset, idx) => {
+                  const IconComp = asset.icon;
+                  return (
+                    <View key={idx} style={styles.assetTile}>
+                      <View style={styles.assetTopRow}>
+                        <IconComp size={20} color={colors.primary} />
+                        <View style={styles.formatPill}>
+                          <Text style={styles.formatPillText}>{asset.format}</Text>
+                        </View>
+                      </View>
+                      <Text style={styles.assetTileName}>{asset.name}</Text>
+                      <Text style={styles.assetTileSize}>{asset.size}</Text>
+                    </View>
+                  );
+                })}
+              </View>
+            </View>
 
-            <View style={styles.featuresGrid}>
-              <View style={styles.featurePill}>
-                <Layers color={colors.primary} size={16} style={{ marginRight: 8 }} />
-                <Text style={styles.featurePillText}>100+ ASSETS</Text>
-              </View>
-              <View style={styles.featurePill}>
-                <PenTool color={colors.primary} size={16} style={{ marginRight: 8 }} />
-                <Text style={styles.featurePillText}>5 TEMPLATES</Text>
-              </View>
-              <View style={styles.featurePill}>
-                <Share2 color={colors.primary} size={16} style={{ marginRight: 8 }} />
-                <Text style={styles.featurePillText}>SOCIAL PACK</Text>
-              </View>
-              <View style={styles.featurePill}>
-                <Palette color={colors.primary} size={16} style={{ marginRight: 8 }} />
-                <Text style={styles.featurePillText}>HD VARIANT</Text>
+            {/* Right Column: Download Action Panel */}
+            <View style={styles.downloadActionCol}>
+              <View style={styles.actionInnerBox}>
+                <View style={styles.zipIconCircle}>
+                  <Archive size={32} color={colors.secondary} />
+                </View>
+
+                <Text style={styles.zipTitle}>Complete Press Package</Text>
+                <Text style={styles.zipDesc}>
+                  Contains vector logos (.SVG, .PNG), press releases, and photo stills (46.5 MB).
+                </Text>
+
+                <Pressable accessibilityRole="button" style={styles.downloadZipBtn} onPress={handleDownloadZip}>
+                  <Download size={18} color="#FFFFFF" style={{ marginRight: 8 }} />
+                  <Text style={styles.downloadZipBtnText}>DOWNLOAD MEDIA KIT (.ZIP)</Text>
+                </Pressable>
+
+                {downloadedZip && (
+                  <View style={styles.successDownloadRow}>
+                    <CheckCircle2 size={16} color="#10B981" />
+                    <Text style={styles.successDownloadText}>Media Kit (.ZIP) Download started!</Text>
+                  </View>
+                )}
+
+                <View style={styles.pressContactBox}>
+                  <Text style={styles.pressContactLabel}>PRESS INQUIRIES & INTERVIEWS</Text>
+                  <Text style={styles.pressContactEmail}>press@nasaspaceapps.lk</Text>
+                </View>
               </View>
             </View>
           </View>
-
         </View>
       </View>
 
@@ -195,268 +204,369 @@ export default function NewsPage() {
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (width: number) =>
+  StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.background,
+    backgroundColor: Platform.OS === 'web' ? 'transparent' : colors.background,
   },
   contentContainer: {
     flexGrow: 1,
   },
-  
-  // Hero Section
   heroSection: {
     alignItems: 'center',
-    paddingTop: 80,
-    paddingBottom: 60,
-    paddingHorizontal: 20,
+    paddingTop: 60,
+    paddingBottom: 40,
+    paddingHorizontal: Platform.OS === 'web' ? '5%' : 16,
+    maxWidth: 900,
+    alignSelf: 'center',
+    width: '100%',
   },
   pillContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: 'rgba(0, 255, 255, 0.05)',
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    borderRadius: 20,
+    gap: 8,
+    backgroundColor: 'rgba(0, 229, 255, 0.08)',
     borderWidth: 1,
-    borderColor: 'rgba(0, 255, 255, 0.2)',
-    marginBottom: 30,
-  },
-  pillDot: {
-    width: 6,
-    height: 6,
-    borderRadius: 3,
-    backgroundColor: colors.primary,
-    marginRight: 8,
+    borderColor: 'rgba(0, 229, 255, 0.25)',
+    paddingHorizontal: 14,
+    paddingVertical: 6,
+    borderRadius: 20,
+    marginBottom: 20,
   },
   pillText: {
     color: colors.primary,
     fontSize: 10,
-    fontWeight: 'bold',
-    letterSpacing: 1,
+    fontWeight: '800',
+    fontFamily: fonts.display,
+    letterSpacing: 1.2,
   },
   heroTitle: {
-    fontSize: isWeb && !isMobile ? 56 : 36,
+    fontSize: width > 768 ? 44 : width > 480 ? 32 : 27,
     fontWeight: '900',
-    color: '#FFF',
+    fontFamily: fonts.display,
+    color: colors.text,
     textAlign: 'center',
-    letterSpacing: 1,
-    marginBottom: 24,
+    letterSpacing: -0.5,
+    marginBottom: 16,
   },
   heroTitleCyan: {
     color: colors.primary,
-    textShadowColor: 'rgba(0, 255, 255, 0.4)',
-    textShadowOffset: { width: 0, height: 0 },
-    textShadowRadius: 10,
+    textShadow: '0px 0px 16px rgba(0, 229, 255, 0.4)',
   },
   heroSubtitle: {
+    fontFamily: fonts.body,
     color: colors.textMuted,
-    fontSize: 16,
+    fontSize: 15,
     textAlign: 'center',
-    lineHeight: 26,
-    maxWidth: 700,
+    lineHeight: 25,
+    maxWidth: 680,
   },
-
-  // Press Releases Section
-  pressSection: {
-    paddingHorizontal: '5%',
-    paddingBottom: 80,
-    maxWidth: 1400,
-    width: '100%',
+  newsSection: {
+    paddingVertical: 40,
+    paddingHorizontal: Platform.OS === 'web' ? '5%' : 16,
+    maxWidth: 1300,
     alignSelf: 'center',
+    width: '100%',
   },
   sectionHeaderRow: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 40,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#FFF',
-  },
-  viewAllBtn: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  viewAllText: {
-    color: colors.primary,
-    fontSize: 12,
-    fontWeight: 'bold',
-    letterSpacing: 1,
-  },
-  cardsGrid: {
-    flexDirection: isWeb && !isMobile ? 'row' : 'column',
-    gap: 24,
-  },
-  pressCard: {
-    flex: 1,
-    backgroundColor: 'rgba(10, 18, 30, 0.6)',
-    borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.05)',
-    borderRadius: 20,
-    overflow: 'hidden',
-  },
-  cardTopHalf: {
-    height: 180,
-    backgroundColor: 'rgba(255,255,255,0.02)',
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderBottomWidth: 1,
-    borderBottomColor: 'rgba(255,255,255,0.05)',
-  },
-  cardBottomHalf: {
-    padding: 24,
-  },
-  cardDate: {
-    color: colors.primary,
-    fontSize: 10,
-    fontWeight: 'bold',
-    letterSpacing: 1,
-    marginBottom: 12,
-  },
-  cardTitle: {
-    color: '#FFF',
-    fontSize: 20,
-    fontWeight: 'bold',
-    marginBottom: 12,
-    lineHeight: 28,
-  },
-  cardDesc: {
-    color: colors.textMuted,
-    fontSize: 14,
-    lineHeight: 22,
+    gap: 8,
     marginBottom: 24,
   },
-  readMoreBtn: {
-    flexDirection: 'row',
-    alignItems: 'center',
+  liveDot: {
+    width: 8,
+    height: 8,
+    borderRadius: 4,
+    backgroundColor: colors.primary,
   },
-  readMoreText: {
-    color: '#FFF',
-    fontSize: 14,
-    fontWeight: 'bold',
-  },
-
-  // Media Kit Section
-  mediaKitSection: {
-    paddingHorizontal: '5%',
-    paddingBottom: 80,
-    maxWidth: 1400,
-    width: '100%',
-    alignSelf: 'center',
-  },
-  mediaKitBox: {
-    flexDirection: isWeb && !isMobile ? 'row' : 'column',
-    backgroundColor: 'rgba(10, 18, 30, 0.4)',
-    borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.05)',
-    borderRadius: 30,
-    padding: isWeb && !isMobile ? 60 : 30,
-    gap: 60,
-  },
-  mediaKitLeft: {
-    flex: 1.2,
-  },
-  mediaKitTitle: {
-    fontSize: 32,
+  sectionHeaderTitle: {
+    color: colors.text,
+    fontSize: 13,
     fontWeight: '900',
-    color: '#FFF',
-    marginBottom: 16,
-    lineHeight: 40,
+    fontFamily: fonts.display,
+    letterSpacing: 1.5,
   },
-  mediaKitTitleUnderline: {
-    width: 60,
-    height: 4,
-    backgroundColor: colors.secondary,
-    borderRadius: 2,
-    marginBottom: 40,
-  },
-  assetsGrid: {
+  newsGrid: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     gap: 20,
   },
-  assetItem: {
-    width: isWeb && !isMobile ? 'calc(50% - 10px)' : '100%',
+  newsCard: {
+    backgroundColor: 'rgba(10, 15, 31, 0.85)',
+    borderWidth: 1,
+    borderColor: 'rgba(255, 255, 255, 0.08)',
+    borderRadius: 20,
+    padding: 24,
+    width: width > 900 ? '31%' : '100%',
+    boxShadow: '0px 8px 16px rgba(0, 0, 0, 0.3)',
+    justifyContent: 'space-between',
+  },
+  newsCardTop: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 16,
+  },
+  newsIconBox: {
+    width: 40,
+    height: 40,
+    borderRadius: 10,
+    backgroundColor: 'rgba(0, 229, 255, 0.08)',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  newsTagBadge: {
+    backgroundColor: 'rgba(255, 255, 255, 0.05)',
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    borderRadius: 6,
+  },
+  newsTagText: {
+    color: colors.textMuted,
+    fontSize: 11,
+    fontWeight: '800',
+    fontFamily: fonts.display,
+    letterSpacing: 0.8,
+  },
+  newsDate: {
+    color: colors.primary,
+    fontSize: 10,
+    fontWeight: '800',
+    fontFamily: fonts.display,
+    letterSpacing: 1,
+    marginBottom: 8,
+  },
+  newsCardTitle: {
+    color: colors.text,
+    fontSize: 18,
+    fontWeight: '800',
+    fontFamily: fonts.display,
+    lineHeight: 25,
     marginBottom: 10,
   },
-  assetIconBox: {
-    width: '100%',
-    height: 160,
-    backgroundColor: 'rgba(255,255,255,0.02)',
-    borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.05)',
-    borderRadius: 16,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: 12,
-  },
-  assetTextRow: {
-    paddingHorizontal: 4,
-  },
-  assetName: {
-    color: '#FFF',
-    fontSize: 14,
-    fontWeight: 'bold',
-    marginBottom: 4,
-  },
-  assetMeta: {
+  newsCardDesc: {
+    fontFamily: fonts.body,
     color: colors.textMuted,
-    fontSize: 10,
-    letterSpacing: 1,
+    fontSize: 13,
+    lineHeight: 21,
+    marginBottom: 20,
   },
-  
-  mediaKitRight: {
-    flex: 1,
-    justifyContent: 'center',
-  },
-  downloadBigBtn: {
+  readMoreBtn: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: colors.secondary,
-    paddingVertical: 20,
-    borderRadius: 16,
-    marginBottom: 24,
-    shadowColor: colors.secondary,
-    shadowOffset: { width: 0, height: 0 },
-    shadowOpacity: 0.5,
-    shadowRadius: 20,
+    borderTopWidth: 1,
+    borderTopColor: 'rgba(255, 255, 255, 0.06)',
+    paddingTop: 12,
   },
-  downloadBigBtnText: {
-    color: '#FFF',
-    fontSize: 14,
-    fontWeight: 'bold',
+  readMoreText: {
+    color: colors.primary,
+    fontSize: 11,
+    fontWeight: '800',
+    fontFamily: fonts.display,
+    letterSpacing: 0.8,
+  },
+  mediaKitSection: {
+    paddingVertical: 50,
+    paddingHorizontal: Platform.OS === 'web' ? '5%' : 16,
+    maxWidth: 1300,
+    alignSelf: 'center',
+    width: '100%',
+  },
+  mediaKitCard: {
+    backgroundColor: 'rgba(10, 15, 31, 0.9)',
+    borderWidth: 1,
+    borderColor: 'rgba(0, 229, 255, 0.25)',
+    borderRadius: 24,
+    padding: width > 768 ? 44 : 22,
+    boxShadow: '0px 16px 28px rgba(0, 0, 0, 0.5)',
+  },
+  mediaKitHeader: {
+    marginBottom: 32,
+  },
+  mediaKitBadge: {
+    backgroundColor: 'rgba(255, 107, 53, 0.1)',
+    borderWidth: 1,
+    borderColor: 'rgba(255, 107, 53, 0.3)',
+    paddingHorizontal: 12,
+    paddingVertical: 4,
+    borderRadius: 16,
+    alignSelf: 'flex-start',
+    marginBottom: 14,
+  },
+  mediaKitBadgeText: {
+    color: colors.secondary,
+    fontSize: 10,
+    fontWeight: '800',
+    fontFamily: fonts.display,
     letterSpacing: 1,
   },
-  downloadDesc: {
+  mediaKitTitle: {
+    color: colors.text,
+    fontSize: width > 768 ? 32 : 24,
+    fontWeight: '900',
+    fontFamily: fonts.display,
+    letterSpacing: -0.3,
+  },
+  coralLine: {
+    width: 60,
+    height: 3,
+    backgroundColor: colors.secondary,
+    marginVertical: 14,
+    borderRadius: 2,
+  },
+  mediaKitSubtitle: {
+    fontFamily: fonts.body,
     color: colors.textMuted,
     fontSize: 14,
     lineHeight: 22,
-    marginBottom: 40,
+    maxWidth: 640,
   },
-  featuresGrid: {
+  mediaKitSplit: {
+    flexDirection: width > 900 ? 'row' : 'column',
+    gap: 36,
+  },
+  assetGridCol: {
+    flex: width > 900 ? 1.3 : undefined,
+  },
+  colLabel: {
+    color: colors.textMuted,
+    fontSize: 10,
+    fontWeight: '800',
+    fontFamily: fonts.display,
+    letterSpacing: 1.2,
+    marginBottom: 16,
+  },
+  assetGrid2x2: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    gap: 16,
+    gap: 14,
   },
-  featurePill: {
+  assetTile: {
+    backgroundColor: 'rgba(255, 255, 255, 0.03)',
+    borderWidth: 1,
+    borderColor: 'rgba(255, 255, 255, 0.08)',
+    borderRadius: 14,
+    padding: 16,
+    width: width > 600 ? '48%' : '100%',
+    justifyContent: 'space-between',
+  },
+  assetTopRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 12,
+  },
+  formatPill: {
+    backgroundColor: 'rgba(0, 229, 255, 0.1)',
+    paddingHorizontal: 8,
+    paddingVertical: 2,
+    borderRadius: 6,
+  },
+  formatPillText: {
+    color: colors.primary,
+    fontSize: 11,
+    fontWeight: '800',
+    fontFamily: fonts.display,
+    letterSpacing: 0.8,
+  },
+  assetTileName: {
+    fontFamily: fonts.bodyBold,
+    color: colors.text,
+    fontSize: 14,
+    fontWeight: '700',
+    marginBottom: 4,
+  },
+  assetTileSize: {
+    fontFamily: fonts.body,
+    color: colors.textMuted,
+    fontSize: 11,
+  },
+  downloadActionCol: {
+    flex: width > 900 ? 1 : undefined,
+  },
+  actionInnerBox: {
+    backgroundColor: 'rgba(5, 9, 18, 0.85)',
+    borderWidth: 1,
+    borderColor: 'rgba(255, 107, 53, 0.25)',
+    borderRadius: 18,
+    padding: 24,
+    alignItems: 'center',
+  },
+  zipIconCircle: {
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    backgroundColor: 'rgba(255, 107, 53, 0.1)',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 16,
+  },
+  zipTitle: {
+    color: colors.text,
+    fontSize: 18,
+    fontWeight: '800',
+    fontFamily: fonts.display,
+    marginBottom: 6,
+  },
+  zipDesc: {
+    fontFamily: fonts.body,
+    color: colors.textMuted,
+    fontSize: 12,
+    textAlign: 'center',
+    lineHeight: 18,
+    marginBottom: 20,
+  },
+  downloadZipBtn: {
+    backgroundColor: colors.secondary,
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: 'rgba(10, 18, 30, 0.8)',
-    borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.05)',
-    borderRadius: 12,
-    paddingHorizontal: 20,
+    justifyContent: 'center',
     paddingVertical: 14,
-    width: isWeb && !isMobile ? 'calc(50% - 8px)' : '100%',
+    paddingHorizontal: 22,
+    borderRadius: 12,
+    width: '100%',
+    boxShadow: '0px 0px 14px rgba(255, 107, 53, 0.5)',
   },
-  featurePillText: {
-    color: '#FFF',
-    fontSize: 10,
-    fontWeight: 'bold',
-    letterSpacing: 1,
+  downloadZipBtnText: {
+    color: '#FFFFFF',
+    fontWeight: '800',
+    fontFamily: fonts.display,
+    fontSize: 12,
+    letterSpacing: 0.8,
+  },
+  successDownloadRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+    marginTop: 14,
+  },
+  successDownloadText: {
+    fontFamily: fonts.bodyBold,
+    color: '#10B981',
+    fontSize: 12,
+    fontWeight: '700',
+  },
+  pressContactBox: {
+    marginTop: 24,
+    paddingTop: 16,
+    borderTopWidth: 1,
+    borderTopColor: 'rgba(255, 255, 255, 0.08)',
+    alignItems: 'center',
+  },
+  pressContactLabel: {
+    color: colors.textMuted,
+    fontSize: 11,
+    fontWeight: '800',
+    fontFamily: fonts.display,
+    letterSpacing: 0.8,
+    marginBottom: 4,
+  },
+  pressContactEmail: {
+    fontFamily: fonts.bodyBold,
+    color: colors.primary,
+    fontSize: 12,
+    fontWeight: '700',
   },
 });

@@ -1,131 +1,408 @@
-import React from 'react';
-import { View, Text, StyleSheet, ScrollView, TextInput, Pressable, Platform, Dimensions } from 'react-native';
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  TextInput,
+  Pressable,
+  Platform,
+  ActivityIndicator,
+  useWindowDimensions,
+} from 'react-native';
+import PageMeta from '../components/PageMeta';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { colors } from '../theme/colors';
-import { Ionicons } from '@expo/vector-icons';
+import FormField from '../components/FormField';
+import Honeypot from '../components/Honeypot';
+import { useFormSubmit } from '../lib/useFormSubmit';
+import { isEmail, isPhone, required, type Errors } from '../lib/validation';
+import { fonts } from '../theme/typography';
+import { 
+  Rocket, 
+  Users, 
+  User, 
+  Check, 
+  Send, 
+  CheckCircle2, 
+  ShieldCheck, 
+  Calendar, 
+  MapPin 
+} from '../components/icons';
+
+
+const TRACKS = [
+  { id: 'team', label: 'TEAM (2–6 MEMBERS)', desc: 'Compete as an organized squad' },
+  { id: 'solo', label: 'SOLO / FIND A TEAM', desc: 'Join team matchmaking pool' },
+];
+
+const CHALLENGE_PREFS = [
+  'Climate & Earth Observation',
+  'AI / ML & Computer Vision',
+  'Astrophysics & Space Flight',
+  'Open Science & Citizen Data',
+];
 
 export default function RegisterPage() {
+  const { width } = useWindowDimensions();
+  const styles = useMemo(() => makeStyles(width), [width]);
+
+  const [track, setTrack] = useState<'team' | 'solo'>('team');
+  const [teamName, setTeamName] = useState('');
+  const [leadName, setLeadName] = useState('');
+  const [leadEmail, setLeadEmail] = useState('');
+  const [leadPhone, setLeadPhone] = useState('');
+  const [institution, setInstitution] = useState('');
+  const [memberCount, setMemberCount] = useState('4');
+  const [challengePref, setChallengePref] = useState(CHALLENGE_PREFS[0]);
+  const [agreed, setAgreed] = useState(false);
+
+  const nameRef = useRef<TextInput>(null);
+  const emailRef = useRef<TextInput>(null);
+  const phoneRef = useRef<TextInput>(null);
+  const institutionRef = useRef<TextInput>(null);
+
+  type Field = 'teamName' | 'leadName' | 'leadEmail' | 'leadPhone' | 'agreed';
+
+  const validate = useCallback((): Errors<Field> => {
+    const e: Errors<Field> = {};
+    if (track === 'team' && !required(teamName)) e.teamName = 'Give your team a name.';
+    if (!required(leadName)) e.leadName = 'We need a name for the entry.';
+    if (!required(leadEmail)) e.leadEmail = 'An email is required to send your team pack.';
+    else if (!isEmail(leadEmail)) e.leadEmail = 'That email address does not look right.';
+    if (!isPhone(leadPhone)) e.leadPhone = 'Use a Sri Lankan number, e.g. 071 234 5678.';
+    if (!agreed) e.agreed = 'Please accept the participant agreement to continue.';
+    return e;
+  }, [track, teamName, leadName, leadEmail, leadPhone, agreed]);
+
+  const build = useCallback(
+    () => ({
+      track,
+      teamName: track === 'team' ? teamName.trim() : null,
+      memberCount: track === 'team' ? Number(memberCount) || null : 1,
+      leadName: leadName.trim(),
+      leadEmail: leadEmail.trim().toLowerCase(),
+      leadPhone: leadPhone.trim() || null,
+      institution: institution.trim() || null,
+      challengePref,
+      agreedToCodeOfConduct: agreed,
+    }),
+    [track, teamName, memberCount, leadName, leadEmail, leadPhone, institution, challengePref, agreed]
+  );
+
+  const { errors, clearError, submitting, submitted, formError, submit, reset, trap, setTrap } =
+    useFormSubmit<Field>({ kind: 'registrations', validate, build });
+
   return (
-    <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+    <ScrollView
+      style={styles.container}
+      contentContainerStyle={styles.contentContainer}
+      keyboardShouldPersistTaps="handled"
+      keyboardDismissMode="on-drag"
+      automaticallyAdjustKeyboardInsets
+    >
+      <PageMeta
+        title="Register | NASA Space Apps Challenge Kandy 2026"
+        description="Register your team or join the solo pool for the 48-hour NASA Space Apps hackathon in Kandy, 3-5 October 2026."
+        path="/register"
+      />
       <Navbar />
-      
+
+      {/* Header Section */}
       <View style={styles.header}>
+        <View style={styles.badge}>
+          <Rocket size={14} color={colors.primary} />
+          <Text style={styles.badgeText}>OFFICIAL REGISTRATION PORTAL</Text>
+        </View>
+
         <Text style={styles.title}>
           REGISTER FOR NASA SPACE APPS <Text style={styles.titleGlow}>SRI LANKA</Text>
         </Text>
         <Text style={styles.subtitle}>
-          Ready to innovate? Register below to join Kandy's organizing committee.{'\n'}
-          We are here to help you launch your innovation journey.
+          Secure your team's access to the 48-Hour Global Hackathon at the Kandy Convention Center. Compete for 2.5M+ LKR in prize pools and Global Nominee honors.
         </Text>
-        <View style={styles.divider} />
       </View>
 
       <View style={styles.mainContent}>
+        {/* Left Column: Event Overview & Perks */}
         <View style={styles.leftColumn}>
-          {/* Info Card */}
           <View style={styles.card}>
-            <View style={styles.infoRow}>
-              <View style={styles.iconBox}>
-                <Ionicons name="mail-outline" size={20} color={colors.primary} />
-              </View>
-              <View>
-                <Text style={styles.infoLabel}>SUPPORT EMAIL</Text>
-                <Text style={styles.infoValue}>info@nasaspaceapps.lk</Text>
-              </View>
+            <View style={styles.cardHeaderRow}>
+              <View style={styles.livePulseDot} />
+              <Text style={styles.cardTag}>HACKATHON DETAILS</Text>
             </View>
 
             <View style={styles.infoRow}>
               <View style={styles.iconBox}>
-                <Ionicons name="location-outline" size={20} color={colors.primary} />
+                <Calendar size={20} color={colors.primary} />
               </View>
               <View>
-                <Text style={styles.infoLabel}>LOCATION</Text>
-                <Text style={styles.infoValue}>University of Peradeniya Campus, Kandy</Text>
-                <Text style={styles.infoSubValue}>Central Province, Sri Lanka</Text>
+                <Text style={styles.infoLabel}>EVENT DATES</Text>
+                <Text style={styles.infoValue}>October 3–5, 2026</Text>
+                <Text style={styles.infoSub}>48 Hours Non-Stop Sprint</Text>
               </View>
             </View>
 
-            <Text style={[styles.infoLabel, { marginTop: 20, marginBottom: 10 }]}>CONNECT WITH US</Text>
-            <View style={styles.socialIcons}>
-              <View style={styles.socialBox}><Ionicons name="logo-facebook" size={16} color={colors.textMuted} /></View>
-              <View style={styles.socialBox}><Ionicons name="logo-linkedin" size={16} color={colors.textMuted} /></View>
-              <View style={styles.socialBox}><Ionicons name="logo-instagram" size={16} color={colors.textMuted} /></View>
-              <View style={styles.socialBox}><Ionicons name="close" size={16} color={colors.textMuted} /></View>
-            </View>
-          </View>
-
-          {/* Map Graphic Card */}
-          <View style={styles.mapCard}>
-            <View style={styles.mapGraphic}>
-              {/* Simplified curves/lines representing map */}
-              <View style={styles.mapCurve1} />
-              <View style={styles.mapCurve2} />
-              <View style={styles.mapNode} />
-              <View style={styles.mapNodeLabelBox}>
-                 <Text style={styles.mapNodeLabel}>HUB: KANDY</Text>
+            <View style={styles.infoRow}>
+              <View style={[styles.iconBox, { borderColor: 'rgba(255, 107, 53, 0.3)' }]}>
+                <MapPin size={20} color={colors.secondary} />
+              </View>
+              <View>
+                <Text style={styles.infoLabel}>LOCATION & FORMAT</Text>
+                <Text style={styles.infoValue}>Kandy Convention Center</Text>
+                <Text style={styles.infoSub}>Hybrid (On-site & Virtual nodes in all 9 provinces)</Text>
               </View>
             </View>
-            <Text style={styles.mapFooterText}>
-              <Text style={{color: '#4B5563'}}>COORD: 7.29° N, 80.63° E  |  </Text>
-              <Text style={{color: '#059669'}}>STATUS: ACTIVE</Text>
-            </Text>
+
+            <View style={styles.divider} />
+
+            <Text style={styles.benefitsTitle}>ALL REGISTERED HACKERS RECEIVE:</Text>
+            <View style={styles.benefitsList}>
+              <View style={styles.benefitItem}>
+                <CheckCircle2 size={16} color={colors.primary} />
+                <Text style={styles.benefitText}>Direct credentials to NASA Open Data platform</Text>
+              </View>
+              <View style={styles.benefitItem}>
+                <CheckCircle2 size={16} color={colors.primary} />
+                <Text style={styles.benefitText}>1-on-1 access to technical mentors & AI judges</Text>
+              </View>
+              <View style={styles.benefitItem}>
+                <CheckCircle2 size={16} color={colors.primary} />
+                <Text style={styles.benefitText}>Official Certificate of Global Participation</Text>
+              </View>
+              <View style={styles.benefitItem}>
+                <CheckCircle2 size={16} color={colors.primary} />
+                <Text style={styles.benefitText}>Eligibility for Global Nominee & Cash Prizes</Text>
+              </View>
+            </View>
           </View>
         </View>
 
-        {/* Right Column Form */}
+        {/* Right Column: Registration Form */}
         <View style={[styles.card, styles.formCard]}>
-          <Text style={styles.formTitle}>
-            TEAM <Text style={{ color: colors.primary }}>REGISTRATION</Text>
-          </Text>
-
-          <View style={styles.formRow}>
-            <View style={styles.inputGroup}>
-              <Text style={styles.inputLabel}>TEAM LEADER NAME</Text>
-              <TextInput 
-                style={styles.input} 
-                placeholder="John Doe" 
-                placeholderTextColor={colors.textMuted} 
-              />
+          {submitted ? (
+            <View style={styles.successContainer}>
+              <CheckCircle2 size={56} color="#10B981" style={{ marginBottom: 16 }} />
+              <Text style={styles.successTitle}>REGISTRATION CONFIRMED!</Text>
+              <Text style={styles.successText}>
+                Congratulations, <Text style={{ color: colors.text, fontWeight: '700' }}>{leadName}</Text>!{' '}
+                {track === 'team'
+                  ? `Your team "${teamName || 'Space Innovators'}" is officially registered.`
+                  : 'You are registered for the solo hacker pool.'}
+              </Text>
+              <Text style={styles.successSub}>
+                We have dispatched confirmation details and the Participant Toolkit to <Text style={{ color: colors.primary }}>{leadEmail}</Text>.
+              </Text>
+              <Pressable
+                accessibilityRole="button"
+                style={styles.resetBtn}
+                onPress={() => {
+                  reset();
+                  setLeadName('');
+                  setLeadEmail('');
+                  setLeadPhone('');
+                  setTeamName('');
+                  setInstitution('');
+                  setAgreed(false);
+                }}
+              >
+                <Text style={styles.resetBtnText}>REGISTER ANOTHER SQUAD</Text>
+              </Pressable>
             </View>
-            <View style={styles.inputGroup}>
-              <Text style={styles.inputLabel}>EMAIL ADDRESS</Text>
-              <TextInput 
-                style={styles.input} 
-                placeholder="john@example.com" 
-                placeholderTextColor={colors.textMuted} 
+          ) : (
+            <>
+              <Text style={styles.formTitle}>
+                HACKATHON <Text style={{ color: colors.primary }}>REGISTRATION</Text>
+              </Text>
+              <Text style={styles.formSubtitle}>
+                Select your track and enter team details below.
+              </Text>
+
+              {/* Track Switcher */}
+              <View style={styles.inputGroup}>
+                <Text style={styles.inputLabel}>SELECT REGISTRATION TRACK</Text>
+                <View style={styles.trackRow}>
+                  {TRACKS.map((t) => {
+                    const isSelected = track === t.id;
+                    return (
+                      <Pressable
+                        accessibilityRole="button"
+                        key={t.id}
+                        style={[styles.trackCard, isSelected && styles.trackCardActive]}
+                        onPress={() => setTrack(t.id as any)}
+                      >
+                        <Text style={[styles.trackCardTitle, isSelected && styles.trackCardTitleActive]}>
+                          {t.label}
+                        </Text>
+                        <Text style={styles.trackCardDesc}>{t.desc}</Text>
+                      </Pressable>
+                    );
+                  })}
+                </View>
+              </View>
+
+              {track === 'team' && (
+                <FormField
+                  label="TEAM NAME"
+                  required
+                  placeholder="e.g. Orion Dynamics"
+                  value={teamName}
+                  error={errors.teamName}
+                  onChangeText={(v) => {
+                    setTeamName(v);
+                    clearError('teamName');
+                  }}
+                  returnKeyType="next"
+                  onSubmitEditing={() => nameRef.current?.focus()}
+                />
+              )}
+
+              {/* Leader Full Name */}
+              <FormField
+                ref={nameRef}
+                label={track === 'team' ? 'TEAM LEADER FULL NAME' : 'PARTICIPANT FULL NAME'}
+                required
+                placeholder="e.g. Navin Wijesinghe"
+                value={leadName}
+                error={errors.leadName}
+                onChangeText={(v) => {
+                  setLeadName(v);
+                  clearError('leadName');
+                }}
+                autoComplete="name"
+                textContentType="name"
+                returnKeyType="next"
+                onSubmitEditing={() => emailRef.current?.focus()}
               />
-            </View>
-          </View>
 
-          <View style={[styles.inputGroup, { width: '100%' }]}>
-            <Text style={styles.inputLabel}>TEAM NAME</Text>
-            <TextInput 
-              style={styles.input} 
-              placeholder="Space Innovators" 
-              placeholderTextColor={colors.textMuted} 
-            />
-          </View>
+              {/* Email & Phone Row */}
+              <View style={styles.twoColRow}>
+                <View style={{ flex: 1 }}>
+                  <FormField
+                    ref={emailRef}
+                    label="EMAIL ADDRESS"
+                    required
+                    placeholder="navin@example.com"
+                    value={leadEmail}
+                    error={errors.leadEmail}
+                    onChangeText={(v) => {
+                      setLeadEmail(v);
+                      clearError('leadEmail');
+                    }}
+                    keyboardType="email-address"
+                    autoCapitalize="none"
+                    autoComplete="email"
+                    textContentType="emailAddress"
+                    returnKeyType="next"
+                    onSubmitEditing={() => phoneRef.current?.focus()}
+                  />
+                </View>
 
-          <View style={[styles.inputGroup, { width: '100%', flex: 1 }]}>
-            <Text style={styles.inputLabel}>PROJECT IDEA (OPTIONAL)</Text>
-            <TextInput 
-              style={[styles.input, styles.textArea]} 
-              placeholder="Tell us about what you want to build..." 
-              placeholderTextColor={colors.textMuted} 
-              multiline
-              textAlignVertical="top"
-            />
-          </View>
+                <View style={{ flex: 1 }}>
+                  <FormField
+                    ref={phoneRef}
+                    label="PHONE NUMBER"
+                    placeholder="071 234 5678"
+                    value={leadPhone}
+                    error={errors.leadPhone}
+                    onChangeText={(v) => {
+                      setLeadPhone(v);
+                      clearError('leadPhone');
+                    }}
+                    keyboardType="phone-pad"
+                    autoComplete="tel"
+                    textContentType="telephoneNumber"
+                    returnKeyType="next"
+                    onSubmitEditing={() => institutionRef.current?.focus()}
+                  />
+                </View>
+              </View>
 
-          <Pressable style={styles.submitBtn}>
-            <Text style={styles.submitBtnText}>SUBMIT REGISTRATION</Text>
-            <Ionicons name="rocket-outline" size={16} color="#000" style={{ marginLeft: 8 }} />
-          </Pressable>
+              {/* Institution / University */}
+              <FormField
+                ref={institutionRef}
+                label="SCHOOL / UNIVERSITY / EMPLOYER"
+                placeholder="e.g. University of Moratuwa"
+                value={institution}
+                onChangeText={setInstitution}
+                autoComplete="organization"
+                returnKeyType="done"
+              />
 
-          <Text style={styles.formFooterText}>
-            YOU WILL RECEIVE A CONFIRMATION EMAIL SHORTLY AFTER SUBMISSION.
-          </Text>
+              {/* Challenge Preference */}
+              <View style={styles.inputGroup}>
+                <Text style={styles.inputLabel}>PRIMARY CHALLENGE INTEREST</Text>
+                <View style={styles.chipsRow}>
+                  {CHALLENGE_PREFS.map((pref, idx) => {
+                    const isSel = challengePref === pref;
+                    return (
+                      <Pressable
+                        accessibilityRole="button"
+                        key={idx}
+                        style={[styles.prefChip, isSel && styles.prefChipActive]}
+                        onPress={() => setChallengePref(pref)}
+                      >
+                        <Text style={[styles.prefChipText, isSel && styles.prefChipTextActive]}>
+                          {pref}
+                        </Text>
+                      </Pressable>
+                    );
+                  })}
+                </View>
+              </View>
+
+              {/* Agreement */}
+              <Pressable
+                style={styles.checkboxRow}
+                onPress={() => {
+                  setAgreed(!agreed);
+                  clearError('agreed');
+                }}
+                accessibilityRole="checkbox"
+                accessibilityState={{ checked: agreed }}
+                accessibilityLabel="I agree to the NASA Space Apps Participant Code of Conduct and open source licensing terms"
+              >
+                <View style={[styles.checkbox, agreed && styles.checkboxActive]}>
+                  {agreed && <Check size={14} color="#050912" />}
+                </View>
+                <Text style={styles.checkboxLabel}>
+                  I agree to NASA Space Apps Participant Code of Conduct and Open Source licensing terms.
+                </Text>
+              </Pressable>
+              {errors.agreed ? (
+                <Text style={styles.fieldError} accessibilityRole="alert">
+                  {errors.agreed}
+                </Text>
+              ) : null}
+
+              <Honeypot value={trap} onChangeText={setTrap} />
+
+              {formError ? (
+                <Text style={styles.formError} accessibilityRole="alert">
+                  {formError}
+                </Text>
+              ) : null}
+
+              {/* Submit CTA */}
+              <Pressable
+                style={[styles.submitBtn, submitting && styles.submitBtnDisabled]}
+                onPress={submit}
+                disabled={submitting}
+                accessibilityRole="button"
+                accessibilityState={{ disabled: submitting, busy: submitting }}
+              >
+                <Text style={styles.submitBtnText}>
+                  {submitting ? 'SENDING\u2026' : 'CONFIRM HACKATHON ENTRY'}
+                </Text>
+                {submitting ? (
+                  <ActivityIndicator size="small" color="#050912" style={{ marginLeft: 8 }} />
+                ) : (
+                  <Rocket size={16} color="#050912" style={{ marginLeft: 8 }} />
+                )}
+              </Pressable>
+            </>
+          )}
         </View>
       </View>
 
@@ -134,239 +411,368 @@ export default function RegisterPage() {
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (width: number) =>
+  StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.background,
+    backgroundColor: Platform.OS === 'web' ? 'transparent' : colors.background,
   },
   contentContainer: {
     flexGrow: 1,
   },
   header: {
-    paddingVertical: 60,
-    paddingHorizontal: 20,
     alignItems: 'center',
-    textAlign: 'center',
+    paddingTop: 60,
+    paddingBottom: 40,
+    paddingHorizontal: Platform.OS === 'web' ? '5%' : 16,
+    maxWidth: 900,
+    alignSelf: 'center',
+    width: '100%',
+  },
+  badge: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+    backgroundColor: 'rgba(0, 229, 255, 0.08)',
+    borderWidth: 1,
+    borderColor: 'rgba(0, 229, 255, 0.25)',
+    paddingHorizontal: 12,
+    paddingVertical: 5,
+    borderRadius: 20,
+    marginBottom: 20,
+  },
+  badgeText: {
+    color: colors.primary,
+    fontSize: 10,
+    fontWeight: '800',
+    fontFamily: fonts.display,
+    letterSpacing: 1.2,
   },
   title: {
-    fontSize: Platform.OS === 'web' ? 48 : 32,
-    fontWeight: 'bold',
+    fontSize: width > 768 ? 44 : width > 480 ? 32 : 27,
+    fontWeight: '900',
+    fontFamily: fonts.display,
     color: colors.text,
     textAlign: 'center',
+    letterSpacing: -0.5,
     marginBottom: 16,
   },
   titleGlow: {
     color: colors.primary,
+    textShadow: '0px 0px 16px rgba(0, 229, 255, 0.4)',
   },
   subtitle: {
-    fontSize: 16,
+    fontFamily: fonts.body,
     color: colors.textMuted,
+    fontSize: 15,
     textAlign: 'center',
-    lineHeight: 24,
-    marginBottom: 24,
-  },
-  divider: {
-    width: 60,
-    height: 4,
-    backgroundColor: colors.primary,
-    borderRadius: 2,
+    lineHeight: 25,
+    maxWidth: 680,
   },
   mainContent: {
-    flexDirection: Platform.OS === 'web' && Dimensions.get('window').width > 768 ? 'row' : 'column',
-    paddingHorizontal: Platform.OS === 'web' ? '5%' : 20,
-    paddingBottom: 60,
-    gap: 20,
-    alignItems: 'stretch',
+    flexDirection: width > 900 ? 'row' : 'column',
+    paddingHorizontal: Platform.OS === 'web' ? '5%' : 16,
+    paddingVertical: 30,
+    maxWidth: 1300,
+    alignSelf: 'center',
+    width: '100%',
+    gap: 30,
   },
   leftColumn: {
-    flex: 1,
-    gap: 20,
+    flex: width > 900 ? 1 : undefined,
   },
   card: {
-    backgroundColor: colors.surface,
-    borderRadius: 16,
-    padding: 30,
+    backgroundColor: 'rgba(10, 15, 31, 0.85)',
     borderWidth: 1,
-    borderColor: colors.border,
+    borderColor: 'rgba(255, 255, 255, 0.08)',
+    borderRadius: 22,
+    padding: 26,
+    boxShadow: '0px 8px 16px rgba(0, 0, 0, 0.3)',
+  },
+  cardHeaderRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+    marginBottom: 20,
+  },
+  livePulseDot: {
+    width: 6,
+    height: 6,
+    borderRadius: 3,
+    backgroundColor: colors.primary,
+  },
+  cardTag: {
+    color: colors.primary,
+    fontSize: 10,
+    fontWeight: '800',
+    fontFamily: fonts.display,
+    letterSpacing: 1.2,
   },
   infoRow: {
     flexDirection: 'row',
-    marginBottom: 24,
     alignItems: 'flex-start',
+    gap: 16,
+    marginBottom: 20,
   },
   iconBox: {
-    width: 40,
-    height: 40,
-    borderRadius: 8,
-    backgroundColor: 'rgba(0, 255, 255, 0.1)',
+    width: 44,
+    height: 44,
+    borderRadius: 12,
+    backgroundColor: 'rgba(0, 229, 255, 0.08)',
+    borderWidth: 1,
+    borderColor: 'rgba(0, 229, 255, 0.25)',
     alignItems: 'center',
     justifyContent: 'center',
-    marginRight: 16,
   },
   infoLabel: {
-    fontSize: 10,
-    fontWeight: 'bold',
     color: colors.textMuted,
+    fontSize: 10,
+    fontWeight: '800',
+    fontFamily: fonts.display,
     letterSpacing: 1,
     marginBottom: 4,
   },
   infoValue: {
-    fontSize: 16,
-    fontWeight: 'bold',
     color: colors.text,
+    fontSize: 16,
+    fontWeight: '800',
+    fontFamily: fonts.display,
   },
-  infoSubValue: {
-    fontSize: 12,
+  infoSub: {
+    fontFamily: fonts.body,
     color: colors.textMuted,
-    marginTop: 4,
+    fontSize: 12,
+    marginTop: 2,
   },
-  socialIcons: {
-    flexDirection: 'row',
+  divider: {
+    height: 1,
+    backgroundColor: 'rgba(255, 255, 255, 0.08)',
+    marginVertical: 20,
+  },
+  benefitsTitle: {
+    color: colors.text,
+    fontSize: 11,
+    fontWeight: '800',
+    fontFamily: fonts.display,
+    letterSpacing: 1,
+    marginBottom: 14,
+  },
+  benefitsList: {
     gap: 12,
   },
-  socialBox: {
-    width: 36,
-    height: 36,
-    borderRadius: 8,
-    borderWidth: 1,
-    borderColor: colors.border,
+  benefitItem: {
+    flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
+    gap: 10,
   },
-  mapCard: {
-    backgroundColor: colors.surface,
-    borderRadius: 16,
-    borderWidth: 1,
-    borderColor: colors.border,
-    height: 200,
-    overflow: 'hidden',
-    position: 'relative',
-    padding: 20,
-    justifyContent: 'flex-end',
-  },
-  mapGraphic: {
-    ...StyleSheet.absoluteFillObject,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  mapCurve1: {
-    position: 'absolute',
-    width: 300,
-    height: 150,
-    borderTopWidth: 1,
-    borderColor: colors.primary,
-    borderStyle: 'dashed',
-    borderRadius: 150,
-    top: 50,
-    left: -50,
-    opacity: 0.5,
-  },
-  mapCurve2: {
-    position: 'absolute',
-    width: 200,
-    height: 100,
-    borderBottomWidth: 1,
-    borderColor: colors.primary,
-    borderStyle: 'dashed',
-    borderRadius: 100,
-    bottom: 50,
-    right: -20,
-    opacity: 0.3,
-  },
-  mapNode: {
-    width: 16,
-    height: 16,
-    borderRadius: 8,
-    backgroundColor: colors.secondary,
-    shadowColor: colors.secondary,
-    shadowOpacity: 1,
-    shadowRadius: 10,
-    position: 'absolute',
-    top: '45%',
-    left: '55%',
-  },
-  mapNodeLabelBox: {
-    position: 'absolute',
-    top: '55%',
-    left: '50%',
-    backgroundColor: '#000',
-    paddingHorizontal: 8,
-    paddingVertical: 4,
-    borderRadius: 4,
-    borderWidth: 1,
-    borderColor: colors.secondary,
-  },
-  mapNodeLabel: {
-    color: colors.secondary,
-    fontSize: 10,
-    fontWeight: 'bold',
-  },
-  mapFooterText: {
-    fontSize: 10,
-    fontWeight: 'bold',
+  benefitText: {
+    fontFamily: fonts.body,
+    color: colors.textMuted,
+    fontSize: 13,
   },
   formCard: {
-    flex: 1.5,
+    flex: width > 900 ? 1.4 : undefined,
+    backgroundColor: 'rgba(10, 15, 31, 0.9)',
+    borderWidth: 1,
+    borderColor: 'rgba(0, 229, 255, 0.25)',
   },
   formTitle: {
-    fontSize: 24,
-    fontWeight: 'bold',
     color: colors.text,
-    marginBottom: 30,
+    fontSize: 22,
+    fontWeight: '900',
+    fontFamily: fonts.display,
+    letterSpacing: -0.3,
+    marginBottom: 6,
   },
-  formRow: {
-    flexDirection: Platform.OS === 'web' && Dimensions.get('window').width > 768 ? 'row' : 'column',
-    gap: 16,
-    marginBottom: 16,
+  formSubtitle: {
+    fontFamily: fonts.body,
+    color: colors.textMuted,
+    fontSize: 13,
+    marginBottom: 24,
   },
   inputGroup: {
-    flex: 1,
     marginBottom: 16,
   },
   inputLabel: {
-    fontSize: 10,
-    fontWeight: 'bold',
     color: colors.textMuted,
+    fontSize: 10,
+    fontWeight: '800',
+    fontFamily: fonts.display,
     letterSpacing: 1,
     marginBottom: 8,
   },
-  input: {
-    backgroundColor: '#111827',
+  trackRow: {
+    flexDirection: width > 600 ? 'row' : 'column',
+    gap: 12,
+  },
+  trackCard: {
+    flex: 1,
+    backgroundColor: 'rgba(255, 255, 255, 0.03)',
     borderWidth: 1,
-    borderColor: colors.border,
-    borderRadius: 8,
-    paddingHorizontal: 16,
+    borderColor: 'rgba(255, 255, 255, 0.1)',
+    borderRadius: 12,
+    padding: 14,
+  },
+  trackCardActive: {
+    backgroundColor: 'rgba(0, 229, 255, 0.1)',
+    borderColor: colors.primary,
+  },
+  trackCardTitle: {
+    color: colors.textMuted,
+    fontSize: 12,
+    fontWeight: '800',
+    fontFamily: fonts.display,
+    marginBottom: 4,
+  },
+  trackCardTitleActive: {
+    color: colors.primary,
+  },
+  trackCardDesc: {
+    fontFamily: fonts.body,
+    color: colors.textMuted,
+    fontSize: 11,
+  },
+  input: {
+    fontFamily: fonts.body,
+    backgroundColor: 'rgba(255, 255, 255, 0.04)',
+    borderWidth: 1,
+    borderColor: 'rgba(255, 255, 255, 0.12)',
+    borderRadius: 10,
+    paddingHorizontal: 14,
     paddingVertical: 12,
     color: colors.text,
     fontSize: 14,
   },
-  textArea: {
-    minHeight: 120,
-    paddingTop: 16,
+  twoColRow: {
+    flexDirection: width > 600 ? 'row' : 'column',
+    gap: 12,
+  },
+  chipsRow: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 8,
+  },
+  prefChip: {
+    backgroundColor: 'rgba(255, 255, 255, 0.04)',
+    borderWidth: 1,
+    borderColor: 'rgba(255, 255, 255, 0.1)',
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 8,
+  },
+  prefChipActive: {
+    backgroundColor: 'rgba(0, 229, 255, 0.12)',
+    borderColor: colors.primary,
+  },
+  prefChipText: {
+    fontFamily: fonts.bodyMedium,
+    color: colors.textMuted,
+    fontSize: 11,
+    fontWeight: '600',
+  },
+  prefChipTextActive: {
+    color: colors.primary,
+    fontWeight: '700',
+  },
+  checkboxRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+    marginVertical: 16,
+  },
+  checkbox: {
+    width: 20,
+    height: 20,
+    borderRadius: 5,
+    borderWidth: 1,
+    borderColor: 'rgba(255, 255, 255, 0.25)',
+    backgroundColor: 'rgba(255, 255, 255, 0.05)',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  checkboxActive: {
+    backgroundColor: colors.primary,
+    borderColor: colors.primary,
+  },
+  checkboxLabel: {
+    fontFamily: fonts.body,
+    flex: 1,
+    color: colors.textMuted,
+    fontSize: 12,
+    lineHeight: 18,
   },
   submitBtn: {
     backgroundColor: colors.primary,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: 16,
-    borderRadius: 8,
-    marginTop: 10,
-    shadowColor: colors.primary,
-    shadowOffset: { width: 0, height: 0 },
-    shadowOpacity: 0.4,
-    shadowRadius: 10,
+    paddingVertical: 15,
+    borderRadius: 12,
+    boxShadow: '0px 0px 16px rgba(0, 229, 255, 0.5)',
+    marginTop: 8,
+  },
+  submitBtnDisabled: {
+    opacity: 0.6,
+  },
+  formError: {
+    color: colors.secondary,
+    fontSize: 13,
+    fontFamily: fonts.bodyMedium,
+    marginBottom: 12,
+  },
+  fieldError: {
+    color: colors.secondary,
+    fontSize: 12,
+    fontFamily: fonts.bodyMedium,
+    marginTop: -8,
+    marginBottom: 12,
   },
   submitBtnText: {
-    color: '#000',
-    fontWeight: 'bold',
-    fontSize: 14,
+    color: '#050912',
+    fontWeight: '800',
+    fontFamily: fonts.display,
+    fontSize: 13,
+    letterSpacing: 0.8,
   },
-  formFooterText: {
-    color: colors.textMuted,
-    fontSize: 10,
-    textAlign: 'center',
-    marginTop: 20,
+  successContainer: {
+    alignItems: 'center',
+    paddingVertical: 36,
+  },
+  successTitle: {
+    color: '#10B981',
+    fontSize: 22,
+    fontWeight: '900',
+    fontFamily: fonts.display,
     letterSpacing: 0.5,
-  }
+    marginBottom: 8,
+  },
+  successText: {
+    fontFamily: fonts.body,
+    color: colors.textMuted,
+    fontSize: 14,
+    textAlign: 'center',
+    lineHeight: 22,
+    marginBottom: 10,
+  },
+  successSub: {
+    fontFamily: fonts.body,
+    color: colors.textMuted,
+    fontSize: 12,
+    textAlign: 'center',
+    marginBottom: 24,
+  },
+  resetBtn: {
+    borderWidth: 1,
+    borderColor: colors.primary,
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    borderRadius: 8,
+  },
+  resetBtnText: {
+    fontFamily: fonts.bodyBold,
+    color: colors.primary,
+    fontSize: 11,
+    fontWeight: '700',
+    letterSpacing: 0.8,
+  },
 });

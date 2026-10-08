@@ -1,47 +1,122 @@
-import React from 'react';
-import { ScrollView, View, Text, StyleSheet, Platform, Dimensions, Pressable } from 'react-native';
+import React, { useState, useEffect, useMemo } from 'react';
+import { ScrollView, View, Text, StyleSheet, Platform, useWindowDimensions, Pressable } from 'react-native';
+import { Link } from 'expo-router';
+import PageMeta from '../components/PageMeta';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { colors } from '../theme/colors';
-import { Calendar, MapPin, ArrowRight, Rocket, BrainCircuit, Trophy, Clock, User } from 'lucide-react-native';
+import { fonts } from '../theme/typography';
+import { Calendar, MapPin, ArrowRight, Rocket, BrainCircuit, Trophy, Clock, User, CheckCircle2 } from '../components/icons';
 
-const { width } = Dimensions.get('window');
-const isWeb = Platform.OS === 'web';
-const isMobile = width < 768;
+
+const WORKSHOPS = [
+  {
+    id: 1,
+    title: 'NASA Open Data API Masterclass',
+    date: 'SEP 20, 2026 • 7:00 PM IST',
+    speaker: 'Dr. Aruna Wickrama',
+    role: 'Satellite Data Specialist',
+    level: 'INTERMEDIATE',
+    levelColor: colors.primary,
+    desc: 'Hands-on guide to authenticating and fetching high-resolution Earth and astrophysics feeds.',
+  },
+  {
+    id: 2,
+    title: 'Climate Tech & Earth Observations',
+    date: 'SEP 24, 2026 • 7:00 PM IST',
+    speaker: 'Kavindi Jayawardena',
+    role: 'Environmental Data Scientist',
+    level: 'BEGINNER',
+    levelColor: '#10B981',
+    desc: 'Deep dive into Landsat, MODIS, and Sentinel data pipelines for local agricultural impact.',
+  },
+  {
+    id: 3,
+    title: 'AI/ML for Deep Space Classification',
+    date: 'SEP 28, 2026 • 7:00 PM IST',
+    speaker: 'Malik Gunaratne',
+    role: 'Computer Vision Engineer',
+    level: 'ADVANCED',
+    levelColor: colors.secondary,
+    desc: 'Using PyTorch and transfer learning to classify James Webb and Hubble astronomical captures.',
+  },
+];
 
 export default function EventsPage() {
+  const { width } = useWindowDimensions();
+  const styles = useMemo(() => makeStyles(width), [width]);
+
+  const [registeredWorkshops, setRegisteredWorkshops] = useState<number[]>([]);
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
+
+  useEffect(() => {
+    // Target hackathon date: October 3, 2026
+    const targetDate = new Date('2026-10-03T09:00:00Z').getTime();
+
+    const updateTimer = () => {
+      const now = new Date().getTime();
+      const difference = targetDate - now;
+
+      if (difference > 0) {
+        setTimeLeft({
+          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+          hours: Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+          minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
+          seconds: Math.floor((difference % (1000 * 60)) / 1000),
+        });
+      }
+    };
+
+    updateTimer();
+    const interval = setInterval(updateTimer, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const toggleWorkshop = (id: number) => {
+    setRegisteredWorkshops((prev) =>
+      prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
+    );
+  };
+
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+      <PageMeta
+        title="Event Hub & 48-Hour Schedule | NASA Space Apps Sri Lanka"
+        description="Full schedule for NASA Space Apps Kandy 2026, live countdown, pre-event workshops and venue details."
+        path="/events"
+      />
       <Navbar />
-      
+
       {/* Hero Section */}
       <View style={styles.heroSection}>
         <View style={styles.livePill}>
           <View style={styles.liveDot} />
-          <Text style={styles.liveText}>LIVE COUNTDOWN TO LAUNCH</Text>
+          <Text style={styles.liveText}>GLOBAL HACKATHON COUNTDOWN</Text>
         </View>
-        
+
         <Text style={styles.heroTitle}>
-          EVENT HUB &{'\n'}
-          <Text style={styles.heroTitleCyan}>48-HOUR</Text> SCHEDULE
+          EVENT HUB & <Text style={styles.heroTitleCyan}>48-HOUR</Text> SCHEDULE
         </Text>
-        
         <Text style={styles.heroSubtitle}>
-          Join us for the world's largest annual hackathon dedicated to solving real-world{'\n'}
-          problems with NASA data. The Kandy Hub is your portal to innovation.
+          Join us for the world's largest annual hackathon dedicated to solving real-world challenges using NASA's open science platform.
         </Text>
 
-        {/* Big Event Card */}
+        {/* Featured Big Event Card */}
         <View style={styles.eventCard}>
           <View style={styles.eventCardContent}>
-            
+            {/* Left Details */}
             <View style={styles.eventCardLeft}>
               <View style={styles.pillRow}>
                 <View style={[styles.pill, styles.pillCyan]}>
                   <Text style={styles.pillTextBlack}>GLOBAL HACKATHON</Text>
                 </View>
                 <View style={[styles.pill, styles.pillDark]}>
-                  <Text style={styles.pillTextWhite}>KANDY LOCAL</Text>
+                  <Text style={styles.pillTextWhite}>KANDY HUB</Text>
                 </View>
               </View>
 
@@ -54,17 +129,17 @@ export default function EventsPage() {
               <View style={styles.eventInfoList}>
                 <View style={styles.eventInfoItem}>
                   <View style={styles.iconBox}>
-                    <Calendar color={colors.primary} size={20} />
+                    <Calendar color={colors.primary} size={18} />
                   </View>
                   <View>
                     <Text style={styles.infoLabel}>EVENT DATES</Text>
                     <Text style={styles.infoValue}>October 3–5, 2026</Text>
                   </View>
                 </View>
-                
+
                 <View style={styles.eventInfoItem}>
                   <View style={styles.iconBox}>
-                    <MapPin color={colors.secondary} size={20} />
+                    <MapPin color={colors.secondary} size={18} />
                   </View>
                   <View>
                     <Text style={styles.infoLabel}>PRIMARY VENUE</Text>
@@ -73,195 +148,178 @@ export default function EventsPage() {
                 </View>
               </View>
 
-              <Pressable style={styles.registerBtn}>
-                <Text style={styles.registerBtnText}>REGISTER FOR EVENT</Text>
-                <ArrowRight color="#000" size={18} style={{ marginLeft: 8 }} />
-              </Pressable>
+              <Link href="/register" asChild>
+                <Pressable accessibilityRole="link" style={styles.registerBtn}>
+                  <Text style={styles.registerBtnText}>REGISTER FOR EVENT</Text>
+                  <ArrowRight color="#050912" size={16} style={{ marginLeft: 8 }} />
+                </Pressable>
+              </Link>
             </View>
 
+            {/* Right Countdown Panel */}
             <View style={styles.countdownPanel}>
               <Text style={styles.countdownTitle}>STARTS IN</Text>
-              
+
               <View style={styles.countdownGrid}>
                 <View style={styles.countdownItem}>
-                  <Text style={styles.countdownNumber}>142</Text>
+                  <Text style={styles.countdownNumber}>
+                    {String(timeLeft.days).padStart(2, '0')}
+                  </Text>
                   <Text style={styles.countdownLabel}>DAYS</Text>
                 </View>
                 <View style={styles.countdownItem}>
-                  <Text style={styles.countdownNumber}>08</Text>
+                  <Text style={styles.countdownNumber}>
+                    {String(timeLeft.hours).padStart(2, '0')}
+                  </Text>
                   <Text style={styles.countdownLabel}>HOURS</Text>
                 </View>
                 <View style={styles.countdownItem}>
-                  <Text style={styles.countdownNumber}>42</Text>
+                  <Text style={styles.countdownNumber}>
+                    {String(timeLeft.minutes).padStart(2, '0')}
+                  </Text>
                   <Text style={styles.countdownLabel}>MINS</Text>
                 </View>
                 <View style={styles.countdownItem}>
-                  <Text style={styles.countdownNumber}>15</Text>
+                  <Text style={styles.countdownNumber}>
+                    {String(timeLeft.seconds).padStart(2, '0')}
+                  </Text>
                   <Text style={styles.countdownLabel}>SECS</Text>
                 </View>
               </View>
-              
-              <Text style={styles.countdownStatus}>Current Status: Preparations Active</Text>
-            </View>
 
+              <View style={styles.timezoneBadge}>
+                <Clock size={12} color={colors.textMuted} />
+                <Text style={styles.timezoneText}>SRI LANKA STANDARD TIME (UTC+5:30)</Text>
+              </View>
+            </View>
           </View>
         </View>
       </View>
 
-      {/* Milestones Section */}
-      <View style={styles.milestonesSection}>
-        <Text style={styles.sectionTitle}>HACKATHON MILESTONES</Text>
-        <View style={styles.titleDivider} />
+      {/* Interactive 48-Hour Milestone Timeline */}
+      <View style={styles.timelineSection}>
+        <View style={styles.sectionHeader}>
+          <Text style={styles.sectionTitle}>
+            48-HOUR HACKATHON <Text style={styles.heroTitleCyan}>TIMELINE</Text>
+          </Text>
+          <Text style={styles.sectionSubtitle}>
+            Key milestones throughout the global innovation sprint
+          </Text>
+        </View>
 
         <View style={styles.timelineContainer}>
-          <View style={styles.timelineLine} />
-          
-          {/* Milestone 1 */}
-          <View style={styles.timelineItem}>
-            <View style={[styles.timelineNode, styles.nodeSolidCyan]} />
+          <View style={styles.timelineTrack} />
+
+          {/* Day 1 */}
+          <View style={styles.timelineNodeRow}>
+            <View style={styles.nodeBadge}>
+              <Rocket size={18} color="#050912" />
+            </View>
             <View style={styles.timelineCard}>
-              <View style={styles.timelineCardHeader}>
-                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                  <Rocket color={colors.primary} size={24} style={{ marginRight: 12 }} />
-                  <Text style={styles.timelineCardTitle}>Kickoff & Opening Ceremony</Text>
-                </View>
-                <View style={styles.timelinePill}>
-                  <Text style={styles.timelinePillText}>DAY 1 • OCT 3</Text>
-                </View>
+              <View style={styles.cardHeaderRow}>
+                <Text style={styles.dayBadge}>DAY 1 • OCT 3</Text>
+                <Text style={styles.timeText}>09:00 AM – 12:00 PM</Text>
               </View>
-              
-              <View style={styles.timelineTimeRow}>
-                <Clock color={colors.secondary} size={16} />
-                <Text style={styles.timelineTimeText}>9:00 AM - 12:00 PM</Text>
-              </View>
-              
-              <Text style={styles.timelineCardDesc}>
-                Welcome keynote, global theme introduction, team formation activities, and official venue tour. Start the journey with energy and fresh ideas.
+              <Text style={styles.timelineNodeTitle}>Kickoff & Opening Ceremony</Text>
+              <Text style={styles.timelineNodeDesc}>
+                Global NASA keynote streaming, local mentor briefing, team formation lock, and direct access to NASA Open Data platform APIs.
               </Text>
             </View>
           </View>
 
-          {/* Milestone 2 */}
-          <View style={styles.timelineItem}>
-            <View style={[styles.timelineNode, styles.nodeHollowCyan]} />
+          {/* Day 2 */}
+          <View style={styles.timelineNodeRow}>
+            <View style={[styles.nodeBadge, { backgroundColor: colors.secondary }]}>
+              <BrainCircuit size={18} color="#050912" />
+            </View>
             <View style={styles.timelineCard}>
-              <View style={styles.timelineCardHeader}>
-                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                  <BrainCircuit color={colors.primary} size={24} style={{ marginRight: 12 }} />
-                  <Text style={styles.timelineCardTitle}>NASA Open Data & Mentorship</Text>
-                </View>
-                <View style={styles.timelinePill}>
-                  <Text style={styles.timelinePillText}>DAY 2 • OCT 4</Text>
-                </View>
+              <View style={styles.cardHeaderRow}>
+                <Text style={[styles.dayBadge, { color: colors.secondary, borderColor: colors.secondary }]}>
+                  DAY 2 • OCT 4
+                </Text>
+                <Text style={styles.timeText}>10:00 AM – 06:00 PM</Text>
               </View>
-              
-              <View style={styles.timelineTimeRow}>
-                <Clock color={colors.secondary} size={16} />
-                <Text style={styles.timelineTimeText}>10:00 AM - 6:00 PM</Text>
-              </View>
-              
-              <Text style={styles.timelineCardDesc}>
-                Technical deep-dives with NASA Open Data Experts. API workshops, one-on-one strategy sessions with mentors, and non-stop coding sprints.
+              <Text style={styles.timelineNodeTitle}>NASA Data Workshops & Mentorship</Text>
+              <Text style={styles.timelineNodeDesc}>
+                Deep-dive breakout rooms with subject matter experts, data engineering workshops, code clinics, and prototype stress-testing.
               </Text>
             </View>
           </View>
 
-          {/* Milestone 3 */}
-          <View style={styles.timelineItem}>
-            <View style={[styles.timelineNode, styles.nodeHollowOrange]} />
+          {/* Day 3 */}
+          <View style={styles.timelineNodeRow}>
+            <View style={[styles.nodeBadge, { backgroundColor: '#10B981' }]}>
+              <Trophy size={18} color="#050912" />
+            </View>
             <View style={styles.timelineCard}>
-              <View style={styles.timelineCardHeader}>
-                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                  <Trophy color={colors.secondary} size={24} style={{ marginRight: 12 }} />
-                  <Text style={styles.timelineCardTitle}>Final Pitching & Award Ceremony</Text>
-                </View>
-                <View style={styles.timelinePillOrange}>
-                  <Text style={styles.timelinePillTextOrange}>DAY 3 • OCT 5</Text>
-                </View>
+              <View style={styles.cardHeaderRow}>
+                <Text style={[styles.dayBadge, { color: '#10B981', borderColor: '#10B981' }]}>
+                  DAY 3 • OCT 5
+                </Text>
+                <Text style={styles.timeText}>02:00 PM – 08:00 PM</Text>
               </View>
-              
-              <View style={styles.timelineTimeRow}>
-                <Clock color={colors.secondary} size={16} />
-                <Text style={styles.timelineTimeText}>2:00 PM - 8:00 PM</Text>
-              </View>
-              
-              <Text style={styles.timelineCardDesc}>
-                The grand finale. Team presentations to the panel of judges, winner announcements across categories, and prize distributions for the top innovators.
+              <Text style={styles.timelineNodeTitle}>Final Pitching & Award Ceremony</Text>
+              <Text style={styles.timelineNodeDesc}>
+                3-minute live prototype demos before the UNESCO & NASA judging panel, local winner announcements, and Global Nominee certifications.
               </Text>
             </View>
           </View>
-
         </View>
       </View>
 
-      {/* Preparation Section */}
-      <View style={styles.prepSection}>
-        <Text style={styles.sectionTitle}>PREPARE FOR THE CHALLENGE</Text>
-        <Text style={styles.prepSubtitle}>
-          Join our free technical webinars to level up your skills before the big weekend.
-        </Text>
+      {/* Pre-Hackathon Workshops Grid */}
+      <View style={styles.workshopsSection}>
+        <View style={styles.sectionHeader}>
+          <Text style={styles.sectionTitle}>
+            PRE-HACKATHON <Text style={styles.heroTitleCyan}>WORKSHOPS</Text>
+          </Text>
+          <Text style={styles.sectionSubtitle}>
+            Level up your skills with official webinars led by veteran engineers
+          </Text>
+        </View>
 
-        <View style={styles.webinarGrid}>
-          {/* Webinar 1 */}
-          <View style={styles.webinarCard}>
-            <View style={styles.webinarHeader}>
-              <View style={[styles.webinarAvatar, { backgroundColor: '#1C6B7A' }]}>
-                 <User color="#FFF" size={24} />
-              </View>
-              <View style={styles.webinarLevelPillCyan}>
-                <Text style={styles.webinarLevelTextCyan}>ADVANCED</Text>
-              </View>
-            </View>
-            <Text style={styles.webinarTitle}>NASA Open Data API Masterclass</Text>
-            <Text style={styles.webinarDate}>September 28 | 7:00 PM</Text>
-            <Text style={styles.webinarDesc}>
-              Learn how to fetch and parse large-scale datasets from NASA's Earth and Space APIs for high-performance apps.
-            </Text>
-            <Pressable style={styles.webinarBtn}>
-              <Text style={styles.webinarBtnText}>[REGISTER SESSION]</Text>
-            </Pressable>
-          </View>
+        <View style={styles.workshopsGrid}>
+          {WORKSHOPS.map((ws) => {
+            const isReg = registeredWorkshops.includes(ws.id);
+            return (
+              <View key={ws.id} style={styles.workshopCard}>
+                <View style={styles.workshopHeaderRow}>
+                  <View style={[styles.levelBadge, { borderColor: ws.levelColor }]}>
+                    <Text style={[styles.levelText, { color: ws.levelColor }]}>{ws.level}</Text>
+                  </View>
+                  <Text style={styles.workshopDate}>{ws.date}</Text>
+                </View>
 
-          {/* Webinar 2 */}
-          <View style={styles.webinarCard}>
-            <View style={styles.webinarHeader}>
-              <View style={[styles.webinarAvatar, { backgroundColor: '#A04B3E' }]}>
-                 <User color="#FFF" size={24} />
-              </View>
-              <View style={styles.webinarLevelPillDark}>
-                <Text style={styles.webinarLevelTextGray}>INTERMEDIATE</Text>
-              </View>
-            </View>
-            <Text style={styles.webinarTitle}>Climate Tech Deep Dive</Text>
-            <Text style={styles.webinarDate}>September 30 | 6:30 PM</Text>
-            <Text style={styles.webinarDesc}>
-              Explore historical climate data trends and environmental sensor processing using Python and satellite imagery.
-            </Text>
-            <Pressable style={styles.webinarBtn}>
-              <Text style={styles.webinarBtnText}>[REGISTER SESSION]</Text>
-            </Pressable>
-          </View>
+                <Text style={styles.workshopTitle}>{ws.title}</Text>
+                <Text style={styles.workshopDesc}>{ws.desc}</Text>
 
-          {/* Webinar 3 */}
-          <View style={styles.webinarCard}>
-            <View style={styles.webinarHeader}>
-              <View style={[styles.webinarAvatar, { backgroundColor: '#3E7CA0' }]}>
-                 <User color="#FFF" size={24} />
-              </View>
-              <View style={styles.webinarLevelPillDark}>
-                <Text style={styles.webinarLevelTextGray}>BEGINNER</Text>
-              </View>
-            </View>
-            <Text style={styles.webinarTitle}>AI/ML for Space Applications</Text>
-            <Text style={styles.webinarDate}>October 1 | 8:00 PM</Text>
-            <Text style={styles.webinarDesc}>
-              An introduction to building simple machine learning models for celestial body detection and data prediction.
-            </Text>
-            <Pressable style={styles.webinarBtn}>
-              <Text style={styles.webinarBtnText}>[REGISTER SESSION]</Text>
-            </Pressable>
-          </View>
+                <View style={styles.speakerRow}>
+                  <View style={styles.speakerAvatar}>
+                    <User size={16} color={colors.primary} />
+                  </View>
+                  <View>
+                    <Text style={styles.speakerName}>{ws.speaker}</Text>
+                    <Text style={styles.speakerRole}>{ws.role}</Text>
+                  </View>
+                </View>
 
+                <Pressable
+                  accessibilityRole="button"
+                  style={[styles.workshopBtn, isReg && styles.workshopBtnActive]}
+                  onPress={() => toggleWorkshop(ws.id)}
+                >
+                  {isReg ? (
+                    <>
+                      <CheckCircle2 size={16} color="#050912" style={{ marginRight: 6 }} />
+                      <Text style={styles.workshopBtnText}>REGISTERED</Text>
+                    </>
+                  ) : (
+                    <Text style={styles.workshopBtnText}>REGISTER SESSION</Text>
+                  )}
+                </Pressable>
+              </View>
+            );
+          })}
         </View>
       </View>
 
@@ -270,451 +328,446 @@ export default function EventsPage() {
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (width: number) =>
+  StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.background,
+    backgroundColor: Platform.OS === 'web' ? 'transparent' : colors.background,
   },
   contentContainer: {
     flexGrow: 1,
   },
-  
-  // Hero Section
   heroSection: {
     alignItems: 'center',
-    paddingVertical: 60,
-    paddingHorizontal: 20,
+    paddingTop: 60,
+    paddingBottom: 40,
+    paddingHorizontal: Platform.OS === 'web' ? '5%' : 16,
+    maxWidth: 1300,
+    alignSelf: 'center',
+    width: '100%',
   },
   livePill: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: 'rgba(255,255,255,0.05)',
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    borderRadius: 20,
+    gap: 8,
+    backgroundColor: 'rgba(0, 229, 255, 0.08)',
     borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.1)',
-    marginBottom: 30,
+    borderColor: 'rgba(0, 229, 255, 0.25)',
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 20,
+    marginBottom: 20,
   },
   liveDot: {
     width: 6,
     height: 6,
     borderRadius: 3,
     backgroundColor: colors.primary,
-    marginRight: 8,
-    shadowColor: colors.primary,
-    shadowOffset: { width: 0, height: 0 },
-    shadowOpacity: 1,
-    shadowRadius: 5,
   },
   liveText: {
     color: colors.primary,
     fontSize: 10,
-    fontWeight: 'bold',
-    letterSpacing: 1,
+    fontWeight: '800',
+    fontFamily: fonts.display,
+    letterSpacing: 1.2,
   },
   heroTitle: {
-    fontSize: isWeb && !isMobile ? 56 : 36,
+    fontSize: width > 768 ? 44 : width > 480 ? 32 : 27,
     fontWeight: '900',
-    color: '#FFF',
+    fontFamily: fonts.display,
+    color: colors.text,
     textAlign: 'center',
-    letterSpacing: 1,
-    lineHeight: isWeb && !isMobile ? 64 : 44,
-    marginBottom: 24,
+    letterSpacing: -0.5,
+    marginBottom: 16,
   },
   heroTitleCyan: {
     color: colors.primary,
-    textShadowColor: 'rgba(0, 255, 255, 0.4)',
-    textShadowOffset: { width: 0, height: 0 },
-    textShadowRadius: 10,
+    textShadow: '0px 0px 16px rgba(0, 229, 255, 0.4)',
   },
   heroSubtitle: {
+    fontFamily: fonts.body,
     color: colors.textMuted,
-    fontSize: 16,
+    fontSize: 15,
     textAlign: 'center',
-    lineHeight: 26,
-    maxWidth: 700,
-    marginBottom: 60,
+    lineHeight: 25,
+    maxWidth: 680,
+    marginBottom: 40,
   },
-  
-  // Event Card
   eventCard: {
     width: '100%',
-    maxWidth: 1200,
-    backgroundColor: 'rgba(10, 18, 30, 0.8)',
-    borderRadius: 24,
+    backgroundColor: 'rgba(10, 15, 31, 0.85)',
     borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.05)',
-    overflow: 'hidden',
+    borderColor: 'rgba(0, 229, 255, 0.25)',
+    borderRadius: 24,
+    padding: width > 768 ? 40 : 20,
+    boxShadow: '0px 16px 30px rgba(0, 0, 0, 0.5)',
   },
   eventCardContent: {
-    flexDirection: isWeb && !isMobile ? 'row' : 'column',
+    flexDirection: width > 900 ? 'row' : 'column',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    gap: 30,
   },
   eventCardLeft: {
-    flex: 1.2,
-    padding: isWeb && !isMobile ? 60 : 30,
+    flex: 1,
+    width: '100%',
   },
   pillRow: {
     flexDirection: 'row',
-    marginBottom: 30,
-    gap: 12,
+    gap: 8,
+    marginBottom: 16,
   },
   pill: {
-    paddingHorizontal: 16,
-    paddingVertical: 6,
-    borderRadius: 20,
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    borderRadius: 6,
   },
   pillCyan: {
     backgroundColor: colors.primary,
   },
   pillDark: {
-    backgroundColor: 'rgba(255,255,255,0.05)',
+    backgroundColor: 'rgba(255, 255, 255, 0.08)',
+    borderWidth: 1,
+    borderColor: 'rgba(255, 255, 255, 0.1)',
   },
   pillTextBlack: {
-    color: '#000',
+    color: '#050912',
     fontSize: 10,
-    fontWeight: 'bold',
-    letterSpacing: 1,
+    fontWeight: '800',
+    fontFamily: fonts.display,
+    letterSpacing: 0.8,
   },
   pillTextWhite: {
-    color: '#FFF',
+    fontFamily: fonts.bodyBold,
+    color: colors.text,
     fontSize: 10,
-    fontWeight: 'bold',
-    letterSpacing: 1,
+    fontWeight: '700',
+    letterSpacing: 0.8,
   },
   eventTitle: {
-    fontSize: isWeb && !isMobile ? 36 : 28,
+    fontSize: width > 768 ? 36 : 26,
     fontWeight: '900',
-    color: '#FFF',
-    lineHeight: isWeb && !isMobile ? 42 : 34,
-    marginBottom: 40,
+    fontFamily: fonts.display,
+    color: colors.text,
+    lineHeight: width > 768 ? 44 : 34,
+    marginBottom: 24,
+    letterSpacing: -0.3,
   },
   eventInfoList: {
-    gap: 24,
-    marginBottom: 40,
+    gap: 14,
+    marginBottom: 28,
   },
   eventInfoItem: {
     flexDirection: 'row',
     alignItems: 'center',
-  },
-  iconBox: {
-    width: 44,
-    height: 44,
-    borderRadius: 8,
-    backgroundColor: 'rgba(255,255,255,0.03)',
-    borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.05)',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginRight: 16,
-  },
-  infoLabel: {
-    color: colors.textMuted,
-    fontSize: 10,
-    fontWeight: 'bold',
-    letterSpacing: 1,
-    marginBottom: 4,
-  },
-  infoValue: {
-    color: '#FFF',
-    fontSize: 16,
-    fontWeight: '600',
-  },
-  registerBtn: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: colors.primary,
-    alignSelf: 'flex-start',
-    paddingHorizontal: 24,
-    paddingVertical: 14,
-    borderRadius: 30,
-    shadowColor: colors.primary,
-    shadowOffset: { width: 0, height: 0 },
-    shadowOpacity: 0.5,
-    shadowRadius: 15,
-  },
-  registerBtnText: {
-    color: '#000',
-    fontWeight: 'bold',
-    fontSize: 14,
-  },
-  
-  // Countdown Panel
-  countdownPanel: {
-    flex: 1,
-    backgroundColor: '#111827',
-    padding: isWeb && !isMobile ? 60 : 30,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderLeftWidth: isWeb && !isMobile ? 1 : 0,
-    borderTopWidth: isWeb && !isMobile ? 0 : 1,
-    borderColor: 'rgba(255,255,255,0.05)',
-  },
-  countdownTitle: {
-    color: colors.textMuted,
-    fontSize: 12,
-    fontWeight: 'bold',
-    letterSpacing: 2,
-    marginBottom: 30,
-  },
-  countdownGrid: {
-    flexDirection: 'row',
-    gap: isWeb && !isMobile ? 24 : 12,
-    marginBottom: 40,
-  },
-  countdownItem: {
-    alignItems: 'center',
-  },
-  countdownNumber: {
-    color: colors.primary,
-    fontSize: isWeb && !isMobile ? 48 : 32,
-    fontWeight: '300',
-    fontFamily: Platform.OS === 'ios' ? 'Courier' : 'monospace',
-    marginBottom: 8,
-  },
-  countdownLabel: {
-    color: colors.textMuted,
-    fontSize: 10,
-    letterSpacing: 1,
-  },
-  countdownStatus: {
-    color: colors.textMuted,
-    fontSize: 12,
-    fontStyle: 'italic',
-  },
-  
-  // Milestones Section
-  milestonesSection: {
-    paddingVertical: 80,
-    paddingHorizontal: 20,
-    alignItems: 'center',
-  },
-  sectionTitle: {
-    fontSize: 28,
-    fontWeight: '900',
-    color: '#FFF',
-    textAlign: 'center',
-    letterSpacing: 1,
-    textTransform: 'uppercase',
-  },
-  titleDivider: {
-    width: 60,
-    height: 4,
-    backgroundColor: colors.primary,
-    marginTop: 20,
-    marginBottom: 60,
-    borderRadius: 2,
-  },
-  timelineContainer: {
-    width: '100%',
-    maxWidth: 800,
-    position: 'relative',
-    paddingLeft: isWeb && !isMobile ? 0 : 20,
-  },
-  timelineLine: {
-    position: 'absolute',
-    left: isWeb && !isMobile ? 24 : 0,
-    top: 0,
-    bottom: 0,
-    width: 2,
-    backgroundColor: '#1E2A3C', // subtle line
-    // on web design it has a cyan glow, we'll just use a subtle color or cyan gradient
-    // let's make the top part cyan
-  },
-  timelineItem: {
-    position: 'relative',
-    paddingLeft: isWeb && !isMobile ? 80 : 30,
-    marginBottom: 40,
-  },
-  timelineNode: {
-    position: 'absolute',
-    left: isWeb && !isMobile ? 15 : -9,
-    top: 30,
-    width: 20,
-    height: 20,
-    borderRadius: 10,
-    backgroundColor: colors.background,
-    borderWidth: 3,
-    zIndex: 2,
-  },
-  nodeSolidCyan: {
-    backgroundColor: colors.primary,
-    borderColor: colors.primary,
-    shadowColor: colors.primary,
-    shadowOffset: { width: 0, height: 0 },
-    shadowOpacity: 0.8,
-    shadowRadius: 10,
-  },
-  nodeHollowCyan: {
-    borderColor: colors.primary,
-  },
-  nodeHollowOrange: {
-    borderColor: colors.secondary,
-  },
-  timelineCard: {
-    backgroundColor: 'rgba(10, 18, 30, 0.6)',
-    borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.05)',
-    borderRadius: 16,
-    padding: 30,
-  },
-  timelineCardHeader: {
-    flexDirection: isWeb && !isMobile ? 'row' : 'column',
-    justifyContent: 'space-between',
-    alignItems: isWeb && !isMobile ? 'center' : 'flex-start',
-    marginBottom: 16,
     gap: 12,
   },
-  timelineCardTitle: {
-    color: '#FFF',
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  timelinePill: {
-    paddingHorizontal: 12,
-    paddingVertical: 6,
-    borderRadius: 12,
-    backgroundColor: 'rgba(0, 255, 255, 0.1)',
-    borderWidth: 1,
-    borderColor: 'rgba(0, 255, 255, 0.2)',
-  },
-  timelinePillText: {
-    color: colors.primary,
-    fontSize: 10,
-    fontWeight: 'bold',
-    letterSpacing: 1,
-  },
-  timelinePillOrange: {
-    paddingHorizontal: 12,
-    paddingVertical: 6,
-    borderRadius: 12,
-    backgroundColor: 'rgba(255, 107, 0, 0.1)',
-    borderWidth: 1,
-    borderColor: 'rgba(255, 107, 0, 0.2)',
-  },
-  timelinePillTextOrange: {
-    color: colors.secondary,
-    fontSize: 10,
-    fontWeight: 'bold',
-    letterSpacing: 1,
-  },
-  timelineTimeRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 16,
-  },
-  timelineTimeText: {
-    color: colors.secondary,
-    fontSize: 14,
-    fontWeight: 'bold',
-    marginLeft: 8,
-  },
-  timelineCardDesc: {
-    color: colors.textMuted,
-    fontSize: 15,
-    lineHeight: 24,
-  },
-  
-  // Prep Section
-  prepSection: {
-    paddingVertical: 80,
-    paddingHorizontal: 20,
-    alignItems: 'center',
-  },
-  prepSubtitle: {
-    color: colors.textMuted,
-    fontSize: 16,
-    marginTop: 16,
-    marginBottom: 60,
-    textAlign: 'center',
-  },
-  webinarGrid: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
-    gap: 24,
-    maxWidth: 1200,
-  },
-  webinarCard: {
-    backgroundColor: 'rgba(10, 18, 30, 0.6)',
-    borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.05)',
-    borderRadius: 24,
-    padding: 30,
-    width: isWeb && !isMobile ? 350 : '100%',
-  },
-  webinarHeader: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'flex-start',
-    marginBottom: 24,
-  },
-  webinarAvatar: {
-    width: 48,
-    height: 48,
-    borderRadius: 24,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  webinarLevelPillCyan: {
-    paddingHorizontal: 10,
-    paddingVertical: 4,
-    borderRadius: 10,
-    backgroundColor: 'rgba(0, 255, 255, 0.1)',
-    borderWidth: 1,
-    borderColor: 'rgba(0, 255, 255, 0.2)',
-  },
-  webinarLevelTextCyan: {
-    color: colors.primary,
-    fontSize: 9,
-    fontWeight: 'bold',
-    letterSpacing: 1,
-  },
-  webinarLevelPillDark: {
-    paddingHorizontal: 10,
-    paddingVertical: 4,
+  iconBox: {
+    width: 38,
+    height: 38,
     borderRadius: 10,
     backgroundColor: 'rgba(255, 255, 255, 0.05)',
     borderWidth: 1,
     borderColor: 'rgba(255, 255, 255, 0.1)',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  webinarLevelTextGray: {
+  infoLabel: {
+    fontFamily: fonts.bodyBold,
     color: colors.textMuted,
-    fontSize: 9,
-    fontWeight: 'bold',
-    letterSpacing: 1,
+    fontSize: 11,
+    fontWeight: '700',
+    letterSpacing: 0.8,
   },
-  webinarTitle: {
-    color: '#FFF',
-    fontSize: 20,
-    fontWeight: 'bold',
-    marginBottom: 12,
-  },
-  webinarDate: {
-    color: colors.secondary,
+  infoValue: {
+    fontFamily: fonts.bodyBold,
+    color: colors.text,
     fontSize: 14,
-    fontWeight: 'bold',
+    fontWeight: '700',
+  },
+  registerBtn: {
+    backgroundColor: colors.primary,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 14,
+    paddingHorizontal: 24,
+    borderRadius: 12,
+    alignSelf: width > 768 ? 'flex-start' : 'stretch',
+    boxShadow: '0px 0px 16px rgba(0, 229, 255, 0.5)',
+  },
+  registerBtnText: {
+    color: '#050912',
+    fontWeight: '800',
+    fontFamily: fonts.display,
+    fontSize: 13,
+    letterSpacing: 0.8,
+  },
+  countdownPanel: {
+    backgroundColor: 'rgba(5, 9, 18, 0.9)',
+    borderWidth: 1,
+    borderColor: 'rgba(255, 255, 255, 0.1)',
+    borderRadius: 20,
+    padding: 24,
+    alignItems: 'center',
+    minWidth: width > 768 ? 320 : '100%',
+  },
+  countdownTitle: {
+    color: colors.textMuted,
+    fontSize: 10,
+    fontWeight: '800',
+    fontFamily: fonts.display,
+    letterSpacing: 1.5,
     marginBottom: 16,
   },
-  webinarDesc: {
-    color: colors.textMuted,
-    fontSize: 14,
-    lineHeight: 22,
-    marginBottom: 30,
-    minHeight: 66, // to align buttons
+  countdownGrid: {
+    flexDirection: 'row',
+    gap: 12,
+    marginBottom: 16,
   },
-  webinarBtn: {
-    backgroundColor: 'rgba(255,255,255,0.03)',
+  countdownItem: {
+    backgroundColor: 'rgba(10, 15, 31, 0.9)',
     borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.1)',
+    borderColor: 'rgba(0, 229, 255, 0.25)',
+    borderRadius: 12,
     paddingVertical: 12,
-    borderRadius: 8,
+    paddingHorizontal: 12,
     alignItems: 'center',
+    minWidth: 58,
   },
-  webinarBtnText: {
-    color: '#FFF',
-    fontSize: 12,
-    fontWeight: 'bold',
+  countdownNumber: {
+    color: colors.primary,
+    fontSize: 24,
+    fontWeight: '900',
+    fontFamily: fonts.display,
+    marginBottom: 2,
+    textShadow: '0px 0px 10px rgba(0, 229, 255, 0.5)',
+  },
+  countdownLabel: {
+    fontFamily: fonts.bodyBold,
+    color: colors.textMuted,
+    fontSize: 11,
+    fontWeight: '700',
+    letterSpacing: 0.8,
+  },
+  timezoneBadge: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+  },
+  timezoneText: {
+    fontFamily: fonts.body,
+    color: colors.textMuted,
+    fontSize: 11,
+    letterSpacing: 0.5,
+  },
+  timelineSection: {
+    paddingVertical: 60,
+    paddingHorizontal: Platform.OS === 'web' ? '5%' : 16,
+    maxWidth: 1000,
+    alignSelf: 'center',
+    width: '100%',
+  },
+  sectionHeader: {
+    alignItems: 'center',
+    marginBottom: 45,
+  },
+  sectionTitle: {
+    fontSize: 28,
+    fontWeight: '900',
+    fontFamily: fonts.display,
+    color: colors.text,
+    textAlign: 'center',
+    letterSpacing: -0.3,
+  },
+  sectionSubtitle: {
+    fontFamily: fonts.body,
+    color: colors.textMuted,
+    fontSize: 13,
+    marginTop: 8,
+    textAlign: 'center',
+  },
+  timelineContainer: {
+    position: 'relative',
+    paddingLeft: 24,
+  },
+  timelineTrack: {
+    position: 'absolute',
+    top: 20,
+    bottom: 20,
+    left: 40,
+    width: 2,
+    backgroundColor: 'rgba(0, 229, 255, 0.3)',
+  },
+  timelineNodeRow: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    marginBottom: 30,
+    gap: 20,
+  },
+  nodeBadge: {
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+    backgroundColor: colors.primary,
+    alignItems: 'center',
+    justifyContent: 'center',
+    zIndex: 2,
+    boxShadow: '0px 0px 10px rgba(0, 229, 255, 0.7)',
+  },
+  timelineCard: {
+    flex: 1,
+    backgroundColor: 'rgba(10, 15, 31, 0.8)',
+    borderWidth: 1,
+    borderColor: 'rgba(255, 255, 255, 0.08)',
+    borderRadius: 16,
+    padding: 20,
+  },
+  cardHeaderRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 10,
+    flexWrap: 'wrap',
+    gap: 8,
+  },
+  dayBadge: {
+    color: colors.primary,
+    fontSize: 10,
+    fontWeight: '800',
+    fontFamily: fonts.display,
     letterSpacing: 1,
+    borderWidth: 1,
+    borderColor: colors.primary,
+    paddingHorizontal: 8,
+    paddingVertical: 2,
+    borderRadius: 6,
+  },
+  timeText: {
+    fontFamily: fonts.bodyMedium,
+    color: colors.textMuted,
+    fontSize: 11,
+    fontWeight: '600',
+  },
+  timelineNodeTitle: {
+    color: colors.text,
+    fontSize: 18,
+    fontWeight: '800',
+    fontFamily: fonts.display,
+    marginBottom: 6,
+  },
+  timelineNodeDesc: {
+    fontFamily: fonts.body,
+    color: colors.textMuted,
+    fontSize: 13,
+    lineHeight: 21,
+  },
+  workshopsSection: {
+    paddingVertical: 60,
+    paddingHorizontal: Platform.OS === 'web' ? '5%' : 16,
+    maxWidth: 1300,
+    alignSelf: 'center',
+    width: '100%',
+  },
+  workshopsGrid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 20,
+    justifyContent: 'center',
+  },
+  workshopCard: {
+    backgroundColor: 'rgba(10, 15, 31, 0.85)',
+    borderWidth: 1,
+    borderColor: 'rgba(255, 255, 255, 0.08)',
+    borderRadius: 20,
+    padding: 24,
+    width: width > 1000 ? '31%' : width > 700 ? '47%' : '100%',
+    boxShadow: '0px 8px 16px rgba(0, 0, 0, 0.3)',
+  },
+  workshopHeaderRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 14,
+  },
+  levelBadge: {
+    borderWidth: 1,
+    paddingHorizontal: 8,
+    paddingVertical: 2,
+    borderRadius: 6,
+  },
+  levelText: {
+    fontSize: 11,
+    fontWeight: '800',
+    fontFamily: fonts.display,
+    letterSpacing: 0.8,
+  },
+  workshopDate: {
+    fontFamily: fonts.bodyMedium,
+    color: colors.textMuted,
+    fontSize: 10,
+    fontWeight: '600',
+  },
+  workshopTitle: {
+    color: colors.text,
+    fontSize: 17,
+    fontWeight: '800',
+    fontFamily: fonts.display,
+    marginBottom: 8,
+    lineHeight: 24,
+  },
+  workshopDesc: {
+    fontFamily: fonts.body,
+    color: colors.textMuted,
+    fontSize: 13,
+    lineHeight: 20,
+    marginBottom: 20,
+  },
+  speakerRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 10,
+    marginBottom: 20,
+    paddingTop: 12,
+    borderTopWidth: 1,
+    borderTopColor: 'rgba(255, 255, 255, 0.06)',
+  },
+  speakerAvatar: {
+    width: 32,
+    height: 32,
+    borderRadius: 16,
+    backgroundColor: 'rgba(0, 229, 255, 0.1)',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  speakerName: {
+    fontFamily: fonts.bodyBold,
+    color: colors.text,
+    fontSize: 12,
+    fontWeight: '700',
+  },
+  speakerRole: {
+    fontFamily: fonts.body,
+    color: colors.textMuted,
+    fontSize: 10,
+  },
+  workshopBtn: {
+    backgroundColor: colors.primary,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 12,
+    borderRadius: 10,
+    boxShadow: '0px 0px 8px rgba(0, 229, 255, 0.4)',
+  },
+  workshopBtnActive: {
+    backgroundColor: '#10B981',
+  },
+  workshopBtnText: {
+    color: '#050912',
+    fontWeight: '800',
+    fontFamily: fonts.display,
+    fontSize: 12,
+    letterSpacing: 0.8,
   },
 });

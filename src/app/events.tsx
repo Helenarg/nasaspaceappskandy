@@ -1,5 +1,9 @@
-import React, { useState, useEffect, useMemo } from 'react';
-import { ScrollView, View, Text, StyleSheet, Platform, useWindowDimensions, Pressable } from 'react-native';
+import { useViewport } from '../theme/useViewport';
+import { layout } from '../theme/layout';
+import PageShell from '../components/PageShell';
+import PageHeader from '../components/PageHeader';
+import { useState, useEffect, useMemo } from 'react';
+import { View, Text, StyleSheet, Pressable } from 'react-native';
 import { Link } from 'expo-router';
 import PageMeta from '../components/PageMeta';
 import Navbar from '../components/Navbar';
@@ -43,7 +47,7 @@ const WORKSHOPS = [
 ];
 
 export default function EventsPage() {
-  const { width } = useWindowDimensions();
+  const { width } = useViewport();
   const styles = useMemo(() => makeStyles(width), [width]);
 
   const [registeredWorkshops, setRegisteredWorkshops] = useState<number[]>([]);
@@ -84,7 +88,7 @@ export default function EventsPage() {
   };
 
   return (
-    <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+    <PageShell style={styles.container} contentContainerStyle={styles.contentContainer}>
       <PageMeta
         title="Event Hub & 48-Hour Schedule | NASA Space Apps Sri Lanka"
         description="Full schedule for NASA Space Apps Kandy 2026, live countdown, pre-event workshops and venue details."
@@ -93,21 +97,7 @@ export default function EventsPage() {
       <Navbar />
 
       {/* Hero Section */}
-      <View style={styles.heroSection}>
-        <View style={styles.livePill}>
-          <View style={styles.liveDot} />
-          <Text style={styles.liveText}>GLOBAL HACKATHON COUNTDOWN</Text>
-        </View>
-
-        <Text style={styles.heroTitle}>
-          EVENT HUB & <Text style={styles.heroTitleCyan}>48-HOUR</Text> SCHEDULE
-        </Text>
-        <Text style={styles.heroSubtitle}>
-          Join us for the world's largest annual hackathon dedicated to solving real-world challenges using NASA's open science platform.
-        </Text>
-
-        {/* Featured Big Event Card */}
-        <View style={styles.eventCard}>
+      <PageHeader number="02" eyebrow="EVENTS & WORKSHOPS" title={"Make time\nfor discovery."} description="Explore the hackathon schedule, find a workshop, and prepare for a weekend of collaboration."><View style={styles.eventCard}>
           <View style={styles.eventCardContent}>
             {/* Left Details */}
             <View style={styles.eventCardLeft}>
@@ -131,7 +121,7 @@ export default function EventsPage() {
                   <View style={styles.iconBox}>
                     <Calendar color={colors.primary} size={18} />
                   </View>
-                  <View>
+                  <View style={{ flex: 1, minWidth: 0 }}>
                     <Text style={styles.infoLabel}>EVENT DATES</Text>
                     <Text style={styles.infoValue}>October 3–5, 2026</Text>
                   </View>
@@ -141,7 +131,7 @@ export default function EventsPage() {
                   <View style={styles.iconBox}>
                     <MapPin color={colors.secondary} size={18} />
                   </View>
-                  <View>
+                  <View style={{ flex: 1, minWidth: 0 }}>
                     <Text style={styles.infoLabel}>PRIMARY VENUE</Text>
                     <Text style={styles.infoValue}>Kandy Convention Center, Sri Lanka</Text>
                   </View>
@@ -193,8 +183,7 @@ export default function EventsPage() {
               </View>
             </View>
           </View>
-        </View>
-      </View>
+        </View></PageHeader>
 
       {/* Interactive 48-Hour Milestone Timeline */}
       <View style={styles.timelineSection}>
@@ -324,7 +313,7 @@ export default function EventsPage() {
       </View>
 
       <Footer />
-    </ScrollView>
+    </PageShell>
   );
 }
 
@@ -332,117 +321,63 @@ const makeStyles = (width: number) =>
   StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Platform.OS === 'web' ? 'transparent' : colors.background,
+    backgroundColor: 'transparent'
   },
   contentContainer: {
-    flexGrow: 1,
-  },
-  heroSection: {
-    alignItems: 'center',
-    paddingTop: 60,
-    paddingBottom: 40,
-    paddingHorizontal: Platform.OS === 'web' ? '5%' : 16,
-    maxWidth: 1300,
-    alignSelf: 'center',
-    width: '100%',
-  },
-  livePill: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-    backgroundColor: 'rgba(0, 229, 255, 0.08)',
-    borderWidth: 1,
-    borderColor: 'rgba(0, 229, 255, 0.25)',
-    paddingHorizontal: 12,
-    paddingVertical: 6,
-    borderRadius: 20,
-    marginBottom: 20,
-  },
-  liveDot: {
-    width: 6,
-    height: 6,
-    borderRadius: 3,
-    backgroundColor: colors.primary,
-  },
-  liveText: {
-    color: colors.primary,
-    fontSize: 10,
-    fontWeight: '800',
-    fontFamily: fonts.display,
-    letterSpacing: 1.2,
-  },
-  heroTitle: {
-    fontSize: width > 768 ? 44 : width > 480 ? 32 : 27,
-    fontWeight: '900',
-    fontFamily: fonts.display,
-    color: colors.text,
-    textAlign: 'center',
-    letterSpacing: -0.5,
-    marginBottom: 16,
+    flexGrow: 1
   },
   heroTitleCyan: {
-    color: colors.primary,
-    textShadow: '0px 0px 16px rgba(0, 229, 255, 0.4)',
-  },
-  heroSubtitle: {
-    fontFamily: fonts.body,
-    color: colors.textMuted,
-    fontSize: 15,
-    textAlign: 'center',
-    lineHeight: 25,
-    maxWidth: 680,
-    marginBottom: 40,
+    color: colors.primary
   },
   eventCard: {
     width: '100%',
-    backgroundColor: 'rgba(10, 15, 31, 0.85)',
+    backgroundColor: 'rgba(11, 32, 81, 0.96)',
     borderWidth: 1,
-    borderColor: 'rgba(0, 229, 255, 0.25)',
-    borderRadius: 24,
-    padding: width > 768 ? 40 : 20,
-    boxShadow: '0px 16px 30px rgba(0, 0, 0, 0.5)',
+    borderColor: 'rgba(234, 254, 7, 0.25)',
+    borderRadius: 8,
+    padding: layout.cardPadding(width)
   },
   eventCardContent: {
     flexDirection: width > 900 ? 'row' : 'column',
     justifyContent: 'space-between',
     alignItems: 'center',
-    gap: 30,
+    gap: 30
   },
   eventCardLeft: {
     flex: 1,
-    width: '100%',
+    width: '100%'
   },
   pillRow: {
     flexDirection: 'row',
     gap: 8,
-    marginBottom: 16,
+    marginBottom: 16
   },
   pill: {
     paddingHorizontal: 10,
     paddingVertical: 4,
-    borderRadius: 6,
+    borderRadius: 6
   },
   pillCyan: {
-    backgroundColor: colors.primary,
+    backgroundColor: colors.primary
   },
   pillDark: {
     backgroundColor: 'rgba(255, 255, 255, 0.08)',
     borderWidth: 1,
-    borderColor: 'rgba(255, 255, 255, 0.1)',
+    borderColor: 'rgba(255, 255, 255, 0.1)'
   },
   pillTextBlack: {
-    color: '#050912',
+    color: colors.ink,
     fontSize: 10,
     fontWeight: '800',
     fontFamily: fonts.display,
-    letterSpacing: 0.8,
+    letterSpacing: 0.8
   },
   pillTextWhite: {
     fontFamily: fonts.bodyBold,
     color: colors.text,
     fontSize: 10,
     fontWeight: '700',
-    letterSpacing: 0.8,
+    letterSpacing: 0.8
   },
   eventTitle: {
     fontSize: width > 768 ? 36 : 26,
@@ -451,16 +386,16 @@ const makeStyles = (width: number) =>
     color: colors.text,
     lineHeight: width > 768 ? 44 : 34,
     marginBottom: 24,
-    letterSpacing: -0.3,
+    letterSpacing: -0.3
   },
   eventInfoList: {
     gap: 14,
-    marginBottom: 28,
+    marginBottom: 28
   },
   eventInfoItem: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 12,
+    gap: 12
   },
   iconBox: {
     width: 38,
@@ -470,20 +405,20 @@ const makeStyles = (width: number) =>
     borderWidth: 1,
     borderColor: 'rgba(255, 255, 255, 0.1)',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
   infoLabel: {
     fontFamily: fonts.bodyBold,
     color: colors.textMuted,
     fontSize: 11,
     fontWeight: '700',
-    letterSpacing: 0.8,
+    letterSpacing: 0.8
   },
   infoValue: {
     fontFamily: fonts.bodyBold,
     color: colors.text,
     fontSize: 14,
-    fontWeight: '700',
+    fontWeight: '700'
   },
   registerBtn: {
     backgroundColor: colors.primary,
@@ -493,24 +428,23 @@ const makeStyles = (width: number) =>
     paddingVertical: 14,
     paddingHorizontal: 24,
     borderRadius: 12,
-    alignSelf: width > 768 ? 'flex-start' : 'stretch',
-    boxShadow: '0px 0px 16px rgba(0, 229, 255, 0.5)',
+    alignSelf: width > 768 ? 'flex-start' : 'stretch'
   },
   registerBtnText: {
-    color: '#050912',
+    color: colors.ink,
     fontWeight: '800',
     fontFamily: fonts.display,
     fontSize: 13,
-    letterSpacing: 0.8,
+    letterSpacing: 0.8
   },
   countdownPanel: {
-    backgroundColor: 'rgba(5, 9, 18, 0.9)',
+    backgroundColor: 'rgba(7, 23, 63, 0.9)',
     borderWidth: 1,
     borderColor: 'rgba(255, 255, 255, 0.1)',
     borderRadius: 20,
     padding: 24,
     alignItems: 'center',
-    minWidth: width > 768 ? 320 : '100%',
+    minWidth: width > 768 ? 320 : '100%'
   },
   countdownTitle: {
     color: colors.textMuted,
@@ -518,59 +452,55 @@ const makeStyles = (width: number) =>
     fontWeight: '800',
     fontFamily: fonts.display,
     letterSpacing: 1.5,
-    marginBottom: 16,
+    marginBottom: 16
   },
   countdownGrid: {
     flexDirection: 'row',
     gap: 12,
-    marginBottom: 16,
+    marginBottom: 16
   },
   countdownItem: {
     backgroundColor: 'rgba(10, 15, 31, 0.9)',
     borderWidth: 1,
-    borderColor: 'rgba(0, 229, 255, 0.25)',
+    borderColor: 'rgba(234, 254, 7, 0.25)',
     borderRadius: 12,
     paddingVertical: 12,
     paddingHorizontal: 12,
     alignItems: 'center',
-    minWidth: 58,
+    minWidth: 58
   },
   countdownNumber: {
     color: colors.primary,
     fontSize: 24,
     fontWeight: '900',
     fontFamily: fonts.display,
-    marginBottom: 2,
-    textShadow: '0px 0px 10px rgba(0, 229, 255, 0.5)',
+    marginBottom: 2
   },
   countdownLabel: {
     fontFamily: fonts.bodyBold,
     color: colors.textMuted,
     fontSize: 11,
     fontWeight: '700',
-    letterSpacing: 0.8,
+    letterSpacing: 0.8
   },
   timezoneBadge: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 6,
+    gap: 6
   },
   timezoneText: {
     fontFamily: fonts.body,
     color: colors.textMuted,
     fontSize: 11,
-    letterSpacing: 0.5,
+    letterSpacing: 0.5
   },
   timelineSection: {
-    paddingVertical: 60,
-    paddingHorizontal: Platform.OS === 'web' ? '5%' : 16,
-    maxWidth: 1000,
-    alignSelf: 'center',
-    width: '100%',
+    ...layout.section(width),
+    gap: layout.gap(width)
   },
   sectionHeader: {
     alignItems: 'center',
-    marginBottom: 45,
+    marginBottom: 45
   },
   sectionTitle: {
     fontSize: 28,
@@ -578,18 +508,18 @@ const makeStyles = (width: number) =>
     fontFamily: fonts.display,
     color: colors.text,
     textAlign: 'center',
-    letterSpacing: -0.3,
+    letterSpacing: -0.3
   },
   sectionSubtitle: {
     fontFamily: fonts.body,
     color: colors.textMuted,
     fontSize: 13,
     marginTop: 8,
-    textAlign: 'center',
+    textAlign: 'center'
   },
   timelineContainer: {
     position: 'relative',
-    paddingLeft: 24,
+    paddingLeft: 24
   },
   timelineTrack: {
     position: 'absolute',
@@ -597,13 +527,13 @@ const makeStyles = (width: number) =>
     bottom: 20,
     left: 40,
     width: 2,
-    backgroundColor: 'rgba(0, 229, 255, 0.3)',
+    backgroundColor: 'rgba(234, 254, 7, 0.3)'
   },
   timelineNodeRow: {
     flexDirection: 'row',
     alignItems: 'flex-start',
     marginBottom: 30,
-    gap: 20,
+    gap: 20
   },
   nodeBadge: {
     width: 36,
@@ -612,16 +542,15 @@ const makeStyles = (width: number) =>
     backgroundColor: colors.primary,
     alignItems: 'center',
     justifyContent: 'center',
-    zIndex: 2,
-    boxShadow: '0px 0px 10px rgba(0, 229, 255, 0.7)',
+    zIndex: 2
   },
   timelineCard: {
     flex: 1,
-    backgroundColor: 'rgba(10, 15, 31, 0.8)',
+    backgroundColor: 'rgba(11, 32, 81, 0.96)',
     borderWidth: 1,
     borderColor: 'rgba(255, 255, 255, 0.08)',
-    borderRadius: 16,
-    padding: 20,
+    borderRadius: 8,
+    padding: layout.cardPadding(width)
   },
   cardHeaderRow: {
     flexDirection: 'row',
@@ -629,7 +558,7 @@ const makeStyles = (width: number) =>
     alignItems: 'center',
     marginBottom: 10,
     flexWrap: 'wrap',
-    gap: 8,
+    gap: 8
   },
   dayBadge: {
     color: colors.primary,
@@ -641,72 +570,68 @@ const makeStyles = (width: number) =>
     borderColor: colors.primary,
     paddingHorizontal: 8,
     paddingVertical: 2,
-    borderRadius: 6,
+    borderRadius: 6
   },
   timeText: {
     fontFamily: fonts.bodyMedium,
     color: colors.textMuted,
     fontSize: 11,
-    fontWeight: '600',
+    fontWeight: '600'
   },
   timelineNodeTitle: {
     color: colors.text,
     fontSize: 18,
     fontWeight: '800',
     fontFamily: fonts.display,
-    marginBottom: 6,
+    marginBottom: 6
   },
   timelineNodeDesc: {
     fontFamily: fonts.body,
     color: colors.textMuted,
     fontSize: 13,
-    lineHeight: 21,
+    lineHeight: 21
   },
   workshopsSection: {
-    paddingVertical: 60,
-    paddingHorizontal: Platform.OS === 'web' ? '5%' : 16,
-    maxWidth: 1300,
-    alignSelf: 'center',
-    width: '100%',
+    ...layout.section(width),
+    gap: layout.gap(width)
   },
   workshopsGrid: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     gap: 20,
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
   workshopCard: {
-    backgroundColor: 'rgba(10, 15, 31, 0.85)',
+    backgroundColor: 'rgba(11, 32, 81, 0.96)',
     borderWidth: 1,
     borderColor: 'rgba(255, 255, 255, 0.08)',
-    borderRadius: 20,
-    padding: 24,
-    width: width > 1000 ? '31%' : width > 700 ? '47%' : '100%',
-    boxShadow: '0px 8px 16px rgba(0, 0, 0, 0.3)',
+    borderRadius: 8,
+    padding: layout.cardPadding(width),
+    width: width > 1000 ? '31%' : width > 700 ? '47%' : '100%'
   },
   workshopHeaderRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 14,
+    marginBottom: 14
   },
   levelBadge: {
     borderWidth: 1,
     paddingHorizontal: 8,
     paddingVertical: 2,
-    borderRadius: 6,
+    borderRadius: 6
   },
   levelText: {
     fontSize: 11,
     fontWeight: '800',
     fontFamily: fonts.display,
-    letterSpacing: 0.8,
+    letterSpacing: 0.8
   },
   workshopDate: {
     fontFamily: fonts.bodyMedium,
     color: colors.textMuted,
     fontSize: 10,
-    fontWeight: '600',
+    fontWeight: '600'
   },
   workshopTitle: {
     color: colors.text,
@@ -714,14 +639,14 @@ const makeStyles = (width: number) =>
     fontWeight: '800',
     fontFamily: fonts.display,
     marginBottom: 8,
-    lineHeight: 24,
+    lineHeight: 24
   },
   workshopDesc: {
     fontFamily: fonts.body,
     color: colors.textMuted,
     fontSize: 13,
     lineHeight: 20,
-    marginBottom: 20,
+    marginBottom: 20
   },
   speakerRow: {
     flexDirection: 'row',
@@ -730,26 +655,26 @@ const makeStyles = (width: number) =>
     marginBottom: 20,
     paddingTop: 12,
     borderTopWidth: 1,
-    borderTopColor: 'rgba(255, 255, 255, 0.06)',
+    borderTopColor: 'rgba(255, 255, 255, 0.06)'
   },
   speakerAvatar: {
     width: 32,
     height: 32,
     borderRadius: 16,
-    backgroundColor: 'rgba(0, 229, 255, 0.1)',
+    backgroundColor: 'rgba(234, 254, 7, 0.1)',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
   speakerName: {
     fontFamily: fonts.bodyBold,
     color: colors.text,
     fontSize: 12,
-    fontWeight: '700',
+    fontWeight: '700'
   },
   speakerRole: {
     fontFamily: fonts.body,
     color: colors.textMuted,
-    fontSize: 10,
+    fontSize: 10
   },
   workshopBtn: {
     backgroundColor: colors.primary,
@@ -757,17 +682,16 @@ const makeStyles = (width: number) =>
     alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: 12,
-    borderRadius: 10,
-    boxShadow: '0px 0px 8px rgba(0, 229, 255, 0.4)',
+    borderRadius: 10
   },
   workshopBtnActive: {
-    backgroundColor: '#10B981',
+    backgroundColor: '#10B981'
   },
   workshopBtnText: {
-    color: '#050912',
+    color: colors.ink,
     fontWeight: '800',
     fontFamily: fonts.display,
     fontSize: 12,
-    letterSpacing: 0.8,
+    letterSpacing: 0.8
   },
 });

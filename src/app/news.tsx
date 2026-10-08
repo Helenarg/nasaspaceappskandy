@@ -1,25 +1,15 @@
-import React, { useState, useMemo } from 'react';
-import { ScrollView, View, Text, StyleSheet, Platform, useWindowDimensions, Pressable } from 'react-native';
+import { useViewport } from '../theme/useViewport';
+import { layout } from '../theme/layout';
+import PageShell from '../components/PageShell';
+import PageHeader from '../components/PageHeader';
+import { useState, useMemo } from 'react';
+import { View, Text, StyleSheet, Pressable } from 'react-native';
 import PageMeta from '../components/PageMeta';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { colors } from '../theme/colors';
 import { fonts } from '../theme/typography';
-import { 
-  Rocket, 
-  Globe, 
-  Orbit, 
-  ArrowRight, 
-  FileText, 
-  Image as ImageIcon, 
-  LayoutTemplate, 
-  Archive, 
-  Download, 
-  Layers, 
-  Share2, 
-  CheckCircle2, 
-  Newspaper 
-} from '../components/icons';
+import { Rocket, Globe, Orbit, ArrowRight, FileText, Image as ImageIcon, LayoutTemplate, Archive, Download, CheckCircle2 } from '../components/icons';
 
 
 const PRESS_RELEASES = [
@@ -57,7 +47,7 @@ const ASSETS = [
 ];
 
 export default function NewsPage() {
-  const { width } = useWindowDimensions();
+  const { width } = useViewport();
   const styles = useMemo(() => makeStyles(width), [width]);
 
   const [downloadedZip, setDownloadedZip] = useState(false);
@@ -68,7 +58,7 @@ export default function NewsPage() {
   };
 
   return (
-    <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+    <PageShell style={styles.container} contentContainerStyle={styles.contentContainer}>
       <PageMeta
         title="News & Media Kit | NASA Space Apps Sri Lanka"
         description="Press releases, brand assets and the official media kit for NASA Space Apps Challenge Sri Lanka."
@@ -77,19 +67,7 @@ export default function NewsPage() {
       <Navbar />
 
       {/* Hero Section */}
-      <View style={styles.heroSection}>
-        <View style={styles.pillContainer}>
-          <Newspaper size={14} color={colors.primary} />
-          <Text style={styles.pillText}>MEDIA & PRESS CENTER</Text>
-        </View>
-
-        <Text style={styles.heroTitle}>
-          NEWS & <Text style={styles.heroTitleCyan}>MEDIA HUB</Text>
-        </Text>
-        <Text style={styles.heroSubtitle}>
-          Official press releases, national roadmap announcements, and brand assets for media coverage of NASA Space Apps Sri Lanka.
-        </Text>
-      </View>
+      <PageHeader number="07" eyebrow="NEWS & MEDIA" title={"Stories from\nour community."} description="Follow the journey, explore our latest updates, and find resources for sharing the Space Apps story." />
 
       {/* Top Section - News Grid (3 Cards) */}
       <View style={styles.newsSection}>
@@ -200,7 +178,7 @@ export default function NewsPage() {
       </View>
 
       <Footer />
-    </ScrollView>
+    </PageShell>
   );
 }
 
@@ -208,127 +186,74 @@ const makeStyles = (width: number) =>
   StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Platform.OS === 'web' ? 'transparent' : colors.background,
+    backgroundColor: 'transparent'
   },
   contentContainer: {
-    flexGrow: 1,
-  },
-  heroSection: {
-    alignItems: 'center',
-    paddingTop: 60,
-    paddingBottom: 40,
-    paddingHorizontal: Platform.OS === 'web' ? '5%' : 16,
-    maxWidth: 900,
-    alignSelf: 'center',
-    width: '100%',
-  },
-  pillContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-    backgroundColor: 'rgba(0, 229, 255, 0.08)',
-    borderWidth: 1,
-    borderColor: 'rgba(0, 229, 255, 0.25)',
-    paddingHorizontal: 14,
-    paddingVertical: 6,
-    borderRadius: 20,
-    marginBottom: 20,
-  },
-  pillText: {
-    color: colors.primary,
-    fontSize: 10,
-    fontWeight: '800',
-    fontFamily: fonts.display,
-    letterSpacing: 1.2,
-  },
-  heroTitle: {
-    fontSize: width > 768 ? 44 : width > 480 ? 32 : 27,
-    fontWeight: '900',
-    fontFamily: fonts.display,
-    color: colors.text,
-    textAlign: 'center',
-    letterSpacing: -0.5,
-    marginBottom: 16,
-  },
-  heroTitleCyan: {
-    color: colors.primary,
-    textShadow: '0px 0px 16px rgba(0, 229, 255, 0.4)',
-  },
-  heroSubtitle: {
-    fontFamily: fonts.body,
-    color: colors.textMuted,
-    fontSize: 15,
-    textAlign: 'center',
-    lineHeight: 25,
-    maxWidth: 680,
+    flexGrow: 1
   },
   newsSection: {
-    paddingVertical: 40,
-    paddingHorizontal: Platform.OS === 'web' ? '5%' : 16,
-    maxWidth: 1300,
-    alignSelf: 'center',
-    width: '100%',
+    ...layout.section(width),
+    gap: layout.gap(width)
   },
   sectionHeaderRow: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 8,
-    marginBottom: 24,
+    marginBottom: 24
   },
   liveDot: {
     width: 8,
     height: 8,
     borderRadius: 4,
-    backgroundColor: colors.primary,
+    backgroundColor: colors.primary
   },
   sectionHeaderTitle: {
     color: colors.text,
     fontSize: 13,
     fontWeight: '900',
     fontFamily: fonts.display,
-    letterSpacing: 1.5,
+    letterSpacing: 1.5
   },
   newsGrid: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    gap: 20,
+    gap: 20
   },
   newsCard: {
-    backgroundColor: 'rgba(10, 15, 31, 0.85)',
+    backgroundColor: 'rgba(11, 32, 81, 0.96)',
     borderWidth: 1,
     borderColor: 'rgba(255, 255, 255, 0.08)',
-    borderRadius: 20,
-    padding: 24,
+    borderRadius: 8,
+    padding: layout.cardPadding(width),
     width: width > 900 ? '31%' : '100%',
-    boxShadow: '0px 8px 16px rgba(0, 0, 0, 0.3)',
-    justifyContent: 'space-between',
+    justifyContent: 'space-between'
   },
   newsCardTop: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 16,
+    marginBottom: 16
   },
   newsIconBox: {
     width: 40,
     height: 40,
     borderRadius: 10,
-    backgroundColor: 'rgba(0, 229, 255, 0.08)',
+    backgroundColor: 'rgba(234, 254, 7, 0.08)',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
   newsTagBadge: {
     backgroundColor: 'rgba(255, 255, 255, 0.05)',
     paddingHorizontal: 8,
     paddingVertical: 3,
-    borderRadius: 6,
+    borderRadius: 6
   },
   newsTagText: {
     color: colors.textMuted,
     fontSize: 11,
     fontWeight: '800',
     fontFamily: fonts.display,
-    letterSpacing: 0.8,
+    letterSpacing: 0.8
   },
   newsDate: {
     color: colors.primary,
@@ -336,7 +261,7 @@ const makeStyles = (width: number) =>
     fontWeight: '800',
     fontFamily: fonts.display,
     letterSpacing: 1,
-    marginBottom: 8,
+    marginBottom: 8
   },
   newsCardTitle: {
     color: colors.text,
@@ -344,91 +269,87 @@ const makeStyles = (width: number) =>
     fontWeight: '800',
     fontFamily: fonts.display,
     lineHeight: 25,
-    marginBottom: 10,
+    marginBottom: 10
   },
   newsCardDesc: {
     fontFamily: fonts.body,
     color: colors.textMuted,
     fontSize: 13,
     lineHeight: 21,
-    marginBottom: 20,
+    marginBottom: 20
   },
   readMoreBtn: {
     flexDirection: 'row',
     alignItems: 'center',
     borderTopWidth: 1,
     borderTopColor: 'rgba(255, 255, 255, 0.06)',
-    paddingTop: 12,
+    paddingTop: 12
   },
   readMoreText: {
     color: colors.primary,
     fontSize: 11,
     fontWeight: '800',
     fontFamily: fonts.display,
-    letterSpacing: 0.8,
+    letterSpacing: 0.8
   },
   mediaKitSection: {
-    paddingVertical: 50,
-    paddingHorizontal: Platform.OS === 'web' ? '5%' : 16,
-    maxWidth: 1300,
-    alignSelf: 'center',
-    width: '100%',
+    ...layout.section(width),
+    gap: layout.gap(width)
   },
   mediaKitCard: {
     backgroundColor: 'rgba(10, 15, 31, 0.9)',
     borderWidth: 1,
-    borderColor: 'rgba(0, 229, 255, 0.25)',
-    borderRadius: 24,
-    padding: width > 768 ? 44 : 22,
-    boxShadow: '0px 16px 28px rgba(0, 0, 0, 0.5)',
+    borderColor: 'rgba(234, 254, 7, 0.25)',
+    borderRadius: 8,
+    padding: layout.cardPadding(width)
   },
   mediaKitHeader: {
-    marginBottom: 32,
+    marginBottom: 32
   },
   mediaKitBadge: {
-    backgroundColor: 'rgba(255, 107, 53, 0.1)',
+    backgroundColor: 'rgba(46, 150, 245, 0.1)',
     borderWidth: 1,
-    borderColor: 'rgba(255, 107, 53, 0.3)',
+    borderColor: 'rgba(46, 150, 245, 0.3)',
     paddingHorizontal: 12,
     paddingVertical: 4,
     borderRadius: 16,
     alignSelf: 'flex-start',
-    marginBottom: 14,
+    marginBottom: 14
   },
   mediaKitBadgeText: {
     color: colors.secondary,
     fontSize: 10,
     fontWeight: '800',
     fontFamily: fonts.display,
-    letterSpacing: 1,
+    letterSpacing: 1
   },
   mediaKitTitle: {
     color: colors.text,
     fontSize: width > 768 ? 32 : 24,
     fontWeight: '900',
     fontFamily: fonts.display,
-    letterSpacing: -0.3,
+    letterSpacing: -0.3
   },
   coralLine: {
     width: 60,
     height: 3,
     backgroundColor: colors.secondary,
     marginVertical: 14,
-    borderRadius: 2,
+    borderRadius: 2
   },
   mediaKitSubtitle: {
     fontFamily: fonts.body,
     color: colors.textMuted,
     fontSize: 14,
     lineHeight: 22,
-    maxWidth: 640,
+    maxWidth: 640
   },
   mediaKitSplit: {
     flexDirection: width > 900 ? 'row' : 'column',
-    gap: 36,
+    gap: 36
   },
   assetGridCol: {
-    flex: width > 900 ? 1.3 : undefined,
+    flex: width > 900 ? 1.3 : undefined
   },
   colLabel: {
     color: colors.textMuted,
@@ -436,12 +357,12 @@ const makeStyles = (width: number) =>
     fontWeight: '800',
     fontFamily: fonts.display,
     letterSpacing: 1.2,
-    marginBottom: 16,
+    marginBottom: 16
   },
   assetGrid2x2: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    gap: 14,
+    gap: 14
   },
   assetTile: {
     backgroundColor: 'rgba(255, 255, 255, 0.03)',
@@ -450,65 +371,66 @@ const makeStyles = (width: number) =>
     borderRadius: 14,
     padding: 16,
     width: width > 600 ? '48%' : '100%',
-    justifyContent: 'space-between',
+    justifyContent: 'space-between'
   },
   assetTopRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 12,
+    marginBottom: 12
   },
   formatPill: {
-    backgroundColor: 'rgba(0, 229, 255, 0.1)',
+    backgroundColor: 'rgba(234, 254, 7, 0.1)',
     paddingHorizontal: 8,
     paddingVertical: 2,
-    borderRadius: 6,
+    borderRadius: 4,
+    minHeight: 44
   },
   formatPillText: {
     color: colors.primary,
     fontSize: 11,
     fontWeight: '800',
     fontFamily: fonts.display,
-    letterSpacing: 0.8,
+    letterSpacing: 0.8
   },
   assetTileName: {
     fontFamily: fonts.bodyBold,
     color: colors.text,
     fontSize: 14,
     fontWeight: '700',
-    marginBottom: 4,
+    marginBottom: 4
   },
   assetTileSize: {
     fontFamily: fonts.body,
     color: colors.textMuted,
-    fontSize: 11,
+    fontSize: 11
   },
   downloadActionCol: {
-    flex: width > 900 ? 1 : undefined,
+    flex: width > 900 ? 1 : undefined
   },
   actionInnerBox: {
-    backgroundColor: 'rgba(5, 9, 18, 0.85)',
+    backgroundColor: 'rgba(7, 23, 63, 0.85)',
     borderWidth: 1,
-    borderColor: 'rgba(255, 107, 53, 0.25)',
+    borderColor: 'rgba(46, 150, 245, 0.25)',
     borderRadius: 18,
     padding: 24,
-    alignItems: 'center',
+    alignItems: 'center'
   },
   zipIconCircle: {
     width: 60,
     height: 60,
     borderRadius: 30,
-    backgroundColor: 'rgba(255, 107, 53, 0.1)',
+    backgroundColor: 'rgba(46, 150, 245, 0.1)',
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: 16,
+    marginBottom: 16
   },
   zipTitle: {
     color: colors.text,
     fontSize: 18,
     fontWeight: '800',
     fontFamily: fonts.display,
-    marginBottom: 6,
+    marginBottom: 6
   },
   zipDesc: {
     fontFamily: fonts.body,
@@ -516,7 +438,7 @@ const makeStyles = (width: number) =>
     fontSize: 12,
     textAlign: 'center',
     lineHeight: 18,
-    marginBottom: 20,
+    marginBottom: 20
   },
   downloadZipBtn: {
     backgroundColor: colors.secondary,
@@ -526,34 +448,33 @@ const makeStyles = (width: number) =>
     paddingVertical: 14,
     paddingHorizontal: 22,
     borderRadius: 12,
-    width: '100%',
-    boxShadow: '0px 0px 14px rgba(255, 107, 53, 0.5)',
+    width: '100%'
   },
   downloadZipBtnText: {
     color: '#FFFFFF',
     fontWeight: '800',
     fontFamily: fonts.display,
     fontSize: 12,
-    letterSpacing: 0.8,
+    letterSpacing: 0.8
   },
   successDownloadRow: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 8,
-    marginTop: 14,
+    marginTop: 14
   },
   successDownloadText: {
     fontFamily: fonts.bodyBold,
     color: '#10B981',
     fontSize: 12,
-    fontWeight: '700',
+    fontWeight: '700'
   },
   pressContactBox: {
     marginTop: 24,
     paddingTop: 16,
     borderTopWidth: 1,
     borderTopColor: 'rgba(255, 255, 255, 0.08)',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   pressContactLabel: {
     color: colors.textMuted,
@@ -561,12 +482,12 @@ const makeStyles = (width: number) =>
     fontWeight: '800',
     fontFamily: fonts.display,
     letterSpacing: 0.8,
-    marginBottom: 4,
+    marginBottom: 4
   },
   pressContactEmail: {
     fontFamily: fonts.bodyBold,
     color: colors.primary,
     fontSize: 12,
-    fontWeight: '700',
+    fontWeight: '700'
   },
 });

@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { submitForm, type FormKind } from './submissions';
 import type { Errors } from './validation';
 
@@ -22,7 +22,8 @@ export function useFormSubmit<F extends string>({ kind, validate, build }: Optio
 
   // Honeypot: a field no human sees. Bots fill everything.
   const [trap, setTrap] = useState('');
-  const mountedAt = useRef(Date.now());
+  const mountedAt = useRef(0);
+  useEffect(() => { mountedAt.current = Date.now(); }, []);
 
   const clearError = useCallback((field: F) => {
     setErrors((prev) => (prev[field] ? { ...prev, [field]: undefined } : prev));

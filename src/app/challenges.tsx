@@ -1,17 +1,21 @@
-import React, { useState, useMemo } from 'react';
-import { ScrollView, View, Text, StyleSheet, Platform, useWindowDimensions, Pressable, TextInput, Modal } from 'react-native';
+import { useViewport } from '../theme/useViewport';
+import { layout } from '../theme/layout';
+import PageShell from '../components/PageShell';
+import PageHeader from '../components/PageHeader';
+import { useState, useMemo } from 'react';
+import { ScrollView, View, Text, StyleSheet, Pressable, TextInput, Modal } from 'react-native';
 import PageMeta from '../components/PageMeta';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { colors } from '../theme/colors';
 import { fonts } from '../theme/typography';
-import { 
-  Search, 
-  CloudSun, 
-  Database, 
-  Compass, 
-  Satellite, 
-  Brain, 
+import {
+  Search,
+  CloudSun,
+  Database,
+  Compass,
+  Satellite,
+  Brain,
   Leaf,
   FileText,
   LayoutTemplate,
@@ -89,7 +93,7 @@ const CHALLENGES = [
 const FILTERS = ['ALL', 'AI & ML', 'CLIMATE TECH', 'ASTROPHYSICS', 'OPEN DATA'];
 
 export default function ChallengesPage() {
-  const { width } = useWindowDimensions();
+  const { width } = useViewport();
   const styles = useMemo(() => makeStyles(width), [width]);
 
   const [activeFilter, setActiveFilter] = useState('ALL');
@@ -111,7 +115,7 @@ export default function ChallengesPage() {
   };
 
   return (
-    <ScrollView
+    <PageShell
       style={styles.container}
       contentContainerStyle={styles.contentContainer}
       keyboardShouldPersistTaps="handled"
@@ -126,16 +130,7 @@ export default function ChallengesPage() {
       <Navbar />
 
       {/* Header Section */}
-      <View style={styles.headerSection}>
-        <Text style={styles.headerTitle}>
-          CHALLENGES & <Text style={styles.headerTitleCyan}>RESOURCES</Text>
-        </Text>
-        <Text style={styles.headerSubtitle}>
-          Explore official NASA Space Apps challenge categories, download participant toolkits, and build real-world solutions.
-        </Text>
-
-        {/* Search & Filter Bar */}
-        <View style={styles.searchContainer}>
+      <PageHeader number="03" eyebrow="CHALLENGES & RESOURCES" title={"Big questions.\nBold possibilities."} description="Find a challenge that speaks to your curiosity. Explore Earth, space, and the possibilities of open science."><View style={styles.searchContainer}>
           <View style={styles.searchInputWrapper}>
             <Search color={colors.textMuted} size={18} style={styles.searchIcon} />
             <TextInput
@@ -174,8 +169,7 @@ export default function ChallengesPage() {
               );
             })}
           </ScrollView>
-        </View>
-      </View>
+        </View></PageHeader>
 
       {/* Main Two-Column Layout */}
       <View style={styles.mainLayout}>
@@ -256,7 +250,7 @@ export default function ChallengesPage() {
 
             {/* Resource Item 2 */}
             <View style={styles.resourceItem}>
-              <View style={[styles.resourceIconBox, { backgroundColor: 'rgba(255, 107, 53, 0.1)' }]}>
+              <View style={[styles.resourceIconBox, { backgroundColor: 'rgba(46, 150, 245, 0.1)' }]}>
                 <LayoutTemplate color={colors.secondary} size={20} />
               </View>
               <View style={styles.resourceInfo}>
@@ -360,7 +354,7 @@ export default function ChallengesPage() {
       </Modal>
 
       <Footer />
-    </ScrollView>
+    </PageShell>
   );
 }
 
@@ -368,68 +362,40 @@ const makeStyles = (width: number) =>
   StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Platform.OS === 'web' ? 'transparent' : colors.background,
+    backgroundColor: 'transparent'
   },
   contentContainer: {
-    flexGrow: 1,
-  },
-  headerSection: {
-    paddingTop: 60,
-    paddingBottom: 30,
-    paddingHorizontal: Platform.OS === 'web' ? '5%' : 16,
-    maxWidth: 1300,
-    alignSelf: 'center',
-    width: '100%',
-  },
-  headerTitle: {
-    fontSize: width > 768 ? 44 : width > 480 ? 32 : 27,
-    fontWeight: '900',
-    fontFamily: fonts.display,
-    color: colors.text,
-    letterSpacing: -0.5,
-    marginBottom: 12,
-  },
-  headerTitleCyan: {
-    color: colors.primary,
-    textShadow: '0px 0px 16px rgba(0, 229, 255, 0.4)',
-  },
-  headerSubtitle: {
-    fontFamily: fonts.body,
-    color: colors.textMuted,
-    fontSize: 15,
-    lineHeight: 24,
-    maxWidth: 680,
-    marginBottom: 30,
+    flexGrow: 1
   },
   searchContainer: {
-    gap: 16,
+    gap: 16
   },
   searchInputWrapper: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: 'rgba(10, 15, 31, 0.85)',
+    backgroundColor: 'rgba(11, 32, 81, 0.96)',
     borderWidth: 1,
     borderColor: 'rgba(255, 255, 255, 0.1)',
     borderRadius: 14,
     paddingHorizontal: 16,
-    height: 52,
+    height: 52
   },
   searchIcon: {
-    marginRight: 10,
+    marginRight: 10
   },
   searchInput: {
     fontFamily: fonts.body,
     flex: 1,
     color: colors.text,
-    fontSize: 14,
+    fontSize: 14
   },
   clearSearchBtn: {
-    padding: 6,
+    padding: 6
   },
   filterPillsRow: {
     flexDirection: 'row',
     gap: 10,
-    paddingVertical: 4,
+    paddingVertical: 4
   },
   filterPill: {
     backgroundColor: 'rgba(255, 255, 255, 0.04)',
@@ -437,87 +403,82 @@ const makeStyles = (width: number) =>
     borderColor: 'rgba(255, 255, 255, 0.1)',
     paddingHorizontal: 16,
     paddingVertical: 8,
-    borderRadius: 20,
+    borderRadius: 4,
+    minHeight: 44
   },
   filterPillActive: {
-    backgroundColor: 'rgba(0, 229, 255, 0.12)',
-    borderColor: colors.primary,
-    boxShadow: '0px 0px 8px rgba(0, 229, 255, 0.5)',
+    backgroundColor: 'rgba(234, 254, 7, 0.12)',
+    borderColor: colors.primary
   },
   filterPillText: {
     fontFamily: fonts.bodyBold,
     color: colors.textMuted,
     fontSize: 12,
     fontWeight: '700',
-    letterSpacing: 0.8,
+    letterSpacing: 0.8
   },
   filterPillTextActive: {
-    color: colors.primary,
+    color: colors.primary
   },
   mainLayout: {
+    ...layout.section(width),
     flexDirection: width > 1024 ? 'row' : 'column',
-    paddingHorizontal: Platform.OS === 'web' ? '5%' : 16,
-    paddingVertical: 30,
-    maxWidth: 1300,
-    alignSelf: 'center',
-    width: '100%',
-    gap: 30,
+    gap: layout.gap(width)
   },
   challengesGridCol: {
-    flex: width > 1024 ? 2.2 : undefined,
+    flex: width > 1024 ? 2.2 : undefined
   },
   gridHeaderRow: {
-    marginBottom: 16,
+    marginBottom: 16
   },
   resultsCount: {
     fontFamily: fonts.bodyBold,
     color: colors.textMuted,
     fontSize: 11,
     fontWeight: '700',
-    letterSpacing: 1,
+    letterSpacing: 1
   },
   cardsGrid: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    gap: 18,
+    gap: 18
   },
   challengeCard: {
-    backgroundColor: 'rgba(10, 15, 31, 0.85)',
+    backgroundColor: 'rgba(11, 32, 81, 0.96)',
     borderWidth: 1,
     borderColor: 'rgba(255, 255, 255, 0.08)',
-    borderRadius: 18,
-    padding: 24,
+    borderRadius: 8,
+    padding: layout.cardPadding(width),
     width: width > 768 ? '48%' : '100%',
-    boxShadow: '0px 6px 14px rgba(0, 0, 0, 0.3)',
-    justifyContent: 'space-between',
+    justifyContent: 'space-between'
   },
   cardTopRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 16,
+    marginBottom: 16
   },
   categoryIconBox: {
     width: 42,
     height: 42,
     borderRadius: 10,
-    backgroundColor: 'rgba(0, 229, 255, 0.08)',
+    backgroundColor: 'rgba(234, 254, 7, 0.08)',
     borderWidth: 1,
-    borderColor: 'rgba(0, 229, 255, 0.2)',
+    borderColor: 'rgba(234, 254, 7, 0.2)',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
   diffBadge: {
     borderWidth: 1,
     paddingHorizontal: 8,
     paddingVertical: 3,
-    borderRadius: 6,
+    borderRadius: 6
   },
   diffText: {
     fontSize: 11,
     fontWeight: '800',
     fontFamily: fonts.display,
-    letterSpacing: 0.8,
+    letterSpacing: 0.8
   },
   categoryLabel: {
     color: colors.primary,
@@ -525,7 +486,7 @@ const makeStyles = (width: number) =>
     fontWeight: '800',
     fontFamily: fonts.display,
     letterSpacing: 1,
-    marginBottom: 4,
+    marginBottom: 4
   },
   cardTitle: {
     color: colors.text,
@@ -533,14 +494,14 @@ const makeStyles = (width: number) =>
     fontWeight: '800',
     fontFamily: fonts.display,
     marginBottom: 8,
-    lineHeight: 24,
+    lineHeight: 24
   },
   cardDesc: {
     fontFamily: fonts.body,
     color: colors.textMuted,
     fontSize: 13,
     lineHeight: 20,
-    marginBottom: 20,
+    marginBottom: 20
   },
   briefBtn: {
     flexDirection: 'row',
@@ -548,52 +509,51 @@ const makeStyles = (width: number) =>
     paddingVertical: 8,
     borderTopWidth: 1,
     borderTopColor: 'rgba(255, 255, 255, 0.06)',
-    marginTop: 'auto',
+    marginTop: 'auto'
   },
   briefBtnText: {
     fontFamily: fonts.bodyBold,
     color: colors.primary,
     fontSize: 12,
     fontWeight: '700',
-    letterSpacing: 0.5,
+    letterSpacing: 0.5
   },
   sidebarCol: {
     flex: width > 1024 ? 1 : undefined,
-    minWidth: 280,
+    minWidth: 280
   },
   resourceCard: {
-    backgroundColor: 'rgba(10, 15, 31, 0.85)',
+    backgroundColor: 'rgba(11, 32, 81, 0.96)',
     borderWidth: 1,
-    borderColor: 'rgba(0, 229, 255, 0.2)',
-    borderRadius: 20,
-    padding: 24,
-    boxShadow: '0px 8px 18px rgba(0, 0, 0, 0.4)',
+    borderColor: 'rgba(234, 254, 7, 0.2)',
+    borderRadius: 8,
+    padding: layout.cardPadding(width)
   },
   sidebarHeader: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 8,
-    marginBottom: 6,
+    marginBottom: 6
   },
   sidebarLiveDot: {
     width: 6,
     height: 6,
     borderRadius: 3,
-    backgroundColor: colors.primary,
+    backgroundColor: colors.primary
   },
   sidebarTitle: {
     color: colors.text,
     fontSize: 13,
     fontWeight: '800',
     fontFamily: fonts.display,
-    letterSpacing: 1,
+    letterSpacing: 1
   },
   sidebarSubtitle: {
     fontFamily: fonts.body,
     color: colors.textMuted,
     fontSize: 12,
     lineHeight: 18,
-    marginBottom: 22,
+    marginBottom: 22
   },
   resourceItem: {
     flexDirection: 'row',
@@ -604,35 +564,35 @@ const makeStyles = (width: number) =>
     borderRadius: 12,
     padding: 12,
     marginBottom: 12,
-    gap: 12,
+    gap: 12
   },
   resourceIconBox: {
     width: 38,
     height: 38,
     borderRadius: 8,
-    backgroundColor: 'rgba(0, 229, 255, 0.1)',
+    backgroundColor: 'rgba(234, 254, 7, 0.1)',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
   resourceInfo: {
-    flex: 1,
+    flex: 1
   },
   resourceName: {
     fontFamily: fonts.bodyBold,
     color: colors.text,
     fontSize: 13,
-    fontWeight: '700',
+    fontWeight: '700'
   },
   resourceMeta: {
     fontFamily: fonts.body,
     color: colors.textMuted,
     fontSize: 10,
-    marginTop: 2,
+    marginTop: 2
   },
   downloadIconBtn: {
     padding: 8,
     borderRadius: 6,
-    backgroundColor: 'rgba(255, 255, 255, 0.05)',
+    backgroundColor: 'rgba(255, 255, 255, 0.05)'
   },
   downloadSuccessBanner: {
     flexDirection: 'row',
@@ -643,30 +603,29 @@ const makeStyles = (width: number) =>
     borderColor: 'rgba(16, 185, 129, 0.3)',
     borderRadius: 8,
     padding: 10,
-    marginTop: 10,
+    marginTop: 10
   },
   downloadSuccessText: {
     fontFamily: fonts.bodyBold,
     color: '#10B981',
     fontSize: 11,
-    fontWeight: '700',
+    fontWeight: '700'
   },
   modalBackdrop: {
     flex: 1,
     backgroundColor: 'rgba(0, 0, 0, 0.85)',
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 20,
+    padding: 20
   },
   modalCard: {
     backgroundColor: '#0A0F1F',
     borderWidth: 1,
-    borderColor: 'rgba(0, 229, 255, 0.3)',
-    borderRadius: 22,
-    padding: 24,
+    borderColor: 'rgba(234, 254, 7, 0.3)',
+    borderRadius: 8,
+    padding: layout.cardPadding(width),
     width: '100%',
-    maxWidth: 540,
-    boxShadow: '0px 16px 28px rgba(0, 0, 0, 0.6)',
+    maxWidth: 540
   },
   modalHeader: {
     flexDirection: 'row',
@@ -674,7 +633,7 @@ const makeStyles = (width: number) =>
     alignItems: 'flex-start',
     borderBottomWidth: 1,
     borderBottomColor: 'rgba(255, 255, 255, 0.08)',
-    paddingBottom: 14,
+    paddingBottom: 14
   },
   modalCategory: {
     color: colors.primary,
@@ -682,20 +641,20 @@ const makeStyles = (width: number) =>
     fontWeight: '800',
     fontFamily: fonts.display,
     letterSpacing: 1,
-    marginBottom: 4,
+    marginBottom: 4
   },
   modalTitle: {
     color: colors.text,
     fontSize: 20,
     fontWeight: '900',
     fontFamily: fonts.display,
-    maxWidth: 400,
+    maxWidth: 400
   },
   closeBtn: {
-    padding: 4,
+    padding: 4
   },
   modalBody: {
-    paddingVertical: 20,
+    paddingVertical: 20
   },
   modalLabel: {
     color: colors.textMuted,
@@ -703,19 +662,19 @@ const makeStyles = (width: number) =>
     fontWeight: '800',
     fontFamily: fonts.display,
     letterSpacing: 1,
-    marginBottom: 6,
+    marginBottom: 6
   },
   modalDesc: {
     fontFamily: fonts.body,
     color: colors.text,
     fontSize: 14,
-    lineHeight: 22,
+    lineHeight: 22
   },
   modalBrief: {
     fontFamily: fonts.body,
     color: colors.textMuted,
     fontSize: 13,
-    lineHeight: 22,
+    lineHeight: 22
   },
   modalMetaRow: {
     flexDirection: 'row',
@@ -723,35 +682,37 @@ const makeStyles = (width: number) =>
     marginTop: 20,
     paddingTop: 16,
     borderTopWidth: 1,
-    borderTopColor: 'rgba(255, 255, 255, 0.06)',
+    borderTopColor: 'rgba(255, 255, 255, 0.06)'
   },
-  modalMetaItem: {},
+  modalMetaItem: {
+
+  },
   modalMetaLabel: {
     fontFamily: fonts.bodyBold,
     color: colors.textMuted,
     fontSize: 11,
     fontWeight: '700',
     letterSpacing: 0.8,
-    marginBottom: 2,
+    marginBottom: 2
   },
   modalMetaVal: {
     fontSize: 13,
     fontWeight: '800',
     fontFamily: fonts.display,
-    color: colors.text,
+    color: colors.text
   },
   modalCloseAction: {
     backgroundColor: colors.primary,
     paddingVertical: 12,
     borderRadius: 10,
     alignItems: 'center',
-    marginTop: 8,
+    marginTop: 8
   },
   modalCloseActionText: {
-    color: '#050912',
+    color: colors.ink,
     fontWeight: '800',
     fontFamily: fonts.display,
     fontSize: 12,
-    letterSpacing: 0.8,
+    letterSpacing: 0.8
   },
 });

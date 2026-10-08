@@ -1,12 +1,16 @@
-import React, { useEffect, useRef, useMemo } from 'react';
-import { ScrollView, View, Text, StyleSheet, Platform, useWindowDimensions, Pressable, Animated, Easing } from 'react-native';
+import { useViewport } from '../theme/useViewport';
+import { layout } from '../theme/layout';
+import PageShell from '../components/PageShell';
+import PageHeader from '../components/PageHeader';
+import { useEffect, useState, useMemo } from 'react';
+import { View, Text, StyleSheet, Platform, Pressable, Animated, Easing } from 'react-native';
 import PageMeta from '../components/PageMeta';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { colors } from '../theme/colors';
 import { fonts } from '../theme/typography';
 import { USE_NATIVE_DRIVER, useReducedMotion } from '../theme/motion';
-import { CheckCircle2, User, Satellite, Radio, Globe, Shield } from '../components/icons';
+import { CheckCircle2, User, Shield } from '../components/icons';
 import { Ionicons } from '@expo/vector-icons';
 
 
@@ -18,12 +22,12 @@ const COMMITTEE_MEMBERS = [
 ];
 
 export default function AboutPage() {
-  const { width } = useWindowDimensions();
+  const { width } = useViewport();
   const styles = useMemo(() => makeStyles(width), [width]);
   const reducedMotion = useReducedMotion();
 
-  const rotateAnim = useRef(new Animated.Value(0)).current;
-  const pulseAnim = useRef(new Animated.Value(1)).current;
+  const [rotateAnim] = useState(() => new Animated.Value(0));
+  const [pulseAnim] = useState(() => new Animated.Value(1));
 
   useEffect(() => {
     if (reducedMotion) return;
@@ -65,7 +69,7 @@ export default function AboutPage() {
   });
 
   return (
-    <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+    <PageShell style={styles.container} contentContainerStyle={styles.contentContainer}>
       <PageMeta
         title="About | NASA Space Apps Sri Lanka"
         description="The organising committee, the Kandy hub, and the national roadmap behind NASA Space Apps Challenge Sri Lanka."
@@ -74,20 +78,7 @@ export default function AboutPage() {
       <Navbar />
 
       {/* Hero Section */}
-      <View style={styles.heroSection}>
-        <View style={styles.badge}>
-          <Satellite size={14} color={colors.primary} />
-          <Text style={styles.badgeText}>GLOBAL MISSION • LOCAL ROOTS</Text>
-        </View>
-
-        <Text style={styles.heroTitle}>
-          ABOUT NASA SPACE APPS <Text style={styles.heroTitleCyan}>SRI LANKA</Text>
-        </Text>
-        <View style={styles.heroDivider} />
-        <Text style={styles.heroDescription}>
-          NASA Space Apps is the world's largest annual global hackathon. In Sri Lanka, the Kandy Local Event serves as the strategic core, anchoring a national roadmap to foster space innovation, open science, and technological excellence across all 9 provinces.
-        </Text>
-      </View>
+      <PageHeader number="01" eyebrow="THE MISSION" title={"A local spark.\nA global mission."} description="Meet the community behind NASA Space Apps Kandy and our vision for a more connected, curious Sri Lanka." />
 
       {/* Strategic Vision Section (2-Column) */}
       <View style={styles.visionSection}>
@@ -97,7 +88,7 @@ export default function AboutPage() {
             <View style={styles.telemetryTopBar}>
               <View style={styles.telemetryStatusGroup}>
                 <View style={styles.liveGreenDot} />
-                <Text style={styles.telemetryTag}>ORBITAL TELEMETRY • LIVE</Text>
+                <Text style={styles.telemetryTag}>ORBITAL TELEMETRY • SIMULATION</Text>
               </View>
               <Text style={styles.telemetryCoords}>KANDY_RADAR_01</Text>
             </View>
@@ -148,7 +139,7 @@ export default function AboutPage() {
           <View style={styles.coralDivider} />
 
           <Text style={styles.visionDescription}>
-            Our mission is to establish Sri Lanka as a recognized regional incubator in space-tech innovation. By leveraging NASA's Open Data archives, we empower youth to build scalable technologies addressing both terrestrial and planetary challenges.
+            Our mission is to establish Sri Lanka as a recognized regional incubator in space-tech innovation. By leveraging NASA&apos;s Open Data archives, we empower youth to build scalable technologies addressing both terrestrial and planetary challenges.
           </Text>
 
           <View style={styles.featureList}>
@@ -202,7 +193,7 @@ export default function AboutPage() {
           MEET OUR <Text style={styles.heroTitleCyan}>ORGANIZING COMMITTEE</Text>
         </Text>
         <Text style={styles.committeeSubtitle}>
-          THE VISIONARIES BEHIND SRI LANKA'S SPACE-TECH MOVEMENT
+          THE VISIONARIES BEHIND SRI LANKA&apos;S SPACE-TECH MOVEMENT
         </Text>
 
         <View style={styles.gridContainer}>
@@ -228,7 +219,7 @@ export default function AboutPage() {
       </View>
 
       <Footer />
-    </ScrollView>
+    </PageShell>
   );
 }
 
@@ -236,119 +227,85 @@ const makeStyles = (width: number) =>
   StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Platform.OS === 'web' ? 'transparent' : colors.background,
+    backgroundColor: 'transparent'
   },
   contentContainer: {
-    flexGrow: 1,
-  },
-  heroSection: {
-    alignItems: 'center',
-    paddingVertical: 70,
-    paddingHorizontal: 20,
-    maxWidth: 900,
-    alignSelf: 'center',
+    flexGrow: 1
   },
   badge: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 8,
-    backgroundColor: 'rgba(0, 229, 255, 0.08)',
+    backgroundColor: 'rgba(234, 254, 7, 0.08)',
     borderWidth: 1,
-    borderColor: 'rgba(0, 229, 255, 0.25)',
+    borderColor: 'rgba(234, 254, 7, 0.25)',
     paddingHorizontal: 12,
     paddingVertical: 5,
     borderRadius: 20,
-    marginBottom: 20,
+    marginBottom: 20
   },
   badgeText: {
     color: colors.primary,
     fontSize: 10,
     fontWeight: '800',
     fontFamily: fonts.display,
-    letterSpacing: 1.2,
-  },
-  heroTitle: {
-    fontSize: width > 768 ? 44 : width > 480 ? 32 : 27,
-    fontWeight: '900',
-    fontFamily: fonts.display,
-    color: colors.text,
-    textAlign: 'center',
-    letterSpacing: -0.5,
+    letterSpacing: 1.2
   },
   heroTitleCyan: {
-    color: colors.primary,
-    textShadow: '0px 0px 15px rgba(0, 229, 255, 0.4)',
-  },
-  heroDivider: {
-    width: 60,
-    height: 3,
-    backgroundColor: colors.primary,
-    marginVertical: 22,
-    borderRadius: 2,
-  },
-  heroDescription: {
-    fontFamily: fonts.body,
-    color: colors.textMuted,
-    fontSize: 15,
-    textAlign: 'center',
-    lineHeight: 26,
+    color: colors.primary
   },
   visionSection: {
+    ...layout.section(width),
     flexDirection: width > 900 ? 'row' : 'column',
-    paddingHorizontal: Platform.OS === 'web' ? '5%' : 20,
-    paddingVertical: 60,
     alignItems: 'center',
     justifyContent: 'space-between',
-    maxWidth: 1300,
-    alignSelf: 'center',
-    width: '100%',
-    gap: 40,
+    gap: layout.gap(width)
   },
   visionGraphicContainer: {
     flex: 1,
     width: '100%',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   telemetryBox: {
     width: '100%',
     maxWidth: 440,
-    backgroundColor: 'rgba(10, 15, 31, 0.85)',
+    backgroundColor: 'rgba(11, 32, 81, 0.96)',
     borderRadius: 24,
     borderWidth: 1,
-    borderColor: 'rgba(0, 229, 255, 0.25)',
-    padding: 24,
-    boxShadow: '0px 16px 28px rgba(0, 0, 0, 0.5)',
+    borderColor: 'rgba(234, 254, 7, 0.25)',
+    padding: 24
   },
   telemetryTopBar: {
-    flexDirection: 'row',
+    flexDirection: width < 600 ? 'column' : 'row',
+    gap: 12,
     justifyContent: 'space-between',
-    alignItems: 'center',
+    alignItems: width < 600 ? 'flex-start' : 'center',
     borderBottomWidth: 1,
     borderBottomColor: 'rgba(255, 255, 255, 0.08)',
-    paddingBottom: 12,
+    paddingBottom: 12
   },
   telemetryStatusGroup: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 6,
+    gap: 6
   },
   liveGreenDot: {
     width: 6,
     height: 6,
     borderRadius: 3,
-    backgroundColor: '#10B981',
+    backgroundColor: '#10B981'
   },
   telemetryTag: {
     color: '#10B981',
     fontSize: 11,
     fontWeight: '800',
     fontFamily: fonts.display,
-    letterSpacing: 0.8,
+    letterSpacing: 0.8
   },
   telemetryCoords: {
     color: colors.textMuted,
     fontSize: 11,
-    fontFamily: Platform.OS === 'ios' ? 'Courier' : 'monospace',
+    fontFamily: Platform.OS === 'ios' ? 'Courier' : 'monospace'
   },
   radarContainer: {
     width: 240,
@@ -359,7 +316,7 @@ const makeStyles = (width: number) =>
     position: 'relative',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'rgba(5, 9, 18, 0.6)',
+    backgroundColor: 'rgba(7, 23, 63, 0.6)'
   },
   radarOuterCircle: {
     position: 'absolute',
@@ -367,7 +324,7 @@ const makeStyles = (width: number) =>
     height: 240,
     borderRadius: 120,
     borderWidth: 1,
-    borderColor: 'rgba(0, 229, 255, 0.2)',
+    borderColor: 'rgba(234, 254, 7, 0.2)'
   },
   radarMidCircle: {
     position: 'absolute',
@@ -376,7 +333,7 @@ const makeStyles = (width: number) =>
     borderRadius: 80,
     borderWidth: 1,
     borderStyle: 'dashed',
-    borderColor: 'rgba(0, 229, 255, 0.25)',
+    borderColor: 'rgba(234, 254, 7, 0.25)'
   },
   radarInnerCircle: {
     position: 'absolute',
@@ -384,54 +341,55 @@ const makeStyles = (width: number) =>
     height: 80,
     borderRadius: 40,
     borderWidth: 1,
-    borderColor: 'rgba(0, 229, 255, 0.35)',
+    borderColor: 'rgba(234, 254, 7, 0.35)'
   },
   radarGridH: {
     position: 'absolute',
     width: '100%',
     height: 1,
-    backgroundColor: 'rgba(0, 229, 255, 0.1)',
+    backgroundColor: 'rgba(234, 254, 7, 0.1)'
   },
   radarGridV: {
     position: 'absolute',
     height: '100%',
     width: 1,
-    backgroundColor: 'rgba(0, 229, 255, 0.1)',
+    backgroundColor: 'rgba(234, 254, 7, 0.1)'
   },
   rotatingSweep: {
     position: 'absolute',
     width: 240,
     height: 240,
-    alignItems: 'center',
+    alignItems: 'center'
   },
   sweepLine: {
     width: 2,
     height: 120,
-    backgroundColor: 'rgba(0, 229, 255, 0.5)',
+    backgroundColor: 'rgba(234, 254, 7, 0.5)'
   },
   targetDot: {
     width: 12,
     height: 12,
     borderRadius: 6,
-    backgroundColor: colors.primary,
-    boxShadow: '0px 0px 10px rgba(0, 229, 255, 1)',
+    backgroundColor: colors.primary
   },
   satelliteEcho: {
     position: 'absolute',
     width: 6,
     height: 6,
     borderRadius: 3,
-    backgroundColor: colors.primary,
+    backgroundColor: colors.primary
   },
   telemetryFooter: {
-    flexDirection: 'row',
+    flexDirection: width < 600 ? 'column' : 'row',
+    gap: 20,
     justifyContent: 'space-between',
     borderTopWidth: 1,
     borderTopColor: 'rgba(255, 255, 255, 0.08)',
-    paddingTop: 14,
+    paddingTop: 14
   },
   telemetryStat: {
-    alignItems: 'center',
+    flex: 1,
+    alignItems: width < 600 ? 'flex-start' : 'center'
   },
   telemetryLabel: {
     fontFamily: fonts.bodyBold,
@@ -439,73 +397,73 @@ const makeStyles = (width: number) =>
     fontSize: 11,
     fontWeight: '700',
     letterSpacing: 0.8,
-    marginBottom: 4,
+    marginBottom: 4
   },
   telemetryValue: {
     color: colors.text,
     fontSize: 10,
     fontWeight: '800',
     fontFamily: fonts.display,
-    letterSpacing: 0.5,
+    letterSpacing: 0.5
   },
   visionContent: {
-    flex: 1,
+    flex: 1
   },
   visionTitle: {
     fontSize: width > 768 ? 38 : 28,
     fontWeight: '900',
     fontFamily: fonts.display,
     color: colors.text,
-    lineHeight: width > 768 ? 46 : 36,
+    lineHeight: width > 768 ? 46 : 36
   },
   visionTitleCyan: {
-    color: colors.primary,
+    color: colors.primary
   },
   coralDivider: {
     width: 50,
     height: 3,
     backgroundColor: colors.secondary,
     marginVertical: 18,
-    borderRadius: 2,
+    borderRadius: 2
   },
   visionDescription: {
     fontFamily: fonts.body,
     color: colors.textMuted,
     fontSize: 15,
     lineHeight: 25,
-    marginBottom: 28,
+    marginBottom: 28
   },
   featureList: {
-    gap: 18,
+    gap: 18
   },
   featureItem: {
     flexDirection: 'row',
     alignItems: 'flex-start',
-    gap: 14,
+    gap: 14
   },
   iconCircle: {
-    marginTop: 2,
+    marginTop: 2
   },
   featureTextContainer: {
-    flex: 1,
+    flex: 1
   },
   featureTitle: {
     fontFamily: fonts.bodyBold,
     color: colors.text,
     fontSize: 15,
     fontWeight: '700',
-    marginBottom: 4,
+    marginBottom: 4
   },
   featureDesc: {
     fontFamily: fonts.body,
     color: colors.textMuted,
     fontSize: 13,
-    lineHeight: 20,
+    lineHeight: 20
   },
   committeeSection: {
-    paddingVertical: 70,
-    paddingHorizontal: 20,
+    ...layout.section(width),
     alignItems: 'center',
+    gap: layout.gap(width)
   },
   committeeTitle: {
     fontSize: 30,
@@ -513,7 +471,7 @@ const makeStyles = (width: number) =>
     fontFamily: fonts.display,
     color: colors.text,
     textAlign: 'center',
-    letterSpacing: 0.5,
+    letterSpacing: 0.5
   },
   committeeSubtitle: {
     fontFamily: fonts.bodyBold,
@@ -523,7 +481,7 @@ const makeStyles = (width: number) =>
     marginTop: 10,
     marginBottom: 45,
     textAlign: 'center',
-    fontWeight: '700',
+    fontWeight: '700'
   },
   gridContainer: {
     flexDirection: 'row',
@@ -531,31 +489,30 @@ const makeStyles = (width: number) =>
     justifyContent: 'center',
     gap: 20,
     maxWidth: 1200,
-    width: '100%',
+    width: '100%'
   },
   card: {
-    backgroundColor: 'rgba(10, 15, 31, 0.8)',
+    backgroundColor: 'rgba(11, 32, 81, 0.96)',
     borderWidth: 1,
     borderColor: 'rgba(255, 255, 255, 0.08)',
-    borderRadius: 18,
-    padding: 26,
+    borderRadius: 8,
+    padding: layout.cardPadding(width),
     width: width > 900 ? 260 : width > 600 ? '45%' : '100%',
-    alignItems: 'center',
-    boxShadow: '0px 8px 16px rgba(0, 0, 0, 0.3)',
+    alignItems: 'center'
   },
   cardHighlight: {
-    borderColor: 'rgba(0, 229, 255, 0.35)',
+    borderColor: 'rgba(234, 254, 7, 0.35)'
   },
   avatar: {
     width: 80,
     height: 80,
     borderRadius: 40,
-    backgroundColor: 'rgba(0, 229, 255, 0.08)',
+    backgroundColor: 'rgba(234, 254, 7, 0.08)',
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 16,
     borderWidth: 1,
-    borderColor: 'rgba(0, 229, 255, 0.25)',
+    borderColor: 'rgba(234, 254, 7, 0.25)'
   },
   cardName: {
     color: colors.text,
@@ -563,7 +520,7 @@ const makeStyles = (width: number) =>
     fontWeight: '800',
     fontFamily: fonts.display,
     marginBottom: 4,
-    textAlign: 'center',
+    textAlign: 'center'
   },
   cardRole: {
     color: colors.primary,
@@ -572,23 +529,23 @@ const makeStyles = (width: number) =>
     fontFamily: fonts.display,
     letterSpacing: 1,
     marginBottom: 4,
-    textAlign: 'center',
+    textAlign: 'center'
   },
   cardAffiliation: {
     fontFamily: fonts.body,
     color: colors.textMuted,
     fontSize: 11,
     marginBottom: 18,
-    textAlign: 'center',
+    textAlign: 'center'
   },
   linkedinBtn: {
     width: 36,
     height: 36,
     borderRadius: 18,
-    backgroundColor: 'rgba(0, 229, 255, 0.08)',
+    backgroundColor: 'rgba(234, 254, 7, 0.08)',
     borderWidth: 1,
-    borderColor: 'rgba(0, 229, 255, 0.3)',
+    borderColor: 'rgba(234, 254, 7, 0.3)',
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'center'
   },
 });

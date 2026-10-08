@@ -1,0 +1,140 @@
+{
+  "desktop": [
+    {
+      "documentWidth": 1440,
+      "headingLeft": 136,
+      "path": "/",
+      "width": 1440
+    },
+    {
+      "documentWidth": 1440,
+      "headingLeft": 136,
+      "path": "/register",
+      "width": 1440
+    },
+    {
+      "documentWidth": 1440,
+      "headingLeft": 136,
+      "path": "/challenges",
+      "width": 1440
+    },
+    {
+      "documentWidth": 1440,
+      "headingLeft": 136,
+      "path": "/about",
+      "width": 1440
+    },
+    {
+      "documentWidth": 1440,
+      "headingLeft": 136,
+      "path": "/join",
+      "width": 1440
+    },
+    {
+      "documentWidth": 1440,
+      "headingLeft": 136,
+      "path": "/ambassadors",
+      "width": 1440
+    },
+    {
+      "documentWidth": 1440,
+      "headingLeft": 136,
+      "path": "/events",
+      "width": 1440
+    },
+    {
+      "documentWidth": 1440,
+      "headingLeft": 136,
+      "path": "/news",
+      "width": 1440
+    },
+    {
+      "documentWidth": 1440,
+      "headingLeft": 136,
+      "path": "/sponsors",
+      "width": 1440
+    },
+    {
+      "documentWidth": 1440,
+      "headingLeft": 136,
+      "path": "/contact",
+      "width": 1440
+    }
+  ],
+  "mobile": [
+    {
+      "documentWidth": 320,
+      "headingLeft": 24,
+      "overflow": [],
+      "path": "/",
+      "width": 320
+    },
+    {
+      "documentWidth": 320,
+      "headingLeft": 24,
+      "overflow": [],
+      "path": "/register",
+      "width": 320
+    },
+    {
+      "documentWidth": 320,
+      "headingLeft": 24,
+      "overflow": [
+        "ALL\nAI & ML\nCLIMATE TECH\nASTROPHYSICS\nOPEN DATA",
+        "ASTROPHYSICS",
+        "OPEN DATA"
+      ],
+      "path": "/challenges",
+      "width": 320
+    },
+    {
+      "documentWidth": 320,
+      "headingLeft": 24,
+      "overflow": [],
+      "path": "/about",
+      "width": 320
+    },
+    {
+      "documentWidth": 320,
+      "headingLeft": 24,
+      "overflow": [],
+      "path": "/join",
+      "width": 320
+    },
+    {
+      "documentWidth": 320,
+      "headingLeft": 24,
+      "overflow": [],
+      "path": "/ambassadors",
+      "width": 320
+    },
+    {
+      "documentWidth": 320,
+      "headingLeft": 24,
+      "overflow": [],
+      "path": "/events",
+      "width": 320
+    },
+    {
+      "documentWidth": 320,
+      "headingLeft": 24,
+      "overflow": [],
+      "path": "/news",
+      "width": 320
+    },
+    {
+      "documentWidth": 320,
+      "headingLeft": 24,
+      "overflow": [],
+      "path": "/sponsors",
+      "width": 320
+    },
+    {
+      "documentWidth": 320,
+      "headingLeft": 24,
+      "overflow": [],
+      "path": "/contact",
+      "width": 320
+    }
+  ]
+}

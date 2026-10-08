@@ -1,6 +1,6 @@
 import { Platform } from 'react-native';
 
-// Design system fonts: Space Grotesk for display/headlines, Plus Jakarta Sans for body.
+// Official Space Apps fonts: Fira Sans for headlines, Overpass for body.
 // On web the webfont arrives a moment after first paint, so each family carries a system
 // fallback stack — without it the browser falls back to its serif default and the first
 // frame looks nothing like the design. Native resolves the single registered name.
@@ -10,8 +10,9 @@ const stack = (family: string, fallback: string) =>
 const SANS = '"Segoe UI", Roboto, system-ui, -apple-system, Helvetica, Arial, sans-serif';
 
 export const fonts = {
-  display: stack('SpaceGrotesk_700Bold', SANS),
-  body: stack('PlusJakartaSans_400Regular', SANS),
-  bodyMedium: stack('PlusJakartaSans_500Medium', SANS),
-  bodyBold: stack('PlusJakartaSans_700Bold', SANS),
+  display: stack('FiraSans_900Black', SANS),
+  heading: stack('FiraSans_700Bold', SANS),
+  body: stack('Overpass_400Regular', SANS),
+  bodyMedium: stack('Overpass_500Medium', SANS),
+  bodyBold: stack('Overpass_700Bold', SANS),
 };

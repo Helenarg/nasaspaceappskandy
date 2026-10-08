@@ -48,7 +48,7 @@ export default FormField;
 
 const styles = StyleSheet.create({
   group: {
-    marginBottom: 18,
+    marginBottom: 24,
   },
   label: {
     color: colors.text,
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   requiredMark: {
-    color: colors.secondary,
+    color: colors.error,
   },
   hint: {
     color: colors.textMuted,
@@ -69,28 +69,28 @@ const styles = StyleSheet.create({
     marginTop: -4,
   },
   input: {
-    backgroundColor: 'rgba(5, 9, 18, 0.8)',
+    backgroundColor: colors.background,
     borderWidth: 1,
-    borderColor: 'rgba(255, 255, 255, 0.12)',
-    borderRadius: 10,
-    paddingHorizontal: 14,
-    paddingVertical: 13,
+    borderColor: 'rgba(255, 255, 255, 0.28)',
+    borderRadius: 4,
+    paddingHorizontal: 16,
+    paddingVertical: 16,
     color: colors.text,
-    fontSize: 14,
+    fontSize: 16,
     fontFamily: fonts.body,
-    minHeight: 48,
+    minHeight: 56,
   },
   textArea: {
-    minHeight: 120,
+    minHeight: 144,
     paddingTop: 13,
     textAlignVertical: 'top',
   },
   inputError: {
-    borderColor: colors.secondary,
+    borderColor: colors.error,
     backgroundColor: 'rgba(255, 107, 53, 0.06)',
   },
   error: {
-    color: colors.secondary,
+    color: colors.error,
     fontSize: 12,
     fontFamily: fonts.bodyMedium,
     marginTop: 6,

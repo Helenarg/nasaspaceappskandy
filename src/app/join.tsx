@@ -1,15 +1,9 @@
-import React, { useCallback, useMemo, useRef, useState } from 'react';
-import {
-  ScrollView,
-  View,
-  Text,
-  StyleSheet,
-  Platform,
-  useWindowDimensions,
-  Pressable,
-  TextInput,
-  ActivityIndicator,
-} from 'react-native';
+import { useViewport } from '../theme/useViewport';
+import { layout } from '../theme/layout';
+import PageShell from '../components/PageShell';
+import PageHeader from '../components/PageHeader';
+import { useCallback, useMemo, useRef, useState } from 'react';
+import { View, Text, StyleSheet, Platform, Pressable, TextInput, ActivityIndicator } from 'react-native';
 import PageMeta from '../components/PageMeta';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -19,17 +13,7 @@ import Honeypot from '../components/Honeypot';
 import { useFormSubmit } from '../lib/useFormSubmit';
 import { isEmail, isPhone, required, type Errors } from '../lib/validation';
 import { fonts } from '../theme/typography';
-import { 
-  Users, 
-  BrainCircuit, 
-  Laptop, 
-  Send, 
-  CheckCircle2, 
-  Clock, 
-  ShieldCheck, 
-  Sparkles, 
-  Check 
-} from '../components/icons';
+import { Users, BrainCircuit, Laptop, Send, CheckCircle2, Check } from '../components/icons';
 
 
 const VOLUNTEER_SKILLS = [
@@ -57,7 +41,7 @@ const DATES = [
 ];
 
 export default function JoinUsPage() {
-  const { width } = useWindowDimensions();
+  const { width } = useViewport();
   const styles = useMemo(() => makeStyles(width), [width]);
 
   const [activeTab, setActiveTab] = useState<'volunteer' | 'mentor'>('volunteer');
@@ -116,7 +100,7 @@ export default function JoinUsPage() {
   const currentSkills = activeTab === 'volunteer' ? VOLUNTEER_SKILLS : MENTOR_SKILLS;
 
   return (
-    <ScrollView
+    <PageShell
       style={styles.container}
       contentContainerStyle={styles.contentContainer}
       keyboardShouldPersistTaps="handled"
@@ -131,21 +115,7 @@ export default function JoinUsPage() {
       <Navbar />
 
       {/* Header Section */}
-      <View style={styles.headerSection}>
-        <View style={styles.badge}>
-          <Sparkles size={14} color={colors.primary} />
-          <Text style={styles.badgeText}>GET INVOLVED • VOLUNTEERS & MENTORS</Text>
-        </View>
-
-        <Text style={styles.headerTitle}>
-          JOIN THE SRI LANKAN <Text style={styles.headerTitleCyan}>SPACE MISSION</Text>
-        </Text>
-        <Text style={styles.headerSubtitle}>
-          Whether you want to coordinate on-ground operations or guide student teams through NASA data APIs, your expertise powers the Kandy Hackathon.
-        </Text>
-
-        {/* Tab Toggle Bar */}
-        <View style={styles.tabToggleBar}>
+      <PageHeader number="05" eyebrow="VOLUNTEERS & MENTORS" title={"Your experience.\nTheir next breakthrough."} description="Share your time, skills, and perspective. Help make the Kandy hackathon an inspiring experience for everyone."><View style={styles.tabToggleBar}>
           <Pressable
             accessibilityRole="button"
             style={[styles.tabButton, activeTab === 'volunteer' && styles.tabButtonActive]}
@@ -154,7 +124,7 @@ export default function JoinUsPage() {
               setSelectedSkills([]);
             }}
           >
-            <Users size={16} color={activeTab === 'volunteer' ? '#050912' : colors.textMuted} />
+            <Users size={16} color={activeTab === 'volunteer' ? colors.ink : colors.textMuted} />
             <Text
               style={[
                 styles.tabButtonText,
@@ -173,7 +143,7 @@ export default function JoinUsPage() {
               setSelectedSkills([]);
             }}
           >
-            <BrainCircuit size={16} color={activeTab === 'mentor' ? '#050912' : colors.textMuted} />
+            <BrainCircuit size={16} color={activeTab === 'mentor' ? colors.ink : colors.textMuted} />
             <Text
               style={[
                 styles.tabButtonText,
@@ -183,8 +153,7 @@ export default function JoinUsPage() {
               APPLY AS MENTOR / JUDGE
             </Text>
           </Pressable>
-        </View>
-      </View>
+        </View></PageHeader>
 
       {/* Main Split Content */}
       <View style={styles.mainLayout}>
@@ -215,8 +184,8 @@ export default function JoinUsPage() {
               <View style={styles.laptopFrame}>
                 <Laptop size={36} color={activeTab === 'volunteer' ? colors.primary : colors.secondary} />
                 <View style={styles.codeSnippetBox}>
-                  <Text style={styles.codeLine}>&gt; NASA_API.init(mode: "OPEN_DATA")</Text>
-                  <Text style={styles.codeLine}>&gt; connect(hub: "KANDY_2026")</Text>
+                  <Text style={styles.codeLine}>&gt; NASA_API.init(mode: &quot;OPEN_DATA&quot;)</Text>
+                  <Text style={styles.codeLine}>&gt; connect(hub: &quot;KANDY_2026&quot;)</Text>
                   <Text style={[styles.codeLine, { color: colors.primary }]}>&gt; STATUS: 9 PROVINCES READY</Text>
                 </View>
               </View>
@@ -445,7 +414,7 @@ export default function JoinUsPage() {
       </View>
 
       <Footer />
-    </ScrollView>
+    </PageShell>
   );
 }
 
@@ -453,71 +422,20 @@ const makeStyles = (width: number) =>
   StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Platform.OS === 'web' ? 'transparent' : colors.background,
+    backgroundColor: 'transparent'
   },
   contentContainer: {
-    flexGrow: 1,
-  },
-  headerSection: {
-    paddingTop: 60,
-    paddingBottom: 30,
-    paddingHorizontal: Platform.OS === 'web' ? '5%' : 16,
-    maxWidth: 900,
-    alignSelf: 'center',
-    alignItems: 'center',
-    width: '100%',
-  },
-  badge: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-    backgroundColor: 'rgba(0, 229, 255, 0.08)',
-    borderWidth: 1,
-    borderColor: 'rgba(0, 229, 255, 0.25)',
-    paddingHorizontal: 12,
-    paddingVertical: 5,
-    borderRadius: 20,
-    marginBottom: 20,
-  },
-  badgeText: {
-    color: colors.primary,
-    fontSize: 10,
-    fontWeight: '800',
-    fontFamily: fonts.display,
-    letterSpacing: 1.2,
-  },
-  headerTitle: {
-    fontSize: width > 768 ? 44 : width > 480 ? 32 : 27,
-    fontWeight: '900',
-    fontFamily: fonts.display,
-    color: colors.text,
-    textAlign: 'center',
-    letterSpacing: -0.5,
-    marginBottom: 14,
-  },
-  headerTitleCyan: {
-    color: colors.primary,
-    textShadow: '0px 0px 16px rgba(0, 229, 255, 0.4)',
-  },
-  headerSubtitle: {
-    fontFamily: fonts.body,
-    color: colors.textMuted,
-    fontSize: 15,
-    textAlign: 'center',
-    lineHeight: 25,
-    maxWidth: 680,
-    marginBottom: 30,
+    flexGrow: 1
   },
   tabToggleBar: {
-    // Stacks below 480px: the two labels do not fit side by side on a phone.
     flexDirection: width > 480 ? 'row' : 'column',
     alignSelf: width > 480 ? 'center' : 'stretch',
-    backgroundColor: 'rgba(10, 15, 31, 0.85)',
+    backgroundColor: 'rgba(11, 32, 81, 0.96)',
     borderWidth: 1,
     borderColor: 'rgba(255, 255, 255, 0.1)',
     borderRadius: width > 480 ? 30 : 18,
     padding: 6,
-    gap: 8,
+    gap: 8
   },
   tabButton: {
     flexDirection: 'row',
@@ -526,62 +444,57 @@ const makeStyles = (width: number) =>
     gap: 8,
     paddingHorizontal: 18,
     paddingVertical: 12,
-    borderRadius: width > 480 ? 24 : 14,
+    borderRadius: width > 480 ? 24 : 14
   },
   tabButtonActive: {
-    backgroundColor: colors.primary,
+    backgroundColor: colors.primary
   },
   tabButtonActiveCoral: {
-    backgroundColor: colors.secondary,
+    backgroundColor: colors.secondary
   },
   tabButtonText: {
     color: colors.textMuted,
     fontSize: 11,
     fontWeight: '800',
     fontFamily: fonts.display,
-    letterSpacing: 0.8,
+    letterSpacing: 0.8
   },
   tabButtonTextActive: {
-    color: '#050912',
+    color: colors.ink
   },
   mainLayout: {
+    ...layout.section(width),
     flexDirection: width > 900 ? 'row' : 'column',
-    paddingHorizontal: Platform.OS === 'web' ? '5%' : 16,
-    paddingVertical: 40,
-    maxWidth: 1300,
-    alignSelf: 'center',
-    width: '100%',
-    gap: 40,
+    gap: layout.gap(width)
   },
   leftCol: {
-    flex: width > 900 ? 1.1 : undefined,
+    flex: width > 900 ? 1.1 : undefined
   },
   roleVisualCard: {
-    backgroundColor: 'rgba(10, 15, 31, 0.85)',
+    backgroundColor: 'rgba(11, 32, 81, 0.96)',
     borderWidth: 1,
     borderColor: 'rgba(255, 255, 255, 0.08)',
-    borderRadius: 24,
-    padding: 30,
-    boxShadow: '0px 10px 20px rgba(0, 0, 0, 0.4)',
+    borderRadius: 8,
+    padding: layout.cardPadding(width)
   },
   roleCardTop: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 8,
-    marginBottom: 14,
+    marginBottom: 14
   },
   liveRoleDot: {
     width: 6,
     height: 6,
     borderRadius: 3,
-    backgroundColor: colors.primary,
+    backgroundColor: colors.primary
   },
   roleCardTag: {
     color: colors.primary,
     fontSize: 10,
     fontWeight: '800',
     fontFamily: fonts.display,
-    letterSpacing: 1.2,
+    letterSpacing: 1.2
   },
   roleCardTitle: {
     color: colors.text,
@@ -589,67 +502,66 @@ const makeStyles = (width: number) =>
     fontWeight: '900',
     fontFamily: fonts.display,
     lineHeight: 30,
-    marginBottom: 12,
+    marginBottom: 12
   },
   roleCardDesc: {
     fontFamily: fonts.body,
     color: colors.textMuted,
     fontSize: 14,
     lineHeight: 22,
-    marginBottom: 26,
+    marginBottom: 26
   },
   mentorGraphicBox: {
-    backgroundColor: 'rgba(5, 9, 18, 0.9)',
+    backgroundColor: 'rgba(7, 23, 63, 0.9)',
     borderWidth: 1,
-    borderColor: 'rgba(0, 229, 255, 0.2)',
+    borderColor: 'rgba(234, 254, 7, 0.2)',
     borderRadius: 16,
     padding: 20,
-    marginBottom: 26,
+    marginBottom: 26
   },
   laptopFrame: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 16,
+    gap: 16
   },
   codeSnippetBox: {
     flex: 1,
     backgroundColor: 'rgba(0, 0, 0, 0.4)',
     borderRadius: 8,
-    padding: 10,
+    padding: 10
   },
   codeLine: {
     color: colors.textMuted,
     fontSize: 10,
     fontFamily: Platform.OS === 'ios' ? 'Courier' : 'monospace',
-    lineHeight: 16,
+    lineHeight: 16
   },
   perksList: {
     gap: 14,
     borderTopWidth: 1,
     borderTopColor: 'rgba(255, 255, 255, 0.06)',
-    paddingTop: 20,
+    paddingTop: 20
   },
   perkItem: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 12,
+    gap: 12
   },
   perkText: {
     fontFamily: fonts.bodyMedium,
     color: colors.text,
     fontSize: 13,
-    fontWeight: '600',
+    fontWeight: '600'
   },
   rightCol: {
-    flex: width > 900 ? 1.3 : undefined,
+    flex: width > 900 ? 1.3 : undefined
   },
   formCard: {
     backgroundColor: 'rgba(10, 15, 31, 0.9)',
     borderWidth: 1,
-    borderColor: 'rgba(0, 229, 255, 0.25)',
-    borderRadius: 24,
-    padding: 28,
-    boxShadow: '0px 16px 30px rgba(0, 0, 0, 0.5)',
+    borderColor: 'rgba(234, 254, 7, 0.25)',
+    borderRadius: 8,
+    padding: layout.cardPadding(width)
   },
   formTitle: {
     color: colors.text,
@@ -657,16 +569,16 @@ const makeStyles = (width: number) =>
     fontWeight: '900',
     fontFamily: fonts.display,
     letterSpacing: -0.3,
-    marginBottom: 6,
+    marginBottom: 6
   },
   formSub: {
     fontFamily: fonts.body,
     color: colors.textMuted,
     fontSize: 13,
-    marginBottom: 24,
+    marginBottom: 24
   },
   inputGroup: {
-    marginBottom: 16,
+    marginBottom: 16
   },
   inputLabel: {
     color: colors.textMuted,
@@ -674,21 +586,10 @@ const makeStyles = (width: number) =>
     fontWeight: '800',
     fontFamily: fonts.display,
     letterSpacing: 1,
-    marginBottom: 8,
-  },
-  textInput: {
-    fontFamily: fonts.body,
-    backgroundColor: 'rgba(255, 255, 255, 0.04)',
-    borderWidth: 1,
-    borderColor: 'rgba(255, 255, 255, 0.12)',
-    borderRadius: 10,
-    paddingHorizontal: 14,
-    paddingVertical: 12,
-    color: colors.text,
-    fontSize: 14,
+    marginBottom: 8
   },
   checkboxGroup: {
-    gap: 8,
+    gap: 8
   },
   skillChip: {
     flexDirection: 'row',
@@ -697,13 +598,14 @@ const makeStyles = (width: number) =>
     backgroundColor: 'rgba(255, 255, 255, 0.03)',
     borderWidth: 1,
     borderColor: 'rgba(255, 255, 255, 0.08)',
-    borderRadius: 8,
+    borderRadius: 4,
     paddingVertical: 8,
     paddingHorizontal: 12,
+    minHeight: 44
   },
   skillChipActive: {
-    backgroundColor: 'rgba(0, 229, 255, 0.1)',
-    borderColor: 'rgba(0, 229, 255, 0.35)',
+    backgroundColor: 'rgba(234, 254, 7, 0.1)',
+    borderColor: 'rgba(234, 254, 7, 0.35)'
   },
   miniCheck: {
     width: 16,
@@ -712,28 +614,28 @@ const makeStyles = (width: number) =>
     borderWidth: 1,
     borderColor: 'rgba(255, 255, 255, 0.2)',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
   miniCheckActive: {
     backgroundColor: colors.primary,
-    borderColor: colors.primary,
+    borderColor: colors.primary
   },
   skillChipText: {
     fontFamily: fonts.body,
     color: colors.textMuted,
-    fontSize: 12,
+    fontSize: 12
   },
   skillChipTextActive: {
     color: colors.text,
-    fontWeight: '700',
+    fontWeight: '700'
   },
   datesList: {
-    gap: 10,
+    gap: 10
   },
   dateRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 10,
+    gap: 10
   },
   dateCheckbox: {
     width: 18,
@@ -743,16 +645,16 @@ const makeStyles = (width: number) =>
     borderColor: 'rgba(255, 255, 255, 0.2)',
     backgroundColor: 'rgba(255, 255, 255, 0.05)',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
   dateCheckboxActive: {
     backgroundColor: colors.primary,
-    borderColor: colors.primary,
+    borderColor: colors.primary
   },
   dateLabel: {
     fontFamily: fonts.body,
     color: colors.text,
-    fontSize: 12,
+    fontSize: 12
   },
   submitBtn: {
     backgroundColor: colors.primary,
@@ -760,33 +662,32 @@ const makeStyles = (width: number) =>
     alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: 15,
-    borderRadius: 12,
-    boxShadow: '0px 0px 16px rgba(0, 229, 255, 0.5)',
+    borderRadius: 4,
     marginTop: 10,
+    minHeight: 44
   },
   submitBtnCoral: {
-    backgroundColor: colors.secondary,
-    boxShadow: '0px 0px 0px rgba(255, 107, 53, 1)',
+    backgroundColor: colors.secondary
   },
   submitBtnDisabled: {
-    opacity: 0.6,
+    opacity: 0.6
   },
   formError: {
     color: colors.secondary,
     fontSize: 13,
     fontFamily: fonts.bodyMedium,
-    marginBottom: 12,
+    marginBottom: 12
   },
   submitBtnText: {
-    color: '#050912',
+    color: colors.ink,
     fontWeight: '800',
     fontFamily: fonts.display,
     fontSize: 13,
-    letterSpacing: 0.8,
+    letterSpacing: 0.8
   },
   successBox: {
     alignItems: 'center',
-    paddingVertical: 30,
+    paddingVertical: 30
   },
   successTitle: {
     color: '#10B981',
@@ -794,7 +695,7 @@ const makeStyles = (width: number) =>
     fontWeight: '900',
     fontFamily: fonts.display,
     letterSpacing: 0.5,
-    marginBottom: 8,
+    marginBottom: 8
   },
   successMsg: {
     fontFamily: fonts.body,
@@ -802,27 +703,28 @@ const makeStyles = (width: number) =>
     fontSize: 14,
     textAlign: 'center',
     lineHeight: 22,
-    marginBottom: 10,
+    marginBottom: 10
   },
   successSub: {
     fontFamily: fonts.body,
     color: colors.textMuted,
     fontSize: 12,
     textAlign: 'center',
-    marginBottom: 24,
+    marginBottom: 24
   },
   resetBtn: {
     borderWidth: 1,
     borderColor: colors.primary,
     paddingHorizontal: 20,
     paddingVertical: 10,
-    borderRadius: 8,
+    borderRadius: 4,
+    minHeight: 44
   },
   resetBtnText: {
     fontFamily: fonts.bodyBold,
     color: colors.primary,
     fontSize: 11,
     fontWeight: '700',
-    letterSpacing: 0.8,
+    letterSpacing: 0.8
   },
 });

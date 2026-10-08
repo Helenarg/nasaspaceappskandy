@@ -1,15 +1,9 @@
-import React, { useCallback, useMemo, useRef, useState } from 'react';
-import {
-  ScrollView,
-  View,
-  Text,
-  StyleSheet,
-  Platform,
-  useWindowDimensions,
-  Pressable,
-  TextInput,
-  ActivityIndicator,
-} from 'react-native';
+import { useViewport } from '../theme/useViewport';
+import { layout } from '../theme/layout';
+import PageShell from '../components/PageShell';
+import PageHeader from '../components/PageHeader';
+import { useCallback, useMemo, useRef, useState } from 'react';
+import { View, Text, StyleSheet, Pressable, TextInput, ActivityIndicator } from 'react-native';
 import PageMeta from '../components/PageMeta';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -35,7 +29,7 @@ const PROVINCES = [
 ];
 
 export default function AmbassadorsPage() {
-  const { width } = useWindowDimensions();
+  const { width } = useViewport();
   const styles = useMemo(() => makeStyles(width), [width]);
 
   const [fullName, setFullName] = useState('');
@@ -85,7 +79,7 @@ export default function AmbassadorsPage() {
     useFormSubmit<Field>({ kind: 'ambassadors', validate, build });
 
   return (
-    <ScrollView
+    <PageShell
       style={styles.container}
       contentContainerStyle={styles.contentContainer}
       keyboardShouldPersistTaps="handled"
@@ -100,20 +94,7 @@ export default function AmbassadorsPage() {
       <Navbar />
 
       {/* Header Section */}
-      <View style={styles.headerSection}>
-        <View style={styles.badge}>
-          <Crown size={14} color={colors.primary} />
-          <Text style={styles.badgeText}>CAMPUS LEADERSHIP PROGRAM</Text>
-        </View>
-
-        <Text style={styles.headerTitle}>
-          LEAD THE SPACE{'\n'}
-          <Text style={styles.headerTitleCyan}>REVOLUTION</Text> ON YOUR CAMPUS
-        </Text>
-        <Text style={styles.headerSubtitle}>
-          Become an official NASA Space Apps Ambassador and inspire the next generation of space innovators across schools and universities in Sri Lanka.
-        </Text>
-      </View>
+      <PageHeader number="04" eyebrow="CAMPUS AMBASSADORS" title={"Spark curiosity\non your campus."} description="Bring your school or university into the Space Apps community. Connect curious people and help great ideas find their start." />
 
       {/* Main Layout (Two Column) */}
       <View style={styles.mainLayout}>
@@ -134,7 +115,7 @@ export default function AmbassadorsPage() {
           </View>
 
           <View style={styles.benefitCard}>
-            <View style={[styles.iconBox, { borderColor: 'rgba(255, 107, 53, 0.3)' }]}>
+            <View style={[styles.iconBox, { borderColor: 'rgba(46, 150, 245, 0.3)' }]}>
               <Crown color={colors.secondary} size={24} />
             </View>
             <View style={styles.benefitContent}>
@@ -380,7 +361,7 @@ export default function AmbassadorsPage() {
       </View>
 
       <Footer />
-    </ScrollView>
+    </PageShell>
   );
 }
 
@@ -388,72 +369,18 @@ const makeStyles = (width: number) =>
   StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Platform.OS === 'web' ? 'transparent' : colors.background,
+    backgroundColor: 'transparent'
   },
   contentContainer: {
-    flexGrow: 1,
-  },
-  headerSection: {
-    paddingTop: 60,
-    paddingBottom: 30,
-    paddingHorizontal: Platform.OS === 'web' ? '5%' : 16,
-    maxWidth: 900,
-    alignSelf: 'center',
-    alignItems: 'center',
-    width: '100%',
-  },
-  badge: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-    backgroundColor: 'rgba(0, 229, 255, 0.08)',
-    borderWidth: 1,
-    borderColor: 'rgba(0, 229, 255, 0.25)',
-    paddingHorizontal: 12,
-    paddingVertical: 5,
-    borderRadius: 20,
-    marginBottom: 20,
-  },
-  badgeText: {
-    color: colors.primary,
-    fontSize: 10,
-    fontWeight: '800',
-    fontFamily: fonts.display,
-    letterSpacing: 1.2,
-  },
-  headerTitle: {
-    fontSize: width > 768 ? 44 : width > 480 ? 32 : 27,
-    fontWeight: '900',
-    fontFamily: fonts.display,
-    color: colors.text,
-    textAlign: 'center',
-    letterSpacing: -0.5,
-    lineHeight: width > 768 ? 52 : width > 480 ? 38 : 33,
-    marginBottom: 16,
-  },
-  headerTitleCyan: {
-    color: colors.primary,
-    textShadow: '0px 0px 16px rgba(0, 229, 255, 0.4)',
-  },
-  headerSubtitle: {
-    fontFamily: fonts.body,
-    color: colors.textMuted,
-    fontSize: 15,
-    textAlign: 'center',
-    lineHeight: 25,
-    maxWidth: 680,
+    flexGrow: 1
   },
   mainLayout: {
+    ...layout.section(width),
     flexDirection: width > 900 ? 'row' : 'column',
-    paddingHorizontal: Platform.OS === 'web' ? '5%' : 16,
-    paddingVertical: 40,
-    maxWidth: 1300,
-    alignSelf: 'center',
-    width: '100%',
-    gap: 40,
+    gap: layout.gap(width)
   },
   benefitsCol: {
-    flex: width > 900 ? 1.2 : undefined,
+    flex: width > 900 ? 1.2 : undefined
   },
   columnHeaderTitle: {
     color: colors.textMuted,
@@ -461,44 +388,43 @@ const makeStyles = (width: number) =>
     fontWeight: '800',
     fontFamily: fonts.display,
     letterSpacing: 1.2,
-    marginBottom: 20,
+    marginBottom: 20
   },
   benefitCard: {
     flexDirection: 'row',
-    backgroundColor: 'rgba(10, 15, 31, 0.85)',
+    backgroundColor: 'rgba(11, 32, 81, 0.96)',
     borderWidth: 1,
     borderColor: 'rgba(255, 255, 255, 0.08)',
-    borderRadius: 18,
-    padding: 22,
+    borderRadius: 8,
+    padding: layout.cardPadding(width),
     marginBottom: 18,
-    gap: 18,
-    boxShadow: '0px 6px 14px rgba(0, 0, 0, 0.3)',
+    gap: 18
   },
   iconBox: {
     width: 48,
     height: 48,
     borderRadius: 12,
-    backgroundColor: 'rgba(0, 229, 255, 0.08)',
+    backgroundColor: 'rgba(234, 254, 7, 0.08)',
     borderWidth: 1,
-    borderColor: 'rgba(0, 229, 255, 0.25)',
+    borderColor: 'rgba(234, 254, 7, 0.25)',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
   benefitContent: {
-    flex: 1,
+    flex: 1
   },
   benefitTitle: {
     color: colors.text,
     fontSize: 16,
     fontWeight: '800',
     fontFamily: fonts.display,
-    marginBottom: 6,
+    marginBottom: 6
   },
   benefitDesc: {
     fontFamily: fonts.body,
     color: colors.textMuted,
     fontSize: 13,
-    lineHeight: 21,
+    lineHeight: 21
   },
   verifiedBox: {
     flexDirection: 'row',
@@ -509,25 +435,24 @@ const makeStyles = (width: number) =>
     borderColor: 'rgba(16, 185, 129, 0.25)',
     borderRadius: 12,
     padding: 14,
-    marginTop: 10,
+    marginTop: 10
   },
   verifiedText: {
     fontFamily: fonts.body,
     flex: 1,
     color: colors.textMuted,
     fontSize: 12,
-    lineHeight: 18,
+    lineHeight: 18
   },
   formCol: {
-    flex: width > 900 ? 1 : undefined,
+    flex: width > 900 ? 1 : undefined
   },
   formCard: {
     backgroundColor: 'rgba(10, 15, 31, 0.9)',
     borderWidth: 1,
-    borderColor: 'rgba(0, 229, 255, 0.25)',
-    borderRadius: 24,
-    padding: 28,
-    boxShadow: '0px 16px 30px rgba(0, 0, 0, 0.5)',
+    borderColor: 'rgba(234, 254, 7, 0.25)',
+    borderRadius: 8,
+    padding: layout.cardPadding(width)
   },
   formTitle: {
     color: colors.text,
@@ -535,16 +460,16 @@ const makeStyles = (width: number) =>
     fontWeight: '900',
     fontFamily: fonts.display,
     letterSpacing: -0.3,
-    marginBottom: 6,
+    marginBottom: 6
   },
   formSubtitle: {
     fontFamily: fonts.body,
     color: colors.textMuted,
     fontSize: 13,
-    marginBottom: 24,
+    marginBottom: 24
   },
   inputGroup: {
-    marginBottom: 16,
+    marginBottom: 16
   },
   inputLabel: {
     color: colors.textMuted,
@@ -552,27 +477,12 @@ const makeStyles = (width: number) =>
     fontWeight: '800',
     fontFamily: fonts.display,
     letterSpacing: 1,
-    marginBottom: 8,
-  },
-  textInput: {
-    fontFamily: fonts.body,
-    backgroundColor: 'rgba(255, 255, 255, 0.04)',
-    borderWidth: 1,
-    borderColor: 'rgba(255, 255, 255, 0.12)',
-    borderRadius: 10,
-    paddingHorizontal: 14,
-    paddingVertical: 12,
-    color: colors.text,
-    fontSize: 14,
-  },
-  textArea: {
-    height: 80,
-    textAlignVertical: 'top',
+    marginBottom: 8
   },
   provincePicker: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    gap: 8,
+    gap: 8
   },
   provinceChip: {
     backgroundColor: 'rgba(255, 255, 255, 0.04)',
@@ -580,27 +490,28 @@ const makeStyles = (width: number) =>
     borderColor: 'rgba(255, 255, 255, 0.1)',
     paddingHorizontal: 10,
     paddingVertical: 6,
-    borderRadius: 8,
+    borderRadius: 4,
+    minHeight: 44
   },
   provinceChipActive: {
-    backgroundColor: 'rgba(0, 229, 255, 0.12)',
-    borderColor: colors.primary,
+    backgroundColor: 'rgba(234, 254, 7, 0.12)',
+    borderColor: colors.primary
   },
   provinceChipText: {
     fontFamily: fonts.bodyMedium,
     color: colors.textMuted,
     fontSize: 11,
-    fontWeight: '600',
+    fontWeight: '600'
   },
   provinceChipTextActive: {
     color: colors.primary,
-    fontWeight: '700',
+    fontWeight: '700'
   },
   checkboxRow: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 12,
-    marginVertical: 18,
+    marginVertical: 18
   },
   checkbox: {
     width: 20,
@@ -610,18 +521,18 @@ const makeStyles = (width: number) =>
     borderColor: 'rgba(255, 255, 255, 0.25)',
     backgroundColor: 'rgba(255, 255, 255, 0.05)',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
   checkboxActive: {
     backgroundColor: colors.primary,
-    borderColor: colors.primary,
+    borderColor: colors.primary
   },
   checkboxLabel: {
     fontFamily: fonts.body,
     flex: 1,
     color: colors.textMuted,
     fontSize: 12,
-    lineHeight: 18,
+    lineHeight: 18
   },
   submitBtn: {
     backgroundColor: colors.primary,
@@ -629,28 +540,28 @@ const makeStyles = (width: number) =>
     alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: 15,
-    borderRadius: 12,
-    boxShadow: '0px 0px 16px rgba(0, 229, 255, 0.5)',
+    borderRadius: 4,
+    minHeight: 44
   },
   submitBtnDisabled: {
-    opacity: 0.6,
+    opacity: 0.6
   },
   formError: {
     color: colors.secondary,
     fontSize: 13,
     fontFamily: fonts.bodyMedium,
-    marginBottom: 12,
+    marginBottom: 12
   },
   submitBtnText: {
-    color: '#050912',
+    color: colors.ink,
     fontWeight: '800',
     fontFamily: fonts.display,
     fontSize: 13,
-    letterSpacing: 0.8,
+    letterSpacing: 0.8
   },
   successContainer: {
     alignItems: 'center',
-    paddingVertical: 30,
+    paddingVertical: 30
   },
   successTitle: {
     color: '#10B981',
@@ -658,7 +569,7 @@ const makeStyles = (width: number) =>
     fontWeight: '900',
     fontFamily: fonts.display,
     letterSpacing: 0.5,
-    marginBottom: 8,
+    marginBottom: 8
   },
   successDesc: {
     fontFamily: fonts.body,
@@ -666,27 +577,28 @@ const makeStyles = (width: number) =>
     fontSize: 14,
     textAlign: 'center',
     lineHeight: 22,
-    marginBottom: 10,
+    marginBottom: 10
   },
   successSub: {
     fontFamily: fonts.body,
     color: colors.textMuted,
     fontSize: 12,
     textAlign: 'center',
-    marginBottom: 24,
+    marginBottom: 24
   },
   resetBtn: {
     borderWidth: 1,
     borderColor: colors.primary,
     paddingHorizontal: 20,
     paddingVertical: 10,
-    borderRadius: 8,
+    borderRadius: 4,
+    minHeight: 44
   },
   resetBtnText: {
     fontFamily: fonts.bodyBold,
     color: colors.primary,
     fontSize: 11,
     fontWeight: '700',
-    letterSpacing: 0.8,
+    letterSpacing: 0.8
   },
 });

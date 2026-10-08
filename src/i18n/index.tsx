@@ -39,8 +39,12 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
   const [lang, setLangState] = useState<Lang>('en');
 
   useEffect(() => {
-    const detected = detectLang();
-    if (detected !== 'en') setLangState(detected);
+    // Resolve the browser preference after the first hydrated paint.
+    if (Platform.OS !== 'web') return;
+    const frame = window.requestAnimationFrame(() => {
+      setLangState(detectLang());
+    });
+    return () => window.cancelAnimationFrame(frame);
   }, []);
 
   const setLang = useCallback((next: Lang) => {

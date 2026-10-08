@@ -4,13 +4,6 @@
 import type { ComponentType } from 'react';
 import type { ColorValue, StyleProp, ViewStyle } from 'react-native';
 
-export type IconProps = {
-  size?: number;
-  color?: ColorValue;
-  strokeWidth?: number;
-  style?: StyleProp<ViewStyle>;
-};
-
 import ArchiveIcon from 'lucide-react-native/icons/archive';
 import ArrowRightIcon from 'lucide-react-native/icons/arrow-right';
 import AwardIcon from 'lucide-react-native/icons/award';
@@ -55,6 +48,13 @@ import UserIcon from 'lucide-react-native/icons/user';
 import UsersIcon from 'lucide-react-native/icons/users';
 import XIcon from 'lucide-react-native/icons/x';
 import ZapIcon from 'lucide-react-native/icons/zap';
+
+export type IconProps = {
+  size?: number;
+  color?: ColorValue;
+  strokeWidth?: number;
+  style?: StyleProp<ViewStyle>;
+};
 
 export const Archive = ArchiveIcon as unknown as ComponentType<IconProps>;
 export const ArrowRight = ArrowRightIcon as unknown as ComponentType<IconProps>;

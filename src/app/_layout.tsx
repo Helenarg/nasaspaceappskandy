@@ -3,22 +3,24 @@ import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import {
   useFonts,
-  SpaceGrotesk_700Bold,
-} from '@expo-google-fonts/space-grotesk';
+  FiraSans_900Black,
+  FiraSans_700Bold,
+} from '@expo-google-fonts/fira-sans';
 import {
-  PlusJakartaSans_400Regular,
-  PlusJakartaSans_500Medium,
-  PlusJakartaSans_700Bold,
-} from '@expo-google-fonts/plus-jakarta-sans';
+  Overpass_400Regular,
+  Overpass_500Medium,
+  Overpass_700Bold,
+} from '@expo-google-fonts/overpass';
 import { colors } from '../theme/colors';
 import { I18nProvider } from '../i18n';
 
 export default function RootLayout() {
   const [fontsLoaded] = useFonts({
-    SpaceGrotesk_700Bold,
-    PlusJakartaSans_400Regular,
-    PlusJakartaSans_500Medium,
-    PlusJakartaSans_700Bold,
+    FiraSans_900Black,
+    FiraSans_700Bold,
+    Overpass_400Regular,
+    Overpass_500Medium,
+    Overpass_700Bold,
   });
 
   // Note: we render before the fonts resolve on purpose. Blocking here would leave the

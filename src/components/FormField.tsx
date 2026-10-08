@@ -1,5 +1,8 @@
 import React, { forwardRef } from 'react';
-import { View, Text, TextInput, StyleSheet, type TextInputProps } from 'react-native';
+import { View, TextInput, StyleSheet, type TextInputProps } from 'react-native';
+import { Text, localeTextStyle } from './LocalizedText';
+import { useI18n } from '../i18n';
+import { translateCopy } from '../i18n/copy';
 import { colors } from '../theme/colors';
 import { fonts } from '../theme/typography';
 
@@ -15,6 +18,7 @@ const FormField = forwardRef<TextInput, Props>(function FormField(
   { label, error, required, hint, style, multiline, ...inputProps },
   ref
 ) {
+  const { lang } = useI18n();
   return (
     <View style={styles.group}>
       <Text style={styles.label}>
@@ -25,12 +29,12 @@ const FormField = forwardRef<TextInput, Props>(function FormField(
 
       <TextInput
         ref={ref}
-        style={[styles.input, multiline && styles.textArea, !!error && styles.inputError, style]}
+        style={[styles.input, multiline && styles.textArea, !!error && styles.inputError, style, localeTextStyle(styles.input, lang)]}
         placeholderTextColor={colors.textMuted}
         multiline={multiline}
-        accessibilityLabel={label}
+        accessibilityLabel={translateCopy(label, lang)}
         // Announced by screen readers alongside the field, not just shown in red.
-        accessibilityHint={error || hint}
+        accessibilityHint={error || hint ? translateCopy(error || hint || '', lang) : undefined}
         aria-invalid={!!error}
         {...inputProps}
       />

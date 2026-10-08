@@ -17,6 +17,7 @@ export default function Root({ children }: PropsWithChildren) {
           content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover"
         />
         <meta name="theme-color" content="#07173F" />
+        <link rel="icon" type="image/svg+xml" sizes="any" href="/kandy-orbit.svg?v=2" />
 
         {/* The app renders in a single scroll container; this keeps body scroll sane. */}
         <ScrollViewStyleReset />
@@ -45,6 +46,19 @@ body::before {
     linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px);
   background-size: 96px 96px;
 }
+
+/* Clear lift, arrow travel and image emphasis instead of only opacity changes. */
+[data-testid="action-primary"], [data-testid="action-secondary"] { overflow: hidden; }
+[data-testid="action-arrow"] { transition: transform 350ms cubic-bezier(.2,.8,.2,1); }
+[data-testid="feature-card"] { transition: border-color 350ms ease, background-color 350ms ease; }
+@media (hover: hover) and (pointer: fine) {
+  [data-testid="action-primary"]:hover, [data-testid="action-secondary"]:hover { transform: translateY(-4px); opacity: 1; }
+  [data-testid="action-primary"]:hover [data-testid="action-arrow"], [data-testid="action-secondary"]:hover [data-testid="action-arrow"] { transform: translateX(7px); }
+  [data-testid="action-secondary"]:hover { background-color: rgba(46,150,245,.14); border-color: #2E96F5; }
+  [data-testid="feature-card"]:hover { border-color: #EAFE07; background-color: rgba(46,150,245,.045); }
+}
+html[lang="si"] input, html[lang="si"] textarea { font-family: NotoSansSinhala_400Regular, sans-serif !important; letter-spacing: 0 !important; }
+html[lang="ta"] input, html[lang="ta"] textarea { font-family: NotoSansTamil_400Regular, sans-serif !important; letter-spacing: 0 !important; }
 
 /* Keyboard users need to see where they are; mouse users should not. */
 :focus:not(:focus-visible) { outline: none; }

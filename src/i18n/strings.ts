@@ -3,14 +3,15 @@
  *
  * TRANSLATION STATUS: the Sinhala (si) and Tamil (ta) strings below are a first pass
  * and MUST be reviewed by a native speaker on the organising committee before launch.
- * Page body copy is still English-only; see docs/I18N.md for the list of what is left.
+ * Additional homepage, page-header and form presentation copy lives in copy.ts.
+ * Event-specific long-form content still needs editorial localization; see docs/I18N.md.
  * Any key missing from si/ta falls back to English rather than showing the raw key.
  */
 
 export const LANGUAGES = [
   { code: 'en', label: 'EN', name: 'English' },
-  { code: 'si', label: 'සිං', name: 'සිංහල' },
-  { code: 'ta', label: 'தமி', name: 'தமிழ்' },
+  { code: 'si', label: 'සිංහල', name: 'සිංහල' },
+  { code: 'ta', label: 'தமிழ்', name: 'தமிழ்' },
 ] as const;
 
 export type Lang = (typeof LANGUAGES)[number]['code'];
@@ -69,7 +70,7 @@ const si: Partial<Record<StringKey, string>> = {
   'nav.tagline': 'මහනුවර දේශීය වැඩසටහන',
 
   'hero.badge': 'නිල ජාතික වසම',
-  'hero.cta.primary': 'හැකතන් එක්වන්න',
+  'hero.cta.primary': 'හැකතන් තරගයට එක්වන්න',
   'hero.cta.secondary': 'අභියෝග බලන්න',
   'hero.highlight.sprint': 'පැය 48 ගෝලීය තරගය',
   'hero.highlight.provinces': 'පළාත් 9 ක ව්‍යාප්තිය',

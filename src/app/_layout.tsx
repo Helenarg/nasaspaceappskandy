@@ -1,3 +1,5 @@
+import { NotoSansSinhala_400Regular, NotoSansSinhala_700Bold } from '@expo-google-fonts/noto-sans-sinhala';
+import { NotoSansTamil_400Regular, NotoSansTamil_700Bold } from '@expo-google-fonts/noto-sans-tamil';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
@@ -16,6 +18,8 @@ import { I18nProvider } from '../i18n';
 
 export default function RootLayout() {
   const [fontsLoaded] = useFonts({
+    NotoSansSinhala_400Regular, NotoSansSinhala_700Bold,
+    NotoSansTamil_400Regular, NotoSansTamil_700Bold,
     FiraSans_900Black,
     FiraSans_700Bold,
     Overpass_400Regular,

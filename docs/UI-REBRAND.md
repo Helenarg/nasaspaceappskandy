@@ -1,6 +1,6 @@
 # Space Apps Kandy UI rebrand
 
-Branch: `codex/space-apps-rebrand`. Reference review: 8 October 2026.
+Branch: `space-apps-rebrand`. Reference review: 8 October 2026.
 
 ## Reference analysis
 
@@ -79,3 +79,7 @@ The responsive layouts use `src/theme/useViewport.ts`: it subscribes to React Na
 ![Space imagery and participation sections](design-reference/desktop-sections.jpg)
 
 ![Phone homepage](design-reference/mobile-home.jpg)
+
+## Follow-up: favicon, localized typography and richer motion
+
+The next iteration adds an orbital favicon, script-specific Sinhala/Tamil fonts and core interface translations, line-mask headline sequencing, image drift/parallax, orbital motion, a pausable mission strip and stronger hover feedback. Current details and screenshots are in [UI-LOCALIZATION-MOTION.md](UI-LOCALIZATION-MOTION.md); the language scope above is superseded by [I18N.md](I18N.md).

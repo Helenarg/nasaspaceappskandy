@@ -1,15 +1,16 @@
 import React from 'react';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, View } from 'react-native';
+import { Text } from './LocalizedText';
 import { colors } from '../theme/colors';
 import { fonts } from '../theme/typography';
 import { LANGUAGES, useI18n } from '../i18n';
 
 /** EN / සිං / தமி switch. Sri Lanka has two official languages; English is the third. */
 export default function LanguageToggle({ compact = false }: { compact?: boolean }) {
-  const { lang, setLang } = useI18n();
+  const { lang, setLang, t } = useI18n();
 
   return (
-    <View style={styles.row} accessibilityRole="radiogroup" accessibilityLabel="Language">
+    <View style={styles.row} accessibilityRole="radiogroup" accessibilityLabel={t('nav.language')}>
       {LANGUAGES.map((l) => {
         const active = l.code === lang;
         return (
@@ -18,7 +19,7 @@ export default function LanguageToggle({ compact = false }: { compact?: boolean 
             onPress={() => setLang(l.code)}
             style={[styles.item, compact && styles.itemCompact, active && styles.itemActive]}
             accessibilityRole="radio"
-            accessibilityState={{ selected: active }}
+            accessibilityState={{ checked: active }}
             accessibilityLabel={l.name}
           >
             <Text style={[styles.label, active && styles.labelActive]}>{l.label}</Text>

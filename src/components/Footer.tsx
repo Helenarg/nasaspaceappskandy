@@ -1,7 +1,8 @@
 import { useViewport } from '../theme/useViewport';
 import React from 'react';
 import { Link } from 'expo-router';
-import { Linking, Pressable, StyleSheet, Text, View } from 'react-native';
+import { Linking, Pressable, StyleSheet, View } from 'react-native';
+import { Text } from './LocalizedText';
 import { colors } from '../theme/colors';
 import { fonts } from '../theme/typography';
 import { layout } from '../theme/layout';

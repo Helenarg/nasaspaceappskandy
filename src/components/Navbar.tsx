@@ -1,7 +1,8 @@
 import { useViewport } from '../theme/useViewport';
 import React, { useState } from 'react';
 import { Link, usePathname } from 'expo-router';
-import { Modal, Platform, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Modal, Platform, Pressable, ScrollView, StyleSheet, View } from 'react-native';
+import { Text } from './LocalizedText';
 import { colors } from '../theme/colors';
 import { fonts } from '../theme/typography';
 import { layout } from '../theme/layout';
@@ -20,9 +21,9 @@ const NAV_ITEMS = [
 
 export default function Navbar() {
   const { width } = useViewport();
-  const desktop = width >= 1280;
   const pathname = usePathname();
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
+  const desktop = width >= 1280 && lang === 'en';
   const reduced = useReducedMotion();
   const [open, setOpen] = useState(false);
   return <View style={styles.shell} onLayout={() => { if (desktop && open) setOpen(false); }}>
@@ -37,7 +38,7 @@ export default function Navbar() {
         </Pressable>
       </Link>)}</View>}
       <View style={styles.actions}>
-        {desktop && <LanguageToggle compact />}
+        {width >= 900 && <LanguageToggle compact />}
         {width >= 600 && <Link href="/register" asChild><Pressable style={styles.register} accessibilityRole="link">
           <Text style={styles.registerText}>{t('nav.register')}</Text><ArrowRight size={15} color={colors.ink} />
         </Pressable></Link>}
@@ -83,7 +84,7 @@ const styles = StyleSheet.create({
   actions: { flexDirection: 'row', alignItems: 'center', gap: 12 },
   register: { backgroundColor: colors.primary, borderRadius: 4, paddingHorizontal: 18, paddingVertical: 14,
     minHeight: 46, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', gap: 12 },
-  registerText: { color: colors.ink, fontFamily: fonts.bodyBold, fontSize: 11, letterSpacing: 0.6 },
+  registerText: { color: colors.ink, fontFamily: fonts.bodyBold, fontSize: 11, letterSpacing: 0.6, flexShrink: 1 },
   menu: { width: 48, height: 48, alignItems: 'center', justifyContent: 'center', borderWidth: 1, borderColor: colors.border, borderRadius: 4 },
   backdrop: { flex: 1, backgroundColor: 'rgba(7,23,63,0.82)', justifyContent: 'flex-start', alignItems: 'flex-end' },
   drawer: { backgroundColor: colors.background, width: '100%', maxWidth: 520, maxHeight: '100%', paddingTop: 32,

@@ -1,11 +1,12 @@
 import React from 'react';
-import { ScrollView, StyleSheet, View, type ScrollViewProps } from 'react-native';
+import { ScrollView, StyleSheet, View, Platform, type ScrollViewProps } from 'react-native';
 import { colors } from '../theme/colors';
 import GridBackground from './GridBackground';
 
-export default function PageShell({ children, style, contentContainerStyle, ...props }: ScrollViewProps) {
+// Web on-drag dismisses focus on any scroll, including browser input auto-scroll.
+export default function PageShell({ children, style, contentContainerStyle, keyboardDismissMode, ...props }: ScrollViewProps) {
   return <View style={styles.shell}><GridBackground />
-    <ScrollView {...props} style={[styles.scroll, style]} contentContainerStyle={[styles.content, contentContainerStyle]}>
+    <ScrollView testID="page-scroll" {...props} keyboardDismissMode={Platform.OS === 'web' ? 'none' : keyboardDismissMode} style={[styles.scroll, style]} contentContainerStyle={[styles.content, contentContainerStyle]}>
       {children}
     </ScrollView>
   </View>;

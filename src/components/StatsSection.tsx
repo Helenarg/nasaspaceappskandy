@@ -1,6 +1,7 @@
 import { useViewport } from '../theme/useViewport';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import { Text } from './LocalizedText';
 import { colors } from '../theme/colors';
 import { fonts } from '../theme/typography';
 import { layout } from '../theme/layout';

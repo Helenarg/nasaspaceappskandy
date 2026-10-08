@@ -8,6 +8,7 @@ import StatsSection from '../components/StatsSection';
 import ExpansionSection from '../components/ExpansionSection';
 import Footer from '../components/Footer';
 import MissionSection from '../components/MissionSection';
+import MissionTicker from '../components/MissionTicker';
 
 
 export default function LandingPage() {
@@ -22,6 +23,7 @@ export default function LandingPage() {
       <HeroSection />
       <StatsSection />
       <MissionSection />
+      <MissionTicker />
       <ExpansionSection />
       <Footer />
     </PageShell>

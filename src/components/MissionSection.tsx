@@ -1,12 +1,14 @@
 import { useViewport } from '../theme/useViewport';
 import React from 'react';
-import { ImageBackground, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import { Text } from './LocalizedText';
 import { colors } from '../theme/colors';
 import { fonts } from '../theme/typography';
 import { layout } from '../theme/layout';
 import { ArrowRight, Globe, Users, Sparkles } from './icons';
 import ActionLink from './ActionLink';
 import Reveal from './Reveal';
+import SpaceScene from './SpaceScene';
 
 const FEATURES = [
   { number: '01', title: 'Open data. Open minds.', description: 'Explore real challenges with NASA’s freely available science and Earth observation data.', Icon: Globe },
@@ -22,18 +24,18 @@ export default function MissionSection() {
       </View><Text style={styles.intro}>Space Apps brings people together to solve challenges on Earth and in space. You don’t need to be a space expert. Bring your curiosity. We’ll explore together.</Text>
     </View></Reveal>
     <View style={[styles.features, { flexDirection: width < 800 ? 'column' : 'row' }]}>
-      {FEATURES.map(({ number, title, description, Icon }, index) => <Reveal delay={index * 80} key={number} style={styles.feature}>
+      {FEATURES.map(({ number, title, description, Icon }, index) => <Reveal delay={index * 80} key={number} style={styles.feature} testID="feature-card">
         <View style={styles.cardTop}><Text style={styles.number}>/ {number}</Text><Icon size={24} color={colors.primary} /></View>
         <Text style={styles.featureTitle}>{title}</Text><Text style={styles.featureDescription}>{description}</Text>
       </Reveal>)}
     </View>
-    <Reveal><ImageBackground source={require('../../assets/space/cosmic-cliffs.png')} resizeMode="cover" imageStyle={{ width: '100%', height: '100%' }} style={styles.image}>
+    <Reveal><SpaceScene source={require('../../assets/space/cosmic-cliffs.png')} style={styles.image}>
       <View style={styles.imageShade} /><View style={[styles.imageContent, { padding: width < 600 ? 24 : 40 }]}>
         <Text style={styles.eyebrow}>LOOK BEYOND THE FAMILIAR</Text><Text style={[styles.imageTitle, { fontSize: width < 600 ? 30 : 42 }]}>The next frontier{ '\n' }starts with you.</Text>
         <View style={styles.imageAction}><ActionLink href="/about" label="DISCOVER THE MISSION" secondary /></View>
         <Text style={styles.credit}>WEBB’S COSMIC CLIFFS · NASA, ESA, CSA, STScI</Text>
       </View>
-    </ImageBackground></Reveal>
+    </SpaceScene></Reveal>
     <View style={styles.paths}>
       <Text style={styles.eyebrow}>FIND YOUR PLACE IN THE MISSION</Text>
       {[['Make your mark', 'Join the hackathon', '/register'], ['Share what you know', 'Volunteer or mentor', '/join'], ['Build the community', 'Become an ambassador', '/ambassadors']].map(([title, subtitle, href]) =>

@@ -1,22 +1,24 @@
 import { useViewport } from '../theme/useViewport';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import { Text } from './LocalizedText';
 import { colors } from '../theme/colors';
 import { fonts } from '../theme/typography';
 import { layout } from '../theme/layout';
 import Reveal from './Reveal';
+import Headline from './Headline';
 
 export default function PageHeader({ number, eyebrow, title, description, children }: {
   number: string; eyebrow: string; title: string; description: string; children?: React.ReactNode;
 }) {
   const { width } = useViewport();
   return <View style={[layout.container(width), { paddingTop: layout.sectionSpace(width), paddingBottom: 40 }]}>
-    <Reveal><View style={styles.eyebrowRow}>
+    <Reveal distance={24}><View style={styles.eyebrowRow}>
       <Text style={styles.number}>{number} /</Text><Text style={styles.eyebrow}>{eyebrow}</Text><View style={styles.rule} />
-    </View>
-    <Text accessibilityRole="header" aria-level={1} style={[styles.title,
-      { fontSize: width < 600 ? 40 : 64, lineHeight: width < 600 ? 46 : 70 }]}>{title}</Text>
-    <Text style={styles.description}>{description}</Text>
+    </View></Reveal>
+    <Headline title={title} style={[styles.title,
+      { fontSize: width < 600 ? 40 : 64, lineHeight: width < 600 ? 46 : 70 }]} />
+    <Reveal delay={300} distance={28}><Text style={styles.description}>{description}</Text>
     {children ? <View style={styles.controls}>{children}</View> : null}</Reveal>
   </View>;
 }

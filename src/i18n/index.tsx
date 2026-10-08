@@ -59,6 +59,10 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
     }
   }, []);
 
+  useEffect(() => {
+    if (Platform.OS === 'web') document.documentElement.lang = lang;
+  }, [lang]);
+
   const value = useMemo<Ctx>(
     () => ({
       lang,

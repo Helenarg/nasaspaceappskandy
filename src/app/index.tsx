@@ -16,7 +16,7 @@ export default function LandingPage() {
     <PageShell style={styles.container} contentContainerStyle={styles.contentContainer}>
       <PageMeta
         title="NASA Space Apps Challenge Sri Lanka | Kandy 2026"
-        description="Sri Lanka's gateway to space innovation. Join NASA Space Apps Kandy, 3-5 October 2026, and the all-island expansion across 9 provinces."
+        description="Explore NASA Space Apps from Kandy. Global event November 14–15, 2026; local arrangements to be confirmed."
         path="/"
       />
       <Navbar />

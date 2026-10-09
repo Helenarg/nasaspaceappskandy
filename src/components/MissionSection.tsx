@@ -1,3 +1,4 @@
+import { SPACE_APPS_EVENT } from '../content/event';
 import { useViewport } from '../theme/useViewport';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
@@ -29,7 +30,7 @@ export default function MissionSection() {
         <Text style={styles.featureTitle}>{title}</Text><Text style={styles.featureDescription}>{description}</Text>
       </Reveal>)}
     </View>
-    <Reveal><SpaceScene source={require('../../assets/space/cosmic-cliffs.png')} style={styles.image}>
+    <Reveal><SpaceScene source={require('../../assets/space/cosmic-cliffs.jpg')} style={styles.image}>
       <View style={styles.imageShade} /><View style={[styles.imageContent, { padding: width < 600 ? 24 : 40 }]}>
         <Text style={styles.eyebrow}>LOOK BEYOND THE FAMILIAR</Text><Text style={[styles.imageTitle, { fontSize: width < 600 ? 30 : 42 }]}>The next frontier{ '\n' }starts with you.</Text>
         <View style={styles.imageAction}><ActionLink href="/about" label="DISCOVER THE MISSION" secondary /></View>
@@ -38,9 +39,9 @@ export default function MissionSection() {
     </SpaceScene></Reveal>
     <View style={styles.paths}>
       <Text style={styles.eyebrow}>FIND YOUR PLACE IN THE MISSION</Text>
-      {[['Make your mark', 'Join the hackathon', '/register'], ['Share what you know', 'Volunteer or mentor', '/join'], ['Build the community', 'Become an ambassador', '/ambassadors']].map(([title, subtitle, href]) =>
+      {[['Make your mark', 'Join the hackathon', SPACE_APPS_EVENT.officialUrl], ['Share what you know', 'Volunteer or mentor', '/join'], ['Build the community', 'Become an ambassador', '/ambassadors']].map(([title, subtitle, href]) =>
         <View key={href} style={[styles.path, { flexDirection: width < 600 ? 'column' : 'row' }]}>
-          <Text style={styles.pathTitle}>{title}</Text><ActionLink href={href as '/register' | '/join' | '/ambassadors'} label={subtitle.toUpperCase()} secondary />
+          <Text style={styles.pathTitle}>{title}</Text><ActionLink href={href} label={subtitle.toUpperCase()} secondary />
         </View>)}
       <View style={styles.pathCaption}><ArrowRight size={16} color={colors.primary} /><Text style={styles.featureDescription}>Your skills. Your perspective. Your community.</Text></View>
     </View>

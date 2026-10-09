@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import { Platform, View } from 'react-native';
+import { useRouteActive } from './useRouteActive';
 
 /** Pause decorative loops when their section is outside the scroll viewport. */
 export function useMotionVisibility() {
   const ref = useRef<View>(null);
+  const active = useRouteActive();
   const [visible, setVisible] = useState(true);
   useEffect(() => {
     const element = ref.current as unknown as HTMLElement | null;
@@ -12,5 +14,5 @@ export function useMotionVisibility() {
     observer.observe(element);
     return () => observer.disconnect();
   }, []);
-  return { ref, visible };
+  return { ref, visible: visible && active };
 }

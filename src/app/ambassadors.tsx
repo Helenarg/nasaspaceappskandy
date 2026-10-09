@@ -1,9 +1,12 @@
+import { Pressable } from '../components/LocalizedPressable';
+import { submissionsReady } from '../lib/firebase';
+import { Link } from 'expo-router';
 import { useViewport } from '../theme/useViewport';
 import { layout } from '../theme/layout';
 import PageShell from '../components/PageShell';
 import PageHeader from '../components/PageHeader';
 import { useCallback, useMemo, useRef, useState } from 'react';
-import { View, StyleSheet, Pressable, TextInput, ActivityIndicator } from 'react-native';
+import { View, StyleSheet, TextInput, ActivityIndicator } from 'react-native';
 import { Text } from '../components/LocalizedText';
 import PageMeta from '../components/PageMeta';
 import Navbar from '../components/Navbar';
@@ -12,7 +15,7 @@ import { colors } from '../theme/colors';
 import FormField from '../components/FormField';
 import Honeypot from '../components/Honeypot';
 import { useFormSubmit } from '../lib/useFormSubmit';
-import { isEmail, isPhone, required, type Errors } from '../lib/validation';
+import { isEmail, isPhone, required, tooLong, type Errors } from '../lib/validation';
 import { fonts } from '../theme/typography';
 import { Award, Crown, Users, Check, Send, CheckCircle2, ShieldCheck } from '../components/icons';
 
@@ -48,19 +51,23 @@ export default function AmbassadorsPage() {
   const yearRef = useRef<TextInput>(null);
   const motivationRef = useRef<TextInput>(null);
 
-  type Field = 'fullName' | 'email' | 'phone' | 'institution' | 'motivation' | 'agreed';
+  type Field = 'fullName' | 'email' | 'phone' | 'institution' | 'motivation' | 'agreed' | 'academicYear';
 
   const validate = useCallback((): Errors<Field> => {
     const e: Errors<Field> = {};
     if (!required(fullName)) e.fullName = 'We need your name.';
-    if (!required(email)) e.email = 'An email is required: this is how we confirm your place.';
+    if (!required(email)) e.email = 'An email is required so organisers can contact you.';
     else if (!isEmail(email)) e.email = 'That email address does not look right.';
     if (!isPhone(phone)) e.phone = 'Use a Sri Lankan number, e.g. 071 234 5678.';
     if (!required(institution)) e.institution = 'Tell us which school or university you represent.';
     if (!required(motivation)) e.motivation = 'A short statement helps us pick ambassadors.';
-    if (!isChecked) e.agreed = 'Please accept the ambassador commitment to continue.';
+    if (tooLong(fullName,120)) e.fullName = 'Please keep this under 120 characters.';
+    if (tooLong(institution,200)) e.institution = 'Please keep this under 200 characters.';
+    if (tooLong(motivation,1000)) e.motivation = 'Please keep this under 1000 characters.';
+    if (tooLong(academicYear,80)) e.academicYear = 'Please keep this under 80 characters.';
+    if (!isChecked) e.agreed = 'Please read and acknowledge the local notice to continue.';
     return e;
-  }, [fullName, email, phone, institution, motivation, isChecked]);
+  }, [fullName, email, phone, institution, motivation, isChecked, academicYear]);
 
   const build = useCallback(
     () => ({
@@ -71,12 +78,12 @@ export default function AmbassadorsPage() {
       province: selectedProvince,
       academicYear: academicYear.trim() || null,
       motivation: motivation.trim(),
-      agreedToCommitment: isChecked,
+      agreedToLocalNotice: isChecked,
     }),
     [fullName, email, phone, institution, selectedProvince, academicYear, motivation, isChecked]
   );
 
-  const { errors, clearError, submitting, submitted, formError, submit, reset, trap, setTrap } =
+  const { errors, clearError, submitting, submitted, formError, submit, reset, trap, setTrap, attemptLocked } =
     useFormSubmit<Field>({ kind: 'ambassadors', validate, build });
 
   return (
@@ -89,7 +96,7 @@ export default function AmbassadorsPage() {
     >
       <PageMeta
         title="Campus Ambassadors | NASA Space Apps Sri Lanka"
-        description="Lead NASA Space Apps on your campus. Apply to become an official Space Apps Sri Lanka ambassador."
+        description="Lead NASA Space Apps on your campus. Express interest in supporting local campus outreach."
         path="/ambassadors"
       />
       <Navbar />
@@ -101,16 +108,16 @@ export default function AmbassadorsPage() {
       <View style={styles.mainLayout}>
         {/* Left Column: Benefits Cards */}
         <View style={styles.benefitsCol}>
-          <Text style={styles.columnHeaderTitle}>AMBASSADOR PRIVILEGES</Text>
+          <Text style={styles.columnHeaderTitle}>CAMPUS OUTREACH</Text>
 
           <View style={styles.benefitCard}>
             <View style={styles.iconBox}>
               <Award color={colors.primary} size={24} />
             </View>
             <View style={styles.benefitContent}>
-              <Text style={styles.benefitTitle}>Official NASA Space Apps Certificate</Text>
+              <Text style={styles.benefitTitle}>Connect your campus</Text>
               <Text style={styles.benefitDesc}>
-                Recognized globally as an official NASA Space Apps ambassador with credentials verified by NASA headquarters, boosting your academic and career profile.
+                Help students discover the Space Apps community and find official participation information. This is a local outreach interest form, not a NASA credential.
               </Text>
             </View>
           </View>
@@ -120,9 +127,9 @@ export default function AmbassadorsPage() {
               <Crown color={colors.secondary} size={24} />
             </View>
             <View style={styles.benefitContent}>
-              <Text style={styles.benefitTitle}>VIP Event & Hackathon Access</Text>
+              <Text style={styles.benefitTitle}>Share learning opportunities</Text>
               <Text style={styles.benefitDesc}>
-                Priority access to all NASA Space Apps events, exclusive pre-hackathon webinars, mentor masterclasses, and behind-the-scenes organizing privileges.
+                Share verified event updates and public learning resources with your school or university. Local arrangements will be confirmed by organisers.
               </Text>
             </View>
           </View>
@@ -132,9 +139,9 @@ export default function AmbassadorsPage() {
               <Users color={colors.primary} size={24} />
             </View>
             <View style={styles.benefitContent}>
-              <Text style={styles.benefitTitle}>National Innovation Network</Text>
+              <Text style={styles.benefitTitle}>Connect with students</Text>
               <Text style={styles.benefitDesc}>
-                Join a curated council of 50+ student leaders across all 9 provinces, interacting directly with research scientists, university deans, and tech executives.
+                Connect with other students who are interested in science, teamwork and open data. No special access or awards are guaranteed.
               </Text>
             </View>
           </View>
@@ -143,7 +150,7 @@ export default function AmbassadorsPage() {
           <View style={styles.verifiedBox}>
             <ShieldCheck size={20} color="#10B981" />
             <Text style={styles.verifiedText}>
-              Applications reviewed by NASA Space Apps Kandy Organizing Committee within 48 hours.
+              Local applications are expressions of interest. Review timing and any offered role will be confirmed by organisers.
             </Text>
           </View>
         </View>
@@ -156,10 +163,10 @@ export default function AmbassadorsPage() {
                 <CheckCircle2 size={56} color="#10B981" style={{ marginBottom: 16 }} />
                 <Text style={styles.successTitle}>APPLICATION SUBMITTED!</Text>
                 <Text style={styles.successDesc}>
-                  Thank you, <Text style={{ color: colors.text, fontWeight: '700' }}>{fullName}</Text>. We have received your ambassador application for <Text style={{ color: colors.primary }}>{institution}</Text>.
+                  Your local application has been received.
                 </Text>
                 <Text style={styles.successSub}>
-                  Our outreach team will reach out via email with your onboarding toolkit.
+                  Your response is saved for local review. No appointment or email delivery is implied by this receipt.
                 </Text>
                 <Pressable
                   accessibilityRole="button"
@@ -170,6 +177,7 @@ export default function AmbassadorsPage() {
                     setInstitution('');
                     setMotivation('');
                     setIsChecked(false);
+                    setEmail(''); setPhone(''); setAcademicYear(''); setSelectedProvince(PROVINCES[0]);
                   }}
                 >
                   <Text style={styles.resetBtnText}>SUBMIT ANOTHER APPLICATION</Text>
@@ -178,14 +186,16 @@ export default function AmbassadorsPage() {
             ) : (
               <>
                 <Text style={styles.formTitle}>
-                  AMBASSADOR <Text style={{ color: colors.primary }}>APPLICATION</Text>
+                  AMBASSADOR APPLICATION
                 </Text>
                 <Text style={styles.formSubtitle}>
                   Fill out the form below to lead the initiative at your campus.
                 </Text>
 
                 {/* Full Name */}
-                <FormField
+                {!submissionsReady() && <Text style={styles.formSubtitle}>Local form submissions are currently paused. Please do not enter sensitive personal information.</Text>}
+                <FormField editable={!attemptLocked}
+                  maxLength={120}
                   label="FULL NAME"
                   required
                   placeholder="e.g. Kasun Perera"
@@ -202,7 +212,8 @@ export default function AmbassadorsPage() {
                 />
 
                 {/* Email */}
-                <FormField
+                <FormField editable={!attemptLocked}
+                  maxLength={200}
                   ref={emailRef}
                   label="EMAIL ADDRESS"
                   required
@@ -222,7 +233,8 @@ export default function AmbassadorsPage() {
                 />
 
                 {/* Phone */}
-                <FormField
+                <FormField editable={!attemptLocked}
+                  maxLength={30}
                   ref={phoneRef}
                   label="CONTACT PHONE NUMBER"
                   placeholder="071 234 5678"
@@ -240,7 +252,8 @@ export default function AmbassadorsPage() {
                 />
 
                 {/* School / University */}
-                <FormField
+                <FormField editable={!attemptLocked}
+                  maxLength={200}
                   ref={institutionRef}
                   label="SCHOOL OR UNIVERSITY"
                   required
@@ -258,19 +271,21 @@ export default function AmbassadorsPage() {
 
                 {/* District / Province */}
                 <View style={styles.inputGroup}>
-                  <Text style={styles.inputLabel}>DISTRICT / PROVINCE</Text>
+                  <Text style={styles.inputLabel}>PROVINCE</Text>
                   <View style={styles.provincePicker}>
-                    {PROVINCES.slice(0, 4).map((p, idx) => {
+                    {PROVINCES.map((p, idx) => {
                       const isSel = selectedProvince === p;
                       return (
-                        <Pressable
+                        <Pressable disabled={attemptLocked} aria-disabled={attemptLocked}
                           accessibilityRole="button"
                           key={idx}
                           style={[styles.provinceChip, isSel && styles.provinceChipActive]}
+                          accessibilityState={{ selected: isSel }}
+                          aria-pressed={isSel}
                           onPress={() => setSelectedProvince(p)}
                         >
                           <Text style={[styles.provinceChipText, isSel && styles.provinceChipTextActive]}>
-                            {p.split(' ')[0]}
+                            {p}
                           </Text>
                         </Pressable>
                       );
@@ -279,18 +294,21 @@ export default function AmbassadorsPage() {
                 </View>
 
                 {/* Academic Year */}
-                <FormField
+                <FormField editable={!attemptLocked}
+                  maxLength={80}
                   ref={yearRef}
                   label="YEAR / GRADE"
                   placeholder="e.g. 2nd Year Undergraduate / Grade 12"
                   value={academicYear}
+                  error={errors.academicYear}
                   onChangeText={setAcademicYear}
                   returnKeyType="next"
                   onSubmitEditing={() => motivationRef.current?.focus()}
                 />
 
                 {/* Statement */}
-                <FormField
+                <FormField editable={!attemptLocked}
+                  maxLength={1000}
                   ref={motivationRef}
                   label="WHY DO YOU WANT TO BE AN AMBASSADOR?"
                   required
@@ -303,13 +321,17 @@ export default function AmbassadorsPage() {
                   }}
                   multiline
                   numberOfLines={3}
-                  maxLength={1000}
+
                 />
 
-                <Honeypot value={trap} onChangeText={setTrap} />
+
+              <Link href="/privacy" accessibilityRole="link"><Text style={{ color: colors.primary, marginBottom: 12 }}>Privacy notice</Text></Link>
+              <Link href="/participation" accessibilityRole="link"><Text style={{ color: colors.primary, marginBottom: 20 }}>Local participation information</Text></Link>
+              {attemptLocked && <Text accessibilityLiveRegion="polite" aria-live="polite" style={styles.formSubtitle}>This attempt is locked while receipt is uncertain. Retry sends the same details. Do not reload or start another application.</Text>}
+              <Honeypot value={trap} onChangeText={setTrap} />
 
                 {/* Agreement Checkbox */}
-                <Pressable
+                <Pressable disabled={attemptLocked} aria-disabled={attemptLocked}
                   style={styles.checkboxRow}
                   onPress={() => {
                     setIsChecked(!isChecked);
@@ -317,13 +339,14 @@ export default function AmbassadorsPage() {
                   }}
                   accessibilityRole="checkbox"
                   accessibilityState={{ checked: isChecked }}
-                  accessibilityLabel="I agree to advocate for NASA Space Apps and commit to student outreach"
+                  aria-checked={isChecked}
+                  accessibilityLabel="I have read the local participation information and privacy notice"
                 >
                   <View style={[styles.checkbox, isChecked && styles.checkboxActive]}>
                     {isChecked && <Check size={14} color="#050912" />}
                   </View>
                   <Text style={styles.checkboxLabel}>
-                    I agree to advocate for NASA Space Apps and commit to student outreach.
+                    I have read the local participation information and privacy notice.
                   </Text>
                 </Pressable>
                 {errors.agreed ? (
@@ -376,7 +399,7 @@ const makeStyles = (width: number) =>
     flexGrow: 1
   },
   mainLayout: {
-    ...layout.section(width),
+    ...layout.contentSection(width),
     flexDirection: width > 900 ? 'row' : 'column',
     gap: layout.gap(width)
   },
@@ -385,7 +408,7 @@ const makeStyles = (width: number) =>
   },
   columnHeaderTitle: {
     color: colors.textMuted,
-    fontSize: 11,
+    fontSize: 14,
     fontWeight: '800',
     fontFamily: fonts.display,
     letterSpacing: 1.2,
@@ -424,8 +447,8 @@ const makeStyles = (width: number) =>
   benefitDesc: {
     fontFamily: fonts.body,
     color: colors.textMuted,
-    fontSize: 13,
-    lineHeight: 21
+    fontSize: 16,
+    lineHeight: 24
   },
   verifiedBox: {
     flexDirection: 'row',
@@ -442,8 +465,8 @@ const makeStyles = (width: number) =>
     fontFamily: fonts.body,
     flex: 1,
     color: colors.textMuted,
-    fontSize: 12,
-    lineHeight: 18
+    fontSize: 14,
+    lineHeight: 24
   },
   formCol: {
     flex: width > 900 ? 1 : undefined
@@ -466,7 +489,7 @@ const makeStyles = (width: number) =>
   formSubtitle: {
     fontFamily: fonts.body,
     color: colors.textMuted,
-    fontSize: 13,
+    fontSize: 16,
     marginBottom: 24
   },
   inputGroup: {
@@ -474,7 +497,7 @@ const makeStyles = (width: number) =>
   },
   inputLabel: {
     color: colors.textMuted,
-    fontSize: 10,
+    fontSize: 14,
     fontWeight: '800',
     fontFamily: fonts.display,
     letterSpacing: 1,
@@ -501,7 +524,7 @@ const makeStyles = (width: number) =>
   provinceChipText: {
     fontFamily: fonts.bodyMedium,
     color: colors.textMuted,
-    fontSize: 11,
+    fontSize: 14,
     fontWeight: '600'
   },
   provinceChipTextActive: {
@@ -532,8 +555,8 @@ const makeStyles = (width: number) =>
     fontFamily: fonts.body,
     flex: 1,
     color: colors.textMuted,
-    fontSize: 12,
-    lineHeight: 18
+    fontSize: 14,
+    lineHeight: 24
   },
   submitBtn: {
     backgroundColor: colors.primary,
@@ -549,7 +572,7 @@ const makeStyles = (width: number) =>
   },
   formError: {
     color: colors.secondary,
-    fontSize: 13,
+    fontSize: 16,
     fontFamily: fonts.bodyMedium,
     marginBottom: 12
   },
@@ -557,7 +580,7 @@ const makeStyles = (width: number) =>
     color: colors.ink,
     fontWeight: '800',
     fontFamily: fonts.display,
-    fontSize: 13,
+    fontSize: 16,
     letterSpacing: 0.8
   },
   successContainer: {
@@ -577,13 +600,13 @@ const makeStyles = (width: number) =>
     color: colors.textMuted,
     fontSize: 14,
     textAlign: 'center',
-    lineHeight: 22,
+    lineHeight: 24,
     marginBottom: 10
   },
   successSub: {
     fontFamily: fonts.body,
     color: colors.textMuted,
-    fontSize: 12,
+    fontSize: 14,
     textAlign: 'center',
     marginBottom: 24
   },
@@ -598,7 +621,7 @@ const makeStyles = (width: number) =>
   resetBtnText: {
     fontFamily: fonts.bodyBold,
     color: colors.primary,
-    fontSize: 11,
+    fontSize: 14,
     fontWeight: '700',
     letterSpacing: 0.8
   },

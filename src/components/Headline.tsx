@@ -16,7 +16,7 @@ export default function Headline({ title, style, highlightStyle, level = 1 }: {
   const { marginBottom = 0, ...lineStyle } = textStyle;
   return <View style={{ marginBottom }} accessibilityRole="header" aria-level={level} accessibilityLabel={localized.replace(/\n/g, ' ')}>
     {localized.split('\n').map((line, index) => <View key={`${lang}-${index}`} style={{ overflow: 'hidden', paddingBottom: 4 }}>
-      <Reveal masked delay={100 + index * 130} distance={64} duration={1050}>
+      <Reveal masked delay={40 + index * 90} distance={42} duration={620}>
         <Text aria-hidden accessible={false} style={[lineStyle, index > 0 && highlightStyle]}>{line}</Text>
       </Reveal>
     </View>)}

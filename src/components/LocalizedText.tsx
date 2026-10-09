@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react';
-import { Text as NativeText, StyleSheet, type TextProps, type TextStyle } from 'react-native';
+import { Text as NativeText, StyleSheet, Platform, type TextProps, type TextStyle } from 'react-native';
 import { useI18n } from '../i18n';
 import { translateCopy } from '../i18n/copy';
 import { useViewport } from '../theme/useViewport';
@@ -30,7 +30,8 @@ export const Text = forwardRef<NativeText, TextProps>(function LocalizedText({ c
   const translated = plain ? translateCopy(joined, lang) : '';
   const content = plain && translated !== joined ? translated : pieces.map(piece => typeof piece === 'string' ? translateCopy(piece, lang) : piece);
   const visibleText = typeof content === 'string' ? content : content.filter(piece => typeof piece === 'string').join('');
-  const script = /[\u0B80-\u0BFF]/.test(visibleText) ? 'ta' : /[\u0D80-\u0DFF]/.test(visibleText) ? 'si' : lang;
-  return <NativeText {...props} ref={ref} accessibilityLabel={accessibilityLabel ? translateCopy(accessibilityLabel, lang) : undefined}
+  const script = /[\u0B80-\u0BFF]/.test(visibleText) ? 'ta' : /[\u0D80-\u0DFF]/.test(visibleText) ? 'si' : visibleText.trim() ? 'en' : lang;
+  // Intentional untranslated editorial text must retain English pronunciation.
+  return <NativeText {...props} {...(Platform.OS === 'web' ? {lang: script} : {accessibilityLanguage: script})} ref={ref} accessibilityLabel={accessibilityLabel ? translateCopy(accessibilityLabel, lang) : undefined}
     style={[style, localeTextStyle(StyleSheet.flatten(style) ?? {}, script, width)]}>{content}</NativeText>;
 });

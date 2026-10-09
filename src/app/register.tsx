@@ -1,9 +1,13 @@
+import { Pressable } from '../components/LocalizedPressable';
+import { SPACE_APPS_EVENT } from '../content/event';
+import { submissionsReady } from '../lib/firebase';
+import { Link } from 'expo-router';
 import { useViewport } from '../theme/useViewport';
 import { layout } from '../theme/layout';
 import PageShell from '../components/PageShell';
 import PageHeader from '../components/PageHeader';
 import { useCallback, useMemo, useRef, useState } from 'react';
-import { View, StyleSheet, TextInput, Pressable, ActivityIndicator } from 'react-native';
+import { View, StyleSheet, TextInput, ActivityIndicator } from 'react-native';
 import { Text } from '../components/LocalizedText';
 import PageMeta from '../components/PageMeta';
 import Navbar from '../components/Navbar';
@@ -12,7 +16,7 @@ import { colors } from '../theme/colors';
 import FormField from '../components/FormField';
 import Honeypot from '../components/Honeypot';
 import { useFormSubmit } from '../lib/useFormSubmit';
-import { isEmail, isPhone, required, type Errors } from '../lib/validation';
+import { isEmail, isPhone, required, tooLong, type Errors } from '../lib/validation';
 import { fonts } from '../theme/typography';
 import { Rocket, Check, CheckCircle2, Calendar, MapPin } from '../components/icons';
 
@@ -39,7 +43,7 @@ export default function RegisterPage() {
   const [leadEmail, setLeadEmail] = useState('');
   const [leadPhone, setLeadPhone] = useState('');
   const [institution, setInstitution] = useState('');
-  const [memberCount] = useState('4');
+  const [memberCount, setMemberCount] = useState('');
   const [challengePref, setChallengePref] = useState(CHALLENGE_PREFS[0]);
   const [agreed, setAgreed] = useState(false);
 
@@ -48,18 +52,22 @@ export default function RegisterPage() {
   const phoneRef = useRef<TextInput>(null);
   const institutionRef = useRef<TextInput>(null);
 
-  type Field = 'teamName' | 'leadName' | 'leadEmail' | 'leadPhone' | 'agreed';
+  type Field = 'teamName' | 'leadName' | 'leadEmail' | 'leadPhone' | 'agreed' | 'memberCount' | 'institution';
 
   const validate = useCallback((): Errors<Field> => {
     const e: Errors<Field> = {};
     if (track === 'team' && !required(teamName)) e.teamName = 'Give your team a name.';
     if (!required(leadName)) e.leadName = 'We need a name for the entry.';
-    if (!required(leadEmail)) e.leadEmail = 'An email is required to send your team pack.';
+    if (!required(leadEmail)) e.leadEmail = 'An email is required so organisers can contact you.';
     else if (!isEmail(leadEmail)) e.leadEmail = 'That email address does not look right.';
     if (!isPhone(leadPhone)) e.leadPhone = 'Use a Sri Lankan number, e.g. 071 234 5678.';
-    if (!agreed) e.agreed = 'Please accept the participant agreement to continue.';
+    if (tooLong(teamName,120)) e.teamName = 'Please keep this under 120 characters.';
+    if (tooLong(leadName,120)) e.leadName = 'Please keep this under 120 characters.';
+    if (tooLong(institution,200)) e.institution = 'Please keep this under 200 characters.';
+    if (track === 'team' && !/^[2-6]$/.test(memberCount)) e.memberCount = 'Enter the actual team size: 2 to 6 members.';
+    if (!agreed) e.agreed = 'Please read and acknowledge the local notice to continue.';
     return e;
-  }, [track, teamName, leadName, leadEmail, leadPhone, agreed]);
+  }, [track, teamName, leadName, leadEmail, leadPhone, agreed, memberCount, institution]);
 
   const build = useCallback(
     () => ({
@@ -71,12 +79,12 @@ export default function RegisterPage() {
       leadPhone: leadPhone.trim() || null,
       institution: institution.trim() || null,
       challengePref,
-      agreedToCodeOfConduct: agreed,
+      agreedToLocalNotice: agreed,
     }),
     [track, teamName, memberCount, leadName, leadEmail, leadPhone, institution, challengePref, agreed]
   );
 
-  const { errors, clearError, submitting, submitted, formError, submit, reset, trap, setTrap } =
+  const { errors, clearError, submitting, submitted, formError, submit, reset, trap, setTrap, attemptLocked } =
     useFormSubmit<Field>({ kind: 'registrations', validate, build });
 
   return (
@@ -89,13 +97,13 @@ export default function RegisterPage() {
     >
       <PageMeta
         title="Register | NASA Space Apps Challenge Kandy 2026"
-        description="Register your team or join the solo pool for the 48-hour NASA Space Apps hackathon in Kandy, 3-5 October 2026."
+        description="Express local interest in NASA Space Apps Kandy 2026. Official registration is a separate step."
         path="/register"
       />
       <Navbar />
 
       {/* Header Section */}
-      <PageHeader number="08" eyebrow="HACKATHON REGISTRATION" title={"Your next chapter\nstarts here."} description="Bring your team or come with an idea. Register your interest in joining the Kandy Space Apps community." />
+      <PageHeader number="08" eyebrow="LOCAL PARTICIPATION INTEREST" title={"Your next chapter\nstarts here."} description="Bring your team or come with an idea. Register your interest in joining the Kandy Space Apps community." />
 
       <View style={styles.mainContent}>
         {/* Left Column: Event Overview & Perks */}
@@ -112,8 +120,8 @@ export default function RegisterPage() {
               </View>
               <View style={{ flex: 1, minWidth: 0 }}>
                 <Text style={styles.infoLabel}>EVENT DATES</Text>
-                <Text style={styles.infoValue}>October 3–5, 2026</Text>
-                <Text style={styles.infoSub}>48 Hours Non-Stop Sprint</Text>
+                <Text style={styles.infoValue}>{SPACE_APPS_EVENT.dateLabel}</Text>
+                <Text style={styles.infoSub}>Official global event dates; local schedule to be announced</Text>
               </View>
             </View>
 
@@ -123,30 +131,30 @@ export default function RegisterPage() {
               </View>
               <View style={{ flex: 1, minWidth: 0 }}>
                 <Text style={styles.infoLabel}>LOCATION & FORMAT</Text>
-                <Text style={styles.infoValue}>Kandy Convention Center</Text>
-                <Text style={styles.infoSub}>Hybrid (On-site & Virtual nodes in all 9 provinces)</Text>
+                <Text style={styles.infoValue}>Kandy — venue to be announced</Text>
+                <Text style={styles.infoSub}>Local format and accessibility details to be confirmed</Text>
               </View>
             </View>
 
             <View style={styles.divider} />
 
-            <Text style={styles.benefitsTitle}>ALL REGISTERED HACKERS RECEIVE:</Text>
+            <Text style={styles.benefitsTitle}>PARTICIPATION STEPS:</Text>
             <View style={styles.benefitsList}>
               <View style={styles.benefitItem}>
                 <CheckCircle2 size={16} color={colors.primary} />
-                <Text style={styles.benefitText}>Direct credentials to NASA Open Data platform</Text>
+                <Text style={styles.benefitText}>Create your account on the official Space Apps website</Text>
               </View>
               <View style={styles.benefitItem}>
                 <CheckCircle2 size={16} color={colors.primary} />
-                <Text style={styles.benefitText}>1-on-1 access to technical mentors & AI judges</Text>
+                <Text style={styles.benefitText}>Complete official registration and select your event</Text>
               </View>
               <View style={styles.benefitItem}>
                 <CheckCircle2 size={16} color={colors.primary} />
-                <Text style={styles.benefitText}>Official Certificate of Global Participation</Text>
+                <Text style={styles.benefitText}>Find or form a team through the official platform</Text>
               </View>
               <View style={styles.benefitItem}>
                 <CheckCircle2 size={16} color={colors.primary} />
-                <Text style={styles.benefitText}>Eligibility for Global Nominee & Cash Prizes</Text>
+                <Text style={styles.benefitText}>Submit your project through the official platform</Text>
               </View>
             </View>
           </View>
@@ -157,15 +165,12 @@ export default function RegisterPage() {
           {submitted ? (
             <View style={styles.successContainer}>
               <CheckCircle2 size={56} color="#10B981" style={{ marginBottom: 16 }} />
-              <Text style={styles.successTitle}>REGISTRATION CONFIRMED!</Text>
+              <Text style={styles.successTitle}>LOCAL INTEREST RECEIVED</Text>
               <Text style={styles.successText}>
-                Congratulations, <Text style={{ color: colors.text, fontWeight: '700' }}>{leadName}</Text>!{' '}
-                {track === 'team'
-                  ? `Your team "${teamName || 'Space Innovators'}" is officially registered.`
-                  : 'You are registered for the solo hacker pool.'}
+                Your interest has been saved for the local organising team. This does not complete official Space Apps registration.
               </Text>
               <Text style={styles.successSub}>
-                We have dispatched confirmation details and the Participant Toolkit to <Text style={{ color: colors.primary }}>{leadEmail}</Text>.
+                No confirmation email or toolkit delivery is implied by this receipt.
               </Text>
               <Pressable
                 accessibilityRole="button"
@@ -178,18 +183,19 @@ export default function RegisterPage() {
                   setTeamName('');
                   setInstitution('');
                   setAgreed(false);
+                  setMemberCount(''); setTrack('team'); setChallengePref(CHALLENGE_PREFS[0]);
                 }}
               >
-                <Text style={styles.resetBtnText}>REGISTER ANOTHER SQUAD</Text>
+                <Text style={styles.resetBtnText}>SUBMIT ANOTHER INTEREST FORM</Text>
               </Pressable>
             </View>
           ) : (
             <>
               <Text style={styles.formTitle}>
-                HACKATHON <Text style={{ color: colors.primary }}>REGISTRATION</Text>
+                LOCAL INTEREST FORM
               </Text>
               <Text style={styles.formSubtitle}>
-                Select your track and enter team details below.
+                This local interest form is separate from official Space Apps registration. Read the participation information before continuing.
               </Text>
 
               {/* Track Switcher */}
@@ -199,11 +205,13 @@ export default function RegisterPage() {
                   {TRACKS.map((t) => {
                     const isSelected = track === t.id;
                     return (
-                      <Pressable
+                      <Pressable disabled={attemptLocked} aria-disabled={attemptLocked}
                         accessibilityRole="button"
                         key={t.id}
                         style={[styles.trackCard, isSelected && styles.trackCardActive]}
-                        onPress={() => setTrack(t.id as any)}
+                        accessibilityState={{ selected: isSelected }}
+                        aria-pressed={isSelected}
+                        onPress={() => setTrack(t.id as 'team' | 'solo')}
                       >
                         <Text style={[styles.trackCardTitle, isSelected && styles.trackCardTitleActive]}>
                           {t.label}
@@ -215,8 +223,11 @@ export default function RegisterPage() {
                 </View>
               </View>
 
+              {!submissionsReady() && <Text style={styles.formSubtitle}>Local form submissions are currently paused. Please do not enter sensitive personal information.</Text>}
               {track === 'team' && (
-                <FormField
+
+                <FormField editable={!attemptLocked}
+                  maxLength={120}
                   label="TEAM NAME"
                   required
                   placeholder="e.g. Orion Dynamics"
@@ -231,9 +242,11 @@ export default function RegisterPage() {
                 />
               )}
 
+              {track === 'team' && <FormField editable={!attemptLocked}  label="TEAM SIZE (2–6 MEMBERS)" required value={memberCount} maxLength={1} keyboardType="number-pad" error={errors.memberCount} onChangeText={(value) => { setMemberCount(value); clearError('memberCount'); }} />}
               {/* Leader Full Name */}
-              <FormField
-                ref={nameRef}
+              <FormField editable={!attemptLocked}
+                maxLength={120}
+                  ref={nameRef}
                 label={track === 'team' ? 'TEAM LEADER FULL NAME' : 'PARTICIPANT FULL NAME'}
                 required
                 placeholder="e.g. Navin Wijesinghe"
@@ -252,8 +265,9 @@ export default function RegisterPage() {
               {/* Email & Phone Row */}
               <View style={styles.twoColRow}>
                 <View style={{ flex: 1 }}>
-                  <FormField
-                    ref={emailRef}
+                  <FormField editable={!attemptLocked}
+                    maxLength={200}
+                  ref={emailRef}
                     label="EMAIL ADDRESS"
                     required
                     placeholder="navin@example.com"
@@ -273,8 +287,9 @@ export default function RegisterPage() {
                 </View>
 
                 <View style={{ flex: 1 }}>
-                  <FormField
-                    ref={phoneRef}
+                  <FormField editable={!attemptLocked}
+                    maxLength={30}
+                  ref={phoneRef}
                     label="PHONE NUMBER"
                     placeholder="071 234 5678"
                     value={leadPhone}
@@ -293,11 +308,13 @@ export default function RegisterPage() {
               </View>
 
               {/* Institution / University */}
-              <FormField
-                ref={institutionRef}
+              <FormField editable={!attemptLocked}
+                maxLength={200}
+                  ref={institutionRef}
                 label="SCHOOL / UNIVERSITY / EMPLOYER"
                 placeholder="e.g. University of Moratuwa"
                 value={institution}
+                error={errors.institution}
                 onChangeText={setInstitution}
                 autoComplete="organization"
                 returnKeyType="done"
@@ -310,10 +327,12 @@ export default function RegisterPage() {
                   {CHALLENGE_PREFS.map((pref, idx) => {
                     const isSel = challengePref === pref;
                     return (
-                      <Pressable
+                      <Pressable disabled={attemptLocked} aria-disabled={attemptLocked}
                         accessibilityRole="button"
                         key={idx}
                         style={[styles.prefChip, isSel && styles.prefChipActive]}
+                        accessibilityState={{ selected: isSel }}
+                        aria-pressed={isSel}
                         onPress={() => setChallengePref(pref)}
                       >
                         <Text style={[styles.prefChipText, isSel && styles.prefChipTextActive]}>
@@ -326,7 +345,7 @@ export default function RegisterPage() {
               </View>
 
               {/* Agreement */}
-              <Pressable
+              <Pressable disabled={attemptLocked} aria-disabled={attemptLocked}
                 style={styles.checkboxRow}
                 onPress={() => {
                   setAgreed(!agreed);
@@ -334,13 +353,14 @@ export default function RegisterPage() {
                 }}
                 accessibilityRole="checkbox"
                 accessibilityState={{ checked: agreed }}
-                accessibilityLabel="I agree to the NASA Space Apps Participant Code of Conduct and open source licensing terms"
+                aria-checked={agreed}
+                accessibilityLabel="I have read the local participation information and privacy notice"
               >
                 <View style={[styles.checkbox, agreed && styles.checkboxActive]}>
                   {agreed && <Check size={14} color="#050912" />}
                 </View>
                 <Text style={styles.checkboxLabel}>
-                  I agree to NASA Space Apps Participant Code of Conduct and Open Source licensing terms.
+                  I have read the local participation information and privacy notice.
                 </Text>
               </Pressable>
               {errors.agreed ? (
@@ -349,6 +369,10 @@ export default function RegisterPage() {
                 </Text>
               ) : null}
 
+
+              <Link href="/privacy" accessibilityRole="link"><Text style={{ color: colors.primary, marginBottom: 12 }}>Privacy notice</Text></Link>
+              <Link href="/participation" accessibilityRole="link"><Text style={{ color: colors.primary, marginBottom: 20 }}>Local participation information</Text></Link>
+              {attemptLocked && <Text accessibilityLiveRegion="polite" aria-live="polite" style={styles.formSubtitle}>This attempt is locked while receipt is uncertain. Retry sends the same details. Do not reload or start another application.</Text>}
               <Honeypot value={trap} onChangeText={setTrap} />
 
               {formError ? (
@@ -366,7 +390,7 @@ export default function RegisterPage() {
                 accessibilityState={{ disabled: submitting, busy: submitting }}
               >
                 <Text style={styles.submitBtnText}>
-                  {submitting ? 'SENDING\u2026' : 'CONFIRM HACKATHON ENTRY'}
+                  {submitting ? 'SENDING\u2026' : 'SEND LOCAL INTEREST'}
                 </Text>
                 {submitting ? (
                   <ActivityIndicator size="small" color="#050912" style={{ marginLeft: 8 }} />
@@ -394,7 +418,7 @@ const makeStyles = (width: number) =>
     flexGrow: 1
   },
   mainContent: {
-    ...layout.section(width),
+    ...layout.contentSection(width),
     flexDirection: width > 900 ? 'row' : 'column',
     gap: layout.gap(width)
   },
@@ -422,7 +446,7 @@ const makeStyles = (width: number) =>
   },
   cardTag: {
     color: colors.primary,
-    fontSize: 10,
+    fontSize: 14,
     fontWeight: '800',
     fontFamily: fonts.display,
     letterSpacing: 1.2
@@ -445,7 +469,7 @@ const makeStyles = (width: number) =>
   },
   infoLabel: {
     color: colors.textMuted,
-    fontSize: 10,
+    fontSize: 14,
     fontWeight: '800',
     fontFamily: fonts.display,
     letterSpacing: 1,
@@ -460,7 +484,7 @@ const makeStyles = (width: number) =>
   infoSub: {
     fontFamily: fonts.body,
     color: colors.textMuted,
-    fontSize: 12,
+    fontSize: 14,
     marginTop: 2
   },
   divider: {
@@ -470,7 +494,7 @@ const makeStyles = (width: number) =>
   },
   benefitsTitle: {
     color: colors.text,
-    fontSize: 11,
+    fontSize: 14,
     fontWeight: '800',
     fontFamily: fonts.display,
     letterSpacing: 1,
@@ -487,7 +511,7 @@ const makeStyles = (width: number) =>
   benefitText: {
     fontFamily: fonts.body,
     color: colors.textMuted,
-    fontSize: 13
+    fontSize: 16
   },
   formCard: {
     flex: width > 900 ? 1.4 : undefined,
@@ -506,7 +530,7 @@ const makeStyles = (width: number) =>
   formSubtitle: {
     fontFamily: fonts.body,
     color: colors.textMuted,
-    fontSize: 13,
+    fontSize: 16,
     marginBottom: 24
   },
   inputGroup: {
@@ -514,14 +538,14 @@ const makeStyles = (width: number) =>
   },
   inputLabel: {
     color: colors.textMuted,
-    fontSize: 10,
+    fontSize: 14,
     fontWeight: '800',
     fontFamily: fonts.display,
     letterSpacing: 1,
     marginBottom: 8
   },
   trackRow: {
-    flexDirection: width > 600 ? 'row' : 'column',
+    flexDirection: width >= 1200 ? 'row' : 'column',
     gap: 12
   },
   trackCard: {
@@ -538,7 +562,7 @@ const makeStyles = (width: number) =>
   },
   trackCardTitle: {
     color: colors.textMuted,
-    fontSize: 12,
+    fontSize: 14,
     fontWeight: '800',
     fontFamily: fonts.display,
     marginBottom: 4
@@ -549,7 +573,7 @@ const makeStyles = (width: number) =>
   trackCardDesc: {
     fontFamily: fonts.body,
     color: colors.textMuted,
-    fontSize: 11
+    fontSize: 14
   },
   twoColRow: {
     flexDirection: width > 600 ? 'row' : 'column',
@@ -576,7 +600,7 @@ const makeStyles = (width: number) =>
   prefChipText: {
     fontFamily: fonts.bodyMedium,
     color: colors.textMuted,
-    fontSize: 11,
+    fontSize: 14,
     fontWeight: '600'
   },
   prefChipTextActive: {
@@ -607,8 +631,8 @@ const makeStyles = (width: number) =>
     fontFamily: fonts.body,
     flex: 1,
     color: colors.textMuted,
-    fontSize: 12,
-    lineHeight: 18
+    fontSize: 14,
+    lineHeight: 24
   },
   submitBtn: {
     backgroundColor: colors.primary,
@@ -625,13 +649,13 @@ const makeStyles = (width: number) =>
   },
   formError: {
     color: colors.secondary,
-    fontSize: 13,
+    fontSize: 16,
     fontFamily: fonts.bodyMedium,
     marginBottom: 12
   },
   fieldError: {
     color: colors.secondary,
-    fontSize: 12,
+    fontSize: 14,
     fontFamily: fonts.bodyMedium,
     marginTop: -8,
     marginBottom: 12
@@ -640,7 +664,7 @@ const makeStyles = (width: number) =>
     color: colors.ink,
     fontWeight: '800',
     fontFamily: fonts.display,
-    fontSize: 13,
+    fontSize: 16,
     letterSpacing: 0.8
   },
   successContainer: {
@@ -660,13 +684,13 @@ const makeStyles = (width: number) =>
     color: colors.textMuted,
     fontSize: 14,
     textAlign: 'center',
-    lineHeight: 22,
+    lineHeight: 24,
     marginBottom: 10
   },
   successSub: {
     fontFamily: fonts.body,
     color: colors.textMuted,
-    fontSize: 12,
+    fontSize: 14,
     textAlign: 'center',
     marginBottom: 24
   },
@@ -681,7 +705,7 @@ const makeStyles = (width: number) =>
   resetBtnText: {
     fontFamily: fonts.bodyBold,
     color: colors.primary,
-    fontSize: 11,
+    fontSize: 14,
     fontWeight: '700',
     letterSpacing: 0.8
   },

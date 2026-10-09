@@ -1,7 +1,8 @@
+import { Pressable } from './LocalizedPressable';
 import { useViewport } from '../theme/useViewport';
 import React, { useState } from 'react';
 import { Link, usePathname } from 'expo-router';
-import { Modal, Platform, Pressable, ScrollView, StyleSheet, View } from 'react-native';
+import { Modal, Platform, ScrollView, StyleSheet, View } from 'react-native';
 import { Text } from './LocalizedText';
 import { colors } from '../theme/colors';
 import { fonts } from '../theme/typography';
@@ -11,6 +12,7 @@ import { useReducedMotion } from '../theme/motion';
 import BrandLogo from './BrandLogo';
 import LanguageToggle from './LanguageToggle';
 import { ArrowRight, Menu, X } from './icons';
+import { SPACE_APPS_EVENT } from '../content/event';
 
 const NAV_ITEMS = [
   { key: 'nav.about', href: '/about' }, { key: 'nav.events', href: '/events' },
@@ -23,30 +25,30 @@ export default function Navbar() {
   const { width } = useViewport();
   const pathname = usePathname();
   const { t, lang } = useI18n();
-  const desktop = width >= 1280 && lang === 'en';
+  const desktop = width >= 1440 && lang === 'en';
   const reduced = useReducedMotion();
   const [open, setOpen] = useState(false);
-  return <View style={styles.shell} onLayout={() => { if (desktop && open) setOpen(false); }}>
+  return <View {...(Platform.OS === 'web' ? { role: 'banner' as const } : {})} style={styles.shell} onLayout={() => { if (desktop && open) setOpen(false); }}>
     <View style={[styles.inner, layout.container(width)]}>
       <Link href="/" asChild><Pressable accessibilityRole="link" accessibilityLabel="NASA Space Apps Kandy home" style={styles.brand}>
         <BrandLogo compact={width < 600} />
         <View style={[styles.local, width < 380 && { display: 'none' }]}><Text style={styles.localTitle}>SRI LANKA</Text><Text style={styles.localSubtitle}>KANDY LOCAL EVENT</Text></View>
       </Pressable></Link>
-      {desktop && <View style={styles.links}>{NAV_ITEMS.map(item => <Link key={item.key} href={item.href} asChild>
-        <Pressable accessibilityRole="link" accessibilityState={{ selected: pathname === item.href }} style={styles.link}>
+      {desktop && <View {...(Platform.OS === 'web' ? { role: 'navigation' as const, 'aria-label': t('nav.openMenu') } : {})} style={styles.links}>{NAV_ITEMS.map(item => <Link key={item.key} href={item.href} asChild>
+        <Pressable accessibilityRole="link" {...(Platform.OS === 'web' ? { 'aria-current': pathname === item.href ? 'page' as const : undefined } : { accessibilityState: { selected: pathname === item.href } })} style={styles.link}>
           <Text style={[styles.linkText, pathname === item.href && styles.active]}>{t(item.key)}</Text>
         </Pressable>
       </Link>)}</View>}
       <View style={styles.actions}>
         {width >= 900 && <LanguageToggle compact />}
-        {width >= 600 && <Link href="/register" asChild><Pressable style={styles.register} accessibilityRole="link">
+        {width >= 600 && <Link href={SPACE_APPS_EVENT.officialUrl} asChild><Pressable style={styles.register} accessibilityRole="link">
           <Text style={styles.registerText}>{t('nav.register')}</Text><ArrowRight size={15} color={colors.ink} />
         </Pressable></Link>}
         {!desktop && <Pressable style={styles.menu} accessibilityRole="button" accessibilityLabel={t('nav.openMenu')}
-          accessibilityState={{ expanded: open }} onPress={() => setOpen(true)}><Menu color={colors.text} size={24} /></Pressable>}
+          accessibilityState={{ expanded: open }} aria-expanded={open} onPress={() => setOpen(true)}><Menu color={colors.text} size={24} /></Pressable>}
       </View>
     </View>
-    <Modal visible={open && !desktop} transparent animationType={reduced ? 'none' : 'fade'} onRequestClose={() => setOpen(false)}>
+    <Modal accessibilityLabel={t('nav.openMenu')} visible={open && !desktop} transparent animationType={reduced ? 'none' : 'fade'} onRequestClose={() => setOpen(false)}>
       <View style={styles.backdrop}>
         <Pressable style={StyleSheet.absoluteFill} accessibilityRole="button" accessibilityLabel={t('nav.closeMenu')} onPress={() => setOpen(false)} />
         <View style={styles.drawer}>
@@ -55,11 +57,11 @@ export default function Navbar() {
           <ScrollView contentContainerStyle={styles.drawerContent}>
             <LanguageToggle />
             {NAV_ITEMS.map((item, index) => <Link href={item.href} key={item.key} asChild><Pressable onPress={() => setOpen(false)}
-              style={styles.drawerLink} accessibilityRole="link" accessibilityState={{ selected: pathname === item.href }}>
+              style={styles.drawerLink} accessibilityRole="link" {...(Platform.OS === 'web' ? { 'aria-current': pathname === item.href ? 'page' as const : undefined } : { accessibilityState: { selected: pathname === item.href } })}>
               <Text style={styles.linkIndex}>0{index + 1}</Text><Text style={[styles.drawerText, pathname === item.href && styles.active]}>{t(item.key)}</Text>
               <ArrowRight size={18} color={colors.textMuted} />
             </Pressable></Link>)}
-            <Link href="/register" asChild><Pressable style={styles.register} accessibilityRole="link" onPress={() => setOpen(false)}>
+            <Link href={SPACE_APPS_EVENT.officialUrl} asChild><Pressable style={styles.register} accessibilityRole="link" onPress={() => setOpen(false)}>
               <Text style={styles.registerText}>{t('nav.registerLong')}</Text><ArrowRight size={18} color={colors.ink} />
             </Pressable></Link>
           </ScrollView>

@@ -1,24 +1,26 @@
+import { Pressable } from './LocalizedPressable';
 import { useViewport } from '../theme/useViewport';
 import React from 'react';
 import { Link } from 'expo-router';
-import { Linking, Pressable, StyleSheet, View } from 'react-native';
+import { Linking, Platform, StyleSheet, View } from 'react-native';
 import { Text } from './LocalizedText';
 import { colors } from '../theme/colors';
 import { fonts } from '../theme/typography';
 import { layout } from '../theme/layout';
 import BrandLogo from './BrandLogo';
 import ActionLink from './ActionLink';
+import MotionToggle from './MotionToggle';
 
 const LINKS = [
   { title: 'DISCOVER', items: [['About the initiative', '/about'], ['Events & workshops', '/events'], ['Explore challenges', '/challenges'], ['News & media', '/news']] },
-  { title: 'GET INVOLVED', items: [['Register your interest', '/register'], ['Volunteer & mentor', '/join'], ['Campus ambassadors', '/ambassadors'], ['Partners & sponsors', '/sponsors'], ['Contact us', '/contact']] },
+  { title: 'GET INVOLVED', items: [['How to participate', '/participation'], ['Register your interest', '/register'], ['Volunteer & mentor', '/join'], ['Campus ambassadors', '/ambassadors'], ['Partners & sponsors', '/sponsors'], ['Contact us', '/contact'], ['Local data notice', '/privacy']] },
 ] as const;
 export default function Footer() {
   const { width } = useViewport();
-  return <View style={styles.shell}><View style={[layout.container(width), { paddingTop: 64, paddingBottom: 32 }]}>
+  return <View {...(Platform.OS === 'web' ? { role: 'contentinfo' as const } : {})} style={styles.shell}><View style={[layout.container(width), { paddingTop: 64, paddingBottom: 32 }]}>
     <View style={[styles.top, { flexDirection: width < 700 ? 'column' : 'row' }]}>
       <Text accessibilityRole="header" aria-level={2} style={[styles.ctaTitle, { fontSize: width < 600 ? 36 : 48 }]}>Curiosity starts{ '\n' }something extraordinary.</Text>
-      <View style={styles.cta}><ActionLink href="/register" label="START YOUR JOURNEY" /></View>
+      <View style={styles.cta}><ActionLink href="/participation" label="START YOUR JOURNEY" /></View>
     </View>
     <View style={[styles.columns, { flexDirection: width < 900 ? 'column' : 'row' }]}>
       <View style={styles.brandColumn}><BrandLogo /><Text style={styles.description}>A local community in Kandy, connected by a shared mission to explore, collaborate, and create with NASA’s open data.</Text>
@@ -31,9 +33,10 @@ export default function Footer() {
       </View>)}</View>
     </View>
     <View style={styles.bottom}>
+      <MotionToggle />
       <Text style={styles.fine}>© 2026 NASA SPACE APPS SRI LANKA · KANDY LOCAL ORGANIZING COMMITTEE</Text>
       <Text style={styles.fine}>Earth photography: NASA. Cosmic Cliffs: NASA, ESA, CSA, STScI. Map: OpenStreetMap contributors / geoBoundaries (ODbL 1.0).</Text>
-      <Pressable accessibilityRole="link" onPress={() => Linking.openURL('https://www.spaceappschallenge.org/brand/')}>
+      <Pressable style={{ minHeight: 44, justifyContent: 'center' }} accessibilityRole="link" onPress={() => Linking.openURL('https://www.spaceappschallenge.org/brand/')}>
         <Text style={styles.source}>SPACE APPS BRAND & RESOURCES ↗</Text>
       </Pressable>
     </View>
@@ -51,7 +54,7 @@ const styles = StyleSheet.create({
   linkColumns: { flex: 1, gap: 40 },
   linkColumn: { flex: 1, alignItems: 'flex-start' },
   label: { color: colors.textMuted, fontFamily: fonts.bodyBold, fontSize: 11, letterSpacing: 1.5, marginBottom: 18 },
-  link: { paddingVertical: 9, minHeight: 40 },
+  link: { paddingVertical: 10, minHeight: 44 },
   linkText: { color: colors.text, fontFamily: fonts.body, fontSize: 15 },
   bottom: { borderTopWidth: 1, borderTopColor: colors.border, paddingTop: 28, gap: 14 },
   fine: { color: colors.textMuted, fontFamily: fonts.body, fontSize: 11, lineHeight: 19 },

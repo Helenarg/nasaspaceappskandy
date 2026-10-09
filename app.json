@@ -23,7 +23,7 @@
       "output": "static",
       "name": "NASA Space Apps Challenge Sri Lanka — Kandy",
       "shortName": "Space Apps LK",
-      "description": "Sri Lanka's official NASA Space Apps Challenge hub. Kandy local event, October 3-5 2026, expanding to all 9 provinces.",
+      "description": "Explore NASA Space Apps from Kandy. Global event November 14–15, 2026; local arrangements to be confirmed.",
       "themeColor": "#07173F",
       "backgroundColor": "#07173F",
       "lang": "en"
@@ -32,7 +32,9 @@
     "plugins": [
       "expo-router",
       "expo-status-bar",
-      "expo-font"
+      "expo-font",
+      "expo-secure-store",
+      "expo-localization"
     ]
   }
 }

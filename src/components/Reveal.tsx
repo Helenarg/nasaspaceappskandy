@@ -3,7 +3,7 @@ import { Animated, Easing, Platform, View, type StyleProp, type ViewStyle } from
 import { USE_NATIVE_DRIVER, useReducedMotion } from '../theme/motion';
 
 /** Static HTML remains visible. One-shot motion is progressive enhancement. */
-export default function Reveal({ children, style, delay = 0, distance = 42, duration = 900, testID, masked = false }: {
+export default function Reveal({ children, style, delay = 0, distance = 24, duration = 620, testID, masked = false }: {
   children: React.ReactNode; style?: StyleProp<ViewStyle>; delay?: number; distance?: number; duration?: number; testID?: string; masked?: boolean;
 }) {
   const node = useRef<View>(null);

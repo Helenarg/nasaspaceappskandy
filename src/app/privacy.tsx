@@ -1,0 +1,11 @@
+import InformationPage from '../components/InformationPage';
+export default function PrivacyPage() {
+  return <InformationPage title="Local data notice" description="Understand local forms before sharing personal information." path="/privacy" sections={[
+    {title:'Local applications are paused',body:'Local forms are not open by default. They must be enabled only after the organizing team confirms the responsible contact, access arrangements and retention policy. Official global registration is available on the Space Apps website.'},
+    {title:'What the local forms collect',body:'The forms request names, email addresses, optional phone and institution details, and information relevant to the selected application. Contact messages and ambassador statements are free text. Do not include identity documents, passwords or sensitive personal information.'},
+    {title:'Where submissions go',body:'When local forms are enabled, this app sends submissions to the nasaspaceappskandy Google Firebase project. Each record includes the submission time, application version and source platform. Public clients cannot read, edit or delete submitted records under the supplied rules. Project administrators control access; the deployed region and access settings must be verified by the organizers.'},
+    {title:'Retention and requests',body:'A retention period and a verified local contact for access or deletion requests have not yet been published. Local collection remains paused until those arrangements are published. This notice describes the implementation; it does not imply that an organizer policy has been approved.'},
+    {title:'Preferences and tracking',body:'The web app stores language and motion preferences on this device. Firebase Analytics is disabled. When forms are enabled, reCAPTCHA is used for Firebase App Check to help protect submissions from abuse. External official links have their own privacy policies.'},
+    {title:'School participants',body:'Do not enter another person’s details without permission. School participants and guardians should review the official participation requirements and confirm local arrangements before sharing student information.'},
+  ]}/>;
+}

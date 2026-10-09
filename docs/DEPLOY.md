@@ -1,98 +1,21 @@
-# Deploying nasaspaceapps.lk
+# Deployment and form readiness
 
-Everything here runs on free tiers: Cloudflare Pages (hosting) + Firebase Spark
-(form submissions). No server to run, no card on file.
+Use Node 22.13.1 or a newer version supported by Expo SDK 57. Install locked dependencies with npm ci. Run npm run lint, npm run typecheck, node scripts/postfix-formtests.cjs, and npm run build:web. Publish the resulting dist directory. Cloudflare Pages can apply public/_headers; verify headers on the actual host. Check provider pricing and plan limits directly before selecting a plan.
 
-## 1. Build
+## Collection is paused by default
 
-```bash
-npm run build:web
-```
+The forms collect local interest and enquiries, not official NASA registration. Main registration buttons link to the official event website. .env.example defaults EXPO_PUBLIC_ENABLE_LOCAL_FORMS=false. Web submissions require both an explicit true flag and EXPO_PUBLIC_RECAPTCHA_SITE_KEY. Public Expo environment variables are bundled into the client; never put secrets in them. Native submission support is not enabled by this web App Check integration.
 
-Output lands in `dist/`: one pre-rendered HTML file per route (`/`, `/about`,
-`/events`, …), the JS bundle under `_expo/static/`, and everything from `public/`
-(`_headers`, `robots.txt`, `sitemap.xml`).
+Before enabling collection, organizers must verify the mailbox, publish actual retention and responsible-contact details, approve the privacy notice, and provision Firebase. The checked-in rules validate create requests by collection and reject client reads, updates and deletes. Test them with the Firebase Emulator Suite before production. Mocked submission tests do not substitute for rules tests.
 
-Because the routes are pre-rendered, crawlers and link previews get real titles,
-descriptions and page text rather than an empty SPA shell.
+Register the web app in Firebase App Check with reCAPTCHA v3, configure allowed domains, and inspect preview metrics before enabling Firestore enforcement. App Check helps reject unverified clients; it does not guarantee spam prevention or replace monitoring and rate limiting. Use the approved Firebase deployment process. No remote rules deployment or enforcement change was performed during this UI work. After verification, configure the flag/site key in the hosting build environment and rebuild. Test accepted and rejected requests in a dedicated test project before collecting real data.
 
-## 2. Cloudflare Pages
+## Uncertain receipts
 
-Dashboard → Workers & Pages → Create → Pages → Connect to Git.
+One mounted submission attempt reserves one document ID and freezes its details. Retries reuse that ID and payload. After 12 seconds the UI reports an uncertain receipt and locks edits. The timeout does not cancel the Firebase operation or prove failure. Client reads are blocked, so a receipt lost during reload cannot be recovered by the app. Organizers should reconcile uncertain receipts. Durable idempotency and a receipt lookup service remain future backend work.
 
-| Setting | Value |
-|---|---|
-| Framework preset | None |
-| Build command | `npm run build:web` |
-| Build output directory | `dist` |
-| Node version | 20 or newer (set `NODE_VERSION=20` under Environment variables) |
+No confirmation emails or response times are promised. Analytics initialization is disabled. Read/export personal data only through approved organizer tooling and access controls; no public export endpoint exists.
 
-Then Custom domains → add `nasaspaceapps.lk` and `www.nasaspaceapps.lk`.
-Cloudflare issues the TLS certificate automatically once the domain's nameservers
-point at Cloudflare.
+## Native release and attribution
 
-Free tier limits that matter: unlimited bandwidth, unlimited sites, 500 builds per
-month, 100 custom domains. A hackathon site will not come close.
-
-`public/_headers` already sets HSTS, `X-Frame-Options`, `X-Content-Type-Options`,
-`Referrer-Policy`, `Permissions-Policy`, and immutable caching for fingerprinted
-assets. Cloudflare applies it automatically — no extra configuration.
-
-### Vercel instead
-
-Build command `npm run build:web`, output directory `dist`, framework preset
-"Other". Note the Hobby tier is for non-commercial use; a sponsored event site may
-need the Pro plan, which is why Cloudflare Pages is the primary target.
-
-## 3. Firebase (form submissions)
-
-The four forms (`/register`, `/join`, `/ambassadors`, `/contact`) write to
-Firestore collections `registrations`, `volunteers`, `ambassadors`, `messages`.
-
-One-time setup by whoever owns the Firebase project:
-
-1. Firebase console → Build → Firestore Database → Create database.
-   Pick **production mode** and location **asia-south1 (Mumbai)** — closest region
-   to Sri Lanka. The location cannot be changed later.
-2. Deploy the rules in this repo:
-   ```bash
-   npx firebase-tools login
-   npx firebase-tools deploy --only firestore:rules --project nasaspaceappskandy
-   ```
-   `firestore.rules` allows create-only access with per-field type and length
-   checks, and blocks every read, update and delete from the client. Organisers
-   read submissions in the Firebase console (or export with the Admin SDK).
-3. Turn on **App Check** (console → Build → App Check) with reCAPTCHA v3 for the
-   web app, then enforce it on Cloud Firestore. This is what stops a scripted flood
-   of fake registrations. It needs a reCAPTCHA v3 site key — see the organiser
-   checklist.
-
-Until step 1 is done, forms show "The server is not responding…" after 12 seconds
-rather than hanging or silently pretending to succeed.
-
-Spark (free) tier gives 1 GiB storage, 50k document reads and 20k writes per day.
-A 500-participant event uses a fraction of one day's quota.
-
-### Exporting submissions
-
-Firebase console → Firestore → collection → ⋮ → Export, or:
-
-```bash
-npx firebase-tools firestore:export gs://<bucket>/backups/$(date +%F) --project nasaspaceappskandy
-```
-
-## 4. Checks before each deploy
-
-```bash
-npm run typecheck   # tsc, with a larger V8 stack (see package.json)
-npm run build:web   # must finish with "Exported: dist"
-```
-
-## Regenerating the map outline
-
-`src/theme/sriLankaGeo.ts` holds the Sri Lanka coastline path, derived from
-geoBoundaries gbOpen LKA ADM0 (OpenStreetMap data, ODbL 1.0) — not drawn by hand.
-To refresh it, download
-`geoBoundaries-LKA-ADM0_simplified.geojson` from geoboundaries.org and re-run the
-projection described in the file header. Keep the attribution line in the footer:
-ODbL requires it.
+SecureStore and Localization require verification in Android/iOS development builds, including language persistence, accessibility, keyboard behavior and reduced motion. Do not hand-edit generated native directories. Preserve NASA image and geoBoundaries/ODbL map credits. scripts/optimize-space-images.cjs regenerates the smaller JPEG; scripts/build-share-image.ps1 regenerates the code-drawn social image.

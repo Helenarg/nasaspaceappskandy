@@ -1,85 +1,70 @@
 rules_version = '2';
-
-// Public site, no user accounts: anyone may CREATE a submission, nobody may read,
-// update or delete from the client. Organisers read in the Firebase console or with
-// the Admin SDK. Deploy with:  npx firebase-tools deploy --only firestore:rules
+// Anonymous creates only. No client reads, updates or deletes. Deploy separately.
 service cloud.firestore {
   match /databases/{database}/documents {
-
-    function isFresh() {
-      // Blocks back-dated or future-dated writes from a crafted client.
-      return request.resource.data.createdAt == request.time;
+    function baseShape(keys) {
+      return request.resource.data.keys().hasOnly(keys.concat(['createdAt', 'source', 'appVersion', 'status']))
+        && request.resource.data.keys().hasAll(['createdAt', 'source', 'appVersion', 'status'])
+        && request.resource.data.createdAt == request.time
+        && request.resource.data.source in ['web', 'ios', 'android']
+        && request.resource.data.appVersion == '1.0.0'
+        && request.resource.data.status == 'new';
     }
-
-    function baseShape() {
-      return isFresh()
-        && request.resource.data.status == 'new'
-        && request.resource.data.keys().size() <= 20;
-    }
-
     function str(field, maxLen) {
       return request.resource.data[field] is string
         && request.resource.data[field].size() > 0
         && request.resource.data[field].size() <= maxLen;
     }
-
     function optionalStr(field, maxLen) {
-      return !(field in request.resource.data.keys())
-        || request.resource.data[field] == null
+      return !(field in request.resource.data.keys()) || request.resource.data[field] == null
         || (request.resource.data[field] is string && request.resource.data[field].size() <= maxLen);
     }
-
+    function email(field) {
+      return str(field, 200) && request.resource.data[field].matches('^[^ @]+@[^ @]+[.][^ @]+$');
+    }
+    function choices(field, values, maximum) {
+      return request.resource.data[field] is list
+        && request.resource.data[field].size() > 0
+        && request.resource.data[field].size() <= maximum
+        && request.resource.data[field].toSet().size() == request.resource.data[field].size()
+        && request.resource.data[field].hasOnly(values);
+    }
     match /registrations/{id} {
-      allow create: if baseShape()
-        && str('leadName', 120)
-        && str('leadEmail', 200)
+      allow create: if baseShape(['track', 'teamName', 'memberCount', 'leadName', 'leadEmail', 'leadPhone', 'institution', 'challengePref', 'agreedToLocalNotice'])
+        && str('leadName', 120) && email('leadEmail')
         && request.resource.data.track in ['team', 'solo']
-        && request.resource.data.agreedToCodeOfConduct == true
-        && optionalStr('teamName', 120)
-        && optionalStr('leadPhone', 30)
-        && optionalStr('institution', 200)
-        && optionalStr('challengePref', 120);
+        && request.resource.data.agreedToLocalNotice == true
+        && request.resource.data.memberCount is int
+        && ((request.resource.data.track == 'team' && str('teamName',120) && request.resource.data.memberCount >= 2 && request.resource.data.memberCount <= 6)
+          || (request.resource.data.track == 'solo' && request.resource.data.memberCount == 1 && request.resource.data.teamName == null))
+        && optionalStr('leadPhone', 30) && optionalStr('institution', 200)
+        && request.resource.data.challengePref in ["Climate & Earth Observation", "AI / ML & Computer Vision", "Astrophysics & Space Flight", "Open Science & Citizen Data"];
       allow read, update, delete: if false;
     }
-
     match /volunteers/{id} {
-      allow create: if baseShape()
-        && str('fullName', 120)
-        && str('email', 200)
+      allow create: if baseShape(['role', 'fullName', 'email', 'phone', 'affiliation', 'skills', 'availability'])
+        && str('fullName',120) && email('email')
         && request.resource.data.role in ['volunteer', 'mentor']
-        && request.resource.data.skills is list
-        && request.resource.data.skills.size() <= 20
-        && request.resource.data.availability is list
-        && optionalStr('phone', 30)
-        && optionalStr('affiliation', 200);
+        && ((request.resource.data.role == 'volunteer' && choices('skills', ["Event Logistics & Operations", "Technical Helpdesk & Wi-Fi", "Social Media & Live Coverage", "Graphic Design & Media Assets", "Participant Registration Desk", "Stage & Audio-Visual Crew"], 6))
+          || (request.resource.data.role == 'mentor' && choices('skills', ["Data Science & Python", "Machine Learning & Computer Vision", "Earth Observation & Geospatial GIS", "Astrophysics & Space Dynamics", "Cloud Architecture & NASA APIs", "Pitch Coaching & Product Strategy"], 6)))
+        && choices('availability', ['nov14', 'nov15'], 2)
+        && optionalStr('phone',30) && optionalStr('affiliation',200);
       allow read, update, delete: if false;
     }
-
     match /ambassadors/{id} {
-      allow create: if baseShape()
-        && str('fullName', 120)
-        && str('email', 200)
-        && str('institution', 200)
-        && str('motivation', 1000)
-        && request.resource.data.agreedToCommitment == true
-        && optionalStr('phone', 30)
-        && optionalStr('province', 80)
-        && optionalStr('academicYear', 80);
+      allow create: if baseShape(['fullName', 'email', 'phone', 'institution', 'province', 'academicYear', 'motivation', 'agreedToLocalNotice'])
+        && str('fullName',120) && email('email') && str('institution',200) && str('motivation',1000)
+        && request.resource.data.agreedToLocalNotice == true
+        && request.resource.data.province in ["Central Province (Kandy, Matale, Nuwara Eliya)", "Western Province (Colombo, Gampaha, Kalutara)", "Southern Province (Galle, Matara, Hambantota)", "Northern Province (Jaffna, Kilinochchi, Mannar)", "Eastern Province (Trincomalee, Batticaloa, Ampara)", "North Western Province (Kurunegala, Puttalam)", "North Central Province (Anuradhapura, Polonnaruwa)", "Uva Province (Badulla, Monaragala)", "Sabaragamuwa Province (Ratnapura, Kegalle)"]
+        && optionalStr('phone',30) && optionalStr('academicYear',80);
       allow read, update, delete: if false;
     }
-
     match /messages/{id} {
-      allow create: if baseShape()
-        && str('name', 120)
-        && str('email', 200)
-        && str('message', 2000)
-        && optionalStr('subject', 120);
+      allow create: if baseShape(['name', 'email', 'message', 'subject'])
+        && str('name',120) && email('email') && str('message',2000)
+        && request.resource.data.subject in ['General Inquiry', 'Sponsorship & Partners', 'Media & Press', 'Team Question'];
       allow read, update, delete: if false;
     }
-
-    // Everything else is closed.
-    match /{document=**} {
-      allow read, write: if false;
-    }
+    match /{document=**} { allow read, write: if false; }
   }
 }

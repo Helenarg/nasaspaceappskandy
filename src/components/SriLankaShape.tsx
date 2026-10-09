@@ -1,3 +1,5 @@
+import { useI18n } from '../i18n';
+import { translateCopy } from '../i18n/copy';
 import React from 'react';
 import Svg, { Defs, Filter, FeGaussianBlur, FeMerge, FeMergeNode, G, Path, Circle } from 'react-native-svg';
 import { colors } from '../theme/colors';
@@ -27,6 +29,7 @@ const NODE_CITIES = [
  * falls back to a dashed oval.
  */
 export default function SriLankaShape({ width = 280, showNodes = true }: Props) {
+  const { lang } = useI18n();
   const height = (width / MAP_VIEWBOX.width) * MAP_VIEWBOX.height;
 
   return (
@@ -34,7 +37,7 @@ export default function SriLankaShape({ width = 280, showNodes = true }: Props) 
       width={width}
       height={height}
       viewBox={`0 0 ${MAP_VIEWBOX.width} ${MAP_VIEWBOX.height}`}
-      accessibilityLabel="Map of Sri Lanka with the Kandy hub and provincial nodes"
+      accessibilityLabel={translateCopy('Map of Sri Lanka with the Kandy hub and provincial nodes', lang)}
     >
       <Defs>
         <Filter id="mapGlow" x="-30%" y="-30%" width="160%" height="160%">

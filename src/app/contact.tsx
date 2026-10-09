@@ -1,9 +1,12 @@
+import { Pressable } from '../components/LocalizedPressable';
+import { submissionsReady } from '../lib/firebase';
+import { Link } from 'expo-router';
 import { useViewport } from '../theme/useViewport';
 import { layout } from '../theme/layout';
 import PageShell from '../components/PageShell';
 import PageHeader from '../components/PageHeader';
 import { useCallback, useMemo, useRef, useState } from 'react';
-import { View, StyleSheet, TextInput, Pressable, Platform, ActivityIndicator } from 'react-native';
+import { View, StyleSheet, TextInput, Platform, ActivityIndicator } from 'react-native';
 import { Text } from '../components/LocalizedText';
 import PageMeta from '../components/PageMeta';
 import Navbar from '../components/Navbar';
@@ -11,7 +14,6 @@ import Footer from '../components/Footer';
 import { colors } from '../theme/colors';
 import { fonts } from '../theme/typography';
 import { Mail, MapPin, Send, CheckCircle2 } from '../components/icons';
-import { Ionicons } from '@expo/vector-icons';
 import FormField from '../components/FormField';
 import Honeypot from '../components/Honeypot';
 import { useFormSubmit } from '../lib/useFormSubmit';
@@ -37,6 +39,7 @@ export default function ContactPage() {
   const validate = useCallback((): Errors<Field> => {
     const e: Errors<Field> = {};
     if (!required(name)) e.name = 'Tell us your name.';
+    if (tooLong(name,120)) e.name = 'Please keep this under 120 characters.';
     if (!required(email)) e.email = 'We need an email to reply to.';
     else if (!isEmail(email)) e.email = 'That email address does not look right.';
     if (!required(message)) e.message = 'Add a message so we know how to help.';
@@ -54,7 +57,7 @@ export default function ContactPage() {
     [name, email, subject, message]
   );
 
-  const { errors, clearError, submitting, submitted, formError, submit, reset, trap, setTrap } =
+  const { errors, clearError, submitting, submitted, formError, submit, reset, trap, setTrap, attemptLocked } =
     useFormSubmit<Field>({ kind: 'messages', validate, build });
 
   const sent = submitted;
@@ -69,7 +72,7 @@ export default function ContactPage() {
     >
       <PageMeta
         title="Contact | NASA Space Apps Sri Lanka"
-        description="Reach the NASA Space Apps Sri Lanka organising committee in Kandy. We reply within 24 hours."
+        description="Reach the NASA Space Apps Sri Lanka organising committee in Kandy. Use this form to send a local enquiry."
         path="/contact"
       />
       <Navbar />
@@ -88,7 +91,7 @@ export default function ContactPage() {
               </View>
               <View style={{ flex: 1, minWidth: 0 }}>
                 <Text style={styles.infoLabel}>DIRECT EMAIL</Text>
-                <Text style={styles.infoValue}>info@nasaspaceapps.lk</Text>
+                <Link href="mailto:info@nasaspaceapps.lk" accessibilityRole="link"><Text style={styles.infoValue}>info@nasaspaceapps.lk</Text></Link>
               </View>
             </View>
 
@@ -97,26 +100,10 @@ export default function ContactPage() {
                 <MapPin size={20} color={colors.secondary} />
               </View>
               <View style={{ flex: 1, minWidth: 0 }}>
-                <Text style={styles.infoLabel}>ORGANIZING HEADQUARTERS</Text>
-                <Text style={styles.infoValue}>University of Peradeniya Campus, Kandy</Text>
+                <Text style={styles.infoLabel}>LOCAL AREA</Text>
+                <Text style={styles.infoValue}>Kandy — office location to be confirmed</Text>
                 <Text style={styles.infoSubValue}>Central Province, Sri Lanka</Text>
               </View>
-            </View>
-
-            <Text style={[styles.infoLabel, { marginTop: 20, marginBottom: 10 }]}>CONNECT ON SOCIAL</Text>
-            <View style={styles.socialIcons}>
-              <Pressable accessibilityRole="button" style={styles.socialBox} accessibilityLabel="Facebook">
-                <Ionicons name="logo-facebook" size={16} color={colors.textMuted} />
-              </Pressable>
-              <Pressable accessibilityRole="button" style={styles.socialBox} accessibilityLabel="LinkedIn">
-                <Ionicons name="logo-linkedin" size={16} color={colors.textMuted} />
-              </Pressable>
-              <Pressable accessibilityRole="button" style={styles.socialBox} accessibilityLabel="Instagram">
-                <Ionicons name="logo-instagram" size={16} color={colors.textMuted} />
-              </Pressable>
-              <Pressable accessibilityRole="button" style={styles.socialBox} accessibilityLabel="Twitter / X">
-                <Ionicons name="logo-twitter" size={16} color={colors.textMuted} />
-              </Pressable>
             </View>
           </View>
 
@@ -124,7 +111,7 @@ export default function ContactPage() {
           <View style={styles.mapCard}>
             <View style={styles.mapHeaderRow}>
               <View style={styles.livePulseDot} />
-              <Text style={styles.mapHeaderTag}>KANDY RADAR BEACON • ACTIVE</Text>
+              <Text style={styles.mapHeaderTag}>KANDY • LOCAL COMMUNITY</Text>
             </View>
 
             <View style={styles.mapGraphic}>
@@ -139,13 +126,13 @@ export default function ContactPage() {
               </View>
 
               <View style={styles.mapNodeLabelBox}>
-                <Text style={styles.mapNodeLabel}>HUB: KANDY HQ</Text>
+                <Text style={styles.mapNodeLabel}>KANDY CITY</Text>
               </View>
             </View>
 
             <View style={styles.mapFooter}>
               <Text style={styles.mapFooterText}>
-                COORD: 7.29° N, 80.63° E  |  STATUS: ACTIVE
+                KANDY CITY • APPROXIMATE LOCATION
               </Text>
             </View>
           </View>
@@ -156,12 +143,12 @@ export default function ContactPage() {
           {sent ? (
             <View style={styles.successContainer}>
               <CheckCircle2 size={56} color="#10B981" style={{ marginBottom: 16 }} />
-              <Text style={styles.successTitle}>MESSAGE DISPATCHED!</Text>
+              <Text style={styles.successTitle}>MESSAGE RECEIVED</Text>
               <Text style={styles.successText}>
-                Thank you, <Text style={{ color: colors.text, fontWeight: '700' }}>{name}</Text>. Your message concerning <Text style={{ color: colors.primary }}>{subject}</Text> has been received by our Kandy organizing secretariat.
+                Your local message has been received.
               </Text>
               <Text style={styles.successSub}>
-                We will reply to <Text style={{ color: colors.text }}>{email}</Text> within 24 hours.
+                Your message is saved for local review. No reply time or email delivery is implied by this receipt.
               </Text>
               <Pressable
                 accessibilityRole="button"
@@ -170,7 +157,7 @@ export default function ContactPage() {
                   reset();
                   setName('');
                   setEmail('');
-                  setMessage('');
+                  setMessage(''); setSubject(SUBJECTS[0]);
                 }}
               >
                 <Text style={styles.resetBtnText}>SEND ANOTHER MESSAGE</Text>
@@ -179,14 +166,16 @@ export default function ContactPage() {
           ) : (
             <>
               <Text style={styles.formTitle}>
-                SEND US A <Text style={{ color: colors.primary }}>MESSAGE</Text>
+                SEND US A MESSAGE
               </Text>
               <Text style={styles.formSubtitle}>
-                Our team monitors communications around the clock during hackathon preparations.
+                Send an enquiry to the local organising team. Please avoid sensitive personal information.
               </Text>
 
-              <FormField
-                label="FULL NAME"
+              {!submissionsReady() && <Text style={styles.formSubtitle}>Local form submissions are currently paused. Please do not enter sensitive personal information.</Text>}
+                <FormField editable={!attemptLocked}
+                maxLength={120}
+                  label="FULL NAME"
                 required
                 placeholder="e.g. Priyantha Dissanayake"
                 value={name}
@@ -201,8 +190,9 @@ export default function ContactPage() {
                 onSubmitEditing={() => emailRef.current?.focus()}
               />
 
-              <FormField
-                ref={emailRef}
+              <FormField editable={!attemptLocked}
+                maxLength={200}
+                  ref={emailRef}
                 label="EMAIL ADDRESS"
                 required
                 placeholder="priyantha@example.com"
@@ -226,10 +216,12 @@ export default function ContactPage() {
                   {SUBJECTS.map((sub, idx) => {
                     const isSelected = subject === sub;
                     return (
-                      <Pressable
+                      <Pressable disabled={attemptLocked} aria-disabled={attemptLocked}
                         accessibilityRole="button"
                         key={idx}
                         style={[styles.subjectChip, isSelected && styles.subjectChipActive]}
+                        accessibilityState={{ selected: isSelected }}
+                        aria-pressed={isSelected}
                         onPress={() => setSubject(sub)}
                       >
                         <Text style={[styles.subjectChipText, isSelected && styles.subjectChipTextActive]}>
@@ -241,8 +233,9 @@ export default function ContactPage() {
                 </View>
               </View>
 
-              <FormField
-                ref={messageRef}
+              <FormField editable={!attemptLocked}
+                maxLength={2000}
+                  ref={messageRef}
                 label="MESSAGE"
                 required
                 placeholder="How can our organizing committee assist you?"
@@ -254,9 +247,13 @@ export default function ContactPage() {
                 }}
                 multiline
                 numberOfLines={4}
-                maxLength={2000}
+
               />
 
+
+              <Link href="/privacy" accessibilityRole="link"><Text style={{ color: colors.primary, marginBottom: 12 }}>Privacy notice</Text></Link>
+              <Link href="/participation" accessibilityRole="link"><Text style={{ color: colors.primary, marginBottom: 20 }}>Local participation information</Text></Link>
+              {attemptLocked && <Text accessibilityLiveRegion="polite" aria-live="polite" style={styles.formSubtitle}>This attempt is locked while receipt is uncertain. Retry sends the same details. Do not reload or start another application.</Text>}
               <Honeypot value={trap} onChangeText={setTrap} />
 
               {formError ? (
@@ -301,7 +298,7 @@ const makeStyles = (width: number) =>
     flexGrow: 1
   },
   mainContent: {
-    ...layout.section(width),
+    ...layout.contentSection(width),
     flexDirection: width > 900 ? 'row' : 'column',
     gap: layout.gap(width)
   },
@@ -334,7 +331,7 @@ const makeStyles = (width: number) =>
   },
   infoLabel: {
     color: colors.textMuted,
-    fontSize: 10,
+    fontSize: 14,
     fontWeight: '800',
     fontFamily: fonts.display,
     letterSpacing: 1,
@@ -349,7 +346,7 @@ const makeStyles = (width: number) =>
   infoSubValue: {
     fontFamily: fonts.body,
     color: colors.textMuted,
-    fontSize: 12,
+    fontSize: 14,
     marginTop: 2
   },
   socialIcons: {
@@ -389,13 +386,14 @@ const makeStyles = (width: number) =>
   },
   mapHeaderTag: {
     color: '#10B981',
-    fontSize: 10,
+    fontSize: 14,
     fontWeight: '800',
     fontFamily: fonts.display,
     letterSpacing: 0.8
   },
   mapGraphic: {
-    width: 240,
+    width: '100%',
+    maxWidth: 240,
     height: 180,
     position: 'relative',
     alignItems: 'center',
@@ -460,7 +458,7 @@ const makeStyles = (width: number) =>
   },
   mapNodeLabel: {
     color: colors.primary,
-    fontSize: 11,
+    fontSize: 14,
     fontWeight: '800',
     fontFamily: fonts.display,
     letterSpacing: 0.8
@@ -475,7 +473,7 @@ const makeStyles = (width: number) =>
   },
   mapFooterText: {
     color: colors.textMuted,
-    fontSize: 11,
+    fontSize: 14,
     fontFamily: Platform.OS === 'ios' ? 'Courier' : 'monospace',
     letterSpacing: 0.8
   },
@@ -496,7 +494,7 @@ const makeStyles = (width: number) =>
   formSubtitle: {
     fontFamily: fonts.body,
     color: colors.textMuted,
-    fontSize: 13,
+    fontSize: 16,
     marginBottom: 24
   },
   inputGroup: {
@@ -504,7 +502,7 @@ const makeStyles = (width: number) =>
   },
   inputLabel: {
     color: colors.textMuted,
-    fontSize: 10,
+    fontSize: 14,
     fontWeight: '800',
     fontFamily: fonts.display,
     letterSpacing: 1,
@@ -531,7 +529,7 @@ const makeStyles = (width: number) =>
   subjectChipText: {
     fontFamily: fonts.bodyMedium,
     color: colors.textMuted,
-    fontSize: 11,
+    fontSize: 14,
     fontWeight: '600'
   },
   subjectChipTextActive: {
@@ -553,7 +551,7 @@ const makeStyles = (width: number) =>
   },
   formError: {
     color: colors.secondary,
-    fontSize: 13,
+    fontSize: 16,
     fontFamily: fonts.bodyMedium,
     marginBottom: 12
   },
@@ -561,7 +559,7 @@ const makeStyles = (width: number) =>
     color: colors.ink,
     fontWeight: '800',
     fontFamily: fonts.display,
-    fontSize: 13,
+    fontSize: 16,
     letterSpacing: 0.8
   },
   successContainer: {
@@ -581,13 +579,13 @@ const makeStyles = (width: number) =>
     color: colors.textMuted,
     fontSize: 14,
     textAlign: 'center',
-    lineHeight: 22,
+    lineHeight: 24,
     marginBottom: 10
   },
   successSub: {
     fontFamily: fonts.body,
     color: colors.textMuted,
-    fontSize: 12,
+    fontSize: 14,
     textAlign: 'center',
     marginBottom: 24
   },
@@ -602,7 +600,7 @@ const makeStyles = (width: number) =>
   resetBtnText: {
     fontFamily: fonts.bodyBold,
     color: colors.primary,
-    fontSize: 11,
+    fontSize: 14,
     fontWeight: '700',
     letterSpacing: 0.8
   },

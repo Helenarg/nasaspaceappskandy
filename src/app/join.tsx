@@ -1,9 +1,12 @@
+import { Pressable } from '../components/LocalizedPressable';
+import { submissionsReady } from '../lib/firebase';
+import { Link } from 'expo-router';
 import { useViewport } from '../theme/useViewport';
 import { layout } from '../theme/layout';
 import PageShell from '../components/PageShell';
 import PageHeader from '../components/PageHeader';
 import { useCallback, useMemo, useRef, useState } from 'react';
-import { View, StyleSheet, Platform, Pressable, TextInput, ActivityIndicator } from 'react-native';
+import { View, StyleSheet, Platform, TextInput, ActivityIndicator } from 'react-native';
 import { Text } from '../components/LocalizedText';
 import PageMeta from '../components/PageMeta';
 import Navbar from '../components/Navbar';
@@ -12,7 +15,7 @@ import { colors } from '../theme/colors';
 import FormField from '../components/FormField';
 import Honeypot from '../components/Honeypot';
 import { useFormSubmit } from '../lib/useFormSubmit';
-import { isEmail, isPhone, required, type Errors } from '../lib/validation';
+import { isEmail, isPhone, required, tooLong, type Errors } from '../lib/validation';
 import { fonts } from '../theme/typography';
 import { Users, BrainCircuit, Laptop, Send, CheckCircle2, Check } from '../components/icons';
 
@@ -36,9 +39,8 @@ const MENTOR_SKILLS = [
 ];
 
 const DATES = [
-  { id: 'oct3', label: 'Oct 3 (Day 1 • Kickoff & Formation)' },
-  { id: 'oct4', label: 'Oct 4 (Day 2 • 24H Sprint & Mentorship)' },
-  { id: 'oct5', label: 'Oct 5 (Day 3 • Final Pitching & Awards)' },
+  { id: 'nov14', label: 'Nov 14 (Global event day 1)' },
+  { id: 'nov15', label: 'Nov 15 (Global event day 2)' },
 ];
 
 export default function JoinUsPage() {
@@ -51,21 +53,23 @@ export default function JoinUsPage() {
   const [phone, setPhone] = useState('');
   const [affiliation, setAffiliation] = useState('');
   const [selectedSkills, setSelectedSkills] = useState<string[]>([]);
-  const [selectedDates, setSelectedDates] = useState<string[]>(['oct3', 'oct4', 'oct5']);
+  const [selectedDates, setSelectedDates] = useState<string[]>(['nov14', 'nov15']);
 
   const emailRef = useRef<TextInput>(null);
   const phoneRef = useRef<TextInput>(null);
   const affiliationRef = useRef<TextInput>(null);
 
-  type Field = 'fullName' | 'email' | 'phone' | 'skills' | 'dates';
+  type Field = 'fullName' | 'email' | 'phone' | 'skills' | 'dates' | 'affiliation';
 
   const toggleSkill = (skill: string) => {
+    clearError('skills');
     setSelectedSkills((prev) =>
       prev.includes(skill) ? prev.filter((s) => s !== skill) : [...prev, skill]
     );
   };
 
   const toggleDate = (id: string) => {
+    clearError('dates');
     setSelectedDates((prev) =>
       prev.includes(id) ? prev.filter((d) => d !== id) : [...prev, id]
     );
@@ -77,10 +81,12 @@ export default function JoinUsPage() {
     if (!required(email)) e.email = 'An email is required so we can reach you.';
     else if (!isEmail(email)) e.email = 'That email address does not look right.';
     if (!isPhone(phone)) e.phone = 'Use a Sri Lankan number, e.g. 071 234 5678.';
+    if (tooLong(fullName,120)) e.fullName = 'Please keep this under 120 characters.';
+    if (tooLong(affiliation,200)) e.affiliation = 'Please keep this under 200 characters.';
     if (selectedSkills.length === 0) e.skills = 'Pick at least one skill so we can place you.';
     if (selectedDates.length === 0) e.dates = 'Pick at least one day you can help.';
     return e;
-  }, [fullName, email, phone, selectedSkills, selectedDates]);
+  }, [fullName, email, phone, selectedSkills, selectedDates, affiliation]);
 
   const build = useCallback(
     () => ({
@@ -95,7 +101,7 @@ export default function JoinUsPage() {
     [activeTab, fullName, email, phone, affiliation, selectedSkills, selectedDates]
   );
 
-  const { errors, clearError, submitting, submitted, formError, submit, reset, trap, setTrap } =
+  const { errors, clearError, submitting, submitted, formError, submit, reset, trap, setTrap, attemptLocked } =
     useFormSubmit<Field>({ kind: 'volunteers', validate, build });
 
   const currentSkills = activeTab === 'volunteer' ? VOLUNTEER_SKILLS : MENTOR_SKILLS;
@@ -110,19 +116,24 @@ export default function JoinUsPage() {
     >
       <PageMeta
         title="Volunteer & Mentor | NASA Space Apps Sri Lanka"
-        description="Join the local organising crew as a volunteer, mentor or judge for NASA Space Apps Kandy 2026."
+        description="Join the local organising crew as a volunteer or mentor for NASA Space Apps Kandy 2026."
         path="/join"
       />
       <Navbar />
 
       {/* Header Section */}
       <PageHeader number="05" eyebrow="VOLUNTEERS & MENTORS" title={"Your experience.\nTheir next breakthrough."} description="Share your time, skills, and perspective. Help make the Kandy hackathon an inspiring experience for everyone."><View style={styles.tabToggleBar}>
-          <Pressable
+          <Pressable disabled={attemptLocked} aria-disabled={attemptLocked}
             accessibilityRole="button"
+            accessibilityState={{ selected: activeTab === 'volunteer' }}
+            aria-pressed={activeTab === 'volunteer'}
             style={[styles.tabButton, activeTab === 'volunteer' && styles.tabButtonActive]}
             onPress={() => {
-              setActiveTab('volunteer');
-              setSelectedSkills([]);
+              if (activeTab !== 'volunteer') {
+                setActiveTab('volunteer');
+                setSelectedSkills([]);
+                clearError('skills');
+              }
             }}
           >
             <Users size={16} color={activeTab === 'volunteer' ? colors.ink : colors.textMuted} />
@@ -136,12 +147,17 @@ export default function JoinUsPage() {
             </Text>
           </Pressable>
 
-          <Pressable
+          <Pressable disabled={attemptLocked} aria-disabled={attemptLocked}
             accessibilityRole="button"
+            accessibilityState={{ selected: activeTab === 'mentor' }}
+            aria-pressed={activeTab === 'mentor'}
             style={[styles.tabButton, activeTab === 'mentor' && styles.tabButtonActiveCoral]}
             onPress={() => {
-              setActiveTab('mentor');
-              setSelectedSkills([]);
+              if (activeTab !== 'mentor') {
+                setActiveTab('mentor');
+                setSelectedSkills([]);
+                clearError('skills');
+              }
             }}
           >
             <BrainCircuit size={16} color={activeTab === 'mentor' ? colors.ink : colors.textMuted} />
@@ -151,7 +167,7 @@ export default function JoinUsPage() {
                 activeTab === 'mentor' && styles.tabButtonTextActive,
               ]}
             >
-              APPLY AS MENTOR / JUDGE
+              APPLY AS MENTOR
             </Text>
           </Pressable>
         </View></PageHeader>
@@ -170,13 +186,13 @@ export default function JoinUsPage() {
 
             <Text style={styles.roleCardTitle}>
               {activeTab === 'volunteer'
-                ? 'Empower 500+ Innovators on the Ground'
+                ? 'Support curious participants'
                 : 'Guide the Next Generation of Space Engineers'}
             </Text>
 
             <Text style={styles.roleCardDesc}>
               {activeTab === 'volunteer'
-                ? 'Join our operations battalion managing registration, live audio/visual streams, participant support booths, and hackathon logistics at the Kandy Convention Center.'
+                ? 'Express interest in helping with participant support and local event logistics. The Kandy venue and local schedule are to be announced.'
                 : 'Offer guidance, code review, and architectural advice to student teams solving complex challenges using NASA Earth observation and deep-space telemetry datasets.'}
             </Text>
 
@@ -185,9 +201,9 @@ export default function JoinUsPage() {
               <View style={styles.laptopFrame}>
                 <Laptop size={36} color={activeTab === 'volunteer' ? colors.primary : colors.secondary} />
                 <View style={styles.codeSnippetBox}>
-                  <Text style={styles.codeLine}>&gt; NASA_API.init(mode: &quot;OPEN_DATA&quot;)</Text>
+                  <Text style={styles.codeLine}>&gt; EXPLORE PUBLIC OPEN DATA</Text>
                   <Text style={styles.codeLine}>&gt; connect(hub: &quot;KANDY_2026&quot;)</Text>
-                  <Text style={[styles.codeLine, { color: colors.primary }]}>&gt; STATUS: 9 PROVINCES READY</Text>
+                  <Text style={[styles.codeLine, { color: colors.primary }]}>&gt; STATUS: LOCAL DETAILS TO BE CONFIRMED</Text>
                 </View>
               </View>
             </View>
@@ -196,15 +212,15 @@ export default function JoinUsPage() {
             <View style={styles.perksList}>
               <View style={styles.perkItem}>
                 <CheckCircle2 size={18} color={colors.primary} />
-                <Text style={styles.perkText}>Official NASA Organizing Crew Credential</Text>
+                <Text style={styles.perkText}>Support collaborative learning</Text>
               </View>
               <View style={styles.perkItem}>
                 <CheckCircle2 size={18} color={colors.primary} />
-                <Text style={styles.perkText}>Full 48-Hour Event Catering & Swag Kit</Text>
+                <Text style={styles.perkText}>Share your skills with local teams</Text>
               </View>
               <View style={styles.perkItem}>
                 <CheckCircle2 size={18} color={colors.primary} />
-                <Text style={styles.perkText}>Direct VIP Networking with NASA Global Nominees</Text>
+                <Text style={styles.perkText}>Connect with the local community</Text>
               </View>
             </View>
           </View>
@@ -218,14 +234,10 @@ export default function JoinUsPage() {
                 <CheckCircle2 size={54} color="#10B981" style={{ marginBottom: 16 }} />
                 <Text style={styles.successTitle}>APPLICATION RECEIVED!</Text>
                 <Text style={styles.successMsg}>
-                  Thank you, <Text style={{ color: colors.text, fontWeight: '700' }}>{fullName}</Text>. Your application to join as a{' '}
-                  <Text style={{ color: colors.primary, fontWeight: '700' }}>
-                    {activeTab === 'volunteer' ? 'Volunteer' : 'Technical Mentor'}
-                  </Text>{' '}
-                  has been queued for review.
+                  Your local application has been received.
                 </Text>
                 <Text style={styles.successSub}>
-                  Our organizing leads will email you briefing materials and schedule your orientation call.
+                  Your response is saved for local review. No role or email delivery is implied by this receipt.
                 </Text>
                 <Pressable
                   accessibilityRole="button"
@@ -237,6 +249,8 @@ export default function JoinUsPage() {
                     setPhone('');
                     setAffiliation('');
                     setSelectedSkills([]);
+                    setSelectedDates(['nov14', 'nov15']);
+                    setActiveTab('volunteer');
                   }}
                 >
                   <Text style={styles.resetBtnText}>SUBMIT ANOTHER RESPONSE</Text>
@@ -245,14 +259,16 @@ export default function JoinUsPage() {
             ) : (
               <>
                 <Text style={styles.formTitle}>
-                  {activeTab === 'volunteer' ? 'VOLUNTEER' : 'MENTOR'} APPLICATION
+                  {activeTab === 'volunteer' ? 'VOLUNTEER APPLICATION' : 'MENTOR APPLICATION'}
                 </Text>
                 <Text style={styles.formSub}>
                   Please complete the details below to join our team for Kandy 2026.
                 </Text>
 
                 {/* Name */}
-                <FormField
+                {!submissionsReady() && <Text style={styles.formSub}>Local form submissions are currently paused. Please do not enter sensitive personal information.</Text>}
+                <FormField editable={!attemptLocked}
+                  maxLength={120}
                   label="FULL NAME"
                   required
                   placeholder="e.g. Ruwan Senanayake"
@@ -269,7 +285,8 @@ export default function JoinUsPage() {
                 />
 
                 {/* Email */}
-                <FormField
+                <FormField editable={!attemptLocked}
+                  maxLength={200}
                   ref={emailRef}
                   label="EMAIL ADDRESS"
                   required
@@ -289,7 +306,8 @@ export default function JoinUsPage() {
                 />
 
                 {/* Phone */}
-                <FormField
+                <FormField editable={!attemptLocked}
+                  maxLength={30}
                   ref={phoneRef}
                   label="CONTACT PHONE NUMBER"
                   placeholder="071 234 5678"
@@ -307,11 +325,13 @@ export default function JoinUsPage() {
                 />
 
                 {/* Institution / Company */}
-                <FormField
+                <FormField editable={!attemptLocked}
+                  maxLength={200}
                   ref={affiliationRef}
                   label="ORGANIZATION / UNIVERSITY"
                   placeholder="e.g. IFS Sri Lanka / University of Colombo"
                   value={affiliation}
+                  error={errors.affiliation}
                   onChangeText={setAffiliation}
                   autoComplete="organization"
                   returnKeyType="done"
@@ -324,10 +344,12 @@ export default function JoinUsPage() {
                     {currentSkills.map((skill, idx) => {
                       const isSel = selectedSkills.includes(skill);
                       return (
-                        <Pressable
+                        <Pressable disabled={attemptLocked} aria-disabled={attemptLocked}
                           accessibilityRole="button"
                           key={idx}
                           style={[styles.skillChip, isSel && styles.skillChipActive]}
+                          accessibilityState={{ selected: isSel }}
+                          aria-pressed={isSel}
                           onPress={() => toggleSkill(skill)}
                         >
                           <View style={[styles.miniCheck, isSel && styles.miniCheckActive]}>
@@ -344,15 +366,17 @@ export default function JoinUsPage() {
 
                 {/* Availability Checklist */}
                 <View style={styles.inputGroup}>
-                  <Text style={styles.inputLabel}>AVAILABILITY SCHEDULE (OCT 3–5)</Text>
+                  <Text style={styles.inputLabel}>AVAILABILITY SCHEDULE (NOVEMBER 14–15)</Text>
                   <View style={styles.datesList}>
                     {DATES.map((d) => {
                       const isSel = selectedDates.includes(d.id);
                       return (
-                        <Pressable
+                        <Pressable disabled={attemptLocked} aria-disabled={attemptLocked}
                           accessibilityRole="button"
                           key={d.id}
                           style={styles.dateRow}
+                          accessibilityState={{ selected: isSel }}
+                          aria-pressed={isSel}
                           onPress={() => toggleDate(d.id)}
                         >
                           <View style={[styles.dateCheckbox, isSel && styles.dateCheckboxActive]}>
@@ -365,7 +389,11 @@ export default function JoinUsPage() {
                   </View>
                 </View>
 
-                <Honeypot value={trap} onChangeText={setTrap} />
+
+              <Link href="/privacy" accessibilityRole="link"><Text style={{ color: colors.primary, marginBottom: 12 }}>Privacy notice</Text></Link>
+              <Link href="/participation" accessibilityRole="link"><Text style={{ color: colors.primary, marginBottom: 20 }}>Local participation information</Text></Link>
+              {attemptLocked && <Text accessibilityLiveRegion="polite" aria-live="polite" style={styles.formSub}>This attempt is locked while receipt is uncertain. Retry sends the same details. Do not reload or start another application.</Text>}
+              <Honeypot value={trap} onChangeText={setTrap} />
 
                 {errors.skills ? (
                   <Text style={styles.formError} accessibilityRole="alert">
@@ -455,7 +483,7 @@ const makeStyles = (width: number) =>
   },
   tabButtonText: {
     color: colors.textMuted,
-    fontSize: 11,
+    fontSize: 14,
     fontWeight: '800',
     fontFamily: fonts.display,
     letterSpacing: 0.8
@@ -464,7 +492,7 @@ const makeStyles = (width: number) =>
     color: colors.ink
   },
   mainLayout: {
-    ...layout.section(width),
+    ...layout.contentSection(width),
     flexDirection: width > 900 ? 'row' : 'column',
     gap: layout.gap(width)
   },
@@ -492,7 +520,7 @@ const makeStyles = (width: number) =>
   },
   roleCardTag: {
     color: colors.primary,
-    fontSize: 10,
+    fontSize: 14,
     fontWeight: '800',
     fontFamily: fonts.display,
     letterSpacing: 1.2
@@ -509,7 +537,7 @@ const makeStyles = (width: number) =>
     fontFamily: fonts.body,
     color: colors.textMuted,
     fontSize: 14,
-    lineHeight: 22,
+    lineHeight: 24,
     marginBottom: 26
   },
   mentorGraphicBox: {
@@ -533,9 +561,9 @@ const makeStyles = (width: number) =>
   },
   codeLine: {
     color: colors.textMuted,
-    fontSize: 10,
+    fontSize: 14,
     fontFamily: Platform.OS === 'ios' ? 'Courier' : 'monospace',
-    lineHeight: 16
+    lineHeight: 24
   },
   perksList: {
     gap: 14,
@@ -551,7 +579,7 @@ const makeStyles = (width: number) =>
   perkText: {
     fontFamily: fonts.bodyMedium,
     color: colors.text,
-    fontSize: 13,
+    fontSize: 16,
     fontWeight: '600'
   },
   rightCol: {
@@ -575,7 +603,7 @@ const makeStyles = (width: number) =>
   formSub: {
     fontFamily: fonts.body,
     color: colors.textMuted,
-    fontSize: 13,
+    fontSize: 16,
     marginBottom: 24
   },
   inputGroup: {
@@ -583,7 +611,7 @@ const makeStyles = (width: number) =>
   },
   inputLabel: {
     color: colors.textMuted,
-    fontSize: 10,
+    fontSize: 14,
     fontWeight: '800',
     fontFamily: fonts.display,
     letterSpacing: 1,
@@ -624,7 +652,7 @@ const makeStyles = (width: number) =>
   skillChipText: {
     fontFamily: fonts.body,
     color: colors.textMuted,
-    fontSize: 12
+    fontSize: 14
   },
   skillChipTextActive: {
     color: colors.text,
@@ -655,7 +683,7 @@ const makeStyles = (width: number) =>
   dateLabel: {
     fontFamily: fonts.body,
     color: colors.text,
-    fontSize: 12
+    fontSize: 14
   },
   submitBtn: {
     backgroundColor: colors.primary,
@@ -675,7 +703,7 @@ const makeStyles = (width: number) =>
   },
   formError: {
     color: colors.secondary,
-    fontSize: 13,
+    fontSize: 16,
     fontFamily: fonts.bodyMedium,
     marginBottom: 12
   },
@@ -683,7 +711,7 @@ const makeStyles = (width: number) =>
     color: colors.ink,
     fontWeight: '800',
     fontFamily: fonts.display,
-    fontSize: 13,
+    fontSize: 16,
     letterSpacing: 0.8
   },
   successBox: {
@@ -703,13 +731,13 @@ const makeStyles = (width: number) =>
     color: colors.textMuted,
     fontSize: 14,
     textAlign: 'center',
-    lineHeight: 22,
+    lineHeight: 24,
     marginBottom: 10
   },
   successSub: {
     fontFamily: fonts.body,
     color: colors.textMuted,
-    fontSize: 12,
+    fontSize: 14,
     textAlign: 'center',
     marginBottom: 24
   },
@@ -724,7 +752,7 @@ const makeStyles = (width: number) =>
   resetBtnText: {
     fontFamily: fonts.bodyBold,
     color: colors.primary,
-    fontSize: 11,
+    fontSize: 14,
     fontWeight: '700',
     letterSpacing: 0.8
   },

@@ -90,5 +90,13 @@ input, textarea { caret-color: #EAFE07; }
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
   }
+  [role="button"]:hover, [role="link"]:hover, [role="button"]:active, [role="link"]:active,
+  [data-testid="action-arrow"] { transform: none !important; }
 }
+html[data-motion-paused="true"] *, html[data-motion-paused="true"] *::before, html[data-motion-paused="true"] *::after {
+  animation: none !important; transition: none !important; scroll-behavior: auto !important;
+}
+html[data-motion-paused="true"] [role="button"]:hover, html[data-motion-paused="true"] [role="link"]:hover,
+html[data-motion-paused="true"] [role="button"]:active, html[data-motion-paused="true"] [role="link"]:active,
+html[data-motion-paused="true"] [data-testid="action-arrow"] { transform: none !important; }
 `;

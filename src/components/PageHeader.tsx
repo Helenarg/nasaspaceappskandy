@@ -12,13 +12,13 @@ export default function PageHeader({ number, eyebrow, title, description, childr
   number: string; eyebrow: string; title: string; description: string; children?: React.ReactNode;
 }) {
   const { width } = useViewport();
-  return <View style={[layout.container(width), { paddingTop: layout.sectionSpace(width), paddingBottom: 40 }]}>
+  return <View style={[layout.container(width), { paddingTop: layout.sectionSpace(width), paddingBottom: 20 }]}>
     <Reveal distance={24}><View style={styles.eyebrowRow}>
       <Text style={styles.number}>{number} /</Text><Text style={styles.eyebrow}>{eyebrow}</Text><View style={styles.rule} />
     </View></Reveal>
     <Headline title={title} style={[styles.title,
       { fontSize: width < 600 ? 40 : 64, lineHeight: width < 600 ? 46 : 70 }]} />
-    <Reveal delay={300} distance={28}><Text style={styles.description}>{description}</Text>
+    <Reveal delay={160} distance={20}><Text style={styles.description}>{description}</Text>
     {children ? <View style={styles.controls}>{children}</View> : null}</Reveal>
   </View>;
 }

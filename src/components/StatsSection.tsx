@@ -8,7 +8,7 @@ import { layout } from '../theme/layout';
 import Reveal from './Reveal';
 
 const STATS = [
-  { value: '48', unit: 'HOURS', text: 'To turn a bold idea into something real.' },
+  { value: '02', unit: 'DAYS', text: 'Two days of exploration and collaboration.' },
   { value: '09', unit: 'PROVINCES', text: 'One island. A shared spirit of discovery.' },
   { value: '01', unit: 'PLANET', text: 'Open data. Real challenges. Global impact.' },
 ];
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
   cell: { paddingVertical: 32, paddingHorizontal: 24, gap: 14 },
   rightBorder: { borderRightWidth: 1, borderRightColor: 'rgba(255,255,255,0.25)' },
   bottomBorder: { borderBottomWidth: 1, borderBottomColor: 'rgba(255,255,255,0.25)' },
-  valueRow: { flexDirection: 'row', alignItems: 'baseline', gap: 16 },
+  valueRow: { flexDirection: 'row', flexWrap: 'wrap', alignItems: 'baseline', gap: 16 },
   value: { fontFamily: fonts.display, color: colors.text, fontSize: 64, lineHeight: 72, letterSpacing: -2 },
   unit: { fontFamily: fonts.bodyBold, color: colors.primary, fontSize: 12, letterSpacing: 1.4 },
   text: { fontFamily: fonts.body, color: colors.text, fontSize: 15, lineHeight: 24, maxWidth: 250 },

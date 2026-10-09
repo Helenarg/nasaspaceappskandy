@@ -1,4 +1,6 @@
 import { DICTIONARIES, type StringKey } from './strings';
+import { SI_COPY } from './sinhala-copy';
+import { TA_COPY } from './tamil-copy';
 
 /** Localized presentation copy. Names, datasets, dates and submission enums stay unchanged. */
 export const UI_COPY: Record<string, readonly [string, string]> = {
@@ -120,6 +122,6 @@ const sharedCopy = Object.fromEntries(Object.entries(DICTIONARIES.en).map(([key,
 export function translateCopy(text: string, lang: 'en' | 'si' | 'ta'): string {
   if (lang === 'en') return text;
   const key = text.trim().replace(/\s+/g, ' ');
-  const translated = (UI_COPY[key] ?? sharedCopy[key])?.[lang === 'si' ? 0 : 1];
+  const translated = (lang === 'si' ? SI_COPY[key] : TA_COPY[key]) ?? (UI_COPY[key] ?? sharedCopy[key])?.[lang === 'si' ? 0 : 1];
   return translated?.replace(/\\n/g, '\n') ?? text;
 }

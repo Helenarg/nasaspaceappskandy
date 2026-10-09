@@ -1,69 +1,48 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
-import { submitForm, type FormKind } from './submissions';
+import { useCallback, useRef, useState } from 'react';
+import { createSubmission, waitForReceipt, type FormKind } from './submissions';
+import { submissionsReady, readinessMessage } from './firebase';
 import type { Errors } from './validation';
-
-type Options<F extends string> = {
-  kind: FormKind;
-  /** Return a message per invalid field. Empty object means valid. */
-  validate: () => Errors<F>;
-  /** Shape written to Firestore. Only called once validation passes. */
-  build: () => Record<string, unknown>;
-};
-
-/**
- * Validation + submit state for one form: inline per-field errors, a single
- * in-flight guard against double submits, and a bot trap.
- */
+type Options<F extends string> = { kind: FormKind; validate: () => Errors<F>; build: () => Record<string, unknown> };
 export function useFormSubmit<F extends string>({ kind, validate, build }: Options<F>) {
   const [errors, setErrors] = useState<Errors<F>>({});
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [attemptLocked, setAttemptLocked] = useState(false);
   const [formError, setFormError] = useState<string | null>(null);
-
-  // Honeypot: a field no human sees. Bots fill everything.
   const [trap, setTrap] = useState('');
-  const mountedAt = useRef(0);
-  useEffect(() => { mountedAt.current = Date.now(); }, []);
-
+  const inFlight = useRef(false);
+  const attempt = useRef<ReturnType<typeof createSubmission> | null>(null);
   const clearError = useCallback((field: F) => {
     setErrors((prev) => (prev[field] ? { ...prev, [field]: undefined } : prev));
   }, []);
-
   const submit = useCallback(async () => {
-    if (submitting) return;
-
-    const found = validate();
-    const firstInvalid = (Object.keys(found) as F[]).find((k) => found[k]);
-    setErrors(found);
-    if (firstInvalid) {
-      setFormError('Please fix the highlighted fields.');
-      return;
+    if (inFlight.current || submitted) return;
+    if (!attempt.current) {
+      const found = validate();
+      setErrors(found);
+      if (Object.values(found).some(Boolean)) {
+        setFormError('Please fix the highlighted fields.');
+        return;
+      }
+      if (!submissionsReady()) { setFormError(readinessMessage); return; }
+      if (trap.trim()) { setFormError('We could not submit this form. Please refresh and try again.'); return; }
+      attempt.current = createSubmission(kind, build());
+      setAttemptLocked(true);
     }
-
-    // Silently accept-and-drop obvious bots rather than telling them why they failed.
-    if (trap.trim() || Date.now() - mountedAt.current < 2000) {
-      setSubmitted(true);
-      return;
-    }
-
+    inFlight.current = true;
     setFormError(null);
     setSubmitting(true);
-    const result = await submitForm(kind, build());
-    setSubmitting(false);
-
-    if (result.ok) {
-      setSubmitted(true);
-    } else {
-      setFormError(result.message);
-    }
-  }, [submitting, validate, build, trap, kind]);
-
+    try {
+      const result = await waitForReceipt(attempt.current.send());
+      if (result.ok) setSubmitted(true);
+      else setFormError(result.message);
+    } finally { inFlight.current = false; setSubmitting(false); }
+  }, [submitted, validate, build, trap, kind]);
   const reset = useCallback(() => {
-    setSubmitted(false);
-    setErrors({});
-    setFormError(null);
-    mountedAt.current = Date.now();
+    if (inFlight.current) return;
+    attempt.current = null;
+    setAttemptLocked(false);
+    setSubmitted(false); setErrors({}); setFormError(null); setTrap('');
   }, []);
-
-  return { errors, clearError, submitting, submitted, formError, submit, reset, trap, setTrap };
+  return { errors, clearError, submitting, submitted, attemptLocked, formError, submit, reset, trap, setTrap };
 }

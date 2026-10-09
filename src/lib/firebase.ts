@@ -1,5 +1,6 @@
 import { initializeApp } from 'firebase/app';
-import { getAnalytics, isSupported } from 'firebase/analytics';
+import { initializeAppCheck, ReCaptchaV3Provider } from 'firebase/app-check';
+import { Platform } from 'react-native';
 // Lite SDK: REST writes only. ~60% smaller than the full Firestore client and it
 // fails fast instead of silently queueing writes offline, which a form needs.
 import { getFirestore } from 'firebase/firestore/lite';
@@ -17,12 +18,19 @@ const firebaseConfig = {
 };
 
 export const app = initializeApp(firebaseConfig);
+const siteKey = process.env.EXPO_PUBLIC_RECAPTCHA_SITE_KEY;
+// Attestation is initialized before Firestore requests. No debug tokens in releases.
+if (Platform.OS === 'web' && typeof window !== 'undefined' && siteKey) {
+  initializeAppCheck(app, { provider: new ReCaptchaV3Provider(siteKey), isTokenAutoRefreshEnabled: true });
+}
 export const db = getFirestore(app);
 
 // Analytics is web-only; calling it on native without the native SDK throws.
-export let analytics: any = null;
-isSupported().then((supported) => {
-  if (supported) {
-    analytics = getAnalytics(app);
-  }
-});
+// Analytics stays off: no implicit tracking while the organizer policy is pending.
+export const analytics = null;
+
+export function submissionsReady() {
+  return Platform.OS === 'web' && !!siteKey && process.env.EXPO_PUBLIC_ENABLE_LOCAL_FORMS === 'true';
+}
+
+export const readinessMessage = 'Local applications are not open yet. Use the official Space Apps website to register for the global event.';

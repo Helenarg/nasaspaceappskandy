@@ -12,4 +12,8 @@ export const layout = {
   section(width: number): ViewStyle {
     return { ...this.container(width), paddingVertical: this.sectionSpace(width) };
   },
+  // PageHeader owns the first gap; avoid stacking a second full section top gap.
+  contentSection(width: number): ViewStyle {
+    return { ...this.container(width), paddingBottom: this.sectionSpace(width) };
+  },
 };

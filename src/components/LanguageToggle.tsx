@@ -1,5 +1,6 @@
+import { Pressable } from './LocalizedPressable';
 import React from 'react';
-import { Pressable, StyleSheet, View } from 'react-native';
+import { Platform, StyleSheet, View } from 'react-native';
 import { Text } from './LocalizedText';
 import { colors } from '../theme/colors';
 import { fonts } from '../theme/typography';
@@ -10,7 +11,7 @@ export default function LanguageToggle({ compact = false }: { compact?: boolean 
   const { lang, setLang, t } = useI18n();
 
   return (
-    <View style={styles.row} accessibilityRole="radiogroup" accessibilityLabel={t('nav.language')}>
+    <View style={styles.row} accessibilityLabel={t('nav.language')}>
       {LANGUAGES.map((l) => {
         const active = l.code === lang;
         return (
@@ -18,8 +19,9 @@ export default function LanguageToggle({ compact = false }: { compact?: boolean 
             key={l.code}
             onPress={() => setLang(l.code)}
             style={[styles.item, compact && styles.itemCompact, active && styles.itemActive]}
-            accessibilityRole="radio"
-            accessibilityState={{ checked: active }}
+            accessibilityRole="button"
+            accessibilityState={{ selected: active }}
+            {...(Platform.OS === 'web' ? { 'aria-pressed': active } : {})}
             accessibilityLabel={l.name}
           >
             <Text style={[styles.label, active && styles.labelActive]}>{l.label}</Text>
@@ -50,8 +52,8 @@ const styles = StyleSheet.create({
   },
   itemCompact: {
     paddingHorizontal: 8,
-    minWidth: 36,
-    minHeight: 32,
+    minWidth: 44,
+    minHeight: 44,
   },
   itemActive: {
     backgroundColor: colors.primaryMuted,

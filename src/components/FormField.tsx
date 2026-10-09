@@ -1,5 +1,5 @@
-import React, { forwardRef } from 'react';
-import { View, TextInput, StyleSheet, type TextInputProps } from 'react-native';
+import React, { forwardRef, useId, useRef, useEffect, useImperativeHandle } from 'react';
+import { Platform, View, TextInput, StyleSheet, type TextInputProps } from 'react-native';
 import { Text, localeTextStyle } from './LocalizedText';
 import { useI18n } from '../i18n';
 import { translateCopy } from '../i18n/copy';
@@ -15,32 +15,46 @@ type Props = TextInputProps & {
 };
 
 const FormField = forwardRef<TextInput, Props>(function FormField(
-  { label, error, required, hint, style, multiline, ...inputProps },
+  { label, error, required, hint, style, multiline, placeholder, ...inputProps },
   ref
 ) {
   const { lang } = useI18n();
+  const input = useRef<TextInput>(null);
+  useImperativeHandle(ref, () => input.current!);
+  useEffect(() => {
+    if (!error || Platform.OS !== 'web') return;
+    const node = input.current as unknown as HTMLElement | null;
+    const firstInvalid = node?.closest('[role="main"]')?.querySelector('[aria-invalid="true"]');
+    if (node && node === firstInvalid) node.focus();
+  }, [error]);
+  const id = useId().replace(/:/g, '');
+  const hintId = `field-${id}-hint`;
+  const errorId = `field-${id}-error`;
+  const describedBy = [hint && hintId, error && errorId].filter(Boolean).join(' ') || undefined;
   return (
     <View style={styles.group}>
       <Text style={styles.label}>
         {label}
         {required ? <Text style={styles.requiredMark}> *</Text> : null}
       </Text>
-      {hint ? <Text style={styles.hint}>{hint}</Text> : null}
+      {hint ? <Text nativeID={hintId} style={styles.hint}>{hint}</Text> : null}
 
       <TextInput
-        ref={ref}
+        ref={input}
         style={[styles.input, multiline && styles.textArea, !!error && styles.inputError, style, localeTextStyle(styles.input, lang)]}
         placeholderTextColor={colors.textMuted}
         multiline={multiline}
+        placeholder={placeholder ? translateCopy(placeholder, lang) : undefined}
         accessibilityLabel={translateCopy(label, lang)}
         // Announced by screen readers alongside the field, not just shown in red.
         accessibilityHint={error || hint ? translateCopy(error || hint || '', lang) : undefined}
         aria-invalid={!!error}
+        {...(Platform.OS === 'web' ? { 'aria-required': !!required, 'aria-describedby': describedBy } : {})}
         {...inputProps}
       />
 
       {error ? (
-        <Text style={styles.error} accessibilityRole="alert">
+        <Text nativeID={errorId} style={styles.error} accessibilityRole="alert">
           {error}
         </Text>
       ) : null}
@@ -56,7 +70,7 @@ const styles = StyleSheet.create({
   },
   label: {
     color: colors.text,
-    fontSize: 12,
+    fontSize: 14,
     fontWeight: '700',
     fontFamily: fonts.bodyBold,
     letterSpacing: 0.8,
@@ -67,7 +81,8 @@ const styles = StyleSheet.create({
   },
   hint: {
     color: colors.textMuted,
-    fontSize: 12,
+    fontSize: 14,
+    lineHeight: 22,
     fontFamily: fonts.body,
     marginBottom: 8,
     marginTop: -4,
@@ -75,7 +90,7 @@ const styles = StyleSheet.create({
   input: {
     backgroundColor: colors.background,
     borderWidth: 1,
-    borderColor: 'rgba(255, 255, 255, 0.28)',
+    borderColor: 'rgba(255, 255, 255, 0.45)',
     borderRadius: 4,
     paddingHorizontal: 16,
     paddingVertical: 16,
@@ -95,7 +110,8 @@ const styles = StyleSheet.create({
   },
   error: {
     color: colors.error,
-    fontSize: 12,
+    fontSize: 14,
+    lineHeight: 22,
     fontFamily: fonts.bodyMedium,
     marginTop: 6,
   },

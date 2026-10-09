@@ -40,12 +40,28 @@
     "lint": "expo lint",
     "build:web": "expo export -p web",
     "typecheck": "node --stack-size=8000 node_modules/typescript/lib/tsc.js --noEmit",
-    "deploy:rules": "firebase deploy --only firestore:rules"
+    "deploy:rules": "npx firebase-tools@15.33.0 deploy --only firestore:rules",
+    "preview:release": "node scripts/preview-release.cjs",
+    "postinstall": "node scripts/apply-dependency-hardening.cjs",
+    "test:dependencies": "node scripts/dependency-regressions.cjs",
+    "test:forms": "node scripts/postfix-formtests.cjs",
+    "test:rules": "npx firebase-tools@15.33.0 emulators:exec --only firestore --project demo-space-apps-release \"node scripts/firestore-rules-tests.cjs\""
   },
   "private": true,
   "devDependencies": {
+    "@firebase/rules-unit-testing": "5.0.2",
     "eslint": "^9.0.0",
     "eslint-config-expo": "~57.0.2",
     "typescript": "~6.0.3"
+  },
+  "allowScripts": {
+    "@firebase/util@1.15.3": true,
+    "protobufjs@7.6.6": true,
+    "unrs-resolver@1.12.2": true
+  },
+  "overrides": {
+    "@grpc/grpc-js": "1.14.6",
+    "uuid": "11.1.1",
+    "decode-uri-component": "0.5.0"
   }
 }

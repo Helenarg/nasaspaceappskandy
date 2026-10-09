@@ -1,0 +1,341 @@
+{
+  "date": "2026-10-09",
+  "method": "Aggregated from browser inspection output: actual iframe innerWidth, document scrollWidth and interactive bounding rectangles, after language hydration. No physical-device certification.",
+  "caseCount": 180,
+  "batches": [
+    {
+      "width": 320,
+      "language": "en",
+      "routes": [
+        "/",
+        "/about",
+        "/events",
+        "/challenges",
+        "/news",
+        "/sponsors",
+        "/register",
+        "/join",
+        "/ambassadors",
+        "/contact",
+        "/privacy",
+        "/participation"
+      ],
+      "cases": 12,
+      "status": "PASS",
+      "horizontalPageOverflow": false,
+      "overflowingVisibleControls": 0
+    },
+    {
+      "width": 320,
+      "language": "si",
+      "routes": [
+        "/",
+        "/about",
+        "/events",
+        "/challenges",
+        "/news",
+        "/sponsors",
+        "/register",
+        "/join",
+        "/ambassadors",
+        "/contact",
+        "/privacy",
+        "/participation"
+      ],
+      "cases": 12,
+      "status": "PASS",
+      "horizontalPageOverflow": false,
+      "overflowingVisibleControls": 0
+    },
+    {
+      "width": 320,
+      "language": "ta",
+      "routes": [
+        "/",
+        "/about",
+        "/events",
+        "/challenges",
+        "/news",
+        "/sponsors",
+        "/register",
+        "/join",
+        "/ambassadors",
+        "/contact",
+        "/privacy",
+        "/participation"
+      ],
+      "cases": 12,
+      "status": "PASS",
+      "horizontalPageOverflow": false,
+      "overflowingVisibleControls": 0
+    },
+    {
+      "width": 390,
+      "language": "en",
+      "routes": [
+        "/",
+        "/about",
+        "/events",
+        "/challenges",
+        "/news",
+        "/sponsors",
+        "/register",
+        "/join",
+        "/ambassadors",
+        "/contact",
+        "/privacy",
+        "/participation"
+      ],
+      "cases": 12,
+      "status": "PASS",
+      "horizontalPageOverflow": false,
+      "overflowingVisibleControls": 0
+    },
+    {
+      "width": 390,
+      "language": "si",
+      "routes": [
+        "/",
+        "/about",
+        "/events",
+        "/challenges",
+        "/news",
+        "/sponsors",
+        "/register",
+        "/join",
+        "/ambassadors",
+        "/contact",
+        "/privacy",
+        "/participation"
+      ],
+      "cases": 12,
+      "status": "PASS",
+      "horizontalPageOverflow": false,
+      "overflowingVisibleControls": 0
+    },
+    {
+      "width": 390,
+      "language": "ta",
+      "routes": [
+        "/",
+        "/about",
+        "/events",
+        "/challenges",
+        "/news",
+        "/sponsors",
+        "/register",
+        "/join",
+        "/ambassadors",
+        "/contact",
+        "/privacy",
+        "/participation"
+      ],
+      "cases": 12,
+      "status": "PASS",
+      "horizontalPageOverflow": false,
+      "overflowingVisibleControls": 0
+    },
+    {
+      "width": 768,
+      "language": "en",
+      "routes": [
+        "/",
+        "/about",
+        "/events",
+        "/challenges",
+        "/news",
+        "/sponsors",
+        "/register",
+        "/join",
+        "/ambassadors",
+        "/contact",
+        "/privacy",
+        "/participation"
+      ],
+      "cases": 12,
+      "status": "PASS",
+      "horizontalPageOverflow": false,
+      "overflowingVisibleControls": 0
+    },
+    {
+      "width": 768,
+      "language": "si",
+      "routes": [
+        "/",
+        "/about",
+        "/events",
+        "/challenges",
+        "/news",
+        "/sponsors",
+        "/register",
+        "/join",
+        "/ambassadors",
+        "/contact",
+        "/privacy",
+        "/participation"
+      ],
+      "cases": 12,
+      "status": "PASS",
+      "horizontalPageOverflow": false,
+      "overflowingVisibleControls": 0
+    },
+    {
+      "width": 768,
+      "language": "ta",
+      "routes": [
+        "/",
+        "/about",
+        "/events",
+        "/challenges",
+        "/news",
+        "/sponsors",
+        "/register",
+        "/join",
+        "/ambassadors",
+        "/contact",
+        "/privacy",
+        "/participation"
+      ],
+      "cases": 12,
+      "status": "PASS",
+      "horizontalPageOverflow": false,
+      "overflowingVisibleControls": 0
+    },
+    {
+      "width": 1024,
+      "language": "en",
+      "routes": [
+        "/",
+        "/about",
+        "/events",
+        "/challenges",
+        "/news",
+        "/sponsors",
+        "/register",
+        "/join",
+        "/ambassadors",
+        "/contact",
+        "/privacy",
+        "/participation"
+      ],
+      "cases": 12,
+      "status": "PASS",
+      "horizontalPageOverflow": false,
+      "overflowingVisibleControls": 0
+    },
+    {
+      "width": 1024,
+      "language": "si",
+      "routes": [
+        "/",
+        "/about",
+        "/events",
+        "/challenges",
+        "/news",
+        "/sponsors",
+        "/register",
+        "/join",
+        "/ambassadors",
+        "/contact",
+        "/privacy",
+        "/participation"
+      ],
+      "cases": 12,
+      "status": "PASS",
+      "horizontalPageOverflow": false,
+      "overflowingVisibleControls": 0
+    },
+    {
+      "width": 1024,
+      "language": "ta",
+      "routes": [
+        "/",
+        "/about",
+        "/events",
+        "/challenges",
+        "/news",
+        "/sponsors",
+        "/register",
+        "/join",
+        "/ambassadors",
+        "/contact",
+        "/privacy",
+        "/participation"
+      ],
+      "cases": 12,
+      "status": "PASS",
+      "horizontalPageOverflow": false,
+      "overflowingVisibleControls": 0
+    },
+    {
+      "width": 1440,
+      "language": "en",
+      "routes": [
+        "/",
+        "/about",
+        "/events",
+        "/challenges",
+        "/news",
+        "/sponsors",
+        "/register",
+        "/join",
+        "/ambassadors",
+        "/contact",
+        "/privacy",
+        "/participation"
+      ],
+      "cases": 12,
+      "status": "PASS",
+      "horizontalPageOverflow": false,
+      "overflowingVisibleControls": 0
+    },
+    {
+      "width": 1440,
+      "language": "si",
+      "routes": [
+        "/",
+        "/about",
+        "/events",
+        "/challenges",
+        "/news",
+        "/sponsors",
+        "/register",
+        "/join",
+        "/ambassadors",
+        "/contact",
+        "/privacy",
+        "/participation"
+      ],
+      "cases": 12,
+      "status": "PASS",
+      "horizontalPageOverflow": false,
+      "overflowingVisibleControls": 0
+    },
+    {
+      "width": 1440,
+      "language": "ta",
+      "routes": [
+        "/",
+        "/about",
+        "/events",
+        "/challenges",
+        "/news",
+        "/sponsors",
+        "/register",
+        "/join",
+        "/ambassadors",
+        "/contact",
+        "/privacy",
+        "/participation"
+      ],
+      "cases": 12,
+      "status": "PASS",
+      "horizontalPageOverflow": false,
+      "overflowingVisibleControls": 0
+    }
+  ],
+  "fixes": [
+    "Constrain registration and ambassador selection chips for translated labels.",
+    "Stack and constrain footer CTA below 1100px; reran all Tamil tablet routes."
+  ]
+}

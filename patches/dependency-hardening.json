@@ -1,0 +1,98 @@
+[
+  {
+    "package": "node-forge",
+    "version": "1.4.0",
+    "file": "lib/rsa.js",
+    "reference": "https://github.com/digitalbazaar/forge/pull/1152",
+    "beforeSha256": "fd4740238145ec26470eb3f06a627c72039538ce1307dbdce40521f94dfd0a50",
+    "afterSha256": "447c5441cea1b125e23661d7e27a8b1759cc3400241c0013b2d034b4ee1dbf50",
+    "edits": [
+      {
+        "from": "obj.value.length !== 2) {",
+        "to": "obj.value.length !== 2 ||\n            obj.value[0].value.length !== (('parameters' in capture) ? 2 : 1)) {"
+      }
+    ]
+  },
+  {
+    "package": "braces",
+    "version": "3.0.3",
+    "file": "lib/parse.js",
+    "reference": "https://github.com/advisories/GHSA-vfj7-8cjw-p6xm",
+    "beforeSha256": "e572166565f15fa6ad9865ae49d678218e32aabfd1b3720f6d0d43d39800d310",
+    "afterSha256": "7fce632734753ec54b6632251e907054acf4c84e9549fb2cb55a89f533fc420c",
+    "edits": [
+      {
+        "from": "      stack.push(block);",
+        "to": "      if (stack.length >= 64) throw new SyntaxError('Brace nesting exceeds the release safety limit (64)');\n      stack.push(block);"
+      }
+    ]
+  },
+  {
+    "package": "braces",
+    "version": "3.0.3",
+    "file": "lib/compile.js",
+    "reference": "https://github.com/advisories/GHSA-vfj7-8cjw-p6xm",
+    "beforeSha256": "dc98f22eee3d511785d92a00758d5f0d48efed5f5813bdecc2de430c529b5c9f",
+    "afterSha256": "58577c249fd5feac644b3e93da070217e47284927babf715ca8f3a7e0d0495f7",
+    "edits": [
+      {
+        "from": "const walk = (node, parent = {}) => {",
+        "to": "const walk = (node, parent = {}, depth = 0) => {\n    if (depth >= 64) throw new SyntaxError('Brace nesting exceeds the release safety limit (64)');"
+      },
+      {
+        "from": "walk(child, node)",
+        "to": "walk(child, node, depth + 1)"
+      }
+    ]
+  },
+  {
+    "package": "braces",
+    "version": "3.0.3",
+    "file": "lib/expand.js",
+    "reference": "https://github.com/advisories/GHSA-vfj7-8cjw-p6xm",
+    "beforeSha256": "41ccc196ebfa7b7781a634e721eb744e4e7bcb54cba427a7e3d6806a1b9e58f7",
+    "afterSha256": "99bd0cf7e7a1cefff8e12694b6a517314e4282d9abf1aed29b566f93bb76b653",
+    "edits": [
+      {
+        "from": "const walk = (node, parent = {}) => {",
+        "to": "const walk = (node, parent = {}, depth = 0) => {\n    if (depth >= 64) throw new SyntaxError('Brace nesting exceeds the release safety limit (64)');"
+      },
+      {
+        "from": "walk(child, node)",
+        "to": "walk(child, node, depth + 1)"
+      }
+    ]
+  },
+  {
+    "package": "braces",
+    "version": "3.0.3",
+    "file": "lib/stringify.js",
+    "reference": "https://github.com/advisories/GHSA-vfj7-8cjw-p6xm",
+    "beforeSha256": "379f22d77bfa1478341ccd49c5e4267464aabcbba03558bab332aac23fc6f23a",
+    "afterSha256": "e1d763444886b5d89b085c2eb6bfe2cdb61e428db45555a82f6448e2695aad05",
+    "edits": [
+      {
+        "from": "const stringify = (node, parent = {}) => {",
+        "to": "const stringify = (node, parent = {}, depth = 0) => {\n    if (depth >= 64) throw new SyntaxError('Brace nesting exceeds the release safety limit (64)');"
+      },
+      {
+        "from": "stringify(child)",
+        "to": "stringify(child, node, depth + 1)"
+      }
+    ]
+  },
+  {
+    "package": "query-string",
+    "version": "7.1.3",
+    "file": "index.js",
+    "reference": "https://github.com/advisories/GHSA-vcc3-ghjq-m6fr",
+    "beforeSha256": "caa3f2c8b45dfe1e91db22ae10743af68de8d96f26515132bb52485ec0f037fa",
+    "afterSha256": "fce041fbec4dfb6bf44b53137c04609d18714b709b8d1b8a76c8e9bce744d749",
+    "edits": [
+      {
+        "from": "const decodeComponent = require('decode-uri-component');",
+        "to": "const decoder = require('decode-uri-component');\nconst decodeComponent = decoder.default || decoder;"
+      }
+    ]
+  }
+]

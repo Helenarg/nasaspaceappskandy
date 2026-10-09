@@ -509,6 +509,8 @@ const makeStyles = (width: number) =>
     gap: 8
   },
   provinceChip: {
+    maxWidth: '100%',
+    flexShrink: 1,
     backgroundColor: 'rgba(255, 255, 255, 0.04)',
     borderWidth: 1,
     borderColor: 'rgba(255, 255, 255, 0.1)',
@@ -522,6 +524,7 @@ const makeStyles = (width: number) =>
     borderColor: colors.primary
   },
   provinceChipText: {
+    flexShrink: 1,
     fontFamily: fonts.bodyMedium,
     color: colors.textMuted,
     fontSize: 14,

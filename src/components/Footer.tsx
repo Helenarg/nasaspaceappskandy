@@ -18,7 +18,7 @@ const LINKS = [
 export default function Footer() {
   const { width } = useViewport();
   return <View {...(Platform.OS === 'web' ? { role: 'contentinfo' as const } : {})} style={styles.shell}><View style={[layout.container(width), { paddingTop: 64, paddingBottom: 32 }]}>
-    <View style={[styles.top, { flexDirection: width < 700 ? 'column' : 'row' }]}>
+    <View style={[styles.top, { flexDirection: width < 1100 ? 'column' : 'row' }]}>
       <Text accessibilityRole="header" aria-level={2} style={[styles.ctaTitle, { fontSize: width < 600 ? 36 : 48 }]}>Curiosity starts{ '\n' }something extraordinary.</Text>
       <View style={styles.cta}><ActionLink href="/participation" label="START YOUR JOURNEY" /></View>
     </View>
@@ -45,8 +45,8 @@ export default function Footer() {
 const styles = StyleSheet.create({
   shell: { backgroundColor: colors.background, borderTopWidth: 1, borderTopColor: colors.border },
   top: { gap: 32, justifyContent: 'space-between', paddingBottom: 56, borderBottomWidth: 1, borderBottomColor: colors.border },
-  ctaTitle: { color: colors.text, fontFamily: fonts.display, letterSpacing: -1, lineHeight: 54, flex: 1 },
-  cta: { alignSelf: 'center' },
+  ctaTitle: { color: colors.text, fontFamily: fonts.display, letterSpacing: -1, lineHeight: 54, flex: 1, minWidth: 0 },
+  cta: { alignSelf: 'center', maxWidth: '100%', flexShrink: 1 },
   columns: { gap: 56, paddingVertical: 56 },
   brandColumn: { flex: 1, alignItems: 'flex-start', gap: 24 },
   description: { color: colors.textMuted, fontFamily: fonts.body, fontSize: 16, lineHeight: 26, maxWidth: 380 },

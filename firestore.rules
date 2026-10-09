@@ -20,7 +20,7 @@ service cloud.firestore {
         || (request.resource.data[field] is string && request.resource.data[field].size() <= maxLen);
     }
     function email(field) {
-      return str(field, 200) && request.resource.data[field].matches('^[^ @]+@[^ @]+[.][^ @]+$');
+      return str(field, 200) && request.resource.data[field].matches('^[^\\s@]+@[^\\s@]+[.][^\\s@]+$');
     }
     function choices(field, values, maximum) {
       return request.resource.data[field] is list

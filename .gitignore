@@ -42,6 +42,9 @@ yarn-error.*
 
 # Firebase
 .firebase/
+firebase-debug.log
+firestore-debug.log
+ui-debug.log
 
 # AI development & assistant tooling
 .claude/

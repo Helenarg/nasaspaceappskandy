@@ -4,6 +4,8 @@ Use Node 22.13.1 or a newer version supported by Expo SDK 57. Install locked dep
 
 ## Collection is paused by default
 
+Run `npm run test:dependencies` and `npm run test:forms` after installation. Review [dependency maintenance](DEPENDENCIES.md) for the pinned postinstall mitigations and outstanding upstream warnings. For isolated security-rule checks, install Java 21, run `npx firebase-tools@15.33.0 setup:emulators:firestore`, then `npm run test:rules`. This uses only the localhost emulator and the demo-space-apps-release project; it does not deploy or test production rules. Firebase emulator configuration is included in firebase.json.
+
 The forms collect local interest and enquiries, not official NASA registration. Main registration buttons link to the official event website. .env.example defaults EXPO_PUBLIC_ENABLE_LOCAL_FORMS=false. Web submissions require both an explicit true flag and EXPO_PUBLIC_RECAPTCHA_SITE_KEY. Public Expo environment variables are bundled into the client; never put secrets in them. Native submission support is not enabled by this web App Check integration.
 
 Before enabling collection, organizers must verify the mailbox, publish actual retention and responsible-contact details, approve the privacy notice, and provision Firebase. The checked-in rules validate create requests by collection and reject client reads, updates and deletes. Test them with the Firebase Emulator Suite before production. Mocked submission tests do not substitute for rules tests.

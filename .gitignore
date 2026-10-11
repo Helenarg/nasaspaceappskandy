@@ -1,49 +1,31 @@
-# Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
-
-# dependencies
+# Dependencies and generated Next.js output
 node_modules/
+.next/
+out/
+next-env.d.ts
+*.tsbuildinfo
 
-# Expo
-.expo/
-dist/
-web-build/
-expo-env.d.ts
-
-# Native
-.kotlin/
-*.orig.*
-*.jks
-*.p8
-*.p12
+# Local secrets and Firebase state
+.env*
+!.env.example
+.firebase/
+.vercel/
+.wrangler/
+firebase-debug.log*
+*.pem
 *.key
-*.mobileprovision
 
-# Metro
-.metro-health-check*
+# Local recovery archives (never shipped or committed)
+.archive/
 
-# debug
+# Debug and operating-system files
 npm-debug.*
 yarn-debug.*
 yarn-error.*
-
-# macOS
 .DS_Store
-*.pem
+Thumbs.db
 
-# local env files
-.env*.local
-
-# typescript
-*.tsbuildinfo
-
-# generated native folders
-/ios
-/android
-
-# Firebase
-.firebase/
-
-# AI development & assistant tooling
+# Local assistant/editor configuration
 .claude/
 .claude*
 .agents/

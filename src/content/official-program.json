@@ -1,0 +1,318 @@
+{
+  "updatedAt": "2026-10-10",
+  "challengeYear": 2026,
+  "challengesSource": "https://www.spaceappschallenge.org/2026/challenges/",
+  "awardsEdition": 2025,
+  "awardsSource": "https://www.spaceappschallenge.org/2025/awards/",
+  "challenges": [
+    {
+      "alt": "Three Mars rover designs positioned together on a rocky test terrain.",
+      "image": "/images/official/challenge-01.webp",
+      "title": "Abandoned but not Forgotten: Storytelling about NASA's Discarded Equipment on the Moon and Mars",
+      "url": "https://www.spaceappschallenge.org/2026/challenges/abandoned-but-not-forgotten-storytelling-about-nasas-discarded-equipment-on-the-moon-and-mars/",
+      "difficulty": [
+        "Intermediate",
+        "Beginner/Youth"
+      ],
+      "subjects": [
+        "Astrophysics",
+        "Planets & Moons",
+        "Space Exploration"
+      ],
+      "summary": "Tell young explorers the stories of hardware NASA has left on the Moon, Mars, and beyond.",
+      "slug": "abandoned-but-not-forgotten-storytelling-about-nasas-discarded-equipment-on-the-moon-and-mars",
+      "imageSource": "https://assets.spaceappschallenge.org/media/images/Abandoned_but_not_Forgotten_4.3.2e16d0ba.fill-300x250.jpg"
+    },
+    {
+      "alt": "Illustration of Earth with four quadrants showing different global data layers, including weather, precipitation, land surface, and atmospheric patterns.",
+      "image": "/images/official/challenge-02.webp",
+      "title": "Be An Earth System Trend Detective!",
+      "url": "https://www.spaceappschallenge.org/2026/challenges/be-an-earth-system-trend-detective/",
+      "difficulty": [
+        "Advanced"
+      ],
+      "subjects": [
+        "Earth Science",
+        "Software"
+      ],
+      "summary": "Visualize NASA observations over time to reveal where Earth is changing and whether those trends are significant.",
+      "slug": "be-an-earth-system-trend-detective",
+      "imageSource": "https://assets.spaceappschallenge.org/media/images/earth_systems_JRUXY8b.2e16d0ba.fill-300x250.jpg"
+    },
+    {
+      "alt": "NASA Astronaut Christina Koch looking out the window at Earth.",
+      "image": "/images/official/challenge-03.webp",
+      "title": "Build a Junior Astronaut Mission Trainer",
+      "url": "https://www.spaceappschallenge.org/2026/challenges/build-a-junior-astronaut-mission-trainer/",
+      "difficulty": [
+        "Intermediate",
+        "Beginner/Youth"
+      ],
+      "subjects": [
+        "Games",
+        "Planets & Moons",
+        "Software",
+        "Space Exploration",
+        "Sun"
+      ],
+      "summary": "Create a game that lets students balance the power, food, shielding, and life support of a lunar or Martian outpost.",
+      "slug": "build-a-junior-astronaut-mission-trainer",
+      "imageSource": "https://assets.spaceappschallenge.org/media/images/astronaut_6EK05up.2e16d0ba.fill-300x250.jpg"
+    },
+    {
+      "alt": "10 - CLPS",
+      "image": "/images/official/challenge-04.webp",
+      "title": "CLPS Lunar Mission Browser",
+      "url": "https://www.spaceappschallenge.org/2026/challenges/clps-lunar-mission-browser/",
+      "difficulty": [
+        "Advanced",
+        "Intermediate"
+      ],
+      "subjects": [
+        "Human Exploration",
+        "Moon",
+        "Software",
+        "Space Exploration"
+      ],
+      "summary": "Help compare lunar landing sites and dates by visualizing sunlight and communication windows near the south pole.",
+      "slug": "clps-lunar-mission-browser",
+      "imageSource": "https://assets.spaceappschallenge.org/media/images/10_-_CLPS.2e16d0ba.fill-300x250.png"
+    },
+    {
+      "alt": "An astronaut performs a leg exercise while health data displays on a nearby monitor, with Earth visible through the window behind them.",
+      "image": "/images/official/challenge-05.webp",
+      "title": "Create Health Monitoring Software for Astronauts on Space Missions",
+      "url": "https://www.spaceappschallenge.org/2026/challenges/create-health-monitoring-software-for-astronauts-on-space-missions/",
+      "difficulty": [
+        "Intermediate"
+      ],
+      "subjects": [
+        "Human Exploration",
+        "Software",
+        "Space Exploration"
+      ],
+      "summary": "Build software that helps astronauts track health indicators and respond to changes during long space missions.",
+      "slug": "create-health-monitoring-software-for-astronauts-on-space-missions",
+      "imageSource": "https://assets.spaceappschallenge.org/media/images/Astronaut_exercise_2.2e16d0ba.fill-300x250.jpg"
+    },
+    {
+      "alt": "NISAR satellite illustration showing Mount Rainier on Nov. 10, 2025, with L‑band SAR revealing the surface through clouds.",
+      "image": "/images/official/challenge-06.webp",
+      "title": "Dancing with the SARs",
+      "url": "https://www.spaceappschallenge.org/2026/challenges/dancing-with-the-sars/",
+      "difficulty": [
+        "Advanced",
+        "Intermediate"
+      ],
+      "subjects": [
+        "Earth Science"
+      ],
+      "summary": "Use NASA–ISRO NISAR radar observations to visualize changes across Earth’s surface, from glaciers to forests.",
+      "slug": "dancing-with-the-sars",
+      "imageSource": "https://assets.spaceappschallenge.org/media/images/Dancing_with_the_SARs.2e16d0ba.fill-300x250.jpg"
+    },
+    {
+      "alt": "Nevada farmer Denise Moyle in her alfalfa fields.",
+      "image": "/images/official/challenge-07.webp",
+      "title": "Field Shift: Adapting Farms with NASA Data",
+      "url": "https://www.spaceappschallenge.org/2026/challenges/field-shift-adapting-farms-with-nasa-data/",
+      "difficulty": [
+        "Advanced",
+        "Intermediate"
+      ],
+      "subjects": [
+        "Arts & Multimedia",
+        "Earth Science",
+        "Software"
+      ],
+      "summary": "Combine NASA Earth observations with soil and crop information to help farmers explore resilient crop rotations.",
+      "slug": "field-shift-adapting-farms-with-nasa-data",
+      "imageSource": "https://assets.spaceappschallenge.org/media/images/Field_Shift.2e16d0ba.fill-300x250.jpg"
+    },
+    {
+      "alt": "Image of a flame burning one of the BASS tests on extinguishing burning fuels.",
+      "image": "/images/official/challenge-08.webp",
+      "title": "Flame in Freefall: AI-Powered Fire Safety Insights from Microgravity Combustion Data",
+      "url": "https://www.spaceappschallenge.org/2026/challenges/flame-in-freefall-ai-powered-fire-safety-insights-from-microgravity-combustion-data/",
+      "difficulty": [
+        "Advanced",
+        "Intermediate"
+      ],
+      "subjects": [
+        "Space Exploration"
+      ],
+      "summary": "Turn NASA’s microgravity combustion research into an AI-powered dashboard for spaceflight fire safety insights.",
+      "slug": "flame-in-freefall-ai-powered-fire-safety-insights-from-microgravity-combustion-data",
+      "imageSource": "https://assets.spaceappschallenge.org/media/images/Flame_in_Freefall2_4.3.2e16d0ba.fill-300x250.jpg"
+    },
+    {
+      "alt": "15 - Harmonization of MODIS and VIIRS Hot Spots_4.3",
+      "image": "/images/official/challenge-09.webp",
+      "title": "Harmonization of MODIS and VIIRS Hot Spots",
+      "url": "https://www.spaceappschallenge.org/2026/challenges/harmonization-of-modis-and-viirs-hot-spots/",
+      "difficulty": [
+        "Advanced",
+        "Intermediate"
+      ],
+      "subjects": [
+        "Earth Science",
+        "Software"
+      ],
+      "summary": "Combine MODIS and VIIRS fire records into a consistent calendar for examining burning activity and unusual conditions.",
+      "slug": "harmonization-of-modis-and-viirs-hot-spots",
+      "imageSource": "https://assets.spaceappschallenge.org/media/images/15_-_Harmonization_of_MODIS_and_VI.2e16d0ba.fill-300x250.png"
+    },
+    {
+      "alt": "A muted blue Earth with bright white clouds sets behind the cratered lunar surface.",
+      "image": "/images/official/challenge-10.webp",
+      "title": "Identify Earth Locations that Analog the Permanent Moon Base Locations and Mars",
+      "url": "https://www.spaceappschallenge.org/2026/challenges/identify-earth-locations-that-analog-the-permanent-moon-base-locations-and-mars/",
+      "difficulty": [
+        "Advanced",
+        "Intermediate",
+        "Beginner/Youth"
+      ],
+      "subjects": [
+        "Earth Science",
+        "Planets & Moons",
+        "Software",
+        "Space Exploration"
+      ],
+      "summary": "Find and characterize places on Earth that can help test future missions to lunar and Martian environments.",
+      "slug": "identify-earth-locations-that-analog-the-permanent-moon-base-locations-and-mars",
+      "imageSource": "https://assets.spaceappschallenge.org/media/images/Permanent_Moon_Base_Locations.2e16d0ba.fill-300x250.png"
+    },
+    {
+      "alt": "NASA's Perseverance rover taking a selfie while exploring the Red Planet.",
+      "image": "/images/official/challenge-11.webp",
+      "title": "Interplanetary Survival Guide: Martian Map",
+      "url": "https://www.spaceappschallenge.org/2026/challenges/interplanetary-survival-guide-martian-map/",
+      "difficulty": [
+        "Intermediate"
+      ],
+      "subjects": [
+        "Human Exploration",
+        "Mars",
+        "Planets & Moons",
+        "Software",
+        "Space Exploration"
+      ],
+      "summary": "Bring multiple NASA datasets into a layered Martian map to help astronauts plan routes and explore safely.",
+      "slug": "interplanetary-survival-guide-martian-map",
+      "imageSource": "https://assets.spaceappschallenge.org/media/images/martian_map.2e16d0ba.fill-300x250.jpg"
+    },
+    {
+      "alt": "Illustration of the SPHEREx spacecraft above Earth, set against a detailed cosmic background.",
+      "image": "/images/official/challenge-12.webp",
+      "title": "Planet X and SPHEREx",
+      "url": "https://www.spaceappschallenge.org/2026/challenges/planet-x-and-spherex/",
+      "difficulty": [
+        "Advanced"
+      ],
+      "subjects": [
+        "Astrophysics",
+        "Planets & Moons",
+        "Software"
+      ],
+      "summary": "Create a public tool to compare SPHEREx sky images over time and reveal objects that move or change.",
+      "slug": "planet-x-and-spherex",
+      "imageSource": "https://assets.spaceappschallenge.org/media/images/spherex_4.3.2e16d0ba.fill-300x250.jpg"
+    },
+    {
+      "alt": "An astronaut performs a spacewalk above Earth, holding a large circular equipment panel while attached to the spacecraft.",
+      "image": "/images/official/challenge-13.webp",
+      "title": "Space Mission Design Game",
+      "url": "https://www.spaceappschallenge.org/2026/challenges/space-mission-design-game/",
+      "difficulty": [
+        "Intermediate",
+        "Beginner/Youth"
+      ],
+      "subjects": [
+        "Games"
+      ],
+      "summary": "Design a game where students plan a complete space mission while balancing engineering choices and limited resources.",
+      "slug": "space-mission-design-game",
+      "imageSource": "https://assets.spaceappschallenge.org/media/images/spaceman_tLdGzKt.2e16d0ba.fill-300x250.jpg"
+    },
+    {
+      "alt": "A person stands in Space for Earth, an immersive experience that is part of the Earth Information Center, surrounded by glowing digital projections of Earth and vibrant green foliage with flowing light patterns on the floor.",
+      "image": "/images/official/challenge-14.webp",
+      "title": "The Earth Information Jukebox",
+      "url": "https://www.spaceappschallenge.org/2026/challenges/the-earth-information-jukebox/",
+      "difficulty": [
+        "Intermediate",
+        "Beginner/Youth"
+      ],
+      "subjects": [
+        "Arts & Multimedia",
+        "Earth Science",
+        "Software"
+      ],
+      "summary": "Pair Earth Information Center visualizations with live sonification to make Earth science an experience of sight and sound.",
+      "slug": "the-earth-information-jukebox",
+      "imageSource": "https://assets.spaceappschallenge.org/media/images/Earth_Information_Jukebox_4.3.2e16d0ba.fill-300x250.jpg"
+    }
+  ],
+  "awards": [
+    {
+      "image": "/images/official/award-01.webp",
+      "name": "Best Use of Science",
+      "description": "Rigorous science and a sound application of the scientific method.",
+      "imageSource": "https://assets.spaceappschallenge.org/media/images/Award_-_Best_Use_of_Science.width-300.png"
+    },
+    {
+      "image": "/images/official/award-02.webp",
+      "name": "Best Use of Data",
+      "description": "Making space data useful, accessible, or valuable in a new application.",
+      "imageSource": "https://assets.spaceappschallenge.org/media/images/Award_-_Best_Use_of_Data.width-300.png"
+    },
+    {
+      "image": "/images/official/award-03.webp",
+      "name": "Best Use of Technology",
+      "description": "An inventive and effective application of technology.",
+      "imageSource": "https://assets.spaceappschallenge.org/media/images/Award_-_Best_Use_of_Technology.width-300.png"
+    },
+    {
+      "image": "/images/official/award-04.webp",
+      "name": "Galactic Impact",
+      "description": "Potential to improve life on Earth or elsewhere in the universe.",
+      "imageSource": "https://assets.spaceappschallenge.org/media/images/Award_-_Galactic_Impact.width-300.png"
+    },
+    {
+      "image": "/images/official/award-05.webp",
+      "name": "Best Mission Concept",
+      "description": "A convincing mission concept supported by a plausible design.",
+      "imageSource": "https://assets.spaceappschallenge.org/media/images/Award_-_Best_Mission_Concept.width-300.png"
+    },
+    {
+      "image": "/images/official/award-06.webp",
+      "name": "Most Inspirational",
+      "description": "An idea that moves people and sparks their imagination.",
+      "imageSource": "https://assets.spaceappschallenge.org/media/images/Award_-_Most_Inspirational.width-300.png"
+    },
+    {
+      "image": "/images/official/award-07.webp",
+      "name": "Best Use of Storytelling",
+      "description": "Creative storytelling that communicates what open data makes possible.",
+      "imageSource": "https://assets.spaceappschallenge.org/media/images/Award_-_Best_Use_of_Storytelling.width-300.png"
+    },
+    {
+      "image": "/images/official/award-08.webp",
+      "name": "Global Connection",
+      "description": "Technology that brings people together across the world.",
+      "imageSource": "https://assets.spaceappschallenge.org/media/images/Award_-_Global_Connection.width-300.png"
+    },
+    {
+      "image": "/images/official/award-09.webp",
+      "name": "Art & Technology",
+      "description": "Technical ability and creative expression working together.",
+      "imageSource": "https://assets.spaceappschallenge.org/media/images/Award_-_Art__Technology.width-300.png"
+    },
+    {
+      "image": "/images/official/award-10.webp",
+      "name": "Local Impact",
+      "description": "Strong potential to make a difference within a local community.",
+      "imageSource": "https://assets.spaceappschallenge.org/media/images/Award_-_Local_Impact.width-300.png"
+    }
+  ]
+}

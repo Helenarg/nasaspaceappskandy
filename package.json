@@ -1,43 +1,44 @@
 {
-  "name": "nasaspaceapps.lk",
-  "version": "1.0.0",
-  "main": "expo-router/entry",
+  "name": "nasa-space-apps-kandy",
+  "version": "2.0.0",
+  "engines": {
+    "node": ">=20.9.0"
+  },
   "dependencies": {
-    "@expo-google-fonts/plus-jakarta-sans": "^0.4.2",
-    "@expo-google-fonts/space-grotesk": "^0.4.1",
-    "@expo/metro-runtime": "~57.0.16",
-    "@expo/vector-icons": "^15.0.2",
-    "expo": "~57.0.24",
-    "expo-blur": "~57.0.3",
-    "expo-constants": "~57.0.19",
-    "expo-font": "~57.0.4",
-    "expo-linking": "~57.0.10",
-    "expo-router": "~57.0.22",
-    "expo-status-bar": "~57.0.1",
+    "@fontsource-variable/fira-code": "^5.3.0",
+    "@fontsource-variable/overpass": "^5.3.0",
+    "@phosphor-icons/react": "^2.1.10",
+    "@radix-ui/react-checkbox": "^1.3.12",
+    "@radix-ui/react-radio-group": "^1.4.8",
+    "@radix-ui/react-select": "^2.3.8",
     "firebase": "^12.19.0",
-    "lucide-react-native": "^1.47.0",
-    "react": "19.2.3",
-    "react-dom": "19.2.3",
-    "react-native": "0.86.3",
-    "react-native-safe-area-context": "~5.7.0",
-    "react-native-screens": "~4.26.0",
-    "react-native-svg": "15.15.4",
-    "react-native-web": "^0.21.2"
+    "lenis": "^1.3.26",
+    "motion": "^14.1.0",
+    "next": "^16.4.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "sharp": "0.35.5"
   },
   "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web",
-    "lint": "expo lint",
-    "build:web": "expo export -p web",
-    "typecheck": "node --stack-size=8000 node_modules/typescript/lib/tsc.js --noEmit",
-    "deploy:rules": "firebase deploy --only firestore:rules"
+    "dev": "next dev",
+    "start": "next start",
+    "lint": "eslint .",
+    "build": "next build",
+    "build:web": "next build",
+    "typecheck": "next typegen && tsc --noEmit",
+    "test": "tsx --test tests/forms.test.ts tests/mission.test.ts",
+    "locations:sync": "node scripts/sync-space-apps-locations.mjs",
+    "deploy:rules": "firebase deploy --only firestore:rules",
+    "news:sync": "node scripts/sync-official-news.mjs"
   },
   "private": true,
   "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
     "eslint": "^9.0.0",
-    "eslint-config-expo": "~57.0.2",
-    "typescript": "~6.0.3"
+    "eslint-config-next": "^16.4.0",
+    "tsx": "^4.20.0",
+    "typescript": "^5.9.0"
   }
 }

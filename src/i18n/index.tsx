@@ -1,8 +1,15 @@
-import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { Platform } from 'react-native';
-import { DICTIONARIES, LANGUAGES, type Lang, type StringKey } from './strings';
+"use client";
+import React, {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
+import { DICTIONARIES, LANGUAGES, type Lang, type StringKey } from "./strings";
 
-const STORAGE_KEY = 'nasaspaceapps.lang';
+const STORAGE_KEY = "nasaspaceapps.lang";
 
 type Ctx = {
   lang: Lang;
@@ -11,7 +18,7 @@ type Ctx = {
 };
 
 const I18nContext = createContext<Ctx>({
-  lang: 'en',
+  lang: "en",
   setLang: () => {},
   t: (key) => DICTIONARIES.en[key] ?? key,
 });
@@ -22,7 +29,7 @@ function isLang(value: string | null | undefined): value is Lang {
 
 /** Stored choice first, then the browser's language, then English. */
 function detectLang(): Lang {
-  if (Platform.OS !== 'web' || typeof window === 'undefined') return 'en';
+  if (typeof window === "undefined") return "en";
   try {
     const stored = window.localStorage?.getItem(STORAGE_KEY);
     if (isLang(stored)) return stored;
@@ -30,25 +37,36 @@ function detectLang(): Lang {
     // Private mode or blocked storage: fall through to the browser language.
   }
   const nav = window.navigator?.language?.slice(0, 2);
-  return isLang(nav) ? nav : 'en';
+  return isLang(nav) ? nav : "en";
 }
 
 export function I18nProvider({ children }: { children: React.ReactNode }) {
   // Static rendering has no window; hydrate to the detected language after mount so
   // the pre-rendered HTML and the first client render agree.
-  const [lang, setLangState] = useState<Lang>('en');
+  const [lang, setLangState] = useState<Lang>("en");
 
   useEffect(() => {
     const detected = detectLang();
-    if (detected !== 'en') setLangState(detected);
+    document.documentElement.lang = detected;
+    // Browser preference is only available after hydration.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    if (detected !== "en") setLangState(detected);
+
+    const syncStoredLanguage = (event: StorageEvent) => {
+      if (event.key !== STORAGE_KEY || !isLang(event.newValue)) return;
+      setLangState(event.newValue);
+      document.documentElement.lang = event.newValue;
+    };
+    window.addEventListener("storage", syncStoredLanguage);
+    return () => window.removeEventListener("storage", syncStoredLanguage);
   }, []);
 
   const setLang = useCallback((next: Lang) => {
     setLangState(next);
-    if (Platform.OS === 'web' && typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
+      document.documentElement.lang = next;
       try {
         window.localStorage?.setItem(STORAGE_KEY, next);
-        document.documentElement.lang = next;
       } catch {
         // Storage unavailable: the choice still applies for this session.
       }
@@ -62,7 +80,7 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
       // Missing translations fall back to English instead of rendering a key.
       t: (key) => DICTIONARIES[lang][key] ?? DICTIONARIES.en[key] ?? key,
     }),
-    [lang, setLang]
+    [lang, setLang],
   );
 
   return <I18nContext.Provider value={value}>{children}</I18nContext.Provider>;

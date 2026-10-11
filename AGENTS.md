@@ -1,41 +1,44 @@
-This is an Expo/React Native mobile application. Prioritize mobile-first patterns, performance, and cross-platform compatibility.
+# NASA Space Apps Kandy repository guidance
 
-## Expo has changed — do not trust your training data
+## Architecture
 
-Expo ships breaking changes every SDK release. APIs you remember are likely renamed, moved, or removed. Before writing any code that touches an Expo, EAS, or React Native API:
+- Use the Next.js App Router and the Node.js runtime.
+- Keep stable routes prerenderable. Use Incremental Static Regeneration for official content that needs scheduled refreshes.
+- The official news feed refreshes every hour and must keep the bundled snapshot as its failure fallback.
+- Read the installed Next.js guides in `node_modules/next/dist/docs/` before changing framework code.
+- Pages live in `src/app/`, shared UI in `src/components/`, content in `src/content/`, and application services in `src/lib/`.
 
-1. Read the major version of the `expo` package in `package.json`.
-2. Fetch the matching versioned docs: `https://docs.expo.dev/versions/v<major>.0.0/`
-3. For anything else, fetch https://docs.expo.dev/llms.txt — an index of all Expo docs with corrections to common LLM misconceptions. Follow its links to the specific page you need; never answer from memory.
+## Content and design
 
-## Commands
+- Follow the dark space design, responsive layouts, dashed structural rails, and established footer composition.
+- Use Neon Yellow for primary calls to action and Rocket Red for location markers.
+- Do not invent event dates, schedules, sponsors, prizes, people, attendance figures, or official claims.
+- Link official NASA Space Apps material to its source and keep local Kandy content clearly identified.
 
-Use `bunx` instead of `npx` if the project uses bun (`bun.lock` present).
+## Data and safety
 
-```bash
-npx expo install <package>  # ALWAYS use instead of npm/yarn/pnpm/bun add — resolves SDK-compatible versions
-npx expo start              # start the dev server
-npx expo lint               # lint
-npx tsc --noEmit            # typecheck
-npx expo-doctor             # diagnose dependency and config issues
-npx expo install --fix      # fix incompatible package versions
+- Preserve Firebase collection and validation contracts.
+- Never submit test data to the production Firebase project.
+- Keep private credentials out of browser code and public environment files.
+- Treat the generated `.next/` directory and ignored `out/` directory as build artifacts.
+
+## Quality gates
+
+Run these commands before finishing code changes:
+
+```sh
+npm run lint
+npm run typecheck
+npm test
+npm run build:web
 ```
 
-Run lint and typecheck before declaring any task done.
+<!-- BEGIN:nextjs-agent-rules -->
 
-## Navigation & Routing
+## This is NOT the Next.js you know
 
-- Use **Expo Router** for all navigation. Routes live in `src/app/` — every file there is a screen, `_layout.tsx` files define navigators. Keep non-route code (components, hooks, utils) outside `src/app/`.
-- Import `Link`, `router`, and `useLocalSearchParams` from `expo-router`.
-- Docs: https://docs.expo.dev/router/introduction.md
+This version has breaking changes. APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
 
-## Building with EAS
+This block is written and re-added by `next dev`. Verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
 
-Use EAS to build, sign, and submit the app in the cloud (`eas build`, `eas submit`) and to ship over-the-air updates (`eas update`) — no local Xcode or Android Studio required. Run EAS CLI as `bunx eas-cli <command>` in Bun projects, or `npx eas-cli@latest <command>` otherwise; substitute that for bare `eas` in docs examples.
-Docs: https://docs.expo.dev/eas/index.md
-
-## Rules
-
-- If `ios/` and `android/` directories do not exist, they are generated (Continuous Native Generation). Never create or edit them by hand — configure native behavior in `app.json` and config plugins.
-- Expo Go only includes its bundled native modules. After adding a library with native code, the app needs a development build: `npx expo run:ios|android` locally, or `eas build --profile development`.
-- Prefer recommended Expo modules over third-party libraries, and check your available skills before adding dependencies. Docs: https://docs.expo.dev/versions/latest/index.md
+<!-- END:nextjs-agent-rules -->

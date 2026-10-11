@@ -10,7 +10,7 @@ export function isEmail(value: string) {
 
 /** Sri Lankan mobile/landline, with or without +94 and separators. Empty passes: use required() for that. */
 export function isPhone(value: string) {
-  const digits = value.replace(/[\s()+-]/g, '');
+  const digits = value.replace(/[\s()+-]/g, "");
   if (!digits) return true;
   return /^(?:94\d{9}|0\d{9}|\d{9})$/.test(digits);
 }

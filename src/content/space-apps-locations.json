@@ -1,0 +1,6594 @@
+{
+  "year": 2026,
+  "source": "https://www.spaceappschallenge.org/2026/local-events/",
+  "updatedAt": "2026-10-10T10:30:28.786Z",
+  "totalCount": 599,
+  "events": [
+    {
+      "id": "aWQ6NTUwOTM=",
+      "name": "6 of October",
+      "country": "Egypt",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/6-of-october/",
+      "coordinates": [
+        30,
+        29
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTUwOTI=",
+      "name": "Aachen",
+      "country": "Germany",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/aachen/",
+      "coordinates": [
+        6.08342,
+        50.77664
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTUwOTE=",
+      "name": "Abidjan",
+      "country": "Côte d'Ivoire",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/abidjan/",
+      "coordinates": [
+        -4.019603,
+        5.3252258
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTUwOTA=",
+      "name": "Abomey-Calavi",
+      "country": "Benin",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/abomey-calavi/",
+      "coordinates": [
+        2.3468195,
+        6.4503024
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTUwODk=",
+      "name": "Abu Dhabi",
+      "country": "United Arab Emirates",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/abu-dhabi/",
+      "coordinates": [
+        54.3773438,
+        24.453884
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTUwODg=",
+      "name": "Abuja",
+      "country": "Nigeria",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/abuja/",
+      "coordinates": [
+        7.4985259,
+        9.0562646
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTUwODc=",
+      "name": "Accra",
+      "country": "Ghana",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/accra/",
+      "coordinates": [
+        -0.187,
+        5.6037
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTUwODY=",
+      "name": "Adana",
+      "country": "Turkey",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/adana/",
+      "coordinates": [
+        35.3308285,
+        36.9914194
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTUwODU=",
+      "name": "Addis Ababa",
+      "country": "Ethiopia",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/addis-ababa/",
+      "coordinates": [
+        38.7524635,
+        9.0191936
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTUwODM=",
+      "name": "Agadir",
+      "country": "Morocco",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/agadir/",
+      "coordinates": [
+        -9.5925444,
+        30.4280405
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTUwODI=",
+      "name": "Ahilyanagar",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/ahilyanagar/",
+      "coordinates": [
+        74.734655,
+        19.0914655
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTUwODE=",
+      "name": "Ahlen",
+      "country": "Germany",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/ahlen/",
+      "coordinates": [
+        7.8973228,
+        51.7600942
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTUwODA=",
+      "name": "Ahmedabad",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/ahmedabad/",
+      "coordinates": [
+        72.5712864,
+        23.0225237
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTUwNzk=",
+      "name": "Ajman",
+      "country": "United Arab Emirates",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/ajman/",
+      "coordinates": [
+        55.5136433,
+        25.4052165
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTUwNzg=",
+      "name": "Ajmer",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/ajmer/",
+      "coordinates": [
+        74.6399163,
+        26.4498954
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTUwNzc=",
+      "name": "Aksaray",
+      "country": "Turkey",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/aksaray/",
+      "coordinates": [
+        34.0297,
+        38.368626
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTUwNzY=",
+      "name": "Al Ain",
+      "country": "United Arab Emirates",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/al-ain/",
+      "coordinates": [
+        55.7228542,
+        24.2231534
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTUwNzU=",
+      "name": "Al-Khobar",
+      "country": "Saudi Arabia",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/al-khobar/",
+      "coordinates": [
+        50.1971381,
+        26.2171906
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTUwNzQ=",
+      "name": "Alba-Iulia",
+      "country": "Romania",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/alba-iulia/",
+      "coordinates": [
+        23.5711345,
+        46.0863521
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTUwNzM=",
+      "name": "Albuquerque, NM",
+      "country": "United States",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/albuquerque/",
+      "coordinates": [
+        -106.6504,
+        35.0844
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTUwNzI=",
+      "name": "Alexandria",
+      "country": "Egypt",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/alexandria/",
+      "coordinates": [
+        29.9158,
+        31.2018
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTUwNzE=",
+      "name": "Algiers",
+      "country": "Algeria",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/algiers/",
+      "coordinates": [
+        3.0587561,
+        36.753768
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTUwNzA=",
+      "name": "Almaty",
+      "country": "Kazakhstan",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/almaty/",
+      "coordinates": [
+        76.8897,
+        43.2389
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTUwNjk=",
+      "name": "Amaravati",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/amaravati/",
+      "coordinates": [
+        80.3667,
+        16.5667
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTUwNjg=",
+      "name": "Amman",
+      "country": "Jordan",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/amman/",
+      "coordinates": [
+        35.9105776,
+        31.9543786
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTUwNjY=",
+      "name": "Amsterdam",
+      "country": "Netherlands",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/amsterdam/",
+      "coordinates": [
+        4.9041389,
+        52.3675734
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTUwNjU=",
+      "name": "Anand",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/anand/",
+      "coordinates": [
+        72.9268247,
+        22.5495798
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTUwNjQ=",
+      "name": "Andahuaylas",
+      "country": "Peru",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/andahuaylas/",
+      "coordinates": [
+        -73.3872,
+        -13.6556
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTUwNjM=",
+      "name": "Ankara",
+      "country": "Turkey",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/ankara/",
+      "coordinates": [
+        32.8597419,
+        39.9333635
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTUwNjI=",
+      "name": "Antalya",
+      "country": "Turkey",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/antalya/",
+      "coordinates": [
+        30.7133233,
+        36.8968908
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTUxMDU=",
+      "name": "Antofagasta",
+      "country": "Chile",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/antofagasta/",
+      "coordinates": [
+        -70.3975022,
+        -23.6509279
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTUwNjE=",
+      "name": "Anuradhapura",
+      "country": "Sri Lanka",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/anuradhapura/",
+      "coordinates": [
+        80.4131,
+        8.3122
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTUwNjA=",
+      "name": "Aqaba",
+      "country": "Jordan",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/aqaba/",
+      "coordinates": [
+        35.0063209,
+        29.5320522
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTUwNTk=",
+      "name": "Ar-Ramtha",
+      "country": "Jordan",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/ar-ramtha/",
+      "coordinates": [
+        36.0067408,
+        32.5610103
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTUwNTg=",
+      "name": "ARACAJU",
+      "country": "Brazil",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/aracaju/",
+      "coordinates": [
+        -37.0717,
+        -10.9111
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTUwNTY=",
+      "name": "Arequipa",
+      "country": "Peru",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/arequipa/",
+      "coordinates": [
+        -71.5355,
+        -16.3926
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTUxMTE=",
+      "name": "Arlington, VA",
+      "country": "United States",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/arlington-va/",
+      "coordinates": [
+        -77.0909809,
+        38.8816208
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTUwNTM=",
+      "name": "Armash",
+      "country": "Armenia",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/armash/",
+      "coordinates": [
+        44.8087498,
+        39.76624
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTUwNTE=",
+      "name": "Ashgabat",
+      "country": "Turkmenistan",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/ashgabat/",
+      "coordinates": [
+        58.32606289999999,
+        37.9600766
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTUwNTA=",
+      "name": "Assiut",
+      "country": "Egypt",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/assiut/",
+      "coordinates": [
+        31.1859257,
+        27.1783117
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTUwNDk=",
+      "name": "Astana",
+      "country": "Kazakhstan",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/astana/",
+      "coordinates": [
+        71.4272222,
+        51.1655126
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTUwNDg=",
+      "name": "Asunción",
+      "country": "Paraguay",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/asuncion/",
+      "coordinates": [
+        -57.575926,
+        -25.2637399
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTUwNDc=",
+      "name": "Athens",
+      "country": "Greece",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/athens/",
+      "coordinates": [
+        23.706383,
+        37.9989836
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTUwNDY=",
+      "name": "Athlone",
+      "country": "Ireland",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/athlone/",
+      "coordinates": [
+        -7.9051876,
+        53.4179466
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTUwNDU=",
+      "name": "Austin, TX",
+      "country": "United States",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/austin/",
+      "coordinates": [
+        -97.7431,
+        30.2672
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTUwNDQ=",
+      "name": "Aveiro",
+      "country": "Portugal",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/aveiro/",
+      "coordinates": [
+        -23.6628054,
+        15.0958443
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTUwNDM=",
+      "name": "Ayacucho",
+      "country": "Peru",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/ayacucho/",
+      "coordinates": [
+        -74.2239,
+        -13.16
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTUwNDE=",
+      "name": "Ayodhya",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/ayodhya/",
+      "coordinates": [
+        82.1997954,
+        26.7921605
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTUwNDA=",
+      "name": "Azare",
+      "country": "Nigeria",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/azare/",
+      "coordinates": [
+        10.2039477,
+        11.6726385
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTUwMzk=",
+      "name": "Badr City",
+      "country": "Egypt",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/badr-city/",
+      "coordinates": [
+        31.7317485,
+        30.1391666
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTUwMzg=",
+      "name": "Baghdad",
+      "country": "Iraq",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/baghdad/",
+      "coordinates": [
+        44.3660671,
+        33.315241
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTUwMzY=",
+      "name": "Bahía Blanca",
+      "country": "Argentina",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/bahia-blanca/",
+      "coordinates": [
+        -62.2663478,
+        -38.7183177
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTUwMzU=",
+      "name": "Baku",
+      "country": "Azerbaijan",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/baku/",
+      "coordinates": [
+        49.892,
+        40.3777
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTUwMzQ=",
+      "name": "balneário camboriú",
+      "country": "Brazil",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/balneario-camboriu/",
+      "coordinates": [
+        -48.63258,
+        -26.9979839
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTUwMzM=",
+      "name": "Bandung",
+      "country": "Indonesia",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/bandung/",
+      "coordinates": [
+        107.6191228,
+        -6.9174639
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTUwMzI=",
+      "name": "Bangalore",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/bangalore/",
+      "coordinates": [
+        77.5828337,
+        12.9606255
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTUwMzE=",
+      "name": "Bangkok",
+      "country": "Thailand",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/bangkok/",
+      "coordinates": [
+        100.4547783,
+        13.9041704
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTUwMzA=",
+      "name": "Banjul",
+      "country": "The Gambia",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/banjul/",
+      "coordinates": [
+        -16.6739256,
+        13.4633177
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTUwMjk=",
+      "name": "Barcelona",
+      "country": "Spain",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/barcelona/",
+      "coordinates": [
+        2.1696972,
+        41.4364273
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTUwMjg=",
+      "name": "Barisal",
+      "country": "Bangladesh",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/barisal/",
+      "coordinates": [
+        90.3496278,
+        22.7132876
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTUwMjc=",
+      "name": "Batman",
+      "country": "Turkey",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/batman/",
+      "coordinates": [
+        41.3605739,
+        37.8362496
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTUwMjY=",
+      "name": "Batticaloa",
+      "country": "Sri Lanka",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/batticaloa/",
+      "coordinates": [
+        81.6966911,
+        7.7249146
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTUwMjQ=",
+      "name": "Beirut",
+      "country": "Lebanon",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/beirut/",
+      "coordinates": [
+        35.5017767,
+        33.8937913
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTUwMjM=",
+      "name": "Belagavi",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/belagavi/",
+      "coordinates": [
+        74.5270216,
+        15.9318986
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTUwMjE=",
+      "name": "Belém",
+      "country": "Brazil",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/belem/",
+      "coordinates": [
+        -48.501299,
+        -1.4563432
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTUwMjI=",
+      "name": "Belo Horizonte",
+      "country": "Brazil",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/belo-horizonte/",
+      "coordinates": [
+        -43.9378,
+        -19.9208
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTUwMjA=",
+      "name": "Ben Guerir",
+      "country": "Morocco",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/ben-guerir/",
+      "coordinates": [
+        -7.9538378,
+        32.2359364
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTUwMTk=",
+      "name": "Beni Mellal",
+      "country": "Morocco",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/beni-mellal/",
+      "coordinates": [
+        -6.3219426,
+        32.3585554
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTUwMTU=",
+      "name": "Berlin",
+      "country": "Germany",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/berlin/",
+      "coordinates": [
+        13.404954,
+        52.520008
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTUwMTQ=",
+      "name": "Bern",
+      "country": "Switzerland",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/bern/",
+      "coordinates": [
+        7.4474468,
+        46.9479739
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTUwMTM=",
+      "name": "Besançon",
+      "country": "France",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/besancon/",
+      "coordinates": [
+        5.9886944,
+        47.2481781
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTUwMTI=",
+      "name": "Bethesda, MD",
+      "country": "United States",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/bethesda/",
+      "coordinates": [
+        -77.094711,
+        38.984653
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTUxMDY=",
+      "name": "Bethlehem",
+      "country": "Palestinian Territories",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/bethlehem/",
+      "coordinates": [
+        35.2007,
+        31.7058
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTUwMTA=",
+      "name": "Bhaktapur",
+      "country": "Nepal",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/bhaktapur/",
+      "coordinates": [
+        85.4389508,
+        27.6708449
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTUwMDg=",
+      "name": "Bhopal",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/bhopal/",
+      "coordinates": [
+        77.4029,
+        23.2547
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTUwMDc=",
+      "name": "Bilbao",
+      "country": "Spain",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/bilbao/",
+      "coordinates": [
+        -2.935013,
+        43.262985
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTUwMDY=",
+      "name": "Bindura",
+      "country": "Zimbabwe",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/bindura/",
+      "coordinates": [
+        31.3274387,
+        -17.3040996
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTUwMDU=",
+      "name": "Bintulu",
+      "country": "Malaysia",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/bintulu/",
+      "coordinates": [
+        113.0575317,
+        3.2088069
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTUwMDQ=",
+      "name": "Bishkek",
+      "country": "Kyrgyzstan",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/bishkek/",
+      "coordinates": [
+        74.59,
+        42.87
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTUwMDM=",
+      "name": "Bistrița",
+      "country": "Romania",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/bistrita/",
+      "coordinates": [
+        24.4890979,
+        47.1392617
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTUwMDE=",
+      "name": "Boa Vista",
+      "country": "Brazil",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/boa-vista/",
+      "coordinates": [
+        -60.6737553,
+        2.8206339
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTUwMDA=",
+      "name": "Boca del Río",
+      "country": "Mexico",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/boca-del-rio/",
+      "coordinates": [
+        -96.1128243,
+        19.1658521
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5OTk=",
+      "name": "Bocas del Toro",
+      "country": "Panama",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/bocas-del-toro/",
+      "coordinates": [
+        -82.7347142,
+        9.2934179
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ5OTg=",
+      "name": "Bogotá",
+      "country": "Colombia",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/bogota/",
+      "coordinates": [
+        -74.0817,
+        4.6097
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5OTU=",
+      "name": "Bosconia",
+      "country": "Colombia",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/bosconia/",
+      "coordinates": [
+        -73.890531,
+        9.970362
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5OTQ=",
+      "name": "Boston, MA",
+      "country": "United States",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/boston/",
+      "coordinates": [
+        -71.0565364,
+        42.3555076
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ5OTM=",
+      "name": "Boumerdes",
+      "country": "Algeria",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/boumerdes/",
+      "coordinates": [
+        3.4728,
+        36.7594
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5OTI=",
+      "name": "Brasília",
+      "country": "Brazil",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/brasilia/",
+      "coordinates": [
+        -47.9297,
+        -15.7797
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5OTE=",
+      "name": "Bristol",
+      "country": "United Kingdom",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/bristol/",
+      "coordinates": [
+        -2.58791,
+        51.454513
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5OTA=",
+      "name": "Brookhaven, NY",
+      "country": "United States",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/brookhaven/",
+      "coordinates": [
+        -72.9154,
+        40.7793
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5ODg=",
+      "name": "Bucharest",
+      "country": "Romania",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/bucharest/",
+      "coordinates": [
+        26.1,
+        44.43
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5ODc=",
+      "name": "Budapest",
+      "country": "Hungary",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/budapest/",
+      "coordinates": [
+        19.0659112,
+        47.4809502
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5ODY=",
+      "name": "Buenos Aires",
+      "country": "Argentina",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/buenos-aires/",
+      "coordinates": [
+        -58.3772,
+        -34.6131
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5ODU=",
+      "name": "Bukavu",
+      "country": "Democratic Republic of the Congo",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/bukavu/",
+      "coordinates": [
+        28.8428,
+        -2.4908
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5ODQ=",
+      "name": "Burgas",
+      "country": "Bulgaria",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/burgas/",
+      "coordinates": [
+        27.4690989,
+        42.5038335
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5ODM=",
+      "name": "Bursa",
+      "country": "Turkey",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/bursa/",
+      "coordinates": [
+        29.0609636,
+        40.1885281
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5ODI=",
+      "name": "Cachipay",
+      "country": "Colombia",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/cachipay/",
+      "coordinates": [
+        -74.56672,
+        5.26674
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5ODE=",
+      "name": "Cairo",
+      "country": "Egypt",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/cairo/",
+      "coordinates": [
+        31.2357116,
+        30.0444196
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5ODA=",
+      "name": "Cajamarca",
+      "country": "Peru",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/cajamarca/",
+      "coordinates": [
+        -78.5184099,
+        -7.1571561
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5Nzc=",
+      "name": "Caleta Olivia",
+      "country": "Argentina",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/caleta-olivia/",
+      "coordinates": [
+        -67.5177382,
+        -46.4420189
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5NzY=",
+      "name": "Calgary",
+      "country": "Canada",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/calgary/",
+      "coordinates": [
+        -114.0549952,
+        51.045606
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5NzU=",
+      "name": "Calicut",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/calicut/",
+      "coordinates": [
+        75.783921,
+        11.2488425
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5NzQ=",
+      "name": "Calumbo",
+      "country": "Angola",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/calumbo/",
+      "coordinates": [
+        15.116667,
+        -7.683333
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5NzM=",
+      "name": "Cambridge, MA",
+      "country": "United States",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/cambridge/",
+      "coordinates": [
+        -71.1056916,
+        42.3666036
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5NzE=",
+      "name": "CAMPINA GRANDE",
+      "country": "Brazil",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/campina-grande/",
+      "coordinates": [
+        -56.33617659999999,
+        -14.7215432
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5NzA=",
+      "name": "Campinas",
+      "country": "Brazil",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/campinas/",
+      "coordinates": [
+        -47.0613327,
+        -22.9050824
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ5Njk=",
+      "name": "Campo Mourão",
+      "country": "Brazil",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/campo-mourao/",
+      "coordinates": [
+        -52.3850949,
+        -24.0488599
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5Njg=",
+      "name": "Canakkale",
+      "country": "Turkey",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/canakkale/",
+      "coordinates": [
+        26.408587,
+        40.14672
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5Njc=",
+      "name": "Canton, MI",
+      "country": "United States",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/canton/",
+      "coordinates": [
+        -83.4822,
+        42.3087
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5NjY=",
+      "name": "Cape Canaveral, FL",
+      "country": "United States",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/cape-canaveral/",
+      "coordinates": [
+        -80.6045217,
+        28.4172297
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5NjU=",
+      "name": "Cape Town",
+      "country": "South Africa",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/cape-town/",
+      "coordinates": [
+        18.5079537,
+        -33.8933357
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5NjQ=",
+      "name": "Carmen City",
+      "country": "Mexico",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/carmen-city/",
+      "coordinates": [
+        -91.8,
+        18.6333
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5NjM=",
+      "name": "Cartago",
+      "country": "Costa Rica",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/cartago/",
+      "coordinates": [
+        -83.912982,
+        9.8640911
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5NjI=",
+      "name": "Casablanca",
+      "country": "Morocco",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/casablanca/",
+      "coordinates": [
+        -7.603869,
+        33.589886
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ5NjE=",
+      "name": "Catamarca",
+      "country": "Argentina",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/catamarca/",
+      "coordinates": [
+        -65.7795441,
+        -28.469581
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5NjA=",
+      "name": "Cavalcante",
+      "country": "Brazil",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/cavalcante/",
+      "coordinates": [
+        -47.4555,
+        -13.7976
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5NTk=",
+      "name": "Caxias do Sul",
+      "country": "Brazil",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/caxias-do-sul/",
+      "coordinates": [
+        -51.1812032,
+        -29.1740137
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5NTg=",
+      "name": "Ceres",
+      "country": "Brazil",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/ceres/",
+      "coordinates": [
+        -49.5966539,
+        -15.3099083
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5NTc=",
+      "name": "Cerro Azul",
+      "country": "Mexico",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/cerro-azul/",
+      "coordinates": [
+        -97.7469312,
+        21.2064895
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5NTU=",
+      "name": "Charlotte, NC",
+      "country": "United States",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/charlotte/",
+      "coordinates": [
+        -80.8431,
+        35.2271
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5NTQ=",
+      "name": "Chattogram",
+      "country": "Bangladesh",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/chattogram/",
+      "coordinates": [
+        91.8317,
+        22.3384
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5NTM=",
+      "name": "Chennai",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/chennai/",
+      "coordinates": [
+        80.0465067,
+        12.8247334
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5NTA=",
+      "name": "Chia",
+      "country": "Colombia",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/chia/",
+      "coordinates": [
+        -74.0587,
+        4.8588
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5NDg=",
+      "name": "Chicago, IL",
+      "country": "United States",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/chicago/",
+      "coordinates": [
+        -87.6393962,
+        41.8841315
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5NDc=",
+      "name": "Chiclayo",
+      "country": "Peru",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/chiclayo/",
+      "coordinates": [
+        -79.8324755,
+        -6.7683494
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5NDY=",
+      "name": "Chihuahua",
+      "country": "Mexico",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/chihuahua/",
+      "coordinates": [
+        -106.0889,
+        28.6353
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5NDU=",
+      "name": "Chikkamagaluru",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/chikkamagaluru/",
+      "coordinates": [
+        75.772,
+        13.3161
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5NDQ=",
+      "name": "Chimbote",
+      "country": "Peru",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/chimbote/",
+      "coordinates": [
+        -78.5942244,
+        -9.0749326
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ5NDM=",
+      "name": "Chino Hills, CA",
+      "country": "United States",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/chino-hills/",
+      "coordinates": [
+        -117.732582,
+        33.989819
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5NDE=",
+      "name": "Chouteau, OK",
+      "country": "United States",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/chouteau/",
+      "coordinates": [
+        -95.3430239,
+        36.1859301
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5NDA=",
+      "name": "Cianorte",
+      "country": "Brazil",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/cianorte/",
+      "coordinates": [
+        -52.5966325,
+        -23.6556204
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5Mzk=",
+      "name": "Cincinnati, OH",
+      "country": "United States",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/cincinnati/",
+      "coordinates": [
+        -84.5120196,
+        39.1031182
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5Mzg=",
+      "name": "Ciudad de la Costa",
+      "country": "Uruguay",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/ciudad-de-la-costa/",
+      "coordinates": [
+        -55.9755476,
+        -34.8138447
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5Mzc=",
+      "name": "Ciudad del Este",
+      "country": "Paraguay",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/ciudad-del-este/",
+      "coordinates": [
+        -54.6525682,
+        -25.5029152
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5MzU=",
+      "name": "Cleveland, MS",
+      "country": "United States",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/cleveland-ms/",
+      "coordinates": [
+        -90.7248,
+        33.744
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTUxMTI=",
+      "name": "Cleveland, OH",
+      "country": "United States",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/cleveland-oh/",
+      "coordinates": [
+        -81.6943605,
+        41.49932
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ5MzQ=",
+      "name": "Cluj-Napoca",
+      "country": "Romania",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/cluj-napoca/",
+      "coordinates": [
+        23.5895978,
+        46.7730902
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5MzM=",
+      "name": "Cobán",
+      "country": "Guatemala",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/coban/",
+      "coordinates": [
+        -90.3708,
+        15.4708
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5MzI=",
+      "name": "Cochabamba",
+      "country": "Bolivia",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/cochabamba/",
+      "coordinates": [
+        -66.1595813,
+        -17.3820091
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5MzE=",
+      "name": "Coimbatore",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/coimbatore/",
+      "coordinates": [
+        76.9588876,
+        10.9973691
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5MzA=",
+      "name": "Colombo",
+      "country": "Sri Lanka",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/colombo/",
+      "coordinates": [
+        79.8487,
+        6.9355
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5Mjk=",
+      "name": "Columbus, GA",
+      "country": "United States",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/columbus/",
+      "coordinates": [
+        -84.98771,
+        32.46098
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ5Mjg=",
+      "name": "Comodoro Rivadavia",
+      "country": "Argentina",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/comodoro-rivadavia/",
+      "coordinates": [
+        -67.43168,
+        -45.7953796
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5Mjc=",
+      "name": "Conakry",
+      "country": "Guinea",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/conakry/",
+      "coordinates": [
+        -13.638189,
+        9.6157067
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5MjY=",
+      "name": "Concepción",
+      "country": "Chile",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/concepcion/",
+      "coordinates": [
+        -73.0393853,
+        -36.828371
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5MjU=",
+      "name": "Coracora",
+      "country": "Peru",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/coracora/",
+      "coordinates": [
+        -73.7833,
+        -15.0167
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5MjQ=",
+      "name": "CORDOBA",
+      "country": "Argentina",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/cordoba/",
+      "coordinates": [
+        -64.1887761,
+        -31.4200833
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ0MDk=",
+      "name": "Çorlu",
+      "country": "Turkey",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/corlu/",
+      "coordinates": [
+        27.8137319,
+        41.155812
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ0MDg=",
+      "name": "Çorum",
+      "country": "Turkey",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/corum/",
+      "coordinates": [
+        34.9537242,
+        40.5499256
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ5MjM=",
+      "name": "Cottbus",
+      "country": "Germany",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/cottbus/",
+      "coordinates": [
+        14.3328679,
+        51.75631079999999
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5MjI=",
+      "name": "Craiova",
+      "country": "Romania",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/craiova/",
+      "coordinates": [
+        23.7948808,
+        44.3301785
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5MjE=",
+      "name": "Cucutá",
+      "country": "Colombia",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/cucuta/",
+      "coordinates": [
+        -72.4966896,
+        7.8890971
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5MjA=",
+      "name": "Cuiaba",
+      "country": "Brazil",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/cuiaba/",
+      "coordinates": [
+        -56.0925824,
+        -15.5954635
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ5MTk=",
+      "name": "Cumilla",
+      "country": "Bangladesh",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/cumilla/",
+      "coordinates": [
+        90.4212057,
+        23.8205161
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5MTg=",
+      "name": "Curitiba",
+      "country": "Brazil",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/curitiba/",
+      "coordinates": [
+        -49.2651984,
+        -25.4268985
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ5MTY=",
+      "name": "Dadu",
+      "country": "Pakistan",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/dadu/",
+      "coordinates": [
+        67.7769,
+        26.7303
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5MTU=",
+      "name": "Dakar",
+      "country": "Senegal",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/dakar/",
+      "coordinates": [
+        -17.4676861,
+        14.716677
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5MTQ=",
+      "name": "Dallas, TX",
+      "country": "United States",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/dallas/",
+      "coordinates": [
+        -96.8029895,
+        33.1118503
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5MTI=",
+      "name": "Dar es Salaam",
+      "country": "Tanzania",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/dar-es-salaam/",
+      "coordinates": [
+        39.2894367,
+        -6.8165054
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5MTE=",
+      "name": "Darjeeling",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/darjeeling/",
+      "coordinates": [
+        88.2667,
+        27.0333
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ5MDk=",
+      "name": "Delhi",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/delhi/",
+      "coordinates": [
+        77.1024902,
+        28.7040592
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5MDg=",
+      "name": "Denizli",
+      "country": "Turkey",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/denizli/",
+      "coordinates": [
+        29.0963328,
+        37.7830159
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5MDY=",
+      "name": "Dhaka",
+      "country": "Bangladesh",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/dhaka/",
+      "coordinates": [
+        90.4152376,
+        23.804093
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5MDU=",
+      "name": "Diyarbakır",
+      "country": "Turkey",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/diyarbakr/",
+      "coordinates": [
+        40.2306,
+        37.9144
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5MDQ=",
+      "name": "Dnipro",
+      "country": "Ukraine",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/dnipro/",
+      "coordinates": [
+        34.983334,
+        48.450001
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5MDM=",
+      "name": "Doha",
+      "country": "Qatar",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/doha/",
+      "coordinates": [
+        51.53103979999999,
+        25.2854473
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5MDI=",
+      "name": "Douala",
+      "country": "Cameroon",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/douala/",
+      "coordinates": [
+        9.7678687,
+        4.0510564
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ5MDA=",
+      "name": "Drogobych",
+      "country": "Ukraine",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/drogobych/",
+      "coordinates": [
+        23.5113,
+        49.3519
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4OTk=",
+      "name": "Dubai",
+      "country": "United Arab Emirates",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/dubai/",
+      "coordinates": [
+        55.2707828,
+        25.2048493
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4OTc=",
+      "name": "Duitama",
+      "country": "Colombia",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/duitama/",
+      "coordinates": [
+        -73.0341,
+        5.8245
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4OTY=",
+      "name": "Durango",
+      "country": "Mexico",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/durango/",
+      "coordinates": [
+        -104.667,
+        24.017
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4OTQ=",
+      "name": "Durban",
+      "country": "South Africa",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/durban/",
+      "coordinates": [
+        31.0218404,
+        -29.8586804
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4OTI=",
+      "name": "Dushanbe",
+      "country": "Tajikistan",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/dushanbe/",
+      "coordinates": [
+        68.7870384,
+        38.5597722
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ4OTE=",
+      "name": "Ebolowa",
+      "country": "Cameroon",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/ebolowa/",
+      "coordinates": [
+        11.1560732,
+        2.9262958
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4OTA=",
+      "name": "Edmonton",
+      "country": "Canada",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/edmonton/",
+      "coordinates": [
+        -113.5294243,
+        53.5280162
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4ODk=",
+      "name": "Egg Harbor Township, NJ",
+      "country": "United States",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/egg-harbor-township/",
+      "coordinates": [
+        -74.5594779,
+        39.3943253
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4ODg=",
+      "name": "Eindhoven",
+      "country": "Netherlands",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/eindhoven/",
+      "coordinates": [
+        5.4697,
+        51.4416
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ4ODc=",
+      "name": "Encarnación",
+      "country": "Paraguay",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/encarnacion/",
+      "coordinates": [
+        -55.8667,
+        -27.3306
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4ODY=",
+      "name": "Ensenada",
+      "country": "Mexico",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/ensenada/",
+      "coordinates": [
+        -16.4365399,
+        28.4794147
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4ODU=",
+      "name": "Erbil",
+      "country": "Iraq",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/erbil/",
+      "coordinates": [
+        44.0094,
+        36.1912
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4ODQ=",
+      "name": "ERODE",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/erode/",
+      "coordinates": [
+        77.7171642,
+        11.3410364
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4ODM=",
+      "name": "Eskişehir",
+      "country": "Turkey",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/eskisehir/",
+      "coordinates": [
+        30.5256311,
+        39.7667061
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4ODI=",
+      "name": "Esmeraldas",
+      "country": "Ecuador",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/esmeraldas/",
+      "coordinates": [
+        -63.1925079,
+        -17.798072
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4ODE=",
+      "name": "Essaouira",
+      "country": "Morocco",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/essaouira/",
+      "coordinates": [
+        -8.5027492,
+        33.2347178
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4ODA=",
+      "name": "Exeter",
+      "country": "United Kingdom",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/exeter/",
+      "coordinates": [
+        -3.4734213,
+        50.7268598
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4Nzk=",
+      "name": "Facatativa",
+      "country": "Colombia",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/facatativa/",
+      "coordinates": [
+        -74.35845,
+        4.812126
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4Nzg=",
+      "name": "Faisalabad",
+      "country": "Pakistan",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/faisalabad/",
+      "coordinates": [
+        73.1165593,
+        31.4272638
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ4NzY=",
+      "name": "Fergana",
+      "country": "Uzbekistan",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/fergana/",
+      "coordinates": [
+        71.7978333,
+        40.3733802
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4NzU=",
+      "name": "Florianopolis",
+      "country": "Brazil",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/florianopolis/",
+      "coordinates": [
+        -48.4994983,
+        -27.4376168
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4NzQ=",
+      "name": "Folsom, CA",
+      "country": "United States",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/folsom/",
+      "coordinates": [
+        -121.1761,
+        38.678
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4NzM=",
+      "name": "Fortaleza",
+      "country": "Brazil",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/fortaleza/",
+      "coordinates": [
+        -38.5270134,
+        -3.7327203
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4NzI=",
+      "name": "Freetown",
+      "country": "Sierra Leone",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/freetown/",
+      "coordinates": [
+        -13.234444,
+        8.484444
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4NzA=",
+      "name": "Fujairah",
+      "country": "United Arab Emirates",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/fujairah/",
+      "coordinates": [
+        56.3345481,
+        25.1220701
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4Njk=",
+      "name": "Fukaya",
+      "country": "Japan",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/fukaya/",
+      "coordinates": [
+        139.2461329,
+        36.2078335
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4Njg=",
+      "name": "Gaborone",
+      "country": "Botswana",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/gaborone/",
+      "coordinates": [
+        25.9077037,
+        -24.6580003
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4Njc=",
+      "name": "Gangtok",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/gangtok/",
+      "coordinates": [
+        88.6138113,
+        27.3313512
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4NjY=",
+      "name": "Ganja",
+      "country": "Azerbaijan",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/ganja/",
+      "coordinates": [
+        46.3606,
+        40.6828
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4NjU=",
+      "name": "Gaziantep",
+      "country": "Turkey",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/gaziantep/",
+      "coordinates": [
+        37.3399849,
+        37.0759716
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4NjQ=",
+      "name": "General San Martín",
+      "country": "Argentina",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/general-san-martin/",
+      "coordinates": [
+        -59.34,
+        -26.53
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4NjM=",
+      "name": "Ghorahi",
+      "country": "Nepal",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/ghorahi/",
+      "coordinates": [
+        82.4833,
+        28.0333
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4NjI=",
+      "name": "Gilbertown, AL",
+      "country": "United States",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/gilbertown/",
+      "coordinates": [
+        -88.3174306,
+        31.8766556
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTUxMTQ=",
+      "name": "Girard, OH",
+      "country": "United States",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/girard/",
+      "coordinates": [
+        -80.7014662,
+        41.1539465
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ4NjA=",
+      "name": "Giza",
+      "country": "Egypt",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/giza/",
+      "coordinates": [
+        31.2088526,
+        30.0130557
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4NTk=",
+      "name": "Gliwice",
+      "country": "Poland",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/gliwice/",
+      "coordinates": [
+        18.6673092,
+        50.2921738
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4NTg=",
+      "name": "Goiânia",
+      "country": "Brazil",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/goiania/",
+      "coordinates": [
+        -49.2376699,
+        -16.6762437
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4NTc=",
+      "name": "Gold Coast",
+      "country": "Australia",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/gold-coast/",
+      "coordinates": [
+        153.380936,
+        -27.9769248
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4NTY=",
+      "name": "Gombe",
+      "country": "Nigeria",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/gombe/",
+      "coordinates": [
+        11.1730615,
+        10.279142
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4NTU=",
+      "name": "Gorakhpur",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/gorakhpur/",
+      "coordinates": [
+        83.3731675,
+        26.7605545
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ4NTQ=",
+      "name": "Grambling, LA",
+      "country": "United States",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/grambling/",
+      "coordinates": [
+        -92.6942029,
+        32.5375113
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4NTM=",
+      "name": "Granada",
+      "country": "Spain",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/granada/",
+      "coordinates": [
+        -3.6011676,
+        37.1824607
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4NTE=",
+      "name": "Greensboro, NC",
+      "country": "United States",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/greensboro/",
+      "coordinates": [
+        -79.791534,
+        36.0725632
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4NTA=",
+      "name": "Groton, CT",
+      "country": "United States",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/groton/",
+      "coordinates": [
+        -72.0787,
+        41.3501
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ4NDk=",
+      "name": "Guadalajara",
+      "country": "Mexico",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/guadalajara/",
+      "coordinates": [
+        -103.3494611,
+        20.6942786
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4NDg=",
+      "name": "Guarulhos",
+      "country": "Brazil",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/guarulhos/",
+      "coordinates": [
+        -46.5333,
+        -23.4628
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ4NDc=",
+      "name": "Guatemala",
+      "country": "Guatemala",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/guatemala/",
+      "coordinates": [
+        -90.5133,
+        14.6407
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4NDY=",
+      "name": "Guayaquil",
+      "country": "Ecuador",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/guayaquil/",
+      "coordinates": [
+        -79.94583569999999,
+        -2.1458895
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4NDQ=",
+      "name": "Guelph",
+      "country": "Canada",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/guelph/",
+      "coordinates": [
+        -80.2481063,
+        43.544821
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ4NDI=",
+      "name": "Gunupur",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/gunupur/",
+      "coordinates": [
+        83.8128265,
+        19.0754648
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ4NDE=",
+      "name": "Gyumri",
+      "country": "Armenia",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/gyumri/",
+      "coordinates": [
+        43.8383222,
+        40.78654150000001
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4NDA=",
+      "name": "Haifa",
+      "country": "Israel",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/haifa/",
+      "coordinates": [
+        34.9993,
+        32.813
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4Mzk=",
+      "name": "Haiphong",
+      "country": "Vietnam",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/haiphong/",
+      "coordinates": [
+        108.277199,
+        14.058324
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4Mzg=",
+      "name": "Haldia",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/haldia/",
+      "coordinates": [
+        88.0698,
+        22.0667
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4Mzc=",
+      "name": "Haldwani",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/haldwani/",
+      "coordinates": [
+        79.5129767,
+        29.2182644
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4MzY=",
+      "name": "Halifax",
+      "country": "Canada",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/halifax/",
+      "coordinates": [
+        -63.1005273,
+        44.8857087
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4MzU=",
+      "name": "Hamburg",
+      "country": "Germany",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/hamburg/",
+      "coordinates": [
+        9.9871703,
+        53.5488282
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4MzQ=",
+      "name": "Hamilton",
+      "country": "New Zealand",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/hamilton/",
+      "coordinates": [
+        175.2527624,
+        -37.7825893
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4MzM=",
+      "name": "Hanoi",
+      "country": "Vietnam",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/hanoi/",
+      "coordinates": [
+        105.8341598,
+        21.0277644
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4MzI=",
+      "name": "Harohalli",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/harohalli/",
+      "coordinates": [
+        77.4167,
+        12.6167
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4MzE=",
+      "name": "Heilbronn",
+      "country": "Germany",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/heilbronn/",
+      "coordinates": [
+        9.215838,
+        49.1520177
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4MzA=",
+      "name": "Hermosillo",
+      "country": "Mexico",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/hermosillo/",
+      "coordinates": [
+        -110.9559,
+        29.0729
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4Mjk=",
+      "name": "Hidalgo del Parral",
+      "country": "Mexico",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/hidalgo-del-parral/",
+      "coordinates": [
+        -105.6666166,
+        26.9317835
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4Mjg=",
+      "name": "Ho Chi Minh",
+      "country": "Vietnam",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/ho-chi-minh/",
+      "coordinates": [
+        106.6296638,
+        10.8230989
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4Mjc=",
+      "name": "Honolulu, HI",
+      "country": "United States",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/honolulu/",
+      "coordinates": [
+        -157.8583,
+        21.3069
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4MjY=",
+      "name": "Houston, TX",
+      "country": "United States",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/houston/",
+      "coordinates": [
+        -95.36327,
+        29.76328
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4MjU=",
+      "name": "Huancayo",
+      "country": "Peru",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/huancayo/",
+      "coordinates": [
+        -75.2103,
+        -12.0687
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4MjI=",
+      "name": "Huánuco",
+      "country": "Peru",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/huanuco/",
+      "coordinates": [
+        -76.2410843,
+        -9.9207648
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ4MjM=",
+      "name": "Hurghada",
+      "country": "Egypt",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/hurghada/",
+      "coordinates": [
+        33.8116067,
+        27.2578957
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTUxMDA=",
+      "name": "Hyderabad, India",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/hyderabad-india/",
+      "coordinates": [
+        78.4772439,
+        17.406498
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ4MjE=",
+      "name": "Hyderabad, Pakistan",
+      "country": "Pakistan",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/hyderabad-pakistan/",
+      "coordinates": [
+        68.357776,
+        25.3959687
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ4MjA=",
+      "name": "Ibadan",
+      "country": "Nigeria",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/ibadan/",
+      "coordinates": [
+        3.9470396,
+        7.3775355
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ4MTk=",
+      "name": "Ibra",
+      "country": "Oman",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/ibra/",
+      "coordinates": [
+        58.5258173,
+        22.7244454
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4MTg=",
+      "name": "Ica",
+      "country": "Peru",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/ica/",
+      "coordinates": [
+        -75.7286,
+        -14.0678
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4MTc=",
+      "name": "Iligan City",
+      "country": "Philippines",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/iligan-city/",
+      "coordinates": [
+        124.250705,
+        8.2273573
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4MTY=",
+      "name": "Imphal",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/imphal/",
+      "coordinates": [
+        93.9386097,
+        24.8107515
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ4MTU=",
+      "name": "Indore",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/indore/",
+      "coordinates": [
+        75.8577258,
+        22.7195687
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4MTQ=",
+      "name": "Ipiales",
+      "country": "Colombia",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/ipiales/",
+      "coordinates": [
+        -77.6415554,
+        0.83002
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ4MTM=",
+      "name": "Irbid",
+      "country": "Jordan",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/irbid/",
+      "coordinates": [
+        35.85,
+        32.5556
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4MTI=",
+      "name": "Irvine, CA",
+      "country": "United States",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/irvine/",
+      "coordinates": [
+        -117.7998423,
+        33.6770461
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ4MTE=",
+      "name": "Isa Town",
+      "country": "Bahrain",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/isa-town/",
+      "coordinates": [
+        50.552246,
+        26.169422
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4MTA=",
+      "name": "Islamabad",
+      "country": "Pakistan",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/islamabad/",
+      "coordinates": [
+        73.036187,
+        33.699619
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4MDk=",
+      "name": "Itabira",
+      "country": "Brazil",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/itabira/",
+      "coordinates": [
+        -43.228151,
+        -19.6100473
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ4MDg=",
+      "name": "Itahari",
+      "country": "Nepal",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/itahari/",
+      "coordinates": [
+        87.271781,
+        26.6646381
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4MDU=",
+      "name": "İzmir",
+      "country": "Turkey",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/izmir/",
+      "coordinates": [
+        26.6905632,
+        38.3110885
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4MDc=",
+      "name": "Izmit",
+      "country": "Turkey",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/izmit/",
+      "coordinates": [
+        29.3540715,
+        40.8117542
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4MDM=",
+      "name": "Jacobabad",
+      "country": "Pakistan",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/jacobabad/",
+      "coordinates": [
+        68.4376,
+        28.2819
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4MDI=",
+      "name": "Jaffna",
+      "country": "Sri Lanka",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/jaffna/",
+      "coordinates": [
+        80.0074,
+        9.6684
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4MDE=",
+      "name": "Jaguariúna",
+      "country": "Brazil",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/jaguariuna/",
+      "coordinates": [
+        -46.9848946,
+        -22.7042274
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ4MDA=",
+      "name": "Jaipur",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/jaipur/",
+      "coordinates": [
+        75.7878,
+        26.9196
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ3OTk=",
+      "name": "Jakarta",
+      "country": "Indonesia",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/jakarta/",
+      "coordinates": [
+        106.8229198,
+        -6.1944491
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ3OTg=",
+      "name": "Jalandhar",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/jalandhar/",
+      "coordinates": [
+        75.7053389,
+        31.251112
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ3OTc=",
+      "name": "Jalapa",
+      "country": "Guatemala",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/jalapa/",
+      "coordinates": [
+        -89.9626799,
+        14.6121446
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ3OTY=",
+      "name": "Jamnagar",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/jamnagar/",
+      "coordinates": [
+        70.05773,
+        22.4707019
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ3OTU=",
+      "name": "Jamshedpur",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/jamshedpur/",
+      "coordinates": [
+        86.2028754,
+        22.8045665
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ3OTQ=",
+      "name": "Jeddah",
+      "country": "Saudi Arabia",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/jeddah/",
+      "coordinates": [
+        39.1862,
+        21.4901
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ3OTM=",
+      "name": "Jember",
+      "country": "Indonesia",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/jember/",
+      "coordinates": [
+        113.6995,
+        -8.1721
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ3OTI=",
+      "name": "Jhansi",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/jhansi/",
+      "coordinates": [
+        78.5799,
+        25.4589
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ3OTA=",
+      "name": "Jizan",
+      "country": "Saudi Arabia",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/jizan/",
+      "coordinates": [
+        42.567902,
+        16.909683
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTUxMTA=",
+      "name": "Johannesburg",
+      "country": "South Africa",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/johannesburg/",
+      "coordinates": [
+        27.9161921,
+        -26.0758717
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ3ODg=",
+      "name": "Johor Bahru",
+      "country": "Malaysia",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/johor-bahru/",
+      "coordinates": [
+        103.7642576,
+        1.4798575
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ3ODc=",
+      "name": "Juazeiro do Norte",
+      "country": "Brazil",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/juazeiro-do-norte/",
+      "coordinates": [
+        -39.3124589,
+        -7.2291097
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ3ODQ=",
+      "name": "Kafr elsheikh",
+      "country": "Egypt",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/kafr-elsheikh/",
+      "coordinates": [
+        30.947375,
+        31.0971729
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ3ODM=",
+      "name": "Kahramanmaras",
+      "country": "Turkey",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/kahramanmarasmaras/",
+      "coordinates": [
+        36.8296875,
+        37.59831250000001
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ3ODE=",
+      "name": "Kamloops",
+      "country": "Canada",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/kamloops/",
+      "coordinates": [
+        -120.3192,
+        50.6665
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ3ODA=",
+      "name": "Kampala",
+      "country": "Uganda",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/kampala/",
+      "coordinates": [
+        32.5822,
+        0.3163
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ3Nzk=",
+      "name": "Kandy",
+      "country": "Sri Lanka",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/kandy/",
+      "coordinates": [
+        80.6337262,
+        7.2905715
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ3Nzg=",
+      "name": "Kanjirappally",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/kanjirappally/",
+      "coordinates": [
+        76.8201976,
+        9.5425371
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ3Nzc=",
+      "name": "Kannur",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/kannur/",
+      "coordinates": [
+        75.367882,
+        11.8704703
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ3NzY=",
+      "name": "Kano",
+      "country": "Nigeria",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/kano/",
+      "coordinates": [
+        8.5674765,
+        12.0206837
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ3NzU=",
+      "name": "Kansas City, KS",
+      "country": "United States",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/kansas-city/",
+      "coordinates": [
+        -94.5785667,
+        39.0997265
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ3NzQ=",
+      "name": "Kaohsiung",
+      "country": "Taiwan",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/kaohsiung/",
+      "coordinates": [
+        120.3014353,
+        22.6272784
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ3NzM=",
+      "name": "Kara",
+      "country": "Togo",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/kara/",
+      "coordinates": [
+        1,
+        9
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ3NzE=",
+      "name": "Karachi",
+      "country": "Pakistan",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/karachi/",
+      "coordinates": [
+        67.0011,
+        24.8607
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ3NzA=",
+      "name": "Karak",
+      "country": "Jordan",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/karak/",
+      "coordinates": [
+        35.7091299,
+        31.1747203
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ3Njk=",
+      "name": "Karwar",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/karwar/",
+      "coordinates": [
+        74.1297,
+        14.8136
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ3Njg=",
+      "name": "Kathmandu",
+      "country": "Nepal",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/kathmandu/",
+      "coordinates": [
+        85.3221634,
+        27.7103145
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ1ODU=",
+      "name": "Kénitra",
+      "country": "Morocco",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/kenitra/",
+      "coordinates": [
+        6.84,
+        34.02
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ3NjU=",
+      "name": "Kharagpur",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/kharagpur/",
+      "coordinates": [
+        87.3047053,
+        22.3451723
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ3NjQ=",
+      "name": "Khulna",
+      "country": "Bangladesh",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/khulna/",
+      "coordinates": [
+        89.54004719999999,
+        22.8373287
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ3NjM=",
+      "name": "Kigali",
+      "country": "Rwanda",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/kigali/",
+      "coordinates": [
+        30.0590635,
+        -1.9507966
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ3NjI=",
+      "name": "Kinshasa",
+      "country": "Democratic Republic of the Congo",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/kinshasa/",
+      "coordinates": [
+        15.310528,
+        -4.3032527
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ3NjE=",
+      "name": "Kisumu",
+      "country": "Kenya",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/kisumu/",
+      "coordinates": [
+        34.767956,
+        -0.091702
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ3NDQ=",
+      "name": "Kırıkkale",
+      "country": "Turkey",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/krkkale/",
+      "coordinates": [
+        33.484082,
+        39.8282008
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ3NDU=",
+      "name": "Kırklareli",
+      "country": "Turkey",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/krklareli/",
+      "coordinates": [
+        27.2252,
+        41.7351
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ3NTk=",
+      "name": "Kochi",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/kochi/",
+      "coordinates": [
+        76.2673041,
+        9.9312328
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ3NTY=",
+      "name": "Kolkata",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/kolkata/",
+      "coordinates": [
+        88.3628734,
+        22.5743545
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ3NTU=",
+      "name": "Konya",
+      "country": "Turkey",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/konya/",
+      "coordinates": [
+        32.4872567,
+        37.8733758
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ3NTQ=",
+      "name": "Kopargaon",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/kopargaon/",
+      "coordinates": [
+        74.4761,
+        19.8824
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ3NTM=",
+      "name": "Kothamangalam",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/kothamangalam/",
+      "coordinates": [
+        76.6351831,
+        10.0602601
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ3NTI=",
+      "name": "KUALA LUMPUR",
+      "country": "Malaysia",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/kuala-lumpur/",
+      "coordinates": [
+        101.5710929,
+        2.9956245
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ3NTE=",
+      "name": "Kuching",
+      "country": "Malaysia",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/kuching/",
+      "coordinates": [
+        110.359503,
+        1.5533785
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ3NTA=",
+      "name": "Kumasi",
+      "country": "Ghana",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/kumasi/",
+      "coordinates": [
+        -1.6162709,
+        6.6666004
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ3NDk=",
+      "name": "Kushimoto",
+      "country": "Japan",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/kushimoto/",
+      "coordinates": [
+        135.7814691,
+        33.4725476
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ3NDg=",
+      "name": "Kuwait",
+      "country": "Kuwait",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/kuwait/",
+      "coordinates": [
+        47.481766,
+        29.31166
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ3NDc=",
+      "name": "Kyiv",
+      "country": "Ukraine",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/kyiv/",
+      "coordinates": [
+        30.5238,
+        50.45466
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ3NDM=",
+      "name": "La Paz, Bolivia",
+      "country": "Bolivia",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/la-paz-bolivia/",
+      "coordinates": [
+        -71.5723953,
+        -35.5163603
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTUwOTk=",
+      "name": "La Paz, Mexico",
+      "country": "Mexico",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/la-paz-mexico/",
+      "coordinates": [
+        -110.3151,
+        24.1009
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ3NDI=",
+      "name": "La Romana",
+      "country": "Dominican Republic",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/la-romana/",
+      "coordinates": [
+        -68.9658817,
+        18.4338645
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ3NDE=",
+      "name": "Lagos",
+      "country": "Nigeria",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/lagos/",
+      "coordinates": [
+        3.3552568,
+        6.6137395
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ3NDA=",
+      "name": "Lahore",
+      "country": "Pakistan",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/lahore/",
+      "coordinates": [
+        74.3507,
+        31.558
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ3Mzk=",
+      "name": "Lajeado",
+      "country": "Brazil",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/lajeado/",
+      "coordinates": [
+        -51.96139,
+        -29.46694
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ3Mzg=",
+      "name": "Lalitpur",
+      "country": "Nepal",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/lalitpur/",
+      "coordinates": [
+        78.412018,
+        24.68786
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ3MzY=",
+      "name": "Latacunga",
+      "country": "Ecuador",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/latacunga/",
+      "coordinates": [
+        -78.6237921,
+        -0.9183889
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ3MzU=",
+      "name": "Legazpi City",
+      "country": "Philippines",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/legazpi-city/",
+      "coordinates": [
+        123.7407,
+        13.1412
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ3MzQ=",
+      "name": "Leh",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/leh/",
+      "coordinates": [
+        77.5770535,
+        34.1525864
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ3MzM=",
+      "name": "Libreville",
+      "country": "Gabon",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/libreville/",
+      "coordinates": [
+        9.4536,
+        0.3924
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ3MzI=",
+      "name": "Lima",
+      "country": "Peru",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/lima/",
+      "coordinates": [
+        -77.06462,
+        -11.97407
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ3MzE=",
+      "name": "Limassol",
+      "country": "Cyprus",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/limassol/",
+      "coordinates": [
+        33.0413,
+        34.6786
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ3MzA=",
+      "name": "Limeira",
+      "country": "Brazil",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/limeira/",
+      "coordinates": [
+        -47.4097569,
+        -22.5838179
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ3Mjk=",
+      "name": "Lincoln",
+      "country": "United Kingdom",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/lincoln/",
+      "coordinates": [
+        -0.5379,
+        53.2268
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ3Mjg=",
+      "name": "Lira",
+      "country": "Uganda",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/lira/",
+      "coordinates": [
+        32.8902699,
+        2.2596365
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ3Mjc=",
+      "name": "Lomé",
+      "country": "Togo",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/lome/",
+      "coordinates": [
+        1.22154,
+        6.12874
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ3MjY=",
+      "name": "London, United Kingdom",
+      "country": "United Kingdom",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/london-united-kingdom/",
+      "coordinates": [
+        -0.1275862,
+        51.5072178
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ3MjU=",
+      "name": "Londrina",
+      "country": "Brazil",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/londrina/",
+      "coordinates": [
+        -51.1662008,
+        -23.3197305
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ0NzQ=",
+      "name": "Los Angeles, CA",
+      "country": "United States",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/los-angeles/",
+      "coordinates": [
+        -118.5447573,
+        34.1722605
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ3MjQ=",
+      "name": "Louisville, KY",
+      "country": "United States",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/louisville/",
+      "coordinates": [
+        -85.7663724,
+        38.2468618
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ3MjM=",
+      "name": "Luanda",
+      "country": "Angola",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/luanda/",
+      "coordinates": [
+        13.1840088,
+        -8.9234033
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ3MjI=",
+      "name": "Lubumbashi",
+      "country": "Democratic Republic of the Congo",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/lubumbashi/",
+      "coordinates": [
+        27.5026174,
+        -11.6876026
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ3MjE=",
+      "name": "Lucerne",
+      "country": "Switzerland",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/lucerne/",
+      "coordinates": [
+        8.3737462,
+        47.1046955
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ3MjA=",
+      "name": "Lucknow",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/lucknow/",
+      "coordinates": [
+        80.946166,
+        26.8466937
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ3MTg=",
+      "name": "Lusaka",
+      "country": "Zambia",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/lusaka/",
+      "coordinates": [
+        28.2871,
+        -15.4067
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ3MTc=",
+      "name": "LUXEMBOURG CITY",
+      "country": "Luxembourg",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/luxembourg-city/",
+      "coordinates": [
+        5.949156,
+        49.5042476
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ3MTY=",
+      "name": "Luxor",
+      "country": "Egypt",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/luxor/",
+      "coordinates": [
+        32.6421,
+        25.6989
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ3MTQ=",
+      "name": "Madinah",
+      "country": "Saudi Arabia",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/madinah/",
+      "coordinates": [
+        39.612236,
+        24.470901
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ3MTM=",
+      "name": "Madrid",
+      "country": "Spain",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/madrid/",
+      "coordinates": [
+        -3.7038,
+        40.4168
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ3MTI=",
+      "name": "Mafikeng",
+      "country": "South Africa",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/mafikeng/",
+      "coordinates": [
+        25.640181,
+        -25.853161
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2NTg=",
+      "name": "Málaga",
+      "country": "Spain",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/malaga/",
+      "coordinates": [
+        -4.425557,
+        36.7178196
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ3MTE=",
+      "name": "Malappuram",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/malappuram/",
+      "coordinates": [
+        76.0710967,
+        11.0509762
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ3MTA=",
+      "name": "Malatya",
+      "country": "Turkey",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/malatya/",
+      "coordinates": [
+        38.3095,
+        38.3552
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ3MDk=",
+      "name": "Managua",
+      "country": "Nicaragua",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/managua/",
+      "coordinates": [
+        -86.2554963,
+        12.1108024
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ3MDg=",
+      "name": "Manama",
+      "country": "Bahrain",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/manama/",
+      "coordinates": [
+        50.5875935,
+        26.2235305
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ3MDc=",
+      "name": "Manaus",
+      "country": "Brazil",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/manaus/",
+      "coordinates": [
+        -60.0217314,
+        -3.1190275
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ3MDY=",
+      "name": "Mangalore",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/mangalore/",
+      "coordinates": [
+        74.8388112,
+        12.8854777
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ3MDU=",
+      "name": "Manila",
+      "country": "Philippines",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/manila/",
+      "coordinates": [
+        120.984234,
+        14.5995133
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ3MDQ=",
+      "name": "Mansoura",
+      "country": "Egypt",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/mansoura/",
+      "coordinates": [
+        31.3784704,
+        31.0409483
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ3MDM=",
+      "name": "Maputo",
+      "country": "Mozambique",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/maputo/",
+      "coordinates": [
+        32.5731746,
+        -25.969248
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2OTk=",
+      "name": "Martinsville, VA",
+      "country": "United States",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/martinsville/",
+      "coordinates": [
+        -79.8764606,
+        36.6927525
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2OTU=",
+      "name": "Medchal",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/medchal/",
+      "coordinates": [
+        78.484215,
+        17.630222
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ2OTQ=",
+      "name": "Medellín",
+      "country": "Colombia",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/medellin/",
+      "coordinates": [
+        -75.5502324,
+        6.244711
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2OTM=",
+      "name": "Meknès",
+      "country": "Morocco",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/meknes/",
+      "coordinates": [
+        -5.5382116,
+        33.8674514
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2OTI=",
+      "name": "Melbourne",
+      "country": "Australia",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/melbourne/",
+      "coordinates": [
+        144.9633,
+        -37.814
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2OTE=",
+      "name": "Mendoza",
+      "country": "Argentina",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/mendoza/",
+      "coordinates": [
+        -68.8459666,
+        -32.8809107
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2OTA=",
+      "name": "Merced, CA",
+      "country": "United States",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/merced/",
+      "coordinates": [
+        -120.4215763,
+        37.3659036
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2NTc=",
+      "name": "Mérida",
+      "country": "Mexico",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/merida/",
+      "coordinates": [
+        -89.5925857,
+        20.9673702
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2ODg=",
+      "name": "Mexicali",
+      "country": "Mexico",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/mexicali/",
+      "coordinates": [
+        -115.4067139,
+        32.6555329
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2ODc=",
+      "name": "Mexico City",
+      "country": "Mexico",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/mexico-city/",
+      "coordinates": [
+        -99.1844758,
+        19.3321162
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2ODY=",
+      "name": "Miami, FL",
+      "country": "United States",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/miami/",
+      "coordinates": [
+        -80.1918,
+        25.7617
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2ODU=",
+      "name": "Milano",
+      "country": "Italy",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/milano/",
+      "coordinates": [
+        9.1824027,
+        45.468503
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2ODM=",
+      "name": "Mingachevir",
+      "country": "Azerbaijan",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/mingachevir/",
+      "coordinates": [
+        47.0501531,
+        40.7704075
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ2ODE=",
+      "name": "Mira-Bhayander",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/mira-bhayander/",
+      "coordinates": [
+        72.8543897,
+        19.2952325
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2ODA=",
+      "name": "Miri",
+      "country": "Malaysia",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/miri/",
+      "coordinates": [
+        113.9916,
+        4.3993
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2Nzk=",
+      "name": "Mississauga",
+      "country": "Canada",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/mississauga/",
+      "coordinates": [
+        -79.6626841,
+        43.5482599
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2Nzg=",
+      "name": "Mohali",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/mohali/",
+      "coordinates": [
+        76.5753719,
+        30.7687902
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2Nzc=",
+      "name": "Mombasa",
+      "country": "Kenya",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/mombasa/",
+      "coordinates": [
+        39.6682065,
+        -4.0434771
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2NzY=",
+      "name": "Monterrey",
+      "country": "Mexico",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/monterrey/",
+      "coordinates": [
+        -100.3172,
+        25.6843
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2NzU=",
+      "name": "Montevideo",
+      "country": "Uruguay",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/montevideo/",
+      "coordinates": [
+        -56.1851147,
+        -34.9055016
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2NzQ=",
+      "name": "Montréal",
+      "country": "Canada",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/montreal/",
+      "coordinates": [
+        -73.6745155,
+        45.5147493
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2NzM=",
+      "name": "Montville, NJ",
+      "country": "United States",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/montville/",
+      "coordinates": [
+        -74.3786602,
+        40.9155825
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2NzI=",
+      "name": "Moquegua",
+      "country": "Peru",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/moquegua/",
+      "coordinates": [
+        -70.931795,
+        -17.1882694
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ2NzE=",
+      "name": "Mountain House, CA",
+      "country": "United States",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/mountain-house/",
+      "coordinates": [
+        -121.543234,
+        37.7793901
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ2NzA=",
+      "name": "Mountain View, CA",
+      "country": "United States",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/mountain-view/",
+      "coordinates": [
+        -122.08385,
+        37.38605
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ2NjE=",
+      "name": "Muğla",
+      "country": "Turkey",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/mugla/",
+      "coordinates": [
+        28.688593,
+        36.966034
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2Njg=",
+      "name": "Multan",
+      "country": "Pakistan",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/multan/",
+      "coordinates": [
+        71.4782,
+        30.1968
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2Njc=",
+      "name": "Mumbai",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/mumbai/",
+      "coordinates": [
+        72.8319514,
+        18.9582347
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2NjY=",
+      "name": "Muncie, IN",
+      "country": "United States",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/muncie/",
+      "coordinates": [
+        -85.4084362,
+        40.2044555
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2NjU=",
+      "name": "Murcia",
+      "country": "Spain",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/murcia/",
+      "coordinates": [
+        -1.1307,
+        37.9922
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2NjQ=",
+      "name": "Muscat",
+      "country": "Oman",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/muscat/",
+      "coordinates": [
+        58.3828717,
+        23.5880307
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2NjA=",
+      "name": "Mymensingh",
+      "country": "Bangladesh",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/mymensingh/",
+      "coordinates": [
+        90.4212057,
+        23.8205161
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2NTk=",
+      "name": "Mysore",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/mysore/",
+      "coordinates": [
+        76.6393,
+        12.2979
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTUxMDk=",
+      "name": "Nablus",
+      "country": "Palestinian Territories",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/nablus/",
+      "coordinates": [
+        35.2206254,
+        32.227551
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2NTY=",
+      "name": "NAGPUR",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/nagpur/",
+      "coordinates": [
+        79.0881546,
+        21.1458004
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2NTU=",
+      "name": "Nairobi",
+      "country": "Kenya",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/nairobi/",
+      "coordinates": [
+        36.8219462,
+        -1.2920659
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2NTQ=",
+      "name": "Naryn",
+      "country": "Kyrgyzstan",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/naryn/",
+      "coordinates": [
+        75.9842951,
+        41.4271059
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2NTM=",
+      "name": "Nashik",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/nashik/",
+      "coordinates": [
+        73.5999358,
+        19.9462433
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2NTI=",
+      "name": "Navi Mumbai",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/navi-mumbai/",
+      "coordinates": [
+        73.0296625,
+        19.0330488
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ2NTE=",
+      "name": "Neiva",
+      "country": "Colombia",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/neiva/",
+      "coordinates": [
+        -75.2705233,
+        2.9076155
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2NDc=",
+      "name": "New York, NY",
+      "country": "United States",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/new-york/",
+      "coordinates": [
+        -74.0059728,
+        40.7127753
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2NDQ=",
+      "name": "Nicosia",
+      "country": "Cyprus",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/nicosia/",
+      "coordinates": [
+        33.354,
+        35.1728
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2NDM=",
+      "name": "Niğde",
+      "country": "Turkey",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/nigde/",
+      "coordinates": [
+        34.676608,
+        37.969774
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ2NDE=",
+      "name": "Norwalk, CA",
+      "country": "United States",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/norwalk/",
+      "coordinates": [
+        -118.0952808,
+        33.8844435
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2NDA=",
+      "name": "Nova Iguaçu",
+      "country": "Brazil",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/nova-iguacu/",
+      "coordinates": [
+        -43.449505,
+        -22.759464
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ2Mzk=",
+      "name": "Nsukka",
+      "country": "Nigeria",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/nsukka/",
+      "coordinates": [
+        7.3732655,
+        6.8429422
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2Mzc=",
+      "name": "Ogbomoso",
+      "country": "Nigeria",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/ogbomoso/",
+      "coordinates": [
+        4.2435893,
+        8.1227496
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ4NTI=",
+      "name": "Orillia",
+      "country": "Canada",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/orillia/",
+      "coordinates": [
+        -79.4605905,
+        44.590749
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2MzU=",
+      "name": "Oshawa",
+      "country": "Canada",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/oshawa/",
+      "coordinates": [
+        -78.899086,
+        43.9478108
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2MzQ=",
+      "name": "Oskemen",
+      "country": "Kazakhstan",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/oskemen/",
+      "coordinates": [
+        66.923684,
+        48.019573
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2MzM=",
+      "name": "Oslo",
+      "country": "Norway",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/oslo/",
+      "coordinates": [
+        10.7261702,
+        59.9137524
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2MzI=",
+      "name": "Osogbo",
+      "country": "Nigeria",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/osogbo/",
+      "coordinates": [
+        4.4075556,
+        7.5647529
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2MzE=",
+      "name": "Ottawa",
+      "country": "Canada",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/ottawa/",
+      "coordinates": [
+        -75.6981,
+        45.4112
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2Mjk=",
+      "name": "Ouro Preto",
+      "country": "Brazil",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/ouro-preto/",
+      "coordinates": [
+        -43.5009602,
+        -20.395523
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2Mjc=",
+      "name": "Pala",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/pala/",
+      "coordinates": [
+        76.6849,
+        9.7083
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2MjU=",
+      "name": "Panaji",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/panaji/",
+      "coordinates": [
+        73.8175109,
+        15.5525872
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2MjQ=",
+      "name": "Panama City",
+      "country": "Panama",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/panama-city/",
+      "coordinates": [
+        -79.5198696,
+        8.9823792
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2MjM=",
+      "name": "Paris",
+      "country": "France",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/paris/",
+      "coordinates": [
+        2.3513765,
+        48.8575475
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2MjE=",
+      "name": "Pavlodar",
+      "country": "Kazakhstan",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/pavlodar/",
+      "coordinates": [
+        73.0985098,
+        49.8249801
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2MjA=",
+      "name": "Perth",
+      "country": "Australia",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/perth/",
+      "coordinates": [
+        115.8614,
+        -31.9522
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2MTk=",
+      "name": "Peshawar",
+      "country": "Pakistan",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/peshawar/",
+      "coordinates": [
+        71.5188619,
+        34.00833739999999
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2MTg=",
+      "name": "Petropavlovsk",
+      "country": "Kazakhstan",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/petropavlovsk/",
+      "coordinates": [
+        69.1505478,
+        54.8732209
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2MTc=",
+      "name": "Phayao",
+      "country": "Thailand",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/phayao/",
+      "coordinates": [
+        99.8788,
+        19.192
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2MTY=",
+      "name": "Philadelphia, PA",
+      "country": "United States",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/philadelphia/",
+      "coordinates": [
+        -75.16379,
+        39.95233
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ2MTU=",
+      "name": "Phnom Penh",
+      "country": "Cambodia",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/phnom-penh/",
+      "coordinates": [
+        104.9282099,
+        11.5563738
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2MTQ=",
+      "name": "Phoenix, AZ",
+      "country": "United States",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/phoenix/",
+      "coordinates": [
+        -112.0725488,
+        33.4482948
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2MTM=",
+      "name": "Piraeus",
+      "country": "Greece",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/piraeus/",
+      "coordinates": [
+        23.6469832,
+        37.9429857
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2MTE=",
+      "name": "PIURA",
+      "country": "Peru",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/piura/",
+      "coordinates": [
+        -80.6548882,
+        -5.1782884
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2MTA=",
+      "name": "Plymouth",
+      "country": "United Kingdom",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/plymouth/",
+      "coordinates": [
+        -4.1678025,
+        50.37333
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2MDk=",
+      "name": "Podgorica",
+      "country": "Montenegro",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/podgorica/",
+      "coordinates": [
+        19.2593642,
+        42.4304196
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2MDg=",
+      "name": "Pointe noire",
+      "country": "Republic of the Congo",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/pointe-noire/",
+      "coordinates": [
+        21.758664,
+        -4.038333
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2MDc=",
+      "name": "Popayán",
+      "country": "Colombia",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/popayan/",
+      "coordinates": [
+        -56.1951619,
+        -34.9045171
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2MDY=",
+      "name": "Port Louis",
+      "country": "Mauritius",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/port-louis/",
+      "coordinates": [
+        57.4989,
+        -20.1619
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2MDU=",
+      "name": "Port Said",
+      "country": "Egypt",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/port-said/",
+      "coordinates": [
+        32.3170408,
+        31.2488455
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2MDQ=",
+      "name": "Pouso Alegre",
+      "country": "Brazil",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/pouso-alegre/",
+      "coordinates": [
+        -45.939373,
+        -22.227077
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2MDM=",
+      "name": "Poznań",
+      "country": "Poland",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/poznan/",
+      "coordinates": [
+        16.9312766,
+        52.40567859999999
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2MDI=",
+      "name": "Praia",
+      "country": "Cabo Verde",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/praia/",
+      "coordinates": [
+        -23.5125,
+        14.9315
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2MDE=",
+      "name": "Pretoria",
+      "country": "South Africa",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/pretoria/",
+      "coordinates": [
+        28.2251699,
+        -25.7559214
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ2MDA=",
+      "name": "Princeton, NJ",
+      "country": "United States",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/princeton/",
+      "coordinates": [
+        -74.6603194,
+        40.3517199
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1OTk=",
+      "name": "Puebla",
+      "country": "Mexico",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/puebla/",
+      "coordinates": [
+        -98.2845204,
+        19.0548945
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1OTg=",
+      "name": "Puerto Madryn",
+      "country": "Argentina",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/puerto-madryn/",
+      "coordinates": [
+        -65.0348311,
+        -42.76362169999999
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1OTc=",
+      "name": "Puerto Vallarta",
+      "country": "Mexico",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/puerto-vallarta/",
+      "coordinates": [
+        -105.211358,
+        20.6565177
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1OTY=",
+      "name": "Pune",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/pune/",
+      "coordinates": [
+        73.8554,
+        18.5196
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ1OTU=",
+      "name": "Punta Arenas",
+      "country": "Chile",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/punta-arenas/",
+      "coordinates": [
+        -70.8794586,
+        -53.1367466
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1OTQ=",
+      "name": "Punta del Este",
+      "country": "Uruguay",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/punta-del-este/",
+      "coordinates": [
+        -54.9378104,
+        -34.9360588
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1OTM=",
+      "name": "Purwokerto",
+      "country": "Indonesia",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/purwokerto/",
+      "coordinates": [
+        109.2344,
+        -7.4214
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ1OTI=",
+      "name": "Qarshi",
+      "country": "Uzbekistan",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/qarshi/",
+      "coordinates": [
+        65.7891,
+        38.8606
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1OTE=",
+      "name": "Qena",
+      "country": "Egypt",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/qena/",
+      "coordinates": [
+        32.7267,
+        26.1642
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1OTA=",
+      "name": "Quemchi",
+      "country": "Chile",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/quemchi/",
+      "coordinates": [
+        -73.4715078,
+        -42.1439099
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1ODk=",
+      "name": "Querétaro",
+      "country": "Mexico",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/queretaro/",
+      "coordinates": [
+        -100.1874312,
+        20.6260292
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1ODg=",
+      "name": "Quetta",
+      "country": "Pakistan",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/quetta/",
+      "coordinates": [
+        66.9987077,
+        30.1834329
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1ODc=",
+      "name": "Quetzaltenango",
+      "country": "Guatemala",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/quetzaltenango/",
+      "coordinates": [
+        -91.714958,
+        14.792433
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ1ODY=",
+      "name": "Quito",
+      "country": "Ecuador",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/quito/",
+      "coordinates": [
+        -78.4906013,
+        -0.2124118
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1ODQ=",
+      "name": "Rafaela",
+      "country": "Argentina",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/rafaela/",
+      "coordinates": [
+        -61.50711039999999,
+        -31.2251086
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1ODM=",
+      "name": "Raipur",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/raipur/",
+      "coordinates": [
+        81.6048186,
+        21.2503681
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1ODI=",
+      "name": "Rajshahi",
+      "country": "Bangladesh",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/rajshahi/",
+      "coordinates": [
+        88.6011,
+        24.374
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1ODE=",
+      "name": "Raleigh, NC",
+      "country": "United States",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/raleigh/",
+      "coordinates": [
+        -78.6381787,
+        35.7795897
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ1ODA=",
+      "name": "Ramallah",
+      "country": "Palestinian Territories",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/ramallah/",
+      "coordinates": [
+        35.1708741,
+        31.9485955
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1Nzk=",
+      "name": "Rangpur",
+      "country": "Bangladesh",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/rangpur/",
+      "coordinates": [
+        90.4212057,
+        23.8205161
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1Nzg=",
+      "name": "Ras Al Khaimah",
+      "country": "United Arab Emirates",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/ras-al-khaimah/",
+      "coordinates": [
+        55.9761994,
+        25.8006926
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1Nzc=",
+      "name": "Ratnagiri",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/ratnagiri/",
+      "coordinates": [
+        73.2977739,
+        16.9860809
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1NzY=",
+      "name": "Recife",
+      "country": "Brazil",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/recife/",
+      "coordinates": [
+        -34.8828969,
+        -8.0578381
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ1NzU=",
+      "name": "Resistencia",
+      "country": "Argentina",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/resistencia/",
+      "coordinates": [
+        -58.9866,
+        -27.4636
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ1NzQ=",
+      "name": "Rewari",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/rewari/",
+      "coordinates": [
+        76.6190774,
+        28.1919738
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ1NzM=",
+      "name": "Ribeirao Preto",
+      "country": "Brazil",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/ribeirao-preto/",
+      "coordinates": [
+        -47.8168037,
+        -21.2125672
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1NzE=",
+      "name": "Riffa",
+      "country": "Bahrain",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/riffa/",
+      "coordinates": [
+        50.555,
+        26.13
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1NzA=",
+      "name": "Rio Bravo",
+      "country": "Mexico",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/rio-bravo/",
+      "coordinates": [
+        -98.0956328,
+        25.9860315
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1Njg=",
+      "name": "Rio Verde",
+      "country": "Brazil",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/rio-verde/",
+      "coordinates": [
+        -50.9353525,
+        -17.7977233
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1Njc=",
+      "name": "Riobamba",
+      "country": "Ecuador",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/riobamba/",
+      "coordinates": [
+        -78.681207,
+        -1.6552363
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1NjY=",
+      "name": "Rivera",
+      "country": "Uruguay",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/rivera/",
+      "coordinates": [
+        -55.551,
+        -30.905
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1NjU=",
+      "name": "Riyadh",
+      "country": "Saudi Arabia",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/riyadh/",
+      "coordinates": [
+        46.7219,
+        24.6877
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1NjM=",
+      "name": "Rohnert Park, CA",
+      "country": "United States",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/rohnert-park/",
+      "coordinates": [
+        -122.7010984,
+        38.3396367
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1NjI=",
+      "name": "Rolla, MO",
+      "country": "United States",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/rolla/",
+      "coordinates": [
+        -91.776475,
+        37.9540725
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1NjE=",
+      "name": "Rome",
+      "country": "Italy",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/rome/",
+      "coordinates": [
+        12.4822025,
+        41.8967068
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1NjA=",
+      "name": "Rosario",
+      "country": "Argentina",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/rosario/",
+      "coordinates": [
+        -60.69304159999999,
+        -32.9587022
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1NTk=",
+      "name": "Rzeszów",
+      "country": "Poland",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/rzeszow/",
+      "coordinates": [
+        21.999,
+        50.0413
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1NTg=",
+      "name": "sabalgarh",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/sabalgarh/",
+      "coordinates": [
+        77.4079,
+        26.2492
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1NTc=",
+      "name": "Sahiwal",
+      "country": "Pakistan",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/sahiwal/",
+      "coordinates": [
+        73.1084816,
+        30.661175
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ1NTY=",
+      "name": "Sakarya",
+      "country": "Turkey",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/sakarya/",
+      "coordinates": [
+        30.4357631,
+        40.6939973
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ1NTU=",
+      "name": "Sakhir",
+      "country": "Bahrain",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/sakhir/",
+      "coordinates": [
+        50.5106,
+        26.0325
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1NTQ=",
+      "name": "Salam Misr",
+      "country": "Egypt",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/salam-misr/",
+      "coordinates": [
+        33.617577,
+        30.282365
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1NTM=",
+      "name": "Salamanca",
+      "country": "Spain",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/salamanca/",
+      "coordinates": [
+        -5.6635397,
+        40.9701039
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1NTE=",
+      "name": "Salta",
+      "country": "Argentina",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/salta/",
+      "coordinates": [
+        -65.4231976,
+        -24.7821269
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1NTA=",
+      "name": "Saltillo",
+      "country": "Mexico",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/saltillo/",
+      "coordinates": [
+        -100.973678,
+        25.4383234
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1NDk=",
+      "name": "Salto",
+      "country": "Uruguay",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/salto/",
+      "coordinates": [
+        -57.961187,
+        -31.3879469
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1NDg=",
+      "name": "Salvador",
+      "country": "Brazil",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/salvador/",
+      "coordinates": [
+        -38.3029599,
+        -12.8858301
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1NDc=",
+      "name": "San Diego, CA",
+      "country": "United States",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/san-diego/",
+      "coordinates": [
+        -117.1610838,
+        32.715738
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ1NDY=",
+      "name": "San Francisco, CA",
+      "country": "United States",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/san-francisco/",
+      "coordinates": [
+        -122.4194155,
+        37.7749295
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1NDU=",
+      "name": "San Jeronimo de Juarez",
+      "country": "Mexico",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/san-jeronimo-de-juarez/",
+      "coordinates": [
+        -100.15,
+        17.1167
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1NDQ=",
+      "name": "San Jose, CA",
+      "country": "United States",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/san-jose-ca/",
+      "coordinates": [
+        -121.8741358186939,
+        37.33656711637515
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTUxMTM=",
+      "name": "San Jose, Costa Rica",
+      "country": "Costa Rica",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/san-jose-costa-rica/",
+      "coordinates": [
+        -84.03502460000001,
+        9.9338724
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1NDM=",
+      "name": "San Juan, Argentina",
+      "country": "Argentina",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/san-juan-argentina/",
+      "coordinates": [
+        -68.5306871,
+        -31.5377503
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1NDI=",
+      "name": "San Luis",
+      "country": "Argentina",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/san-luis/",
+      "coordinates": [
+        -66.3049519,
+        -33.1527179
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1NDE=",
+      "name": "San Marino, CA",
+      "country": "United States",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/san-marino/",
+      "coordinates": [
+        -118.243683,
+        34.052235
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ1NDA=",
+      "name": "San Pedro Sula",
+      "country": "Honduras",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/san-pedro-sula/",
+      "coordinates": [
+        -88.0296815,
+        15.5178695
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1Mzk=",
+      "name": "San Salvador",
+      "country": "El Salvador",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/san-salvador/",
+      "coordinates": [
+        -89.2086773,
+        13.7739997
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1Mzg=",
+      "name": "San Vicente de Cañete",
+      "country": "Peru",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/san-vicente-de-canete/",
+      "coordinates": [
+        -76.3853,
+        -13.0756
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1Mzc=",
+      "name": "San Vicente del Raspeig",
+      "country": "Spain",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/san-vicente-del-raspeig/",
+      "coordinates": [
+        -0.5233421,
+        38.3984125
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1MzY=",
+      "name": "San Vicente Ferrer",
+      "country": "Colombia",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/san-vicente-ferrer/",
+      "coordinates": [
+        -75.33422,
+        6.285815
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1MzU=",
+      "name": "Sangolqui",
+      "country": "Ecuador",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/sangolqui/",
+      "coordinates": [
+        -78.6228504,
+        -1.2543408
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ0MDc=",
+      "name": "Şanlıurfa",
+      "country": "Turkey",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/sanlurfa/",
+      "coordinates": [
+        38.7955,
+        37.1674
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1MzQ=",
+      "name": "Santa Cruz das Palmeiras",
+      "country": "Brazil",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/santa-cruz-das-palmeiras/",
+      "coordinates": [
+        -47.2480748,
+        -21.8246326
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1MzM=",
+      "name": "Santa Cruz de la Sierra",
+      "country": "Bolivia",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/santa-cruz-de-la-sierra/",
+      "coordinates": [
+        -63.1812,
+        -17.7863
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1MzI=",
+      "name": "Santa Rosa de Calamuchita",
+      "country": "Argentina",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/santa-rosa-de-calamuchita/",
+      "coordinates": [
+        -64.5333,
+        -32.0833
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1MzA=",
+      "name": "Santiago del Estero",
+      "country": "Argentina",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/santiago-del-estero/",
+      "coordinates": [
+        -64.2629,
+        -27.8005
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1MzE=",
+      "name": "Santiago, Chile",
+      "country": "Chile",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/santiago-chile/",
+      "coordinates": [
+        -70.5689528,
+        -33.5225806
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTUwOTc=",
+      "name": "Santiago, Dominican Republic",
+      "country": "Dominican Republic",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/santiago-dominican-republic/",
+      "coordinates": [
+        -70.6908,
+        19.4504
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1Mjk=",
+      "name": "Santo André",
+      "country": "Brazil",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/santo-andre/",
+      "coordinates": [
+        -46.493085,
+        -23.6876695
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1Mjg=",
+      "name": "Santo Domingo, Dominican Republic",
+      "country": "Dominican Republic",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/santo-domingo-dominican-republic/",
+      "coordinates": [
+        -69.8404054,
+        18.5104253
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ0ODg=",
+      "name": "São Gonçalo",
+      "country": "Brazil",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/sao-goncalo/",
+      "coordinates": [
+        -43.0462495,
+        -22.8233781
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ1Mjc=",
+      "name": "Sao Jose do Rio Preto",
+      "country": "Brazil",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/sao-jose-do-rio-preto/",
+      "coordinates": [
+        -49.376521,
+        -20.8127115
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ0ODc=",
+      "name": "São José dos Campos",
+      "country": "Brazil",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/sao-jose-dos-campos/",
+      "coordinates": [
+        -45.8915658,
+        -23.2198396
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ0ODY=",
+      "name": "São Paulo",
+      "country": "Brazil",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/sao-paulo/",
+      "coordinates": [
+        -46.6395571,
+        -23.5557714
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1MjY=",
+      "name": "Sapporo",
+      "country": "Japan",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/sapporo/",
+      "coordinates": [
+        141.35,
+        43.0667
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1MjU=",
+      "name": "Satna",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/satna/",
+      "coordinates": [
+        80.8462023,
+        24.57141
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ1MjM=",
+      "name": "Seattle, WA",
+      "country": "United States",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/seattle/",
+      "coordinates": [
+        -122.3321,
+        47.6062
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1MjI=",
+      "name": "Seoul",
+      "country": "South Korea",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/seoul/",
+      "coordinates": [
+        126.9784,
+        37.566
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1MjE=",
+      "name": "Setúbal",
+      "country": "Portugal",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/setubal/",
+      "coordinates": [
+        -8.8142264,
+        38.5093877
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ1MjA=",
+      "name": "Seville",
+      "country": "Spain",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/seville/",
+      "coordinates": [
+        -5.994072,
+        37.392529
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1MTk=",
+      "name": "Sežana",
+      "country": "Slovenia",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/sezana/",
+      "coordinates": [
+        13.8738185,
+        45.7093519
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1MTc=",
+      "name": "Shamakhi",
+      "country": "Azerbaijan",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/shamakhi/",
+      "coordinates": [
+        48.64137,
+        40.63141
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1MTY=",
+      "name": "Sharjah",
+      "country": "United Arab Emirates",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/sharjah/",
+      "coordinates": [
+        55.427211,
+        25.3561698
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1MTU=",
+      "name": "Shebeen El-Kom",
+      "country": "Egypt",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/shebeen-el-kom/",
+      "coordinates": [
+        31.0106341,
+        30.550334
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1MTQ=",
+      "name": "Sherbrooke",
+      "country": "Canada",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/sherbrooke/",
+      "coordinates": [
+        -71.8991,
+        45.4001
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1MTM=",
+      "name": "Shimla",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/shimla/",
+      "coordinates": [
+        77.174829,
+        31.1044032
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ1MTI=",
+      "name": "Shivamogga",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/shivamogga/",
+      "coordinates": [
+        75.568101,
+        13.9299299
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1MTE=",
+      "name": "Shymkent",
+      "country": "Kazakhstan",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/shymkent/",
+      "coordinates": [
+        69.5876302,
+        42.320534
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1MTA=",
+      "name": "Sibu",
+      "country": "Malaysia",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/sibu/",
+      "coordinates": [
+        111.8441893,
+        2.3408025
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1MDk=",
+      "name": "Singapore",
+      "country": "Singapore",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/singapore/",
+      "coordinates": [
+        103.8501,
+        1.2897
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1MDg=",
+      "name": "Sivas",
+      "country": "Turkey",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/sivas/",
+      "coordinates": [
+        37.0150217,
+        39.750545
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1MDY=",
+      "name": "Sofia",
+      "country": "Bulgaria",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/sofia/",
+      "coordinates": [
+        23.3218675,
+        42.6977082
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1MDU=",
+      "name": "Sohag",
+      "country": "Egypt",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/sohag/",
+      "coordinates": [
+        31.6948,
+        26.557
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1MDQ=",
+      "name": "Sonipat",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/sonipat/",
+      "coordinates": [
+        77.0150735,
+        28.9930823
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1MDM=",
+      "name": "Sorocaba",
+      "country": "Brazil",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/sorocaba/",
+      "coordinates": [
+        -47.4718848,
+        -23.4838702
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1MDI=",
+      "name": "Srinagar",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/srinagar/",
+      "coordinates": [
+        74.7972825,
+        34.0836708
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1MDE=",
+      "name": "St. John’s",
+      "country": "Canada",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/st-johns/",
+      "coordinates": [
+        -52.7093,
+        47.5649
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1MDA=",
+      "name": "Stalowa Wola",
+      "country": "Poland",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/stalowa-wola/",
+      "coordinates": [
+        22.0584075,
+        50.5608219
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ0OTk=",
+      "name": "Strumica",
+      "country": "North Macedonia",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/strumica/",
+      "coordinates": [
+        22.6429,
+        41.4376
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ0OTg=",
+      "name": "Sucre",
+      "country": "Bolivia",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/sucre/",
+      "coordinates": [
+        -65.2592563,
+        -19.0352912
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ0OTc=",
+      "name": "Sulaymaniyah",
+      "country": "Iraq",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/sulaymaniyah/",
+      "coordinates": [
+        45.4331304,
+        35.5369711
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ0OTY=",
+      "name": "Sunwal",
+      "country": "Nepal",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/sunwal/",
+      "coordinates": [
+        83.75,
+        27.6167
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ0OTM=",
+      "name": "Surabaya",
+      "country": "Indonesia",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/surabaya/",
+      "coordinates": [
+        112.7508,
+        -7.2492
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ0OTI=",
+      "name": "Surat",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/surat/",
+      "coordinates": [
+        72.8297585,
+        21.1980619
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ0OTE=",
+      "name": "Sydney",
+      "country": "Australia",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/sydney/",
+      "coordinates": [
+        151.207684,
+        -33.8622503
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ0OTA=",
+      "name": "Sylhet",
+      "country": "Bangladesh",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/sylhet/",
+      "coordinates": [
+        90.4212057,
+        23.8205161
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ0ODU=",
+      "name": "TABORA",
+      "country": "Tanzania",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/tabora/",
+      "coordinates": [
+        32.0823693,
+        -3.3042713
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ0ODQ=",
+      "name": "Tabuk",
+      "country": "Saudi Arabia",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/tabuk/",
+      "coordinates": [
+        36.5661908,
+        28.3835079
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ0ODM=",
+      "name": "Taichung",
+      "country": "Taiwan",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/taichung/",
+      "coordinates": [
+        120.6736482,
+        24.1477358
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ0ODI=",
+      "name": "Taipei",
+      "country": "Taiwan",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/taipei/",
+      "coordinates": [
+        121.5654268,
+        25.0329636
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ0ODA=",
+      "name": "Takoradi",
+      "country": "Ghana",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/takoradi/",
+      "coordinates": [
+        -1.7603,
+        4.8982
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ0Nzk=",
+      "name": "Tallahassee, FL",
+      "country": "United States",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/tallahassee/",
+      "coordinates": [
+        -84.2834003,
+        30.4403557
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ0Nzg=",
+      "name": "Tallinn",
+      "country": "Estonia",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/tallinn/",
+      "coordinates": [
+        25.013607,
+        58.595272
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ0Nzc=",
+      "name": "Tampa, FL",
+      "country": "United States",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/tampa/",
+      "coordinates": [
+        -82.4584,
+        27.9475
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ0NzY=",
+      "name": "Tangier",
+      "country": "Morocco",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/tangier/",
+      "coordinates": [
+        -5.8135438,
+        35.7685738
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ0NzU=",
+      "name": "Taroudant",
+      "country": "Morocco",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/taroudant/",
+      "coordinates": [
+        -8.866443,
+        30.4933123
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ0NzM=",
+      "name": "Tashkent",
+      "country": "Uzbekistan",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/tashkent/",
+      "coordinates": [
+        69.2385223,
+        41.2982211
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ0NzI=",
+      "name": "Tbilisi",
+      "country": "Georgia",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/tbilisi/",
+      "coordinates": [
+        44.8341,
+        41.6914
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ1NjQ=",
+      "name": "Tegucigalpa",
+      "country": "Honduras",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/tegucigalpa/",
+      "coordinates": [
+        -87.1942444,
+        14.092598
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ0NzA=",
+      "name": "Tel Aviv",
+      "country": "Israel",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/tel-aviv/",
+      "coordinates": [
+        34.7806,
+        32.0809
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ0Njk=",
+      "name": "Temecula",
+      "country": "United States",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/temecula/",
+      "coordinates": [
+        -117.1488156,
+        33.4934243
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ0Njg=",
+      "name": "Temuco",
+      "country": "Chile",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/temuco/",
+      "coordinates": [
+        -72.6191824,
+        -38.7331872
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ0Njc=",
+      "name": "Thane",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/thane/",
+      "coordinates": [
+        72.9781,
+        19.2183
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ0NjY=",
+      "name": "Thessaloniki",
+      "country": "Greece",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/thessaloniki/",
+      "coordinates": [
+        22.9444191,
+        40.6400629
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ0NjU=",
+      "name": "Thrissur",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/thrissur/",
+      "coordinates": [
+        76.2120649,
+        10.5241176
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ0NjQ=",
+      "name": "Tigbo-Ilu",
+      "country": "Nigeria",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/tigbo-ilu/",
+      "coordinates": [
+        3.4737378,
+        6.9979747
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ0NjM=",
+      "name": "Tijuana",
+      "country": "Mexico",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/tijuana/",
+      "coordinates": [
+        -116.9631659,
+        32.5317233
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ0NjE=",
+      "name": "Tirana",
+      "country": "Albania",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/tirana/",
+      "coordinates": [
+        19.8067916,
+        41.24275979999999
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ0NjA=",
+      "name": "Tlaxcala City",
+      "country": "Mexico",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/tlaxcala-city/",
+      "coordinates": [
+        -98.2097932,
+        19.3250814
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ0NTk=",
+      "name": "Tokyo",
+      "country": "Japan",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/tokyo/",
+      "coordinates": [
+        139.650027,
+        35.6764225
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ0NTg=",
+      "name": "Topi",
+      "country": "Pakistan",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/topi/",
+      "coordinates": [
+        72.6210303,
+        34.0772541
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ0NTc=",
+      "name": "Toronto",
+      "country": "Canada",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/toronto/",
+      "coordinates": [
+        -79.4749233,
+        43.7477902
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ0NTY=",
+      "name": "Toulouse",
+      "country": "France",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/toulouse/",
+      "coordinates": [
+        1.442848,
+        43.6048462
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ0NTQ=",
+      "name": "Trelawny",
+      "country": "Jamaica",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/trelawny/",
+      "coordinates": [
+        -77.6078,
+        18.3526
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ0NTM=",
+      "name": "Tripoli, Lebanon",
+      "country": "Lebanon",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/tripoli-lebanon/",
+      "coordinates": [
+        35.8441,
+        34.4335
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ0NTI=",
+      "name": "Trivandrum",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/trivandrum/",
+      "coordinates": [
+        76.9366376,
+        8.5241391
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ0NTE=",
+      "name": "Trujillo",
+      "country": "Peru",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/trujillo/",
+      "coordinates": [
+        -79.0257381,
+        -8.1157846
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ0NTA=",
+      "name": "Tumakuru",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/tumakuru/",
+      "coordinates": [
+        77.1022,
+        13.3414
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ0NDk=",
+      "name": "Tunis",
+      "country": "Tunisia",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/tunis/",
+      "coordinates": [
+        10.2690387,
+        36.845782
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ0NDg=",
+      "name": "Turin",
+      "country": "Italy",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/turin/",
+      "coordinates": [
+        7.6868552,
+        45.0703155
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ0NDc=",
+      "name": "Tuxtla Gutiérrez",
+      "country": "Mexico",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/tuxtla-gutierrez/",
+      "coordinates": [
+        -93.1029939,
+        16.7516009
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ0NDY=",
+      "name": "Uberlândia",
+      "country": "Brazil",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/uberlandia/",
+      "coordinates": [
+        -48.27722,
+        -18.91861
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ0NDU=",
+      "name": "Ulaanbaatar",
+      "country": "Mongolia",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/ulaanbaatar/",
+      "coordinates": [
+        106.9155007,
+        47.9220509
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ0NDQ=",
+      "name": "Umm Al Quwain",
+      "country": "United Arab Emirates",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/umm-al-quwain/",
+      "coordinates": [
+        55.5524476,
+        25.5507975
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTUxMDQ=",
+      "name": "Universal Event",
+      "country": "Anywhere in the World",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/universal-event/",
+      "coordinates": null,
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ0NDM=",
+      "name": "Uralsk",
+      "country": "Kazakhstan",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/uralsk/",
+      "coordinates": [
+        51.3865431,
+        51.227821
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ0NDI=",
+      "name": "Vaasa",
+      "country": "Finland",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/vaasa/",
+      "coordinates": [
+        21.5937236,
+        63.1034768
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ0NDE=",
+      "name": "Valencia",
+      "country": "Spain",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/valencia/",
+      "coordinates": [
+        -0.3404766,
+        39.4836936
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ0NDA=",
+      "name": "Valencia City",
+      "country": "Philippines",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/valencia-city/",
+      "coordinates": [
+        125.0906584,
+        7.9048967
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ0Mzk=",
+      "name": "Valparaíso",
+      "country": "Chile",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/valparaiso/",
+      "coordinates": [
+        -71.5946619,
+        -33.0343587
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ0Mzg=",
+      "name": "Van",
+      "country": "Turkey",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/van/",
+      "coordinates": [
+        43.3729793,
+        38.5012085
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ0Mzc=",
+      "name": "Vancouver",
+      "country": "Canada",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/vancouver/",
+      "coordinates": [
+        -123.1207375,
+        49.2827291
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ0MzY=",
+      "name": "Vapi",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/vapi/",
+      "coordinates": [
+        72.9106202,
+        20.3893155
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ0MzQ=",
+      "name": "Vatican City",
+      "country": "Holy See",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/vatican-city/",
+      "coordinates": [
+        12.453389,
+        41.902916
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ0MzM=",
+      "name": "Vienna",
+      "country": "Austria",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/vienna/",
+      "coordinates": [
+        16.3713095,
+        48.20806959999999
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ0MzI=",
+      "name": "Vilhena",
+      "country": "Brazil",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/vilhena/",
+      "coordinates": [
+        -60.1458,
+        -12.7406
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ0MzE=",
+      "name": "Villavicencio",
+      "country": "Colombia",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/villavicencio/",
+      "coordinates": [
+        -73.6439,
+        4.136334
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ0MzA=",
+      "name": "Vilnius",
+      "country": "Lithuania",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/vilnius/",
+      "coordinates": [
+        25.2798,
+        54.6892
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ0Mjk=",
+      "name": "Virudhunagar",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/virudhunagar/",
+      "coordinates": [
+        77.9603961,
+        9.5741883
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ0Mjg=",
+      "name": "Visakhapatnam",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/visakhapatnam/",
+      "coordinates": [
+        83.3129841,
+        17.7343219
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ0MjY=",
+      "name": "Vitória da Conquista",
+      "country": "Brazil",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/vitoria-da-conquista/",
+      "coordinates": [
+        -40.8400759,
+        -14.8577988
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ0MjU=",
+      "name": "Warangal",
+      "country": "India",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/warangal/",
+      "coordinates": [
+        79.5926304,
+        17.9692624
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ0MjQ=",
+      "name": "Waterloo",
+      "country": "Canada",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/waterloo/",
+      "coordinates": [
+        -80.5167,
+        43.4667
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ0MjM=",
+      "name": "Windsor",
+      "country": "Canada",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/windsor/",
+      "coordinates": [
+        -83.0268,
+        42.3174
+      ],
+      "attendance": "Virtual"
+    },
+    {
+      "id": "aWQ6NTQ0MjE=",
+      "name": "Xalapa",
+      "country": "Mexico",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/xalapa/",
+      "coordinates": [
+        -96.8832803,
+        19.5083969
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ0MjA=",
+      "name": "Yalova",
+      "country": "Turkey",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/yalova/",
+      "coordinates": [
+        29.284186,
+        40.654895
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ0MTk=",
+      "name": "Yangon",
+      "country": "Burma",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/yangon/",
+      "coordinates": [
+        96.15611,
+        16.80528
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ0MTg=",
+      "name": "Yaounde",
+      "country": "Cameroon",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/yaounde/",
+      "coordinates": [
+        11.5202292,
+        3.8616853
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ0MTc=",
+      "name": "Yerevan",
+      "country": "Armenia",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/yerevan/",
+      "coordinates": [
+        44.5111848,
+        40.172689
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ0MTY=",
+      "name": "Yogyakarta",
+      "country": "Indonesia",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/yogyakarta/",
+      "coordinates": [
+        110.3647,
+        -7.8014
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ0MTU=",
+      "name": "Yonkers, NY",
+      "country": "United States",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/yonkers/",
+      "coordinates": [
+        -73.8987354,
+        40.9308007
+      ],
+      "attendance": "Virtual & In-Person"
+    },
+    {
+      "id": "aWQ6NTQ0MTQ=",
+      "name": "ZACATEPEC",
+      "country": "Mexico",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/zacatepec/",
+      "coordinates": [
+        -99.1836755,
+        18.6515534
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ0MTM=",
+      "name": "Zagazig",
+      "country": "Egypt",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/zagazig/",
+      "coordinates": [
+        31.5040656,
+        30.5765383
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ0MTI=",
+      "name": "Zaragoza",
+      "country": "Spain",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/zaragoza/",
+      "coordinates": [
+        -0.8884418,
+        41.6833828
+      ],
+      "attendance": "In-Person"
+    },
+    {
+      "id": "aWQ6NTQ0MTE=",
+      "name": "Zugdidi",
+      "country": "Georgia",
+      "url": "https://www.spaceappschallenge.org/2026/local-events/zugdidi/",
+      "coordinates": [
+        41.8709829,
+        42.506775
+      ],
+      "attendance": "In-Person"
+    }
+  ]
+}

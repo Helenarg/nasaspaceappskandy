@@ -77,8 +77,15 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <html lang="en">
+    // Browser extensions may add attributes to this element before hydration.
+    <html
+      lang="en"
+      suppressHydrationWarning
+      data-scroll-behavior="smooth"
+    >
       <body>
         <I18nProvider>
           <MotionSystem>
@@ -89,7 +96,7 @@ export default function RootLayout({
             </a>
             <SiteHeader />
             {children}
-            <SiteFooter />
+            <SiteFooter initialYear={currentYear} />
             <CookieConsent />
           </MotionSystem>
         </I18nProvider>

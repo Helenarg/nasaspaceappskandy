@@ -15,12 +15,13 @@
     "lenis": "^1.3.26",
     "motion": "^14.1.0",
     "next": "^16.4.0",
-    "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "sharp": "0.35.5"
   },
   "scripts": {
     "dev": "next dev",
-    "start": "node scripts/serve.mjs",
+    "start": "next start",
     "lint": "eslint .",
     "build": "next build",
     "build:web": "next build",
@@ -28,7 +29,7 @@
     "test": "tsx --test tests/forms.test.ts tests/mission.test.ts",
     "locations:sync": "node scripts/sync-space-apps-locations.mjs",
     "deploy:rules": "firebase deploy --only firestore:rules",
-    "news:sync": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/sync-official-news.ps1"
+    "news:sync": "node scripts/sync-official-news.mjs"
   },
   "private": true,
   "devDependencies": {

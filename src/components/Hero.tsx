@@ -8,6 +8,7 @@ import { MissionCountdown } from "./MissionCountdown";
 export function Hero() {
   const { t } = useI18n();
   const sceneRef = useRef<HTMLElement>(null);
+
   useEffect(() => {
     const scene = sceneRef.current;
     if (!scene) return;
@@ -19,7 +20,10 @@ export function Hero() {
       const distance = reducedMotion.matches ? 0 : Math.min(Math.max(-rect.top, 0), rect.height);
       scene.style.setProperty("--hero-scroll", `${distance}px`);
     };
-    const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
+    const schedule = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+
     window.addEventListener("scroll", schedule, { passive: true });
     window.addEventListener("resize", schedule);
     reducedMotion.addEventListener("change", schedule);
@@ -31,6 +35,7 @@ export function Hero() {
       reducedMotion.removeEventListener("change", schedule);
     };
   }, []);
+
   return (
     <section ref={sceneRef} className="home-hero" aria-labelledby="hero-title">
       <picture className="hero-media hero-depth-sky">

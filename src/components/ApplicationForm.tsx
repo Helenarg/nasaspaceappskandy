@@ -148,13 +148,24 @@ export function ApplicationForm({ kind }: { kind: FormKind }) {
         {kind === "registrations" && (
           <fieldset className="choice-group" disabled={submitting}>
             <legend id="track-label">{t("form.joining.label")}</legend>
-            <RadioGroup.Root className="choice-options" name="track" aria-labelledby="track-label" value={String(values.track)} onValueChange={(value) => update("track", value)} disabled={submitting}>
+            <RadioGroup.Root
+              className="choice-options"
+              name="track"
+              aria-labelledby="track-label"
+              value={String(values.track)}
+              onValueChange={(value) => update("track", value)}
+              disabled={submitting}
+            >
               {[
                 ["team", t("form.joining.team")],
                 ["solo", t("form.joining.solo")],
               ].map(([value, label]) => (
                 <label key={value}>
-                  <RadioGroup.Item className="custom-radio" id={value === "team" ? "field-track" : undefined} value={value}>
+                  <RadioGroup.Item
+                    className="custom-radio"
+                    id={value === "team" ? "field-track" : undefined}
+                    value={value}
+                  >
                     <RadioGroup.Indicator className="custom-radio-dot" />
                   </RadioGroup.Item>
                   {label}
@@ -166,13 +177,26 @@ export function ApplicationForm({ kind }: { kind: FormKind }) {
         {kind === "volunteers" && (
           <fieldset className="choice-group" disabled={submitting}>
             <legend id="role-label">{t("form.role.label")}</legend>
-            <RadioGroup.Root className="choice-options" name="role" aria-labelledby="role-label" value={String(values.role)} onValueChange={(value) => update("role", value)} disabled={submitting}>
+            <RadioGroup.Root
+              className="choice-options"
+              name="role"
+              aria-labelledby="role-label"
+              value={String(values.role)}
+              onValueChange={(value) => update("role", value)}
+              disabled={submitting}
+            >
               {["volunteer", "mentor"].map((role) => (
                 <label key={role}>
-                  <RadioGroup.Item className="custom-radio" id={role === "volunteer" ? "field-role" : undefined} value={role}>
+                  <RadioGroup.Item
+                    className="custom-radio"
+                    id={role === "volunteer" ? "field-role" : undefined}
+                    value={role}
+                  >
                     <RadioGroup.Indicator className="custom-radio-dot" />
                   </RadioGroup.Item>
-                  {role === "volunteer" ? t("form.role.volunteer") : t("form.role.mentor")}
+                  {role === "volunteer"
+                    ? t("form.role.volunteer")
+                    : t("form.role.mentor")}
                 </label>
               ))}
             </RadioGroup.Root>

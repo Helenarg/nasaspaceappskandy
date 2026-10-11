@@ -1,54 +1,53 @@
 {
-    "articles":  [
-                     {
-                         "imageAlt":  "THE NEXT FRONTIER V3-Blog Feature",
-                         "publishedAt":  "2026-08-26T16:11:00Z",
-                         "summary":  "Registration is now open for this year’s hackathon, held November 14-15",
-                         "image":  "https://assets.spaceappschallenge.org/media/images/THE_NEXT_FRONTIER_V3_Website_1.2e16d0ba.fill-300x200.png",
-                         "title":  "Explore \"The Next Frontier\" at the 2026 NASA Space Apps Challenge",
-                         "url":  "https://www.spaceappschallenge.org/blog/explore-the-next-frontier-at-the-2026-nasa-space-apps-challenge/"
-                     },
-                     {
-                         "imageAlt":  "Collective Screenshot",
-                         "publishedAt":  "2025-06-26T14:39:41.751132Z",
-                         "summary":  "Celebrating a year of exploration, collaboration, and bold ideas powered by NASA data",
-                         "image":  "https://assets.spaceappschallenge.org/media/images/Screenshot_2025-05-16_at_10.56.34A.2e16d0ba.fill-300x200.png",
-                         "title":  "The 2025 NASA Space Apps Collective: Looking Back, Looking Up",
-                         "url":  "https://www.spaceappschallenge.org/blog/the-2025-nasa-space-apps-collective-looking-back-looking-up/"
-                     },
-                     {
-                         "imageAlt":  "WC-2025-Thumbnail-2",
-                         "publishedAt":  "2025-06-18T15:24:32.440718Z",
-                         "summary":  "Celebrating Global Winners at NASA’s Goddard Space Flight Center",
-                         "image":  "https://assets.spaceappschallenge.org/media/images/WC-2025-Thumbnail-2.2e16d0ba.fill-300x200.png",
-                         "title":  "The NASA Space Apps 2025 Winners Celebration",
-                         "url":  "https://www.spaceappschallenge.org/blog/the-nasa-space-apps-2025-winners-celebration/"
-                     },
-                     {
-                         "imageAlt":  "Local Lead Blog thumbnail",
-                         "publishedAt":  "2025-03-11T15:14:00Z",
-                         "summary":  "Your guide to bringing NASA\u0027s largest annual global hackathon to your community",
-                         "image":  "https://assets.spaceappschallenge.org/media/images/Local_Lead_Blog_thumbnail.2e16d0ba.fill-300x200.png",
-                         "title":  "Why You Should Become a NASA Space Apps Local Lead",
-                         "url":  "https://www.spaceappschallenge.org/blog/why-you-should-become-a-nasa-space-apps-local-lead/"
-                     },
-                     {
-                         "imageAlt":  "Nov Blog Thumbnail",
-                         "publishedAt":  "2024-11-14T15:13:00Z",
-                         "summary":  "2024 Space Apps by the Numbers",
-                         "image":  "https://assets.spaceappschallenge.org/media/images/Nov_Blog_Thumbnail.2e16d0ba.fill-300x200.png",
-                         "title":  "The 2024 NASA International Space Apps Challenge Breaks Records",
-                         "url":  "https://www.spaceappschallenge.org/blog/the-2024-nasa-international-space-apps-challenge-breaks-records/"
-                     },
-                     {
-                         "imageAlt":  "Blog Thumbnail Images (4)",
-                         "publishedAt":  "2024-10-30T13:17:00Z",
-                         "summary":  "A record-breaking hackathon at 485 Local Events from around the world",
-                         "image":  "https://assets.spaceappschallenge.org/media/images/Blog_Thumbnail_Images_4.2e16d0ba.fill-300x200.png",
-                         "title":  "Collaboration Across the Globe Shines at the 2024 NASA Space Apps Challenge",
-                         "url":  "https://www.spaceappschallenge.org/blog/collaboration-across-the-globe-shines-at-the-2024-nasa-space-apps-challenge/"
-                     }
-                 ],
-    "fetchedAt":  "2026-10-10T12:26:10.9182962Z",
-    "source":  "https://www.spaceappschallenge.org/blog/"
+  "source": "https://www.spaceappschallenge.org/blog/",
+  "articles": [
+    {
+      "title": "Explore \"The Next Frontier\" at the 2026 NASA Space Apps Challenge",
+      "summary": "Registration is now open for this year’s hackathon, held November 14-15",
+      "publishedAt": "2026-08-26T16:11:00Z",
+      "url": "https://www.spaceappschallenge.org/blog/explore-the-next-frontier-at-the-2026-nasa-space-apps-challenge/",
+      "image": "https://assets.spaceappschallenge.org/media/images/THE_NEXT_FRONTIER_V3_Website_1.2e16d0ba.fill-300x200.png",
+      "imageAlt": "THE NEXT FRONTIER V3-Blog Feature"
+    },
+    {
+      "title": "The 2025 NASA Space Apps Collective: Looking Back, Looking Up",
+      "summary": "Celebrating a year of exploration, collaboration, and bold ideas powered by NASA data",
+      "publishedAt": "2025-06-26T14:39:41.751132Z",
+      "url": "https://www.spaceappschallenge.org/blog/the-2025-nasa-space-apps-collective-looking-back-looking-up/",
+      "image": "https://assets.spaceappschallenge.org/media/images/Screenshot_2025-05-16_at_10.56.34A.2e16d0ba.fill-300x200.png",
+      "imageAlt": "Collective Screenshot"
+    },
+    {
+      "title": "The NASA Space Apps 2025 Winners Celebration",
+      "summary": "Celebrating Global Winners at NASA’s Goddard Space Flight Center",
+      "publishedAt": "2025-06-18T15:24:32.440718Z",
+      "url": "https://www.spaceappschallenge.org/blog/the-nasa-space-apps-2025-winners-celebration/",
+      "image": "https://assets.spaceappschallenge.org/media/images/WC-2025-Thumbnail-2.2e16d0ba.fill-300x200.png",
+      "imageAlt": "WC-2025-Thumbnail-2"
+    },
+    {
+      "title": "Why You Should Become a NASA Space Apps Local Lead",
+      "summary": "Your guide to bringing NASA's largest annual global hackathon to your community",
+      "publishedAt": "2025-03-11T15:14:00Z",
+      "url": "https://www.spaceappschallenge.org/blog/why-you-should-become-a-nasa-space-apps-local-lead/",
+      "image": "https://assets.spaceappschallenge.org/media/images/Local_Lead_Blog_thumbnail.2e16d0ba.fill-300x200.png",
+      "imageAlt": "Local Lead Blog thumbnail"
+    },
+    {
+      "title": "The 2024 NASA International Space Apps Challenge Breaks Records",
+      "summary": "2024 Space Apps by the Numbers",
+      "publishedAt": "2024-11-14T15:13:00Z",
+      "url": "https://www.spaceappschallenge.org/blog/the-2024-nasa-international-space-apps-challenge-breaks-records/",
+      "image": "https://assets.spaceappschallenge.org/media/images/Nov_Blog_Thumbnail.2e16d0ba.fill-300x200.png",
+      "imageAlt": "Nov Blog Thumbnail"
+    },
+    {
+      "title": "Collaboration Across the Globe Shines at the 2024 NASA Space Apps Challenge",
+      "summary": "A record-breaking hackathon at 485 Local Events from around the world",
+      "publishedAt": "2024-10-30T13:17:00Z",
+      "url": "https://www.spaceappschallenge.org/blog/collaboration-across-the-globe-shines-at-the-2024-nasa-space-apps-challenge/",
+      "image": "https://assets.spaceappschallenge.org/media/images/Blog_Thumbnail_Images_4.2e16d0ba.fill-300x200.png",
+      "imageAlt": "Blog Thumbnail Images (4)"
+    }
+  ]
 }

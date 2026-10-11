@@ -13,13 +13,10 @@ const assetOrigin = vercelProductionHost
   : site.url;
 
 const socialImage = {
-  // Vercel supplies its stable project hostname at build time. Keeping this
-  // absolute lets social crawlers load the image from both the .vercel.app
-  // deployment and the custom-domain build without a public URL variable.
   url: new URL("/og-image.jpg", assetOrigin).toString(),
   width: 1200,
   height: 630,
-  alt: "NASA Space Apps Kandy — November 14–15, 2026 in Kandy, Sri Lanka",
+  alt: "NASA Space Apps Kandy. November 14-15, 2026 in Kandy, Sri Lanka",
 };
 
 export function createPageMetadata({

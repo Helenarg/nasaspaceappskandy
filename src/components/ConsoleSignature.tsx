@@ -19,7 +19,7 @@ const signature = String.raw`
 
  N A S A   S P A C E   A P P S   K A N D Y
 
- Kandy, Sri Lanka // November 14–15, 2026
+ Kandy, Sri Lanka // November 14-15, 2026
  Website: https://nasaspaceapps.lk
 
  Crafted by Sequence Labs

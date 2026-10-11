@@ -1,6 +1,5 @@
 import { writeFile } from "node:fs/promises";
 
-// Public query used by the official 2026 event directory; no authentication.
 const endpoint = "https://api.spaceappschallenge.org/graphql";
 const source = "https://www.spaceappschallenge.org/2026/local-events/";
 const query = `query MapLocations($first: Int!, $after: String, $filtering: [Filter!]) {

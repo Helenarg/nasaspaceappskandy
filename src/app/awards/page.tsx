@@ -11,30 +11,77 @@ export const metadata: Metadata = createPageMetadata({
   description: "Discover NASA Space Apps awards and the ways outstanding ideas, storytelling, science, and community impact are recognised.",
   path: "/awards",
 });
+
 export default function Awards() {
   return (
     <main id="main">
-      <PageIntro label={<L id="awards.intro.label" />} title={<L id="awards.intro.title" />} description={<L id="awards.intro.description" />} />
+      <PageIntro
+        label={<L id="awards.intro.label" />}
+        title={<L id="awards.intro.title" />}
+        description={<L id="awards.intro.description" />}
+      />
       <section className="content-section">
         <div className="program-intro">
-          <div><SectionLabel><L id="awards.categories.label" /></SectionLabel><p><L id="awards.categories.description" /></p></div>
-          <a className="text-link" href={program.awardsSource} target="_blank" rel="noopener noreferrer"><L id="awards.officialCta" /> <ArrowUpRightIcon size={18} aria-hidden="true" /></a>
+          <div>
+            <SectionLabel>
+              <L id="awards.categories.label" />
+            </SectionLabel>
+            <p>
+              <L id="awards.categories.description" />
+            </p>
+          </div>
+          <a
+            className="text-link"
+            href={program.awardsSource}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <L id="awards.officialCta" />
+            <ArrowUpRightIcon size={18} aria-hidden="true" />
+          </a>
         </div>
-        <div className="award-grid">{program.awards.map((award, index) => (
-          <article className="award-card" key={award.name}>
-            <Image src={award.image} alt="" width={120} height={120} />
-            <div><span className="technical-label">AWARD / {String(index + 1).padStart(2, "0")}</span><h2>{award.name}</h2><p>{award.description}</p></div>
-          </article>
-        ))}</div>
-        <p className="asset-credit"><L id="awards.credit" /></p>
+        <div className="award-grid">
+          {program.awards.map((award, index) => (
+            <article className="award-card" key={award.name}>
+              <Image src={award.image} alt="" width={120} height={120} />
+              <div>
+                <span className="technical-label">
+                  AWARD / {String(index + 1).padStart(2, "0")}
+                </span>
+                <h2>{award.name}</h2>
+                <p>{award.description}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+        <p className="asset-credit">
+          <L id="awards.credit" />
+        </p>
       </section>
       <section className="content-section">
-        <SectionLabel><L id="awards.journey.label" /></SectionLabel><h2><L id="awards.journey.title" /></h2>
-        <p><L id="awards.journey.description" /></p>
+        <SectionLabel>
+          <L id="awards.journey.label" />
+        </SectionLabel>
+        <h2>
+          <L id="awards.journey.title" />
+        </h2>
+        <p>
+          <L id="awards.journey.description" />
+        </p>
         <div className="numbered-list">
-          <article><span>01</span><div><h3><L id="awards.journey.01.title" /></h3><p><L id="awards.journey.01.text" /></p></div></article>
-          <article><span>02</span><div><h3><L id="awards.journey.02.title" /></h3><p><L id="awards.journey.02.text" /></p></div></article>
-          <article><span>03</span><div><h3><L id="awards.journey.03.title" /></h3><p><L id="awards.journey.03.text" /></p></div></article>
+          {(["01", "02", "03"] as const).map((number) => (
+            <article key={number}>
+              <span>{number}</span>
+              <div>
+                <h3>
+                  <L id={`awards.journey.${number}.title`} />
+                </h3>
+                <p>
+                  <L id={`awards.journey.${number}.text`} />
+                </p>
+              </div>
+            </article>
+          ))}
         </div>
       </section>
       <CommunityBand />

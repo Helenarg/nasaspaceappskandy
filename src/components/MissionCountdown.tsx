@@ -10,6 +10,17 @@ function subscribe(onChange: () => void) {
 const snapshot = () => Math.floor(Date.now() / 1000) * 1000;
 const serverSnapshot = () => 0;
 
+function getAccessibleLabel(
+  now: number,
+  clock: ReturnType<typeof getMissionClock>,
+) {
+  if (!now) return "Countdown loading";
+  if (clock.status === "live") return "Hackathon in progress";
+  if (clock.status === "complete") return "2026 hackathon complete";
+
+  return `${clock.days} days, ${clock.hours} hours, ${clock.minutes} minutes and ${clock.seconds} seconds until November 14 in Sri Lanka`;
+}
+
 export function MissionCountdown() {
   const now = useSyncExternalStore(subscribe, snapshot, serverSnapshot);
   const clock = getMissionClock(now);
@@ -25,15 +36,7 @@ export function MissionCountdown() {
         className="mission-clock"
         role="timer"
         aria-live="off"
-        aria-label={
-          !now
-            ? "Countdown loading"
-            : clock.status === "countdown"
-              ? `${clock.days} days, ${clock.hours} hours, ${clock.minutes} minutes and ${clock.seconds} seconds until November 14 in Sri Lanka`
-              : clock.status === "live"
-                ? "Hackathon in progress"
-                : "2026 hackathon complete"
-        }
+        aria-label={getAccessibleLabel(now, clock)}
       >
         {clock.status === "countdown" || !now ? (
           <>
@@ -46,8 +49,8 @@ export function MissionCountdown() {
                   {now
                     ? String(value).padStart(label === "d" ? 3 : 2, "0")
                     : label === "d"
-                      ? "–––"
-                      : "––"}
+                      ? "---"
+                      : "--"}
                 </strong>
                 <small>{label}</small>
               </span>
@@ -55,13 +58,10 @@ export function MissionCountdown() {
           </>
         ) : (
           <span className="mission-state">
-            {clock.status === "live"
-              ? "MISSION IN PROGRESS"
-              : "MISSION COMPLETE"}
+            {clock.status === "live" ? "MISSION IN PROGRESS" : "MISSION COMPLETE"}
           </span>
         )}
       </div>
-
     </div>
   );
 }

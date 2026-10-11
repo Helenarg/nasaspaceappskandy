@@ -2,7 +2,8 @@ import Link from "next/link";
 import { ArrowUpRightIcon as ArrowUpRight } from "@phosphor-icons/react/dist/ssr/ArrowUpRight";
 import { PlanetIcon as Orbit } from "@phosphor-icons/react/dist/ssr/Planet";
 import { UsersThreeIcon as Users } from "@phosphor-icons/react/dist/ssr/UsersThree";
-import { BroadcastIcon as Radio } from "@phosphor-icons/react/dist/ssr/Broadcast";
+import { GlobalStats } from "@/components/GlobalStats";
+import { HomeEventDetails } from "@/components/HomeEventDetails";
 import { ChallengeCards, AwardsPreview } from "@/components/ProgramCards";
 import { Hero } from "@/components/Hero";
 import { WorldMap } from "@/components/WorldMap";
@@ -12,7 +13,7 @@ import { createPageMetadata } from "@/content/metadata";
 
 export const metadata = createPageMetadata({
   title: "NASA Space Apps Kandy | Ideas beyond boundaries",
-  description: "Join NASA Space Apps Kandy on November 14–15, 2026. Build ideas for Earth and space with NASA open data and a global community.",
+  description: "Join NASA Space Apps Kandy on November 14-15, 2026. Build ideas for Earth and space with NASA open data and a global community.",
   path: "/",
 });
 
@@ -21,21 +22,44 @@ export default function Home() {
     <main id="main" className="home-page">
       <Hero />
       <section id="discover" className="home-intro">
-        <SectionLabel><L id="home.intro.label" /></SectionLabel>
+        <SectionLabel>
+          <L id="home.intro.label" />
+        </SectionLabel>
         <h2>
           <L id="home.intro.title.first" />
           <br />
           <L id="home.intro.title.second" />
         </h2>
-        <p><L id="home.intro.description" /></p>
+        <p>
+          <L id="home.intro.description" />
+        </p>
       </section>
+      <HomeEventDetails />
       <section className="focus-section">
         <div className="section-heading">
-          <div><SectionLabel><L id="home.focus.label" /></SectionLabel><h2><L id="home.focus.title.first" /><br /><L id="home.focus.title.second" /></h2></div>
-          <p><L id="home.focus.description" /></p>
+          <div>
+            <SectionLabel>
+              <L id="home.focus.label" />
+            </SectionLabel>
+            <h2>
+              <L id="home.focus.title.first" />
+              <br />
+              <L id="home.focus.title.second" />
+            </h2>
+          </div>
+          <p>
+            <L id="home.focus.description" />
+          </p>
         </div>
         <ChallengeCards featured />
-        <div className="program-section-bottom"><span><L id="home.focus.note" /></span><ActionLink href="/challenges" outline><L id="home.focus.cta" /></ActionLink></div>
+        <div className="program-section-bottom">
+          <span>
+            <L id="home.focus.note" />
+          </span>
+          <ActionLink href="/challenges" outline>
+            <L id="home.focus.cta" />
+          </ActionLink>
+        </div>
       </section>
       <section className="approach-section">
         <div className="section-heading">
@@ -135,6 +159,7 @@ export default function Home() {
         </div>
         <WorldMap />
       </section>
+      <GlobalStats />
       <AwardsPreview />
       <section className="pathways-section">
         <div className="section-heading">
@@ -157,27 +182,6 @@ export default function Home() {
             <h3><L id="home.pathways.sponsor.title" /></h3>
             <p><L id="home.pathways.sponsor.description" /></p>
             <ArrowUpRight className="card-arrow" size={22} aria-hidden="true" />
-          </Link>
-        </div>
-      </section>
-      <section className="updates-section">
-        <div className="section-heading">
-          <div>
-            <SectionLabel><L id="home.updates.label" /></SectionLabel>
-            <h2><L id="home.updates.title" /></h2>
-          </div>
-          <ActionLink href="/news" outline>
-            <L id="home.updates.cta" />
-          </ActionLink>
-        </div>
-        <div className="update-notice">
-          <Radio size={27} weight="regular" aria-hidden="true" />
-          <div>
-            <h3><L id="home.updates.event.title" /></h3>
-            <p><L id="home.updates.event.description" /></p>
-          </div>
-          <Link href="/events" className="text-link">
-            <L id="home.updates.event.cta" /> <ArrowUpRight size={17} aria-hidden="true" />
           </Link>
         </div>
       </section>

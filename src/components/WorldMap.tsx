@@ -54,26 +54,38 @@ export function WorldMap() {
             opacity="0.55"
           />
           <path className="map-equator" d="M0 300H1200" />
-          {mapped.map((event) => {
-            const p = projectLocation(event.coordinates!);
-            return (
-              <circle
-                key={event.id}
-                cx={p.x}
-                cy={p.y}
-                r="2.6"
-                className="network-point"
-                data-event-name={event.name}
-                data-country={event.country}
-              >
-                <title>{`${event.name}, ${event.country}`}</title>
-              </circle>
-            );
-          })}
+          <g
+            className="network-location-points"
+            clipPath="url(/images/world-land-mask.svg#world-land)"
+          >
+            {mapped.map((event) => {
+              const p = projectLocation(event.coordinates!);
+              return (
+                <circle
+                  key={event.id}
+                  cx={p.x}
+                  cy={p.y}
+                  r="2.6"
+                  className="network-point"
+                  data-event-name={event.name}
+                  data-country={event.country}
+                >
+                  <title>{`${event.name}, ${event.country}`}</title>
+                </circle>
+              );
+            })}
+          </g>
           <g className="network-kandy">
             <circle className="kandy-orbit" cx={home.x} cy={home.y} r="24" />
             <circle className="kandy-ring" cx={home.x} cy={home.y} r="12" />
-            <circle className="kandy-core" cx={home.x} cy={home.y} r="5" data-event-name="Kandy" data-country="Sri Lanka" />
+            <circle
+              className="kandy-core"
+              cx={home.x}
+              cy={home.y}
+              r="5"
+              data-event-name="Kandy"
+              data-country="Sri Lanka"
+            />
             <path d={`M${home.x + 10} ${home.y + 10} l30 38 h128`} />
             <text x={home.x + 46} y={home.y + 40}>
               KANDY, SRI LANKA
@@ -92,10 +104,29 @@ export function WorldMap() {
       <div className="network-kandy-summary">
         <div className="network-event">
           <Crosshair size={24} aria-hidden="true" />
-          <div><span className="technical-label"><L id="world.localEvent" /></span><strong><L id="world.kandy" /></strong><span><L id="world.dateMode" /></span></div>
+          <div>
+            <span className="technical-label">
+              <L id="world.localEvent" />
+            </span>
+            <strong>
+              <L id="world.kandy" />
+            </strong>
+            <span>
+              <L id="world.dateMode" />
+            </span>
+          </div>
         </div>
-        <p><L id="world.summary.first" /><br /><L id="world.summary.second" /></p>
-        <Link className="white-button" href="/register"><span className="button-label"><L id="world.cta" /></span><ArrowUpRight size={18} aria-hidden="true" /></Link>
+        <p>
+          <L id="world.summary.first" />
+          <br />
+          <L id="world.summary.second" />
+        </p>
+        <Link className="white-button" href="/register">
+          <span className="button-label">
+            <L id="world.cta" />
+          </span>
+          <ArrowUpRight size={18} aria-hidden="true" />
+        </Link>
       </div>
       <div className="network-source">
         <span>

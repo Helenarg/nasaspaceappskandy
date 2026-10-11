@@ -17,9 +17,5 @@ jobs:
       - run: npm run typecheck
       - run: npm test
       - run: npm run build:web
-      - name: Check exported routes
-        run: |
-          for route in about events challenges ambassadors join sponsors news register contact privacy; do
-            test -f "out/$route/index.html"
-          done
-          test -f out/index.html
+      - name: Check Next.js build output
+        run: test -f .next/BUILD_ID

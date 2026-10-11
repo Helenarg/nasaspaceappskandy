@@ -1,4 +1,3 @@
-/* NASA Space Apps 2026 palette. Neon yellow is reserved for accents. */
 :root {
   color-scheme: dark;
   --deep-blue: #07173f;
@@ -26,6 +25,7 @@
   --header-height: 88px;
   --frame-width: min(92%, 1320px);
   --cell-space: 40px;
+  --section-space: 72px;
   --node-size: 9px;
   --node-border: #96b6ed60;
   --font-sans: "Overpass Variable", Arial, sans-serif;
@@ -124,8 +124,6 @@ main > section:not(.home-hero) {
   border-inline: 1px dashed var(--border);
   border-bottom: 1px dashed var(--border);
 }
-/* Connectors mark major section boundaries only. Inset frames and footer
-   rows keep their dividers without extra nodes. */
 main > section:not(.home-hero)::before,
 main > section:not(.home-hero)::after,
 .footer-frame::before,
@@ -241,7 +239,7 @@ main > .home-hero + section::after {
   align-items: flex-end;
   justify-content: space-between;
   gap: 36px;
-  padding: 72px var(--cell-space) 44px;
+  padding: var(--section-space) var(--cell-space) 44px;
 }
 .section-heading h2 {
   font-size: clamp(30px, 3.2vw, 44px);
@@ -602,7 +600,7 @@ main > .home-hero + section::after {
   background: rgba(255, 255, 255, 0.025);
 }
 .approach-section {
-  padding: 0 var(--cell-space) 80px;
+  padding: 0 var(--cell-space) var(--section-space);
 }
 .approach-section .section-heading {
   padding-inline: 0;
@@ -1569,6 +1567,7 @@ main > .home-hero + section::after {
 @media (max-width: 760px) {
   :root {
     --frame-width: calc(100% - 32px);
+    --section-space: 48px;
     --cell-space: 24px;
     --header-height: 76px;
   }
@@ -1670,13 +1669,23 @@ main > .home-hero + section::after {
     display: none;
   }
   .section-heading {
-    padding: 48px var(--cell-space) 28px;
+    padding: var(--section-space) var(--cell-space) 28px;
     align-items: flex-start;
     flex-direction: column;
     gap: 24px;
   }
   .section-heading > p {
     max-width: none;
+  }
+  .updates-section .section-heading {
+    gap: 20px;
+    padding-bottom: 24px;
+  }
+  .updates-section .section-heading > .outline-button {
+    width: 100%;
+    min-height: 48px;
+    justify-content: space-between;
+    padding-inline: 16px;
   }
   .focus-grid {
     grid-template-columns: 1fr;
@@ -1705,7 +1714,7 @@ main > .home-hero + section::after {
     padding-bottom: 32px;
   }
   .approach-section {
-    padding: 0 16px 48px;
+    padding: 0 16px var(--section-space);
   }
   .approach-section .section-heading {
     padding-inline: 8px;
@@ -1805,9 +1814,25 @@ main > .home-hero + section::after {
     font-size: 27px;
   }
   .update-notice {
-    margin: 0 12px 32px;
-    padding: 24px;
-    gap: 20px;
+    display: grid;
+    grid-template-columns: 24px minmax(0, 1fr);
+    align-items: start;
+    margin: 0 12px var(--section-space);
+    padding: 22px 18px;
+    gap: 0 14px;
+  }
+  .update-notice > svg {
+    width: 22px;
+    height: 22px;
+    margin-top: 2px;
+  }
+  .update-notice .text-link {
+    grid-column: 1 / -1;
+    width: 100%;
+    justify-content: space-between;
+    margin: 20px 0 0;
+    padding-top: 16px;
+    border-top: 1px dashed var(--border);
   }
   .community-band {
     grid-template-columns: 1fr;

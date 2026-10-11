@@ -3,15 +3,16 @@ export const site = {
   url: "https://nasaspaceapps.lk",
   email: "nasaspaceappskandy@gmail.com",
   location: "Kandy, Sri Lanka",
-  eventStatus: "The Next Frontier · November 14–15, 2026",
+  eventStatus: "The Next Frontier · November 14-15, 2026",
   globalUrl: "https://www.spaceappschallenge.org/",
   instagramUrl: "https://www.instagram.com/nasaspaceapps.lk",
   tiktokUrl: "https://www.tiktok.com/@nasaspaceapps.lk",
+  linkedinUrl: "https://www.linkedin.com/company/nasa-space-apps-kandy/",
   participantTerms: "https://www.spaceappschallenge.org/legal/",
 };
 export const navigation = [
   { label: "About", href: "/about", key: "nav.about" },
-  { label: "Events", href: "/events", key: "nav.events" },
+  { label: "Event details", href: "/event-details", key: "nav.events" },
   { label: "Challenges", href: "/challenges", key: "nav.challenges" },
   { label: "Join Us", href: "/join", key: "nav.join" },
   { label: "Sponsors", href: "/sponsors", key: "nav.sponsors" },

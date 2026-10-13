@@ -28,7 +28,7 @@ export function EventFaq() {
           <p>Yes. Meals, snacks and beverages will be provided for in-person participants during the hackathon. We will ask about dietary requirements before the event.</p>
         </FaqItem>
         <FaqItem question="What is the minimum age to participate?">
-          <p>There is no minimum age. Participants under 18 must be registered by a parent or legal guardian and bring a signed parental consent letter. Read the <Link href="/register#consent-letter">under-18 guidance and download the letter</Link> before attending. Please contact the team for supervision arrangements.</p>
+          <p>Participants under 18 must be registered by a parent or legal guardian, who must accompany them throughout the event. Bring a signed parental consent letter. Read the <Link href="/register#consent-letter">under-18 guidance and print the letter in English, Sinhala or Tamil</Link> before attending. Contact the team to confirm guardian access arrangements.</p>
         </FaqItem>
         <FaqItem question="When can I start working on my challenge?">
           <p>The Kandy hacking window starts at 12:00 AM on Saturday 14 November, Sri Lanka time. In-person hacking begins at 11:00 AM after the opening ceremony. The official NASA Space Apps project submission page opens at 9:00 AM Saturday and closes at 11:59 PM Sunday 15 November. Submit there to be eligible for Global Nomination.</p>

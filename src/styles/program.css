@@ -40,12 +40,30 @@
 .event-contact p:not(.section-label) { margin: 0; }
 .event-contact-actions { display: flex; align-items: center; gap: 10px; flex-shrink: 0; max-width: 100%; }
 .team-lead-card .event-contact-actions { flex-wrap: wrap; margin-top: 24px; }
-.consent-panel { margin-top: 28px; background: var(--panel); }
+.consent-panel { margin-top: 28px; padding: 24px 24px 12px; background: var(--panel); }
 .registration-guide .consent-panel h3 { color: white; margin-top: 0; }
-.consent-panel > p { max-width: 860px; margin-bottom: 24px; }
-.consent-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.consent-panel > p { max-width: 860px; margin: 0 0 20px; }
+.consent-actions { display: flex; flex-wrap: wrap; gap: 12px 16px; align-items: flex-end; }
 .consent-actions > a { max-width: 100%; }
-@media (max-width: 760px) { .consent-actions { align-items: stretch; flex-direction: column; } .consent-actions > a { justify-content: space-between; } }
+.consent-language { width: 160px; min-width: 0; }
+.consent-language label { display: block; margin-bottom: 6px; font-size: 12px; }
+.consent-actions > .white-button { min-height: 46px; padding: 12px 20px; }
+.consent-contact { min-height: 46px; align-items: center; }
+.consent-actions svg { flex-shrink: 0; }
+.consent-conditions { margin-top: 20px; border-top: 1px dashed var(--border); }
+.consent-conditions .faq-item { border-bottom: 0; }
+.registration-guide .consent-conditions .faq-item h3 { margin: 0; }
+.consent-conditions .faq-item h3 button { padding: 16px 0; font-size: 16px; }
+.consent-conditions .faq-answer-inner { padding: 0 0 12px; }
+.consent-conditions ol { margin: 0 0 16px; padding-left: 20px; }
+.consent-conditions li { margin-bottom: 12px; line-height: 1.8; }
+.consent-conditions button:focus-visible { outline: 2px solid var(--neon-yellow); outline-offset: 5px; }
+@media (max-width: 760px) {
+  .consent-panel { padding: 20px 20px 8px; }
+  .consent-actions { align-items: stretch; flex-direction: column; gap: 12px; }
+  .consent-language { width: 100%; }
+  .consent-actions > a { justify-content: space-between; }
+}
 .event-contact-actions .contact-social { width: 46px; height: 46px; min-height: 46px; padding: 0; flex-shrink: 0; }
 .event-contact-actions .contact-social svg { transform: none; }
 .event-contact-actions .contact-email { min-width: 0; min-height: 46px; }

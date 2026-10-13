@@ -23,7 +23,7 @@ export function PartnerGroups() {
         <div className="supporter-logo-grid"><PartnerLogo /></div>
       </div>
       <div className="supporter-group">
-        <h3 className="technical-label">OFFICIAL TECHNICAL PARTNER</h3>
+        <h3 className="technical-label">Official Digital &amp; Design Partner</h3>
         <div className="supporter-logo-grid">
           <figure className="partner-identity sequence-identity">
             <Image src="/sponsors/SQ3-LOGO-WHITE.png" alt="" width={5001} height={4794} sizes="48px" />

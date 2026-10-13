@@ -4,6 +4,7 @@ import { LocalizedText as L } from "@/components/LocalizedText";
 import { spaceAppsEvent } from "@/content/event";
 import { site } from "@/content/site";
 import { createPageMetadata } from "@/content/metadata";
+import { ConsentPanel } from "@/components/ConsentPanel";
 
 const registrationSteps = [
   ["participation.step1.title", "participation.step1.text"],
@@ -73,21 +74,7 @@ export default function Register() {
         <p className="registration-team">
           <L id="participation.team" />
         </p>
-        <aside className="quiet-note consent-panel" id="consent-letter">
-          <h3>
-            <L id="participation.minors.title" />
-          </h3>
-          <p>
-            <L id="participation.minors.text" />
-          </p>
-          <div className="consent-actions">
-          <a className="white-button" href="/docs/parental-consent-letter.pdf" download><span className="button-label">Download consent letter (PDF)</span><ArrowUpRightIcon size={17} aria-hidden="true" /></a>
-          <a className="outline-button" href={`mailto:${site.email}`}>
-            <L id="participation.help" />
-            <ArrowUpRightIcon size={17} aria-hidden="true" />
-          </a>
-          </div>
-        </aside>
+        <ConsentPanel />
       </section>
       <section className="content-section">
         <SectionLabel>

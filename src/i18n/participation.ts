@@ -1,3 +1,5 @@
+import { consentCopy } from "@/content/consent";
+
 export const participationCopy = {
   "en": {
     "participation.intro": "Register with NASA Space Apps",
@@ -12,7 +14,7 @@ export const participationCopy = {
     "participation.free": "Free to participate",
     "participation.team": "You can join on your own or with a team. The Kandy community can help you find collaborators.",
     "participation.minors.title": "Joining under 18?",
-    "participation.minors.text": "There is no minimum age. Participants under 18 must be registered by a parent or legal guardian. Download the Kandy consent letter, bring a signed copy on the day, and contact the local team to confirm supervision arrangements.",
+    "participation.minors.text": consentCopy.en.intro,
     "participation.conduct.label": "PARTICIPANT CONDUCT",
     "participation.conduct.title": "Make space for everyone.",
     "participation.conduct.respect.title": "Collaborate with respect",
@@ -67,6 +69,7 @@ export const participationCopy = {
     "participation.free": "සහභාගීත්වය නොමිලේ",
     "participation.team": "තනිව හෝ කණ්ඩායමක් සමඟ එක්විය හැක. සහයෝගීව වැඩ කිරීමට අය සොයාගැනීමට මහනුවර ප්‍රජාව උදව් කරයි.",
     "participation.minors.title": "වයස අවුරුදු 18ට අඩුද?",
+    "participation.minors.text": consentCopy.si.intro,
     "participation.conduct.label": "සහභාගිවන්නන්ගේ හැසිරීම",
     "participation.conduct.title": "සැමට ඉඩක් ලබා දෙමු.",
     "participation.conduct.respect.title": "ගෞරවයෙන් සහයෝගයෙන් වැඩ කරන්න",
@@ -120,6 +123,7 @@ export const participationCopy = {
     "participation.free": "பங்கேற்பு இலவசம்",
     "participation.team": "தனியாகவோ அணியுடனோ இணையலாம். இணைந்து பணியாற்றுபவர்களைக் கண்டறிய கண்டி சமூகம் உதவும்.",
     "participation.minors.title": "18 வயதுக்குட்பட்டவரா?",
+    "participation.minors.text": consentCopy.ta.intro,
     "participation.conduct.label": "பங்கேற்பாளர் நடத்தை",
     "participation.conduct.title": "அனைவருக்கும் இடமளிப்போம்.",
     "participation.conduct.respect.title": "மரியாதையுடன் ஒத்துழையுங்கள்",

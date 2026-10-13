@@ -10,6 +10,7 @@ import { ConsoleSignature } from "@/components/ConsoleSignature";
 import { WebApp } from "@/components/WebApp";
 import "@/styles/globals.css";
 import "@/styles/program.css";
+import "@/styles/supporters.css";
 import "@/styles/motion.css";
 import "@fontsource-variable/overpass";
 import "@fontsource-variable/fira-code";

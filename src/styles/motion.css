@@ -71,6 +71,9 @@ html.lenis.lenis-smooth { scroll-behavior: auto !important; }
   .mobile-nav-panel a[aria-current="page"] { padding-left: 0; color: var(--neon-yellow); background: transparent; box-shadow: none; }
   .mobile-nav-panel a[aria-current="page"]::before { content: ""; width: 12px; height: 1px; flex: 0 0 12px; margin-right: 8px; background: currentColor; box-shadow: 0 0 8px #eafe0766; }
   .mobile-nav-panel .mobile-register { display: flex; width: 100%; margin-top: 16px; }
+  .mobile-nav-panel .mobile-register,
+  .mobile-nav-panel .mobile-register:hover,
+  .mobile-nav-panel .mobile-register:active { background: var(--neon-yellow); border-color: var(--neon-yellow); color: var(--accent-ink); }
 }
 @media (max-width: 760px) {
   .challenge-grid.is-featured { display: flex; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x proximity; scroll-padding-inline: 0; gap: 12px; border: 0; padding-bottom: 12px; scrollbar-width: thin; scrollbar-color: #2e96f580 var(--deep-blue); }

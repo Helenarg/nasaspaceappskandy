@@ -11,7 +11,7 @@ const routes = [
   { path: "/join", priority: 0.7, changeFrequency: "monthly" },
   { path: "/ambassadors", priority: 0.6, changeFrequency: "monthly" },
   { path: "/awards", priority: 0.6, changeFrequency: "monthly" },
-  { path: "/sponsors", priority: 0.6, changeFrequency: "monthly" },
+  { path: "/sponsors-and-partners", priority: 0.6, changeFrequency: "monthly" },
   { path: "/contact", priority: 0.5, changeFrequency: "monthly" },
   { path: "/privacy", priority: 0.2, changeFrequency: "yearly" },
   { path: "/terms", priority: 0.2, changeFrequency: "yearly" },

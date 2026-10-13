@@ -19,7 +19,7 @@ The community website for the NASA International Space Apps Challenge in Kandy, 
 - Search metadata, Open Graph images, a sitemap, and crawler guidance
 - Installable web app manifest and mobile friendly navigation
 - English, Sinhala, and Tamil interface dictionaries
-- Firebase backed volunteer, ambassador, and contact forms
+- Firebase backed bootcamp interest, volunteer, ambassador, and contact forms
 
 ## Rendering and freshness
 
@@ -134,10 +134,13 @@ Public forms write through the Firebase Lite SDK to the `nasaspaceappskandy` pro
 | Page | Collection |
 | --- | --- |
 | `/join` | `volunteers` |
+| `/event-details` bootcamp form | `bootcamps` |
 | `/ambassadors` | `ambassadors` |
 | `/contact` | `messages` |
 
 The registration page sends participants to the official NASA Space Apps Kandy event listing. Local registration data is not collected by this website.
+
+The bootcamp form records one selected city from Colombo, Kandy, Galle, or Kurunegala. Deploy the updated Firestore rules before enabling the form on a live site.
 
 Form records include server timestamps, their source, application version, and an initial status. Success is shown only after Firebase confirms a write. A timeout is presented as unconfirmed instead of being reported as a definite failure. The website does not read private submissions or claim to send email.
 

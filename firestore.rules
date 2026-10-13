@@ -61,6 +61,7 @@ service cloud.firestore {
         && str('email', 200)
         && str('institution', 200)
         && str('motivation', 1000)
+        && request.resource.data.role in ['University Lead', 'School Lead']
         && request.resource.data.agreedToCommitment == true
         && optionalStr('phone', 30)
         && optionalStr('province', 80)
@@ -74,6 +75,16 @@ service cloud.firestore {
         && str('email', 200)
         && str('message', 2000)
         && optionalStr('subject', 120);
+      allow read, update, delete: if false;
+    }
+
+    match /bootcamps/{id} {
+      allow create: if baseShape()
+        && str('fullName', 120)
+        && str('email', 200)
+        && request.resource.data.city in ['Colombo', 'Kandy', 'Galle', 'Kurunegala']
+        && optionalStr('phone', 30)
+        && optionalStr('institution', 200);
       allow read, update, delete: if false;
     }
 

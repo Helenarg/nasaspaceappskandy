@@ -1,3 +1,5 @@
+import { UserCircleIcon } from "@phosphor-icons/react/dist/ssr/UserCircle";
+import { LocalLeadContacts } from "@/components/LocalLeadContacts";
 import type { Metadata } from "next";
 import { GlobeHemisphereEastIcon as Globe2 } from "@phosphor-icons/react/dist/ssr/GlobeHemisphereEast";
 import { UsersThreeIcon as Users } from "@phosphor-icons/react/dist/ssr/UsersThree";
@@ -6,6 +8,7 @@ import { PageIntro, SectionLabel, CommunityBand } from "@/components/Elements";
 import { participation } from "@/content/site";
 import { LocalizedText } from "@/components/LocalizedText";
 import { createPageMetadata } from "@/content/metadata";
+import { spaceAppsEvent } from "@/content/event";
 export const metadata: Metadata = createPageMetadata({
   title: "About",
   description: "Meet the NASA Space Apps Kandy community and discover how people across disciplines build with open data, science, and creativity.",
@@ -42,8 +45,9 @@ export default function About() {
           ))}
         </div>
       </section>
-      <section className="content-section">
+      <section className="content-section" aria-labelledby="about-values-title">
         <SectionLabel><LocalizedText id="about.values.label" /></SectionLabel>
+        <h2 id="about-values-title"><LocalizedText id="about.values.title" /></h2>
         <div className="info-grid">
           {[
             {
@@ -68,6 +72,27 @@ export default function About() {
               <p><LocalizedText id={card.text} /></p>
             </article>
           ))}
+        </div>
+      </section>
+      <section className="content-section team-section" aria-labelledby="team-title">
+        <SectionLabel>MEET THE TEAM</SectionLabel>
+        <h2 id="team-title">The people bringing Space Apps to Kandy.</h2>
+        <div className="team-grid">
+          <article className="info-card team-lead-card">
+            <div className="team-profile-header">
+              <div className="team-photo-placeholder"><UserCircleIcon size={42} aria-hidden="true" /><span>Photo coming soon</span></div>
+              <div><span className="technical-label">LOCAL LEAD</span><h3>{spaceAppsEvent.localLead.name}</h3></div>
+            </div>
+            <p>Leading the local event and connecting participants, volunteers and partners.</p>
+            <LocalLeadContacts />
+          </article>
+          <article className="info-card team-coming-card">
+            <div className="team-profile-header">
+              <div className="team-photo-placeholder"><Users size={42} aria-hidden="true" /><span>Photo coming soon</span></div>
+              <div><span className="technical-label">ORGANISING TEAM</span><h3>Meet the crew soon.</h3></div>
+            </div>
+            <p>More organising team introductions will follow as roles are confirmed.</p>
+          </article>
         </div>
       </section>
       <CommunityBand />

@@ -1,4 +1,4 @@
-import { UserCircleIcon } from "@phosphor-icons/react/dist/ssr/UserCircle";
+import Image from "next/image";
 import { LocalLeadContacts } from "@/components/LocalLeadContacts";
 import type { Metadata } from "next";
 import { GlobeHemisphereEastIcon as Globe2 } from "@phosphor-icons/react/dist/ssr/GlobeHemisphereEast";
@@ -80,7 +80,7 @@ export default function About() {
         <div className="team-grid">
           <article className="info-card team-lead-card">
             <div className="team-profile-header">
-              <div className="team-photo-placeholder"><UserCircleIcon size={42} aria-hidden="true" /><span>Photo coming soon</span></div>
+              <Image className="rometh-portrait" src="/images/Rometh.jpeg" alt="Rometh Sendinu" width={1254} height={1254} sizes="(max-width: 760px) 104px, 112px" />
               <div><span className="technical-label">LOCAL LEAD</span><h3>{spaceAppsEvent.localLead.name}</h3></div>
             </div>
             <p>Leading the local event and connecting participants, volunteers and partners.</p>

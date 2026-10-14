@@ -969,7 +969,7 @@ main > .home-hero + section::after {
 .community-band > div {
   padding: 64px var(--cell-space);
 }
-.community-band h2 {
+.community-band h2, .support-contact-primary h2 {
   font-size: 34px;
   line-height: 1.25;
   margin-bottom: 22px;
@@ -1835,7 +1835,7 @@ main > .home-hero + section::after {
   .community-band > div {
     padding: 40px var(--cell-space);
   }
-  .community-band h2 {
+  .community-band h2, .support-contact-primary h2 {
     font-size: 29px;
   }
   .community-action {

@@ -7,6 +7,7 @@ import {
 } from "../content/site";
 import { isEmail, isPhone, type Errors } from "./validation";
 import type { FormKind } from "./submissions";
+import { bootcampCities } from "../content/bootcamps";
 export type FormValues = Record<string, string | boolean | string[]>;
 export type Field = {
   name: string;
@@ -50,10 +51,17 @@ export const initialValues: Record<FormKind, FormValues> = {
     agreed: false,
   },
   volunteers: { role: "volunteer", skills: [], availability: [] },
-  ambassadors: { province: "", agreed: false },
+  ambassadors: { province: "", role: "", agreed: false },
   messages: { subject: "General inquiry" },
+  bootcamps: { city: "" },
 };
 export function fieldsFor(kind: FormKind, values: FormValues): Field[] {
+  if (kind === "bootcamps")
+    return [
+      ...person,
+      { name: "city", label: "Bootcamp city", type: "select", required: true, options: ["", ...bootcampCities], wide: true },
+      { name: "institution", label: "School, university, or organisation", max: 200, wide: true },
+    ];
   if (kind === "registrations")
     return [
       ...(values.track === "team"
@@ -110,6 +118,7 @@ export function fieldsFor(kind: FormKind, values: FormValues): Field[] {
   if (kind === "ambassadors")
     return [
       ...person,
+      { name: "role", label: "Lead role", type: "select", required: true, options: ["", "University Lead", "School Lead"] },
       {
         name: "institution",
         label: "School or university",

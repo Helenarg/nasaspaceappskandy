@@ -211,14 +211,7 @@ export function SiteHeader() {
           aria-label="Main navigation"
         >
           {navigation.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              onClick={() => setOpen(false)}
-              aria-current={isCurrent(item.href) ? "page" : undefined}
-            >
-              {t(item.key)}
-            </Link>
+            <Link key={item.href} href={item.href} onClick={() => setOpen(false)} aria-current={isCurrent(item.href) ? "page" : undefined}>{t(item.key)}</Link>
           ))}
         </nav>
         <LanguageChoices />
@@ -282,13 +275,7 @@ export function SiteHeader() {
                       delay: reduced ? 0 : index * 0.025,
                     }}
                   >
-                    <Link
-                      href={item.href}
-                      onClick={() => setOpen(false)}
-                      aria-current={isCurrent(item.href) ? "page" : undefined}
-                    >
-                      {t(item.key)}
-                    </Link>
+                    <Link href={item.href} onClick={() => setOpen(false)} aria-current={isCurrent(item.href) ? "page" : undefined}>{t(item.key)}</Link>
                   </m.div>
                 ))}
                 <LanguageChoices
@@ -339,14 +326,21 @@ export function SiteFooter({ initialYear }: { initialYear: number }) {
         </div>
         <div className="footer-middle">
           <nav aria-label="Footer navigation">
-            {navigation.filter((item) => item.href !== "/sponsors").map((item) => (
-              <Link key={item.href} href={item.href}>
-                {t(item.key)}
-              </Link>
-            ))}
-            <Link href="/ambassadors">{t("nav.ambassadors")}</Link>
-            <Link href="/news">{t("nav.news")}</Link>
-            <Link href="/awards">{t("footer.awards")}</Link>
+            <div className="footer-link-group">
+              <p className="footer-group-label">{t("footer.explore")}</p>
+              <Link href="/about">{t("nav.about")}</Link>
+              <Link href="/event-details">{t("nav.events")}</Link>
+              <Link href="/challenges">{t("nav.challenges")}</Link>
+              <Link href="/news">{t("nav.news")}</Link>
+              <Link href="/awards">{t("footer.awards")}</Link>
+            </div>
+            <div className="footer-link-group">
+              <p className="footer-group-label">{t("footer.involved")}</p>
+              <Link href="/join">{t("nav.join")}</Link>
+              <Link href="/ambassadors">{t("nav.ambassadors")}</Link>
+              <Link href="/sponsors-and-partners">{t("nav.sponsors")}</Link>
+              <Link href="/contact">{t("nav.contact")}</Link>
+            </div>
           </nav>
           <div className="footer-social">
             <a href={`mailto:${site.email}`} aria-label="Email the Kandy team">

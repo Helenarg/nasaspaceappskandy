@@ -30,6 +30,7 @@ const formTitles: Record<FormKind, StringKey> = {
   volunteers: "form.title.volunteers",
   ambassadors: "form.title.ambassadors",
   messages: "form.title.messages",
+  bootcamps: "form.title.bootcamps",
 };
 
 const formCopy: Record<string, StringKey> = {
@@ -49,6 +50,8 @@ const formCopy: Record<string, StringKey> = {
   "Why would you like to be an ambassador?": "form.field.motivation",
   Subject: "form.field.subject",
   "Your message": "form.field.message",
+  "Bootcamp city": "form.field.bootcampCity",
+  "Lead role": "form.field.leadRole",
   "Not sure yet": "form.option.notSure",
   "General inquiry": "form.option.general",
   "Sponsorship & partners": "form.option.sponsorship",
@@ -56,7 +59,7 @@ const formCopy: Record<string, StringKey> = {
   "Team question": "form.option.teamQuestion",
 };
 
-export function ApplicationForm({ kind }: { kind: FormKind }) {
+export function ApplicationForm({ kind, showTitle = true }: { kind: FormKind; showTitle?: boolean }) {
   const { t } = useI18n();
   const localize = (value: string) => formCopy[value] ? t(formCopy[value]) : value;
   const [values, setValues] = useState<FormValues>(() => ({
@@ -106,11 +109,9 @@ export function ApplicationForm({ kind }: { kind: FormKind }) {
       <div className="application-form form-success" role="status">
         <CheckCircle2 size={42} weight="regular" aria-hidden="true" />
         <h2>
-          {kind === "messages" ? t("form.receipt.message") : t("form.receipt.application")}
+          {kind === "bootcamps" ? t("form.receipt.bootcamp") : kind === "messages" ? t("form.receipt.message") : t("form.receipt.application")}
         </h2>
-        <p>
-          {t("form.receipt.saved")}
-        </p>
+        <p>{kind === "bootcamps" ? t("form.receipt.bootcampNote") : t("form.receipt.saved")}</p>
         {kind === "registrations" && (
           <p>
             {t("form.receipt.globalFirst")}{" "}
@@ -142,8 +143,9 @@ export function ApplicationForm({ kind }: { kind: FormKind }) {
         void submit();
       }}
       aria-busy={submitting}
+      aria-label={t(formTitles[kind])}
     >
-      <h2>{t(formTitles[kind])}</h2>
+      {showTitle && <h2>{t(formTitles[kind])}</h2>}
       <div className="form-grid">
         {kind === "registrations" && (
           <fieldset className="choice-group" disabled={submitting}>
@@ -364,9 +366,11 @@ export function ApplicationForm({ kind }: { kind: FormKind }) {
       <button type="submit" className="white-button" disabled={submitting}>
         <span className="button-label">{submitting
           ? t("form.sending")
-          : kind === "messages"
-            ? t("form.submit.message")
-            : t("form.submit.application")}</span>
+          : kind === "bootcamps"
+            ? t("form.submit.bootcamp")
+            : kind === "messages"
+              ? t("form.submit.message")
+              : t("form.submit.application")}</span>
         {submitting ? (
           <LoaderCircle className="spin" size={17} aria-hidden="true" />
         ) : (

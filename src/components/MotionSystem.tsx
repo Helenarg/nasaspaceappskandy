@@ -56,7 +56,8 @@ export function MotionSystem({ children }: { children: ReactNode }) {
     const supportsSmoothScroll = window.matchMedia(
       "(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)",
     ).matches;
-    if (reduced || !supportsSmoothScroll) return;
+    const hasSectionNavigation = pathname === "/sponsors-and-partners";
+    if (reduced || (!supportsSmoothScroll && !hasSectionNavigation)) return;
 
     let disposed = false;
     let destroy: (() => void) | undefined;
@@ -66,14 +67,44 @@ export function MotionSystem({ children }: { children: ReactNode }) {
       const scroll = new Lenis({
         autoRaf: true,
         lerp: 0.12,
-        smoothWheel: true,
+        smoothWheel: supportsSmoothScroll,
         syncTouch: false,
         anchors: { offset: -100 },
         prevent: (node) =>
           document.documentElement.dataset.menuOpen === "true" ||
           !!node.closest('[data-lenis-prevent], [role="listbox"], textarea'),
       });
-      destroy = () => scroll.destroy();
+      const sectionNav = hasSectionNavigation
+        ? document.querySelector<HTMLElement>(".support-section-nav")
+        : null;
+      const onSectionClick = (event: MouseEvent) => {
+        if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+        const link = event.target instanceof Element ? event.target.closest<HTMLAnchorElement>('a[href^="#"]') : null;
+        if (!link || !sectionNav?.contains(link)) return;
+        const target = document.getElementById(decodeURIComponent(link.hash.slice(1)));
+        if (!target) return;
+        event.preventDefault();
+        // Prevent the generic Lenis anchor handler from starting a second animation.
+        event.stopPropagation();
+        if (window.location.hash !== link.hash) window.history.pushState(null, "", link.hash);
+        scroll.scrollTo(target, {
+          offset: -(parseFloat(getComputedStyle(target).scrollMarginTop) || 0),
+          duration: 0.5,
+          easing: (t: number) => 1 - Math.pow(1 - t, 3),
+          onComplete: () => {
+            const previousTabIndex = target.getAttribute("tabindex");
+            target.setAttribute("tabindex", "-1");
+            target.focus({ preventScroll: true });
+            if (previousTabIndex === null) target.removeAttribute("tabindex");
+            else target.setAttribute("tabindex", previousTabIndex);
+          },
+        });
+      };
+      sectionNav?.addEventListener("click", onSectionClick);
+      destroy = () => {
+        sectionNav?.removeEventListener("click", onSectionClick);
+        scroll.destroy();
+      };
     });
 
     return () => {

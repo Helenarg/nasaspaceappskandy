@@ -779,13 +779,6 @@ main > .home-hero + section::after {
   color: #59686d;
   font-style: normal;
 }
-.network-home-key i {
-  width: 6px;
-  height: 6px;
-  background: var(--accent);
-  border-radius: 50%;
-  box-shadow: 0 0 0 4px #eafe0719;
-}
 .world-map-frame {
   position: relative;
   border: 1px dashed var(--border);
@@ -976,7 +969,7 @@ main > .home-hero + section::after {
 .community-band > div {
   padding: 64px var(--cell-space);
 }
-.community-band h2 {
+.community-band h2, .support-contact-primary h2 {
   font-size: 34px;
   line-height: 1.25;
   margin-bottom: 22px;
@@ -1035,6 +1028,8 @@ main > .home-hero + section::after {
   font-size: 11px;
   text-transform: uppercase;
 }
+.footer-link-group { display: contents; }
+.footer-group-label { display: none; }
 .footer-middle a:hover,
 .footer-bottom a:hover {
   color: var(--highlight);
@@ -1125,7 +1120,7 @@ main > .home-hero + section::after {
   font-size: 34px;
   line-height: 1.25;
 }
-.content-section p {
+.content-section p:not(.section-label) {
   color: var(--muted);
   font-size: 15px;
 }
@@ -1318,7 +1313,7 @@ main > .home-hero + section::after {
   font-size: 31px;
   line-height: 1.2;
 }
-.form-aside p {
+.form-aside p:not(.section-label) {
   color: var(--muted);
   font-size: 14px;
 }
@@ -1840,7 +1835,7 @@ main > .home-hero + section::after {
   .community-band > div {
     padding: 40px var(--cell-space);
   }
-  .community-band h2 {
+  .community-band h2, .support-contact-primary h2 {
     font-size: 29px;
   }
   .community-action {

@@ -1,5 +1,5 @@
 export type FormKind =
-  "registrations" | "volunteers" | "ambassadors" | "messages";
+  "registrations" | "volunteers" | "ambassadors" | "messages" | "bootcamps";
 export type SubmitResult =
   { ok: true; id: string } | { ok: false; message: string };
 export type SubmissionWriter = (

@@ -56,6 +56,9 @@ export function HomeEventDetails() {
         </div>
       </dl>
       <p className="home-event-note">
+        <strong><L id="home.event.access" /></strong>{" "}
+        <strong><L id="home.event.meals" /></strong>{" "}
+        <L id="home.event.mealsQualifier" />{" "}
         <L id="home.event.mode" />
       </p>
     </section>

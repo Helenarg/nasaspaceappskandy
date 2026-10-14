@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { PartnerGroups } from "@/components/PartnerLogo";
 import { ArrowUpRightIcon as ArrowUpRight } from "@phosphor-icons/react/dist/ssr/ArrowUpRight";
 import { PlanetIcon as Orbit } from "@phosphor-icons/react/dist/ssr/Planet";
 import { UsersThreeIcon as Users } from "@phosphor-icons/react/dist/ssr/UsersThree";
@@ -21,6 +22,9 @@ export default function Home() {
   return (
     <main id="main" className="home-page">
       <Hero />
+      <section className="home-partner-strip" aria-label="Official partners">
+        <PartnerGroups />
+      </section>
       <section id="discover" className="home-intro">
         <SectionLabel>
           <L id="home.intro.label" />
@@ -35,6 +39,14 @@ export default function Home() {
         </p>
       </section>
       <HomeEventDetails />
+      <section className="home-bootcamp-teaser" aria-labelledby="home-bootcamp-title">
+        <div>
+          <SectionLabel>BEFORE THE HACKATHON</SectionLabel>
+          <h2 id="home-bootcamp-title">Four cities. One place to begin.</h2>
+          <p>Bootcamps are planned for Colombo, Kandy, Galle and Kurunegala in the first week of November. Meet the community and get ready to build.</p>
+        </div>
+        <ActionLink href="/event-details#bootcamps" outline>Explore bootcamps</ActionLink>
+      </section>
       <section className="focus-section">
         <div className="section-heading">
           <div>
@@ -176,7 +188,7 @@ export default function Home() {
             <p><L id="home.pathways.volunteer.description" /></p>
             <ArrowUpRight className="card-arrow" size={22} aria-hidden="true" />
           </Link>
-          <Link href="/sponsors" className="sponsor-pathway">
+          <Link href="/sponsors-and-partners" className="sponsor-pathway">
             <Orbit size={28} weight="regular" aria-hidden="true" />
             <span className="technical-label"><L id="home.pathways.sponsor.label" /></span>
             <h3><L id="home.pathways.sponsor.title" /></h3>

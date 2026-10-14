@@ -28,11 +28,11 @@ export function FormPage({
           <SectionLabel><L id="formPage.aside.label" /></SectionLabel>
           <h2>{asideTitle}</h2>
           {children}
-          <div className="quiet-note">
+          {kind !== "messages" && <div className="quiet-note">
             <L id="formPage.help" />
             <br />
             <a href={`mailto:${site.email}`}>{site.email}</a>
-          </div>
+          </div>}
         </aside>
         <ApplicationForm kind={kind} />
       </section>

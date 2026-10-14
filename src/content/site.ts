@@ -1,7 +1,9 @@
 export const site = {
   name: "NASA Space Apps Kandy",
   url: "https://nasaspaceapps.lk",
-  email: "nasaspaceappskandy@gmail.com",
+  email: "info@nasaspaceapps.lk",
+  sponsorshipEmail: "sponsorships@nasaspaceapps.lk",
+  partnershipsEmail: "partnerships@nasaspaceapps.lk",
   location: "Kandy, Sri Lanka",
   eventStatus: "The Next Frontier · November 14-15, 2026",
   globalUrl: "https://www.spaceappschallenge.org/",
@@ -15,7 +17,7 @@ export const navigation = [
   { label: "Event details", href: "/event-details", key: "nav.events" },
   { label: "Challenges", href: "/challenges", key: "nav.challenges" },
   { label: "Join Us", href: "/join", key: "nav.join" },
-  { label: "Sponsors", href: "/sponsors", key: "nav.sponsors" },
+  { label: "Sponsors & Partners", href: "/sponsors-and-partners", key: "nav.sponsors" },
   { label: "Contact", href: "/contact", key: "nav.contact" },
 ] as const;
 // Exploration areas, not official challenge statements.

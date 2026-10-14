@@ -61,6 +61,7 @@ test("mentor applications retain skills and availability under volunteers", () =
 test("ambassador contract and maximum lengths match existing rules", () => {
   const values = {
     ...initialValues.ambassadors,
+    role: "University Lead",
     fullName: "Test Person",
     email: "test@example.org",
     institution: "Test University",
@@ -69,10 +70,22 @@ test("ambassador contract and maximum lengths match existing rules", () => {
   };
   assert.deepEqual(validateForm("ambassadors", values), {});
   assert.equal(buildPayload("ambassadors", values).agreedToCommitment, true);
+  assert.equal(buildPayload("ambassadors", values).role, "University Lead");
   assert.ok(
     validateForm("ambassadors", { ...values, motivation: "x".repeat(1001) })
       .motivation,
   );
+});
+test("bootcamp interest requires one of the four cities and keeps it in the payload", () => {
+  const values = {
+    ...initialValues.bootcamps,
+    fullName: "Test Person",
+    email: "test@example.org",
+    city: "Kandy",
+  };
+  assert.deepEqual(validateForm("bootcamps", values), {});
+  assert.equal(buildPayload("bootcamps", values).city, "Kandy");
+  assert.ok(validateForm("bootcamps", { ...values, city: "Other" }).city);
 });
 test("contact rejects long messages, malformed email and invalid optional phone elsewhere", () => {
   assert.ok(

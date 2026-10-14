@@ -1,7 +1,5 @@
+import { LocalLeadContacts } from "@/components/LocalLeadContacts";
 import type { Metadata } from "next";
-import { EnvelopeIcon } from "@phosphor-icons/react/dist/ssr/Envelope";
-import { InstagramLogoIcon } from "@phosphor-icons/react/dist/ssr/InstagramLogo";
-import { LinkedinLogoIcon } from "@phosphor-icons/react/dist/ssr/LinkedinLogo";
 import { ArrowUpRightIcon as ArrowUpRight } from "@phosphor-icons/react/dist/ssr/ArrowUpRight";
 import { CalendarDotsIcon as CalendarDays } from "@phosphor-icons/react/dist/ssr/CalendarDots";
 import { MapPinIcon as MapPin } from "@phosphor-icons/react/dist/ssr/MapPin";
@@ -11,6 +9,9 @@ import { spaceAppsEvent } from "@/content/event";
 import { LocalizedText as L } from "@/components/LocalizedText";
 import { createPageMetadata } from "@/content/metadata";
 import { EventSchedule } from "@/components/EventSchedule";
+import { EventFaq } from "@/components/EventFaq";
+import { ApplicationForm } from "@/components/ApplicationForm";
+import { bootcampCities, bootcampWindow } from "@/content/bootcamps";
 
 const eventHighlights = [
   {
@@ -68,10 +69,14 @@ export default function Events() {
                 <L id={card.title} />
               </h3>
               <p>
-                <L id={card.text} />
+                {card.title === "events.card.venue.title" && spaceAppsEvent.venueAddress
+                  ? `${spaceAppsEvent.venue}. ${spaceAppsEvent.venueAddress}`
+                  : <L id={card.text} />}
               </p>
               <span className="status-pill">
-                <L id={card.status} />
+                {card.title === "events.card.venue.title" && spaceAppsEvent.venueAddress
+                  ? "Venue confirmed"
+                  : <L id={card.status} />}
               </span>
             </article>
           ))}
@@ -85,13 +90,54 @@ export default function Events() {
           <L id="events.officialLink" />
           <ArrowUpRight size={16} aria-hidden="true" />
         </a>
+        {spaceAppsEvent.venueMapUrl && spaceAppsEvent.venueAddress ? (
+          <div className="venue-map">
+            <h3>Find the venue</h3>
+            <p>{spaceAppsEvent.venueAddress}</p>
+            <iframe title="Hackathon venue map" src={spaceAppsEvent.venueMapUrl} loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
+          </div>
+        ) : null}
+      </section>
+      <section className="content-section bootcamp-section" id="bootcamps" aria-labelledby="bootcamp-title">
+        <div className="section-heading">
+          <div>
+            <SectionLabel>FOUR CITY BOOTCAMP SERIES</SectionLabel>
+            <h2 id="bootcamp-title">Get ready, together.</h2>
+          </div>
+          <p>Four bootcamps are planned for the {bootcampWindow.charAt(0).toLowerCase() + bootcampWindow.slice(1)}. Exact dates and venues will be shared as they are confirmed.</p>
+        </div>
+        <div className="bootcamp-grid">
+          {bootcampCities.map((city, index) => (
+            <article className="bootcamp-card" key={city}>
+              <span className="technical-label">0{index + 1} / BOOTCAMP</span>
+              <h3>{city}</h3>
+              <a className="text-link" href="#bootcamp-registration" aria-label={`Register interest in the ${city} bootcamp`}>Register interest <ArrowUpRight size={17} aria-hidden="true" /></a>
+            </article>
+          ))}
+        </div>
+        <div className="bootcamp-registration" id="bootcamp-registration">
+          <div>
+            <SectionLabel>BOOTCAMP REGISTRATION</SectionLabel>
+            <h3>Register interest in the city nearest you.</h3>
+            <p>Choose your nearest city to hear when its date and venue are confirmed. For the main hackathon, register separately on the official NASA Space Apps website.</p>
+          </div>
+          <ApplicationForm kind="bootcamps" showTitle={false} />
+        </div>
       </section>
       <EventSchedule />
+      <section className="content-section after-event-section" aria-labelledby="after-event-title">
+        <SectionLabel>AFTER THE HACKATHON</SectionLabel>
+        <h2 id="after-event-title">Judging, then prize giving.</h2>
+        <div className="after-event-grid">
+          <article><span className="technical-label">16-22 NOVEMBER 2026</span><h3>Local judging</h3><p>Kandy judges review submitted projects and select the local Global Nominees.</p></article>
+          <article><span className="technical-label">DATE TO BE ANNOUNCED</span><h3>Prize Giving Ceremony</h3><p>We will celebrate the teams and announce Kandy&apos;s Global Nominees. Ceremony details will follow.</p></article>
+        </div>
+      </section>
       <section className="content-section">
         <h2>
           <L id="schedule.practical" />
         </h2>
-        <div className="conduct-grid">
+        <div className="conduct-grid event-practical-grid">
           {practicalDetails.map(([title, text]) => (
             <article key={title}>
               <h3>
@@ -113,46 +159,7 @@ export default function Events() {
               <L id="schedule.leadText" />
             </p>
           </div>
-          <div className="event-contact-actions">
-            <a
-              className="outline-button contact-social"
-              href={spaceAppsEvent.localLead.instagramUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`${spaceAppsEvent.localLead.name} on Instagram`}
-            >
-              <InstagramLogoIcon size={20} aria-hidden="true" />
-            </a>
-            <a
-              className="outline-button contact-social"
-              href={spaceAppsEvent.localLead.linkedinUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`${spaceAppsEvent.localLead.name} on LinkedIn`}
-            >
-              <LinkedinLogoIcon size={20} aria-hidden="true" />
-            </a>
-            <a
-              className="outline-button contact-email"
-              href={`mailto:${spaceAppsEvent.localLead.email}`}
-              aria-label={`Email ${spaceAppsEvent.localLead.name}: ${spaceAppsEvent.localLead.email}`}
-              title={spaceAppsEvent.localLead.email}
-            >
-              <EnvelopeIcon
-                className="contact-email-icon"
-                size={20}
-                aria-hidden="true"
-              />
-              <span className="button-label">
-                {spaceAppsEvent.localLead.email}
-              </span>
-              <ArrowUpRight
-                className="contact-email-arrow"
-                size={17}
-                aria-hidden="true"
-              />
-            </a>
-          </div>
+          <LocalLeadContacts />
         </article>
       </section>
       <section className="content-section">
@@ -175,6 +182,7 @@ export default function Events() {
           ))}
         </div>
       </section>
+      <EventFaq />
       <CommunityBand />
     </main>
   );

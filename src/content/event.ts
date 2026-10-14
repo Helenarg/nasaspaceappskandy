@@ -10,9 +10,11 @@ export const spaceAppsEvent = {
   directoryUrl: "https://www.spaceappschallenge.org/2026/local-events/",
   attendance: "In person + virtual",
   venue: "Kandy venue to be announced",
+  venueAddress: null as string | null,
+  venueMapUrl: null as string | null,
   localLead: {
     name: "Rometh Sendinu",
-    email: "rssamarasinghe.official@gmail.com",
+    email: "info@nasaspaceapps.lk",
     instagramUrl: "https://www.instagram.com/sendinu06",
     linkedinUrl: "https://www.linkedin.com/in/rometh-samarasinghe-9289a3378",
   },
@@ -79,8 +81,8 @@ export const kandySchedule = [
         title: "schedule.followup",
       },
       {
-        dateTime: "2026-11-15T21:00:00+05:30",
-        displayTime: "21:00",
+        dateTime: "2026-11-15T23:59:00+05:30",
+        displayTime: "23:59",
         title: "schedule.submission",
       },
     ],

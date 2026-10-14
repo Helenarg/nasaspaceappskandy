@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { BroadcastIcon as Radio } from "@phosphor-icons/react/dist/ssr/Broadcast";
-import { PageIntro, ActionLink, CommunityBand } from "@/components/Elements";
+import { PageIntro, ActionLink, CommunityBand, SectionLabel } from "@/components/Elements";
 import { ArrowUpRightIcon } from "@phosphor-icons/react/dist/ssr/ArrowUpRight";
 import { LocalizedText as L } from "@/components/LocalizedText";
 import { createPageMetadata } from "@/content/metadata";
@@ -38,7 +38,11 @@ export default async function News() {
           <Radio size={36} weight="regular" aria-hidden="true" />
           <div className="local-news-copy">
             <h2><L id="news.local.title" /></h2>
-            <p><L id="news.local.description" /></p>
+            <p>
+              <L id="news.local.prefix" />{" "}
+              <strong className="local-news-highlight"><L id="news.local.highlight" /></strong>{" "}
+              <L id="news.local.details" />
+            </p>
           </div>
           <ActionLink href="/event-details" outline>
             <L id="news.local.cta" />
@@ -48,9 +52,9 @@ export default async function News() {
       <section className="content-section official-news">
         <div className="news-heading">
           <div>
-            <p className="technical-label">
+            <SectionLabel>
               <L id="news.official.label" />
-            </p>
+            </SectionLabel>
             <h2>
               <L id="news.official.title" />
             </h2>

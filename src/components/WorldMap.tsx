@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { MapPinIcon } from "@phosphor-icons/react/dist/ssr/MapPin";
 import { ArrowUpRightIcon as ArrowUpRight } from "@phosphor-icons/react/dist/ssr/ArrowUpRight";
 import { CrosshairIcon as Crosshair } from "@phosphor-icons/react/dist/ssr/Crosshair";
 import { GlobeHemisphereEastIcon as Globe2 } from "@phosphor-icons/react/dist/ssr/GlobeHemisphereEast";
@@ -29,7 +30,7 @@ export function WorldMap() {
           <span className="network-stat network-stat-countries">{countries} <L id="world.countries" /></span>
         </span>
         <span className="network-home-key">
-          <i /> <span className="network-home-label"><L id="world.homeKey" /></span>
+          <MapPinIcon size={18} weight="fill" aria-hidden="true" /> <span className="network-home-label"><L id="world.homeKey" /></span>
         </span>
       </div>
       <InteractiveMap>

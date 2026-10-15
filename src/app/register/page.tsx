@@ -5,6 +5,7 @@ import { spaceAppsEvent } from "@/content/event";
 import { site } from "@/content/site";
 import { createPageMetadata } from "@/content/metadata";
 import { ConsentPanel } from "@/components/ConsentPanel";
+import { ApplicationForm } from "@/components/ApplicationForm";
 
 const registrationSteps = [
   ["participation.step1.title", "participation.step1.text"],
@@ -122,6 +123,37 @@ export default function Register() {
             <L id="participation.values" />
             <ArrowUpRightIcon size={17} aria-hidden="true" />
           </a>
+        </div>
+      </section>
+      <section className="content-section" id="local-roster">
+        <div className="local-registration-panel">
+          <div>
+            <SectionLabel>
+              <L id="register.intro.label" />
+            </SectionLabel>
+            <h3>
+              <L id="register.aside.title" />
+            </h3>
+            <p>
+              <L id="register.aside.first" />
+            </p>
+            <p>
+              <L id="register.aside.second" />
+            </p>
+            <div className="quiet-note" style={{ marginTop: 24 }}>
+              <L id="register.note.first" />{" "}
+              <a
+                className="text-link"
+                href={spaceAppsEvent.kandyUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <L id="register.note.link" />
+              </a>
+              . <L id="register.note.second" />
+            </div>
+          </div>
+          <ApplicationForm kind="registrations" showTitle={false} />
         </div>
       </section>
       <section className="content-section registration-destination">

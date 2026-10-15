@@ -2,6 +2,9 @@
 node_modules/
 .next/
 out/
+dist/
+.expo/
+eslint.config.js
 next-env.d.ts
 *.tsbuildinfo
 /tmp/pdfs/

@@ -79,6 +79,18 @@ export async function submitForm(
         status: "new",
       },
     );
+
+    // Non-blocking trigger to dispatch organizer & applicant notification emails via Next.js backend
+    if (typeof window !== "undefined") {
+      void fetch("/api/notify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ kind: collectionName, id: ref.id, data: payload }),
+      }).catch((err) => {
+        console.warn("Notification dispatch notice:", err);
+      });
+    }
+
     return ref.id;
   });
 }

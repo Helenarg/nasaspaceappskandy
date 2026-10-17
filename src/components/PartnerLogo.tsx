@@ -3,12 +3,19 @@ import "@fontsource-variable/google-sans-flex";
 
 export function PartnerLogo() {
   return (
-    <figure className="partner-identity">
+    <figure className="partner-identity ieee-identity">
       <Image
         src="/sponsors/IEEE SL Logo - Horizontal - White.png"
         alt="IEEE Sri Lanka Section"
         width={7405}
         height={1111}
+        unoptimized
+      />
+      <Image
+        src="/sponsors/SLSAC WHITE.png"
+        alt="IEEE SLSAC"
+        width={2706}
+        height={759}
         unoptimized
       />
     </figure>

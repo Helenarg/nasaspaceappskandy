@@ -1,0 +1,5 @@
+# NASA Space Apps Kandy
+
+The event overview for AI assistants is at https://www.nasaspaceapps.lk/llms.txt.
+
+For event facts and common questions, see https://www.nasaspaceapps.lk/index.md.

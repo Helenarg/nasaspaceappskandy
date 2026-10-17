@@ -1,30 +1,28 @@
 import type { MetadataRoute } from "next";
 import { site } from "@/content/site";
+import { isComingSoon } from "@/lib/launch-mode";
 
 const routes = [
-  { path: "", priority: 1, changeFrequency: "weekly" },
-  { path: "/event-details", priority: 0.9, changeFrequency: "weekly" },
-  { path: "/register", priority: 0.9, changeFrequency: "weekly" },
-  { path: "/challenges", priority: 0.8, changeFrequency: "weekly" },
-  { path: "/news", priority: 0.8, changeFrequency: "daily" },
-  { path: "/about", priority: 0.7, changeFrequency: "monthly" },
-  { path: "/join", priority: 0.7, changeFrequency: "monthly" },
-  { path: "/ambassadors", priority: 0.6, changeFrequency: "monthly" },
-  { path: "/awards", priority: 0.6, changeFrequency: "monthly" },
-  { path: "/sponsors-and-partners", priority: 0.6, changeFrequency: "monthly" },
-  { path: "/contact", priority: 0.5, changeFrequency: "monthly" },
-  { path: "/privacy", priority: 0.2, changeFrequency: "yearly" },
-  { path: "/terms", priority: 0.2, changeFrequency: "yearly" },
-] as const satisfies ReadonlyArray<{
-  path: string;
-  priority: number;
-  changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"];
-}>;
+  "",
+  "/event-details",
+  "/register",
+  "/challenges",
+  "/news",
+  "/about",
+  "/join",
+  "/ambassadors",
+  "/awards",
+  "/sponsors-and-partners",
+  "/contact",
+  "/privacy",
+  "/terms",
+] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return routes.map(({ path, priority, changeFrequency }) => ({
+  const visibleRoutes = isComingSoon
+    ? routes.filter((path) => path === "" || path === "/privacy" || path === "/terms")
+    : routes;
+  return visibleRoutes.map((path) => ({
     url: new URL(path || "/", site.url).toString(),
-    priority,
-    changeFrequency,
   }));
 }

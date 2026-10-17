@@ -8,6 +8,7 @@ import { defaultSocialImage } from "@/content/metadata";
 import { CookieConsent } from "@/components/CookieConsent";
 import { ConsoleSignature } from "@/components/ConsoleSignature";
 import { WebApp } from "@/components/WebApp";
+import { isComingSoon } from "@/lib/launch-mode";
 import "@/styles/globals.css";
 import "@/styles/program.css";
 import "@/styles/supporters.css";
@@ -27,14 +28,6 @@ export const metadata: Metadata = {
   authors: [{ name: site.name, url: site.url }],
   creator: site.name,
   publisher: site.name,
-  keywords: [
-    "NASA Space Apps Kandy",
-    "NASA Space Apps Challenge",
-    "Kandy hackathon",
-    "Sri Lanka hackathon",
-    "NASA open data",
-    "space innovation",
-  ],
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
@@ -89,17 +82,25 @@ export default function RootLayout({
     >
       <body>
         <I18nProvider>
-          <MotionSystem>
-            <ConsoleSignature />
-            <WebApp />
-            <a className="skip-link" href="#main">
-              Skip to content
-            </a>
-            <SiteHeader />
-            {children}
-            <SiteFooter initialYear={currentYear} />
-            <CookieConsent />
-          </MotionSystem>
+          {isComingSoon ? (
+            <>
+              <WebApp />
+              <a className="skip-link" href="#main">Skip to content</a>
+              {children}
+            </>
+          ) : (
+            <MotionSystem>
+              <ConsoleSignature />
+              <WebApp />
+              <a className="skip-link" href="#main">
+                Skip to content
+              </a>
+              <SiteHeader />
+              {children}
+              <SiteFooter initialYear={currentYear} />
+              <CookieConsent />
+            </MotionSystem>
+          )}
         </I18nProvider>
       </body>
     </html>

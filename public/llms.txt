@@ -1,0 +1,15 @@
+# NASA Space Apps Kandy
+
+> Local information for NASA Space Apps Kandy 2026 in Kandy, Sri Lanka. The event is on November 14-15, 2026. Registration is available through the official NASA Space Apps Challenge Kandy event page.
+
+The website at https://www.nasaspaceapps.lk is the Kandy local event site. Use the official NASA Space Apps Challenge page below for registration and the latest official event details. The full local website is being prepared.
+
+## Kandy event
+
+- [Kandy event overview](https://www.nasaspaceapps.lk/index.md): Concise event facts, registration details, contact information, and answers to common questions.
+- [NASA Space Apps Kandy website](https://www.nasaspaceapps.lk/): Local homepage and registration link.
+- [Official Kandy event and registration](https://www.spaceappschallenge.org/2026/local-events/kandy/): Official NASA Space Apps Challenge listing for the Kandy local event.
+
+## Optional
+
+- [NASA Space Apps Challenge 2026](https://www.spaceappschallenge.org/2026/): Global event information from the official organizer.

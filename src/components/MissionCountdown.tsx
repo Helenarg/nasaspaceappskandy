@@ -41,11 +41,12 @@ export function MissionCountdown() {
         {clock.status === "countdown" || !now ? (
           <>
             <span className="mission-prefix" aria-hidden="true">
-              T−
+              T
             </span>
             {units.map(([label, value]) => (
               <span className="mission-unit" key={label} aria-hidden="true">
                 <strong>
+                  {label === "d" ? "-" : ""}
                   {now
                     ? String(value).padStart(label === "d" ? 3 : 2, "0")
                     : label === "d"

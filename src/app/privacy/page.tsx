@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { isComingSoon } from "@/lib/launch-mode";
 import { PageIntro } from "@/components/Elements";
 import { site } from "@/content/site";
 import { LocalizedText as L } from "@/components/LocalizedText";
@@ -12,6 +14,7 @@ export const metadata: Metadata = createPageMetadata({
 export default function Privacy() {
   return (
     <main id="main">
+      {isComingSoon ? <div className="container"><Link className="text-link" href="/">Back to NASA Space Apps Kandy</Link></div> : null}
       <PageIntro
         label={<L id="privacy.intro.label" />}
         title={<L id="privacy.intro.title" />}

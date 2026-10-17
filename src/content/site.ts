@@ -1,6 +1,6 @@
 export const site = {
   name: "NASA Space Apps Kandy",
-  url: "https://nasaspaceapps.lk",
+  url: "https://www.nasaspaceapps.lk",
   email: "info@nasaspaceapps.lk",
   sponsorshipEmail: "sponsorships@nasaspaceapps.lk",
   partnershipsEmail: "partnerships@nasaspaceapps.lk",

@@ -69,6 +69,6 @@ export const partnerDates = [
   { date: "31 October", description: "Sign by this date for eligible bootcamp benefits; logos due for printed branding" },
   { date: "First week of November", description: "Four bootcamps across Sri Lanka; Colombo is the finale" },
   { date: "7 November", description: "Stage, booth and judge line-up locked" },
-  { date: "14–15 November", description: "48-hour hackathon in Kandy" },
+  { date: "14-15 November", description: "48-hour hackathon in Kandy" },
   { date: "Late November", description: "Prize giving and partner impact reports" },
 ] as const;

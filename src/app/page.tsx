@@ -11,14 +11,20 @@ import { WorldMap } from "@/components/WorldMap";
 import { ActionLink, CommunityBand, SectionLabel } from "@/components/Elements";
 import { LocalizedText as L } from "@/components/LocalizedText";
 import { createPageMetadata } from "@/content/metadata";
+import { isComingSoon } from "@/lib/launch-mode";
+import { ComingSoon } from "@/components/ComingSoon";
 
 export const metadata = createPageMetadata({
-  title: "NASA Space Apps Kandy | Ideas beyond boundaries",
-  description: "Join NASA Space Apps Kandy on November 14-15, 2026. Build ideas for Earth and space with NASA open data and a global community.",
+  title: isComingSoon ? "NASA Space Apps Kandy | Website coming soon" : "NASA Space Apps Kandy | Ideas beyond boundaries",
+  description: isComingSoon
+    ? "Our new website is coming soon. Register for NASA Space Apps Kandy on November 14-15, 2026 through the official NASA Space Apps website. Contact info@nasaspaceapps.lk."
+    : "Join NASA Space Apps Kandy on November 14-15, 2026. Build ideas for Earth and space with NASA open data and a global community.",
   path: "/",
 });
 
 export default function Home() {
+  if (isComingSoon) return <ComingSoon year={new Date().getFullYear()} />;
+
   return (
     <main id="main" className="home-page">
       <Hero />

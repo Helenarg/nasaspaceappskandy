@@ -1,5 +1,7 @@
 import type { NextConfig } from "next";
 import path from "node:path";
+import { isComingSoon } from "./src/lib/launch-mode";
+import { spaceAppsEvent } from "./src/content/event";
 
 const securityHeaders = [
   { key: "X-Frame-Options", value: "DENY" },
@@ -16,6 +18,26 @@ const securityHeaders = [
 ];
 
 const config: NextConfig = {
+  async redirects() {
+    if (!isComingSoon) return [];
+
+    return [
+      {
+        source: "/register/:path*",
+        destination: spaceAppsEvent.kandyUrl,
+        permanent: false,
+      },
+      ...[
+        "about", "ambassadors", "awards", "challenges", "contact",
+        "event-details", "events", "join", "news", "partners",
+        "sponsors", "sponsors-and-partners",
+      ].map((route) => ({
+        source: `/${route}/:path*`,
+        destination: "/",
+        permanent: false,
+      })),
+    ];
+  },
   async headers() {
     return [
       {

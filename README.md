@@ -56,6 +56,18 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
+## Temporary coming soon mode
+
+The site defaults to a centered coming soon page with a full-page classic pixel background in the site colors, the official Kandy registration link, and `info@nasaspaceapps.lk`. `/register` sends visitors directly to the official NASA Space Apps Kandy page with a temporary HTTP 307 redirect. Other event pages redirect to `/`; privacy and terms remain available.
+
+To launch the full website, set `SITE_LAUNCH_MODE=live` in the hosting environment and rebuild/redeploy. For local previews of the full site, add it to `.env.local` and restart the development server. Remove the variable or set it to `coming-soon` to restore the temporary page. The original pages remain in the repository.
+
+The background uses [React Bits Pixel Blast](https://reactbits.dev/c/backgrounds/pixel-blast) with crisp classic pixels, muted blue on navy, and reduced opacity. Softness, smoothing, glow, twinkle, and drift are disabled, with no hover effect. The effect covers the full page without edge fading or section overlays. Click ripples, automatic ripples, and the radial blast introduction are disabled. Reduced-motion support, React-safe ref updates, and Strict Mode cleanup are retained. Its license is included in [src/components/reactbits/LICENSE.md](src/components/reactbits/LICENSE.md).
+
+The coming soon heading uses [React Bits Split Flap Text](https://reactbits.dev/c/text-animations/split-flap-text) with a single introduction animation and a readable server-rendered fallback, under the same included license.
+
+The page is implemented in `src/components/ComingSoon.tsx`; its responsive layout is in `src/styles/coming-soon.css`. Background opacity is 18% on desktop and 10% on mobile. The buttons share the site's filled and outlined styles; both lift on hover, while the email icon stays fixed within its button.
+
 ## Production checks
 
 ```sh
@@ -104,6 +116,8 @@ Vercel is the direct deployment target for the current Next.js configuration. Co
 
 ### Firebase
 
+Firebase provides Firestore storage and security rules for public form submissions, plus Cloud Functions for organizer notifications and applicant confirmation emails. See the [Firebase backend README](functions/README.md) for full setup, emulator testing, email configuration, and deployment details.
+
 Use Firebase App Hosting when hosting this server capable Next.js application on Firebase. Classic Firebase Hosting is designed around static assets unless it is paired with additional server infrastructure, so it is not configured in `firebase.json`. Firestore and its security rules remain usable from any supported web host.
 
 ### Cloudflare
@@ -142,7 +156,7 @@ The registration page sends participants to the official NASA Space Apps Kandy e
 
 The bootcamp form records one selected city from Colombo, Kandy, Galle, or Kurunegala. Deploy the updated Firestore rules before enabling the form on a live site.
 
-Form records include server timestamps, their source, application version, and an initial status. Success is shown only after Firebase confirms a write. A timeout is presented as unconfirmed instead of being reported as a definite failure. The website does not read private submissions or claim to send email.
+Form records include server timestamps, their source, application version, and an initial status. Success is shown only after Firebase confirms a write. A timeout is presented as unconfirmed instead of being reported as a definite failure. The website does not read private submissions. Backend email delivery requires the configuration described in the [Firebase backend README](functions/README.md).
 
 ## Official content
 

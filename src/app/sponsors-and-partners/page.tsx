@@ -39,7 +39,7 @@ export default function SponsorsAndPartners() {
         <div className="sponsor-reach-grid">
           <div><strong>40,000+</strong><span>Projected campaign reach</span><p>Students across Sri Lanka through university, school and community networks</p></div>
           <div><strong>1,000–1,500</strong><span>Target bootcamp attendance</span><p>Across four free, half-day bootcamps in the first week of November</p></div>
-          <div><strong>~150</strong><span>Expected in-person builders</span><p>14–15 November 2026 in Kandy, plus virtual teams; main venue being confirmed</p></div>
+          <div><strong>~150</strong><span>Expected in-person builders</span><p>14-15 November 2026 in Kandy, plus virtual teams; main venue being confirmed</p></div>
         </div>
       </section>
 

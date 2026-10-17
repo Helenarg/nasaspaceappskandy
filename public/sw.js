@@ -1,4 +1,4 @@
-const CACHE_NAME = "space-apps-kandy-v1";
+const CACHE_NAME = "space-apps-kandy-v2";
 const APP_SHELL = [
   "/",
   "/site.webmanifest",
@@ -39,6 +39,9 @@ self.addEventListener("fetch", (event) => {
 
   const url = new URL(request.url);
   if (url.origin !== self.location.origin) return;
+
+  // Leave the official registration redirect to the browser, including offline.
+  if (url.pathname === "/register" || url.pathname.startsWith("/register/")) return;
 
   if (request.mode === "navigate") {
     event.respondWith(

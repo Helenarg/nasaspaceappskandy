@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { site } from "@/content/site";
+import { isComingSoon } from "@/lib/launch-mode";
 
 const routes = [
   { path: "", priority: 1, changeFrequency: "weekly" },
@@ -22,7 +23,10 @@ const routes = [
 }>;
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return routes.map(({ path, priority, changeFrequency }) => ({
+  const visibleRoutes = isComingSoon
+    ? routes.filter(({ path }) => path === "" || path === "/privacy" || path === "/terms")
+    : routes;
+  return visibleRoutes.map(({ path, priority, changeFrequency }) => ({
     url: new URL(path || "/", site.url).toString(),
     priority,
     changeFrequency,

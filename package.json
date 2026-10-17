@@ -28,7 +28,7 @@
     "build": "next build",
     "build:web": "next build",
     "typecheck": "next typegen && tsc --noEmit",
-    "test": "tsx --test tests/forms.test.ts tests/mission.test.ts tests/backend.test.ts",
+    "test": "tsx --test tests/forms.test.ts tests/mission.test.ts tests/backend.test.ts tests/launch.test.ts",
     "locations:sync": "node scripts/sync-space-apps-locations.mjs",
     "deploy:rules": "firebase deploy --only firestore:rules",
     "build:functions": "npm --prefix functions run build",

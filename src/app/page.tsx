@@ -15,10 +15,8 @@ import { isComingSoon } from "@/lib/launch-mode";
 import { ComingSoon } from "@/components/ComingSoon";
 
 export const metadata = createPageMetadata({
-  title: isComingSoon ? "NASA Space Apps Kandy | Website coming soon" : "NASA Space Apps Kandy | Ideas beyond boundaries",
-  description: isComingSoon
-    ? "Our new website is coming soon. Register for NASA Space Apps Kandy on November 14-15, 2026 through the official NASA Space Apps website. Contact info@nasaspaceapps.lk."
-    : "Join NASA Space Apps Kandy on November 14-15, 2026. Build ideas for Earth and space with NASA open data and a global community.",
+  title: "NASA Space Apps Kandy | Ideas beyond boundaries",
+  description: "Join NASA Space Apps Kandy on November 14-15, 2026. Build ideas for Earth and space with NASA open data and a global community.",
   path: "/",
 });
 

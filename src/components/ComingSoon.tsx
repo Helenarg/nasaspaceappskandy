@@ -65,7 +65,7 @@ export function ComingSoon({ year }: { year: number }) {
                 aria-hidden="true"
               />
             </div>
-            <p className="launch-description">Our new website is on its way.<br /><strong>NASA Space Apps Kandy 2026</strong> takes place November 14-15 in Kandy, Sri Lanka. Registration is open.</p>
+            <p className="launch-description">Our new website is on its way.<br /><strong>NASA Space Apps Kandy 2026</strong> takes place November 14-15 in Kandy, Sri Lanka. <strong>Registration is open.</strong></p>
             <div className="launch-actions">
               <a className="white-button" href={spaceAppsEvent.kandyUrl}>
                 <span className="button-label">Register for Kandy</span>

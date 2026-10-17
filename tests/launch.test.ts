@@ -18,7 +18,7 @@ function readLaunchConfiguration(mode?: string) {
 
   return JSON.parse(result) as {
     isComingSoon: boolean;
-    redirects: { source: string; destination: string; permanent: boolean; has?: { type: string; value: string }[] }[];
+    redirects: { source: string; destination: string; permanent: boolean }[];
     sitemap: { url: string }[];
   };
 }
@@ -26,31 +26,21 @@ function readLaunchConfiguration(mode?: string) {
 test("coming soon mode defaults to temporary official registration and hides unfinished routes", () => {
   const configuration = readLaunchConfiguration();
   assert.equal(configuration.isComingSoon, true);
-  assert.deepEqual(configuration.redirects.find(({ source }) => source === "/:path*"), {
-    source: "/:path*",
-    has: [{ type: "host", value: "www.nasaspaceapps.lk" }],
-    destination: "https://nasaspaceapps.lk/:path*",
-    permanent: true,
-  });
   assert.deepEqual(configuration.redirects.find(({ source }) => source === "/register/:path*"), {
     source: "/register/:path*",
     destination: "https://www.spaceappschallenge.org/2026/local-events/kandy/",
     permanent: false,
   });
   assert.ok(configuration.redirects.some(({ source, destination }) => source === "/join/:path*" && destination === "/"));
-  assert.ok(configuration.redirects.filter(({ source }) => source !== "/:path*").every(({ permanent }) => permanent === false));
+  assert.ok(configuration.redirects.every(({ permanent }) => permanent === false));
+  assert.ok(configuration.sitemap.every(({ url }) => new URL(url).host === "www.nasaspaceapps.lk"));
   assert.deepEqual(configuration.sitemap.map(({ url }) => new URL(url).pathname), ["/", "/privacy", "/terms"]);
 });
 
 test("live mode restores normal routes and the full sitemap", () => {
   const configuration = readLaunchConfiguration("live");
   assert.equal(configuration.isComingSoon, false);
-  assert.deepEqual(configuration.redirects, [{
-    source: "/:path*",
-    has: [{ type: "host", value: "www.nasaspaceapps.lk" }],
-    destination: "https://nasaspaceapps.lk/:path*",
-    permanent: true,
-  }]);
+  assert.deepEqual(configuration.redirects, []);
   assert.ok(configuration.sitemap.some(({ url }) => new URL(url).pathname === "/register"));
   assert.ok(configuration.sitemap.some(({ url }) => new URL(url).pathname === "/news"));
 });

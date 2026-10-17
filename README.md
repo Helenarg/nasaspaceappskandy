@@ -8,7 +8,7 @@
 
 The community website for the NASA Space Apps Challenge in Kandy, Sri Lanka. Explore the local event, discover official challenges and news, and find ways to take part.
 
-[Live website](https://nasaspaceapps.lk) | [Official Kandy event and registration](https://www.spaceappschallenge.org/2026/local-events/kandy/)
+[Live website](https://www.nasaspaceapps.lk) | [Official Kandy event and registration](https://www.spaceappschallenge.org/2026/local-events/kandy/)
 
 ## About the project
 

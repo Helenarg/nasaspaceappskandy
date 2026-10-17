@@ -7,13 +7,8 @@ type PageMetadata = {
   path: `/${string}` | "/";
 };
 
-const vercelProductionHost = process.env.VERCEL_PROJECT_PRODUCTION_URL;
-const assetOrigin = vercelProductionHost
-  ? `https://${vercelProductionHost}`
-  : site.url;
-
 const socialImage = {
-  url: new URL("/og-image.jpg", assetOrigin).toString(),
+  url: new URL("/og-image.jpg", site.url).toString(),
   width: 1200,
   height: 630,
   alt: "NASA Space Apps Kandy. November 14-15, 2026 in Kandy, Sri Lanka",

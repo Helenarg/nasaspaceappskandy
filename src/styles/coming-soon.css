@@ -113,6 +113,10 @@ main.launch-main {
   line-height: 1.7;
   text-wrap: pretty;
 }
+.launch-description strong {
+  color: #fff;
+  font-weight: 700;
+}
 .launch-actions {
   display: flex;
   flex-wrap: wrap;

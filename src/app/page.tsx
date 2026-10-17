@@ -13,18 +13,40 @@ import { LocalizedText as L } from "@/components/LocalizedText";
 import { createPageMetadata } from "@/content/metadata";
 import { isComingSoon } from "@/lib/launch-mode";
 import { ComingSoon } from "@/components/ComingSoon";
+import { site } from "@/content/site";
 
-export const metadata = createPageMetadata({
-  title: "NASA Space Apps Kandy | Ideas beyond boundaries",
-  description: "Join NASA Space Apps Kandy on November 14-15, 2026. Build ideas for Earth and space with NASA open data and a global community.",
-  path: "/",
-});
+export const metadata = {
+  ...createPageMetadata({
+    title: "NASA Space Apps Kandy 2026 | Ideas beyond boundaries",
+    description: "NASA Space Apps Kandy 2026 takes place November 14-15 in Kandy, Sri Lanka. Register for the local event on the official NASA Space Apps Challenge website.",
+    path: "/",
+  }),
+  alternates: {
+    canonical: "/",
+    types: { "text/markdown": "/index.md" },
+  },
+};
+
+const websiteJsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: site.name,
+  url: site.url,
+  inLanguage: "en",
+}).replace(/</g, "\\u003c");
+
+function WebsiteIdentity() {
+  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: websiteJsonLd }} />;
+}
 
 export default function Home() {
-  if (isComingSoon) return <ComingSoon year={new Date().getFullYear()} />;
+  if (isComingSoon) {
+    return <><WebsiteIdentity /><ComingSoon year={new Date().getFullYear()} /></>;
+  }
 
   return (
     <main id="main" className="home-page">
+      <WebsiteIdentity />
       <Hero />
       <section className="home-partner-strip" aria-label="Official partners">
         <PartnerGroups />

@@ -47,7 +47,7 @@ export function ComingSoon({ year }: { year: number }) {
           <div className="launch-copy">
             <p className="launch-eyebrow">THE NEXT FRONTIER</p>
             <div className="launch-title">
-              <h1 className="sr-only">Coming soon.</h1>
+              <h1 className="sr-only">NASA Space Apps Kandy 2026</h1>
               <SplitFlapText
                 text="COMING SOON"
                 padTo={0}
@@ -65,7 +65,7 @@ export function ComingSoon({ year }: { year: number }) {
                 aria-hidden="true"
               />
             </div>
-            <p className="launch-description">Our new website is on its way.<br />Registration for NASA Space Apps Kandy is already open.</p>
+            <p className="launch-description">Our new website is on its way.<br /><strong>NASA Space Apps Kandy 2026</strong> takes place November 14-15 in Kandy, Sri Lanka. Registration is open.</p>
             <div className="launch-actions">
               <a className="white-button" href={spaceAppsEvent.kandyUrl}>
                 <span className="button-label">Register for Kandy</span>

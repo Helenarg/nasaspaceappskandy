@@ -28,14 +28,6 @@ export const metadata: Metadata = {
   authors: [{ name: site.name, url: site.url }],
   creator: site.name,
   publisher: site.name,
-  keywords: [
-    "NASA Space Apps Kandy",
-    "NASA Space Apps Challenge",
-    "Kandy hackathon",
-    "Sri Lanka hackathon",
-    "NASA open data",
-    "space innovation",
-  ],
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",

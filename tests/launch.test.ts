@@ -23,6 +23,8 @@ function readLaunchConfiguration(mode?: string) {
   };
 }
 
+const kandyBootcampRedirect = { source: "/kandy-bootcamp", destination: "https://forms.gle/nyMXHHcMXP1bxx1bA", permanent: false };
+
 test("coming soon mode defaults to temporary official registration and hides unfinished routes", () => {
   const configuration = readLaunchConfiguration();
   assert.equal(configuration.isComingSoon, true);
@@ -33,6 +35,7 @@ test("coming soon mode defaults to temporary official registration and hides unf
   });
   assert.ok(configuration.redirects.some(({ source, destination }) => source === "/join/:path*" && destination === "/"));
   assert.ok(configuration.redirects.every(({ permanent }) => permanent === false));
+  assert.ok(configuration.redirects.some((redirect) => redirect.source === kandyBootcampRedirect.source && redirect.destination === kandyBootcampRedirect.destination));
   assert.ok(configuration.sitemap.every(({ url }) => new URL(url).host === "www.nasaspaceapps.lk"));
   assert.deepEqual(configuration.sitemap.map(({ url }) => new URL(url).pathname), ["/", "/privacy", "/terms"]);
 });
@@ -40,7 +43,7 @@ test("coming soon mode defaults to temporary official registration and hides unf
 test("live mode restores normal routes and the full sitemap", () => {
   const configuration = readLaunchConfiguration("live");
   assert.equal(configuration.isComingSoon, false);
-  assert.deepEqual(configuration.redirects, []);
+  assert.deepEqual(configuration.redirects, [kandyBootcampRedirect]);
   assert.ok(configuration.sitemap.some(({ url }) => new URL(url).pathname === "/register"));
   assert.ok(configuration.sitemap.some(({ url }) => new URL(url).pathname === "/news"));
 });

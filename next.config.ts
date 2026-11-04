@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 import path from "node:path";
 import { isComingSoon } from "./src/lib/launch-mode";
 import { spaceAppsEvent } from "./src/content/event";
+import { kandyBootcampFormUrl } from "./src/content/bootcamps";
 
 const securityHeaders = [
   { key: "X-Frame-Options", value: "DENY" },
@@ -19,9 +20,18 @@ const securityHeaders = [
 
 const config: NextConfig = {
   async redirects() {
-    if (!isComingSoon) return [];
+    const sharedRedirects = [
+      {
+        source: "/kandy-bootcamp",
+        destination: kandyBootcampFormUrl,
+        permanent: false,
+      },
+    ];
+
+    if (!isComingSoon) return sharedRedirects;
 
     return [
+      ...sharedRedirects,
       {
         source: "/register/:path*",
         destination: spaceAppsEvent.kandyUrl,

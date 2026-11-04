@@ -8,3 +8,6 @@ export const bootcampWebinar = {
 };
 
 export const bootcampWindow = "First week of November 2026";
+
+// Short link shared for Kandy bootcamp sign-ups; next.config.ts redirects /kandy-bootcamp here.
+export const kandyBootcampFormUrl = "https://forms.gle/nyMXHHcMXP1bxx1bA";

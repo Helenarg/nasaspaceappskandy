@@ -19,6 +19,9 @@ const securityHeaders = [
 ];
 
 const config: NextConfig = {
+  experimental: {
+    agentUpgrade: "security",
+  },
   async redirects() {
     const sharedRedirects = [
       {

@@ -86,11 +86,17 @@ export default function Events() {
           <ArrowUpRight size={16} aria-hidden="true" />
         </a>
         <div className="venue-map">
-          <h3>Find the venue</h3>
-          <p>{spaceAppsEvent.venue}, {spaceAppsEvent.venueAddress}</p>
-          <a className="text-link" href={spaceAppsEvent.venueMapUrl} target="_blank" rel="noopener noreferrer">
-            Open in Google Maps
-            <ArrowUpRight size={16} aria-hidden="true" />
+          <div>
+            <span className="technical-label">MAIN HACKATHON VENUE</span>
+            <h3 className="venue-highlight">
+              <MapPin size={24} weight="fill" aria-hidden="true" />
+              {spaceAppsEvent.venue}
+            </h3>
+            <p>Host university and venue partner for the main hackathon.</p>
+          </div>
+          <a className="outline-button" href={spaceAppsEvent.venueMapUrl} target="_blank" rel="noopener noreferrer">
+            <span className="button-label">Open in Google Maps</span>
+            <ArrowUpRight size={17} aria-hidden="true" />
           </a>
         </div>
       </section>
@@ -108,8 +114,9 @@ export default function Events() {
               <span className="technical-label">0{index + 1} / BOOTCAMP</span>
               <h3>{city}</h3>
               {bootcampDetails[city].venue ? (
-                <address className="bootcamp-venue">
-                  {bootcampDetails[city].venue.map((line) => <span key={line}>{line}</span>)}
+                <address className="venue-highlight bootcamp-venue">
+                  <MapPin size={18} weight="fill" aria-hidden="true" />
+                  {bootcampDetails[city].venue}
                 </address>
               ) : (
                 <p>Venue and registration details to follow.</p>

@@ -10,7 +10,7 @@ NASA Space Apps Kandy is the local NASA Space Apps Challenge event in Kandy, Sri
 - **Registration:** [Official Kandy event page](https://www.spaceappschallenge.org/2026/local-events/kandy/)
 - **Kandy bootcamp:** EOE Pereira Theater, Faculty of Engineering, University of Peradeniya. [Register](https://www.nasaspaceapps.lk/kandy-bootcamp)
 - **Local contact:** [info@nasaspaceapps.lk](mailto:info@nasaspaceapps.lk)
-- **Venue:** SLIIT Kandy UNI, Kandy ([Google Maps](https://maps.app.goo.gl/kTG7PyocgTkZ8WvK8))
+- **Venue:** SLIIT Kandy UNI ([Google Maps](https://maps.app.goo.gl/kTG7PyocgTkZ8WvK8))
 
 ## Common questions
 

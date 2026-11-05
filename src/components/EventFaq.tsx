@@ -10,7 +10,7 @@ export function EventFaq() {
       <h2 id="event-faq-title">Frequently asked questions.</h2>
       <div className="faq-list">
         <FaqItem question="When and where will the event take place?">
-          <p>Saturday 14 and Sunday 15 November 2026, at SLIIT Kandy UNI in Kandy (<a className="text-link" href={spaceAppsEvent.venueMapUrl} target="_blank" rel="noopener noreferrer">open in Google Maps</a>). Virtual participants join online.</p>
+          <p>Saturday 14 and Sunday 15 November 2026, at SLIIT Kandy UNI (<a className="text-link" href={spaceAppsEvent.venueMapUrl} target="_blank" rel="noopener noreferrer">open in Google Maps</a>). Virtual participants join online.</p>
         </FaqItem>
         <FaqItem question="Do I need to be an expert on space?">
           <p>No. You do not need space knowledge or coding experience. Challenges need coders, designers, researchers, storytellers, artists and business thinkers. Bring your curiosity and we will help with the rest.</p>

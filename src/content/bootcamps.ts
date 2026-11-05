@@ -3,10 +3,10 @@
 export const bootcampCities = ["Colombo", "Kandy"] as const;
 
 // Cities without a venue or registration link show "details to follow".
-export const bootcampDetails: Record<(typeof bootcampCities)[number], { venue?: string[]; registrationUrl?: string }> = {
+export const bootcampDetails: Record<(typeof bootcampCities)[number], { venue?: string; registrationUrl?: string }> = {
   Colombo: {},
   Kandy: {
-    venue: ["EOE Pereira Theater", "Faculty of Engineering", "University of Peradeniya"],
+    venue: "EOE Pereira Theater, Faculty of Engineering, University of Peradeniya",
     registrationUrl: "/kandy-bootcamp",
   },
 };

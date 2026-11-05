@@ -10,7 +10,6 @@ export const spaceAppsEvent = {
   directoryUrl: "https://www.spaceappschallenge.org/2026/local-events/",
   attendance: "In person + virtual",
   venue: "SLIIT Kandy UNI",
-  venueAddress: "Kandy, Sri Lanka",
   venueMapUrl: "https://maps.app.goo.gl/kTG7PyocgTkZ8WvK8",
   localLead: {
     name: "Rometh Sendinu",

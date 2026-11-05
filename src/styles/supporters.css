@@ -27,6 +27,8 @@
   .partner-groups { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 16px; }
   .supporter-group { display: grid; grid-row: span 2; grid-template-rows: subgrid; row-gap: 12px; }
   .supporter-group > h3 { min-height: 0; letter-spacing: .08em; }
+  /* Side-by-side labels share one line length so paired titles break the same way. */
+  .supporter-group:not(.supporter-group-wide):not(.supporter-group-full) > h3 { max-inline-size: 20ch; margin-inline: auto; text-wrap: wrap; }
   .supporter-group-wide, .supporter-group-full { grid-column: 1 / -1; }
   .supporter-group-full .supporter-logo-grid { height: auto; }
   .supporter-group-full .partner-identity { gap: 20px 32px; }

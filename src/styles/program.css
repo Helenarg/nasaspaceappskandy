@@ -496,13 +496,15 @@ main > .page-intro:first-child::before, main > .page-intro:first-child::after { 
 .home-bootcamp-teaser { display: flex; align-items: center; justify-content: space-between; gap: 32px; padding: 60px var(--cell-space); background: var(--panel); }
 .home-bootcamp-teaser h2 { margin: 0 0 14px; font-size: clamp(28px, 3vw, 40px); }
 .home-bootcamp-teaser p:not(.section-label) { max-width: 720px; margin: 0; }
-.home-bootcamp-teaser > a { flex-shrink: 0; }
+.home-bootcamp-teaser > a, .home-bootcamp-actions { flex-shrink: 0; }
 .bootcamp-section, .after-event-section, .event-faq { scroll-margin-top: var(--header-height); }
 .bootcamp-grid, .after-event-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-top: 28px; }
 .bootcamp-card, .after-event-grid article { padding: 28px; border: 1px dashed var(--border); background: var(--panel); }
 .bootcamp-card .technical-label, .after-event-grid .technical-label { color: var(--neon-yellow); }
 .bootcamp-card h3, .after-event-grid h3 { margin: 26px 0 12px; font-size: 26px; }
 .bootcamp-card p { margin-bottom: 28px; }
+.bootcamp-venue { display: grid; gap: 2px; margin-bottom: 28px; color: var(--muted); font-style: normal; line-height: 1.5; }
+.home-bootcamp-actions { display: flex; flex-wrap: wrap; gap: 12px; }
 .bootcamp-registration, .local-registration-panel { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); align-items: start; gap: 48px; margin-top: 48px; padding-top: 40px; border-top: 1px dashed var(--border); scroll-margin-top: var(--header-height); }
 .bootcamp-registration h3, .local-registration-panel h3 { font-size: clamp(27px, 3vw, 38px); margin: 0 0 16px; }
 .bootcamp-registration .application-form, .local-registration-panel .application-form { min-width: 0; padding: 0; }
@@ -514,12 +516,12 @@ main > .page-intro:first-child::before, main > .page-intro:first-child::after { 
 .bootcamp-section .bootcamp-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 0; }
 .after-event-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .venue-map { margin-top: 36px; }
-.venue-map iframe { display: block; width: 100%; min-height: 360px; border: 1px dashed var(--border); }
 @media (max-width: 900px) { .bootcamp-grid, .bootcamp-section .bootcamp-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .bootcamp-registration, .local-registration-panel { grid-template-columns: 1fr; } }
 @media (max-width: 760px) {
   .home-partner-strip { flex-direction: column; gap: 10px; }
   .home-bootcamp-teaser { align-items: stretch; flex-direction: column; padding-block: 42px; gap: 24px; }
-  .home-bootcamp-teaser > a { width: 100%; min-height: 48px; justify-content: space-between; text-align: left; }
+  .home-bootcamp-actions { flex-direction: column; }
+  .home-bootcamp-actions > a { width: 100%; min-height: 48px; justify-content: space-between; text-align: left; }
   .home-bootcamp-teaser .button-label { min-width: 0; line-height: 1.4; transform: none; }
   .bootcamp-grid, .bootcamp-section .bootcamp-grid, .after-event-grid { grid-template-columns: 1fr; }
   .bootcamp-card h3 { margin-top: 16px; }

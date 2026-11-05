@@ -69,9 +69,15 @@ export default function Home() {
         <div>
           <SectionLabel>BEFORE THE HACKATHON</SectionLabel>
           <h2 id="home-bootcamp-title">Two cities. One place to begin.</h2>
-          <p>Bootcamps are planned for Colombo and Kandy in the first week of November, plus an island-wide webinar open to students in every district. Meet the community and get ready to build.</p>
+          <p>Bootcamps in Colombo and Kandy run in the first week of November, plus an island-wide webinar open to students in every district. Kandy bootcamp registration is open now.</p>
         </div>
-        <ActionLink href="/event-details#bootcamps" outline>Explore bootcamps</ActionLink>
+        <div className="home-bootcamp-actions">
+          <a className="white-button" href="/kandy-bootcamp" target="_blank" rel="noopener noreferrer">
+            <span className="button-label">Register for Kandy bootcamp</span>
+            <ArrowUpRight size={17} aria-hidden="true" />
+          </a>
+          <ActionLink href="/event-details#bootcamps" outline>Explore bootcamps</ActionLink>
+        </div>
       </section>
       <section className="focus-section">
         <div className="section-heading">

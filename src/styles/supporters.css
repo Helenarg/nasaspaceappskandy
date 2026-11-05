@@ -4,6 +4,7 @@
 .partner-logo { display: block; width: auto; height: auto; max-width: min(100%, var(--logo-max-width, 176px)); max-height: 52px; object-fit: contain; }
 .partner-logo[data-shape="mark"] { max-height: 72px; }
 .partner-logo-tile { border-radius: 8px; }
+.partner-logo-plate { box-sizing: border-box; max-width: min(100%, var(--logo-max-width, 200px)); padding: 8px 12px; border-radius: 8px; background: #fff; }
 .sequence-identity { flex-direction: row; gap: 12px; min-height: 38px; }
 .sequence-identity img { flex: 0 0 38px; width: 38px; height: 36px; }
 .sequence-identity figcaption { color: white; font-family: "Google Sans Flex Variable", sans-serif; font-size: 21px; font-weight: 500; line-height: 1.2; white-space: nowrap; }
@@ -19,17 +20,22 @@
 .supporter-group { flex: 0 1 240px; display: grid; grid-template-rows: auto 72px; justify-items: center; gap: 14px; min-width: 0; }
 .supporter-group > h3 { display: flex; align-items: flex-end; justify-content: center; min-height: 3.2em; margin: 0; color: var(--muted); text-align: center; text-transform: uppercase; text-wrap: balance; }
 .supporter-logo-grid { display: flex; align-items: center; justify-content: center; width: 100%; }
+.supporter-group-full { flex-basis: 100%; grid-template-rows: auto auto; }
+.supporter-group-full .partner-identity { flex-wrap: wrap; gap: 24px 48px; }
 /* Phones: a two-column grid whose rows share label and logo tracks, so paired logos line up. */
 @media (max-width: 600px) {
   .partner-groups { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 16px; }
   .supporter-group { display: grid; grid-row: span 2; grid-template-rows: subgrid; row-gap: 12px; }
   .supporter-group > h3 { min-height: 0; letter-spacing: .08em; }
-  .supporter-group-wide { grid-column: 1 / -1; }
+  .supporter-group-wide, .supporter-group-full { grid-column: 1 / -1; }
+  .supporter-group-full .supporter-logo-grid { height: auto; }
+  .supporter-group-full .partner-identity { gap: 20px 32px; }
   .supporter-logo-grid { height: 56px; }
   .partner-logo { max-width: min(100%, var(--logo-max-width, 132px)); max-height: 40px; }
   .partner-logo[data-shape="mark"] { max-height: 56px; }
   .partner-logo-tile { max-width: min(100%, 120px); border-radius: 6px; }
   .partner-logo-tile[data-shape="mark"] { max-height: 50px; }
+  .partner-logo-plate { max-width: min(100%, var(--logo-max-width, 180px)); padding: 6px 10px; border-radius: 6px; }
   .sequence-identity { gap: 6px; }
   .sequence-identity img { flex-basis: clamp(18px, 6vw, 24px); width: clamp(18px, 6vw, 24px); height: auto; }
   .sequence-identity figcaption { font-size: clamp(11px, 3.7vw, 15px); }

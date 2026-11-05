@@ -8,8 +8,9 @@ NASA Space Apps Kandy is the local NASA Space Apps Challenge event in Kandy, Sri
 - **Location:** Kandy, Sri Lanka
 - **Dates:** November 14-15, 2026
 - **Registration:** [Official Kandy event page](https://www.spaceappschallenge.org/2026/local-events/kandy/)
+- **Kandy bootcamp:** EOE Pereira Theater, Faculty of Engineering, University of Peradeniya. [Register](https://www.nasaspaceapps.lk/kandy-bootcamp)
 - **Local contact:** [info@nasaspaceapps.lk](mailto:info@nasaspaceapps.lk)
-- **Venue:** To be announced. Check the official Kandy event page for updates.
+- **Venue:** SLIIT Kandy UNI, Kandy ([Google Maps](https://maps.app.goo.gl/kTG7PyocgTkZ8WvK8))
 
 ## Common questions
 
@@ -23,7 +24,7 @@ Register through the [official NASA Space Apps Challenge Kandy event page](https
 
 ### Where is the Kandy venue?
 
-The venue has not been announced on the local site. Check the official Kandy event page for the latest location details.
+The main hackathon takes place at SLIIT Kandy UNI, the event's host university and venue partner. [Open the venue in Google Maps](https://maps.app.goo.gl/kTG7PyocgTkZ8WvK8).
 
 ### Where can I find global event information?
 

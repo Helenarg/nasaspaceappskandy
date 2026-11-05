@@ -10,8 +10,7 @@ import { LocalizedText as L } from "@/components/LocalizedText";
 import { createPageMetadata } from "@/content/metadata";
 import { EventSchedule } from "@/components/EventSchedule";
 import { EventFaq } from "@/components/EventFaq";
-import { ApplicationForm } from "@/components/ApplicationForm";
-import { bootcampCities, bootcampWebinar, bootcampWindow } from "@/content/bootcamps";
+import { bootcampCities, bootcampDetails, bootcampWebinar, bootcampWindow } from "@/content/bootcamps";
 
 const eventHighlights = [
   {
@@ -69,14 +68,10 @@ export default function Events() {
                 <L id={card.title} />
               </h3>
               <p>
-                {card.title === "events.card.venue.title" && spaceAppsEvent.venueAddress
-                  ? `${spaceAppsEvent.venue}. ${spaceAppsEvent.venueAddress}`
-                  : <L id={card.text} />}
+                <L id={card.text} />
               </p>
               <span className="status-pill">
-                {card.title === "events.card.venue.title" && spaceAppsEvent.venueAddress
-                  ? "Venue confirmed"
-                  : <L id={card.status} />}
+                <L id={card.status} />
               </span>
             </article>
           ))}
@@ -90,13 +85,14 @@ export default function Events() {
           <L id="events.officialLink" />
           <ArrowUpRight size={16} aria-hidden="true" />
         </a>
-        {spaceAppsEvent.venueMapUrl && spaceAppsEvent.venueAddress ? (
-          <div className="venue-map">
-            <h3>Find the venue</h3>
-            <p>{spaceAppsEvent.venueAddress}</p>
-            <iframe title="Hackathon venue map" src={spaceAppsEvent.venueMapUrl} loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
-          </div>
-        ) : null}
+        <div className="venue-map">
+          <h3>Find the venue</h3>
+          <p>{spaceAppsEvent.venue}, {spaceAppsEvent.venueAddress}</p>
+          <a className="text-link" href={spaceAppsEvent.venueMapUrl} target="_blank" rel="noopener noreferrer">
+            Open in Google Maps
+            <ArrowUpRight size={16} aria-hidden="true" />
+          </a>
+        </div>
       </section>
       <section className="content-section bootcamp-section" id="bootcamps" aria-labelledby="bootcamp-title">
         <div className="section-heading">
@@ -104,14 +100,23 @@ export default function Events() {
             <SectionLabel>BOOTCAMP SERIES</SectionLabel>
             <h2 id="bootcamp-title">Get ready, together.</h2>
           </div>
-          <p>Free, half-day bootcamps in Colombo and Kandy are planned for the {bootcampWindow.charAt(0).toLowerCase() + bootcampWindow.slice(1)}, plus an island-wide webinar. Each ends in a live mini-hack. Exact dates and venues will be shared as they are confirmed.</p>
+          <p>Free, half-day bootcamps in Colombo and Kandy run in the {bootcampWindow.charAt(0).toLowerCase() + bootcampWindow.slice(1)}, plus an island-wide webinar. Each ends in a live mini-hack. Registration for the Kandy bootcamp is open now.</p>
         </div>
         <div className="bootcamp-grid">
           {bootcampCities.map((city, index) => (
             <article className="bootcamp-card" key={city}>
               <span className="technical-label">0{index + 1} / BOOTCAMP</span>
               <h3>{city}</h3>
-              <a className="text-link" href="#bootcamp-registration" aria-label={`Register interest in the ${city} bootcamp`}>Register interest <ArrowUpRight size={17} aria-hidden="true" /></a>
+              {bootcampDetails[city].venue ? (
+                <address className="bootcamp-venue">
+                  {bootcampDetails[city].venue.map((line) => <span key={line}>{line}</span>)}
+                </address>
+              ) : (
+                <p>Venue and registration details to follow.</p>
+              )}
+              {bootcampDetails[city].registrationUrl ? (
+                <a className="text-link" href={bootcampDetails[city].registrationUrl} target="_blank" rel="noopener noreferrer" aria-label={`Register for the ${city} bootcamp`}>Register now <ArrowUpRight size={17} aria-hidden="true" /></a>
+              ) : null}
             </article>
           ))}
           <article className="bootcamp-card">
@@ -119,14 +124,6 @@ export default function Events() {
             <h3>{bootcampWebinar.title}</h3>
             <p>{bootcampWebinar.description}</p>
           </article>
-        </div>
-        <div className="bootcamp-registration" id="bootcamp-registration">
-          <div>
-            <SectionLabel>BOOTCAMP REGISTRATION</SectionLabel>
-            <h3>Register interest in the city nearest you.</h3>
-            <p>Choose your nearest city to hear when its date and venue are confirmed. For the main hackathon, register separately on the official NASA Space Apps website.</p>
-          </div>
-          <ApplicationForm kind="bootcamps" showTitle={false} />
         </div>
       </section>
       <EventSchedule />

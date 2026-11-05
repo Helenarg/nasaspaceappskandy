@@ -29,7 +29,7 @@ function PartnerIdentity({ role }: { role: PartnerRole }) {
           width={logo.width}
           height={logo.height}
           sizes="320px"
-          className={logo.tile ? "partner-logo partner-logo-tile" : "partner-logo"}
+          className={logo.tile ? "partner-logo partner-logo-tile" : logo.plate ? "partner-logo partner-logo-plate" : "partner-logo"}
           data-shape={logoShape(logo)}
           style={logo.maxWidth ? ({ "--logo-max-width": `${logo.maxWidth}px` } as CSSProperties) : undefined}
         />
@@ -42,7 +42,7 @@ export function PartnerGroups() {
   return (
     <div className="partner-groups">
       {partnerRoles.map((role) => (
-        <div className={role.logos.length > 1 ? "supporter-group supporter-group-wide" : "supporter-group"} key={role.title}>
+        <div className={role.span ? `supporter-group supporter-group-${role.span}` : "supporter-group"} key={role.title}>
           <h3 className="technical-label">{role.title}</h3>
           <div className="supporter-logo-grid"><PartnerIdentity role={role} /></div>
         </div>

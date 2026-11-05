@@ -8,6 +8,7 @@ import { HomeEventDetails } from "@/components/HomeEventDetails";
 import { ChallengeCards, AwardsPreview } from "@/components/ProgramCards";
 import { Hero } from "@/components/Hero";
 import { WorldMap } from "@/components/WorldMap";
+import { SriLankaEvents } from "@/components/SriLankaEvents";
 import { ActionLink, CommunityBand, SectionLabel } from "@/components/Elements";
 import { LocalizedText as L } from "@/components/LocalizedText";
 import { createPageMetadata } from "@/content/metadata";
@@ -190,6 +191,7 @@ export default function Home() {
         </div>
         <WorldMap />
       </section>
+      <SriLankaEvents />
       <GlobalStats />
       <AwardsPreview />
       <section className="pathways-section">

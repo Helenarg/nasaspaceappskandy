@@ -1,6 +1,7 @@
 import { bootcampDetails, bootcampWindow } from "./bootcamps";
 import { spaceAppsEvent } from "./event";
 import { site } from "./site";
+import { localEventsDirectoryUrl, sriLankaEventNames, sriLankaLocalEvents } from "./sri-lanka";
 
 // One source for the visible FAQ, its FAQPage structured data and the AI-readable summaries.
 // Answers are plain text with optional links so every format reads the same words.
@@ -15,6 +16,14 @@ export const eventFaq: FaqEntry[] = [
     question: "What is NASA Space Apps Kandy?",
     answer: [
       `NASA Space Apps Kandy is the Kandy, Sri Lanka local event of the NASA International Space Apps Challenge, a global hackathon where teams build with NASA open data. The ${spaceAppsEvent.year} theme is ${spaceAppsEvent.theme}.`,
+    ],
+  },
+  {
+    question: "Is NASA Space Apps held in Sri Lanka?",
+    answer: [
+      `Yes. In ${spaceAppsEvent.year}, Sri Lanka hosts ${sriLankaLocalEvents.length} official NASA Space Apps Challenge local events: ${sriLankaEventNames}. NASA Space Apps Kandy takes place in person at ${spaceAppsEvent.venue} in Kandy and online. See every local event in the `,
+      { text: "official local events directory", href: localEventsDirectoryUrl },
+      ".",
     ],
   },
   {

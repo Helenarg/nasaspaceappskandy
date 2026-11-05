@@ -5,6 +5,7 @@ import { comingSoonPaths, sitePages, type SitePath } from "@/content/pages";
 import { partnerRoles } from "@/content/partners";
 import { site } from "@/content/site";
 import { sponsorshipTiers } from "@/content/sponsorship";
+import { localEventsDirectoryUrl, sriLankaEventNames, sriLankaLocalEvents } from "@/content/sri-lanka";
 import { DICTIONARIES, type StringKey } from "@/i18n/strings";
 import { isComingSoon } from "@/lib/launch-mode";
 
@@ -30,6 +31,7 @@ function keyFacts() {
     "- **Cost:** Free",
     `- **Registration:** ${link("Official Kandy event page", spaceAppsEvent.kandyUrl)}`,
     `- **Kandy bootcamp:** ${bootcampDetails.Kandy.venue}. ${link("Register for the Kandy bootcamp", kandyBootcampUrl)}`,
+    `- **NASA Space Apps in Sri Lanka:** ${sriLankaLocalEvents.length} official ${spaceAppsEvent.year} local events: ${sriLankaEventNames} (${link("official directory", localEventsDirectoryUrl)})`,
     `- **Contact:** ${link(site.email, `mailto:${site.email}`)}`,
   ].join("\n");
 }
@@ -148,6 +150,12 @@ export function llmsFullTxt() {
     "All times are Sri Lanka time.",
     "",
     ...scheduleMarkdown(),
+    "## NASA Space Apps in Sri Lanka",
+    "",
+    `Sri Lanka hosts ${sriLankaLocalEvents.length} official NASA Space Apps Challenge ${spaceAppsEvent.year} local events. NASA Space Apps Kandy is the Kandy event, in person at ${spaceAppsEvent.venue} and online.`,
+    "",
+    ...sriLankaLocalEvents.map((event) => `- ${link(event.name, event.url)}: ${event.attendance}`),
+    "",
     "## Bootcamps",
     "",
     ...bootcampMarkdown(),

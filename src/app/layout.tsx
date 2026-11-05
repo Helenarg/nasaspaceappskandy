@@ -64,7 +64,7 @@ export const metadata: Metadata = {
   },
   formatDetection: { telephone: false },
   category: "technology",
-  keywords: ["NASA Space Apps Kandy", "NASA Space Apps Challenge", "hackathon Sri Lanka", "Kandy hackathon", "NASA open data", "SLIIT Kandy UNI"],
+  keywords: ["NASA Space Apps Kandy", "NASA Space Apps Sri Lanka", "NASA Space Apps Challenge Sri Lanka", "NASA Space Apps Challenge", "hackathon Sri Lanka", "Kandy hackathon", "NASA open data", "SLIIT Kandy UNI"],
   robots: {
     index: true,
     follow: true,

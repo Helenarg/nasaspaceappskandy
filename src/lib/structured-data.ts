@@ -97,7 +97,7 @@ export const hackathonEventJsonLd = {
   organizer: [{ "@id": schemaIds.organization }, ...partnerOrganizations(true)],
   contributor: partnerOrganizations(false),
   inLanguage: "en",
-  keywords: ["NASA Space Apps", "hackathon", "Kandy", "Sri Lanka", "NASA open data", spaceAppsEvent.theme],
+  keywords: ["NASA Space Apps", "NASA Space Apps Sri Lanka", "hackathon", "Kandy", "Sri Lanka", "NASA open data", spaceAppsEvent.theme],
   superEvent: {
     "@type": "Event",
     name: `NASA International Space Apps Challenge ${spaceAppsEvent.year}`,

@@ -4,17 +4,19 @@ import { isComingSoon } from "@/lib/launch-mode";
 import { PageIntro } from "@/components/Elements";
 import { LocalizedText as L } from "@/components/LocalizedText";
 import { createPageMetadata } from "@/content/metadata";
+import { sitePage } from "@/content/pages";
+import { JsonLd } from "@/components/JsonLd";
+import { webPageJsonLd } from "@/lib/structured-data";
 import { site } from "@/content/site";
 
-export const metadata: Metadata = createPageMetadata({
-  title: "Terms of use",
-  description: "Read the terms that apply when using the NASA Space Apps Kandy website and local event services.",
-  path: "/terms",
-});
+const page = sitePage("/terms");
+
+export const metadata: Metadata = createPageMetadata(page);
 
 export default function Terms() {
   return (
     <main id="main">
+      <JsonLd data={webPageJsonLd({ ...page })} />
       {isComingSoon ? <div className="container"><Link className="text-link" href="/">Back to NASA Space Apps Kandy</Link></div> : null}
       <PageIntro
         label={<L id="terms.intro.label" />}

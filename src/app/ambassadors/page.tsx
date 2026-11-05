@@ -2,13 +2,16 @@ import type { Metadata } from "next";
 import { FormPage } from "@/components/FormPage";
 import { LocalizedText as L } from "@/components/LocalizedText";
 import { createPageMetadata } from "@/content/metadata";
-export const metadata: Metadata = createPageMetadata({
-  title: "Campus ambassadors",
-  description: "Become a NASA Space Apps Kandy campus ambassador and connect students with the local space and open-data community.",
-  path: "/ambassadors",
-});
+import { sitePage } from "@/content/pages";
+import { JsonLd } from "@/components/JsonLd";
+import { webPageJsonLd } from "@/lib/structured-data";
+const page = sitePage("/ambassadors");
+
+export const metadata: Metadata = createPageMetadata(page);
 export default function Ambassadors() {
   return (
+    <>
+    <JsonLd data={webPageJsonLd({ ...page })} />
     <FormPage
       kind="ambassadors"
       label={<L id="ambassadors.intro.label" />}
@@ -23,5 +26,6 @@ export default function Ambassadors() {
         <L id="ambassadors.aside.second" />
       </p>
     </FormPage>
+    </>
   );
 }

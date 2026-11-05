@@ -8,15 +8,17 @@ import { PageIntro, SectionLabel, CommunityBand } from "@/components/Elements";
 import { participation } from "@/content/site";
 import { LocalizedText } from "@/components/LocalizedText";
 import { createPageMetadata } from "@/content/metadata";
+import { sitePage } from "@/content/pages";
+import { JsonLd } from "@/components/JsonLd";
+import { webPageJsonLd } from "@/lib/structured-data";
 import { spaceAppsEvent } from "@/content/event";
-export const metadata: Metadata = createPageMetadata({
-  title: "About",
-  description: "Meet the NASA Space Apps Kandy community and discover how people across disciplines build with open data, science, and creativity.",
-  path: "/about",
-});
+const page = sitePage("/about");
+
+export const metadata: Metadata = createPageMetadata(page);
 export default function About() {
   return (
     <main id="main">
+      <JsonLd data={webPageJsonLd({ ...page, type: "AboutPage" })} />
       <PageIntro
         label={<LocalizedText id="about.intro.label" />}
         title={<LocalizedText id="about.intro.title" />}

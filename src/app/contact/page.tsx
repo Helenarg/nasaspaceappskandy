@@ -2,14 +2,17 @@ import type { Metadata } from "next";
 import { FormPage } from "@/components/FormPage";
 import { LocalizedText as L } from "@/components/LocalizedText";
 import { createPageMetadata } from "@/content/metadata";
+import { sitePage } from "@/content/pages";
+import { JsonLd } from "@/components/JsonLd";
+import { webPageJsonLd } from "@/lib/structured-data";
 import { site } from "@/content/site";
-export const metadata: Metadata = createPageMetadata({
-  title: "Contact",
-  description: "Contact the NASA Space Apps Kandy organising team with participation, partnership, media, or event questions.",
-  path: "/contact",
-});
+const page = sitePage("/contact");
+
+export const metadata: Metadata = createPageMetadata(page);
 export default function Contact() {
   return (
+    <>
+    <JsonLd data={webPageJsonLd({ ...page, type: "ContactPage" })} />
     <FormPage
       kind="messages"
       label={<L id="contact.intro.label" />}
@@ -29,5 +32,6 @@ export default function Contact() {
         <p><strong>Partnerships and media</strong><br /><a href={`mailto:${site.partnershipsEmail}`}>{site.partnershipsEmail}</a></p>
       </div>
     </FormPage>
+    </>
   );
 }

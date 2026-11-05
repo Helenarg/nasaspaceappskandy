@@ -8,6 +8,9 @@ import { PageIntro, CommunityBand, SectionLabel } from "@/components/Elements";
 import { spaceAppsEvent } from "@/content/event";
 import { LocalizedText as L } from "@/components/LocalizedText";
 import { createPageMetadata } from "@/content/metadata";
+import { sitePage } from "@/content/pages";
+import { JsonLd } from "@/components/JsonLd";
+import { hackathonEventJsonLd, schemaIds, webPageJsonLd } from "@/lib/structured-data";
 import { EventSchedule } from "@/components/EventSchedule";
 import { EventFaq } from "@/components/EventFaq";
 import { bootcampCities, bootcampDetails, bootcampWebinar, bootcampWindow } from "@/content/bootcamps";
@@ -45,15 +48,14 @@ const journeySteps = [
   ["03", "events.journey.03.title", "events.journey.03.text"],
 ] as const;
 
-export const metadata: Metadata = createPageMetadata({
-  title: "Event details",
-  description: "Find the NASA Space Apps Kandy 2026 event dates, location, participation format, and preparation details.",
-  path: "/event-details",
-});
+const page = sitePage("/event-details");
+
+export const metadata: Metadata = createPageMetadata(page);
 
 export default function Events() {
   return (
     <main id="main">
+      <JsonLd data={[...webPageJsonLd({ ...page, about: schemaIds.event }), hackathonEventJsonLd]} />
       <PageIntro
         label={<L id="events.intro.label" />}
         title={<L id="events.intro.title" />}

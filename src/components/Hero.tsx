@@ -66,6 +66,7 @@ export function Hero() {
         <div className="hero-copy">
           <div className="mission-caption">{t("hero.caption")}</div>
           <h1 id="hero-title">
+            <span className="sr-only">NASA Space Apps Challenge Kandy 2026: </span>
             {t("hero.title.first")}
             <br />
             {t("hero.title.second")}<span className="hero-period">.</span>

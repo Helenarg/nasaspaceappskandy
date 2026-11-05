@@ -4,19 +4,21 @@ import { SponsorshipGrid } from "@/components/SponsorshipGrid";
 import { ActionLink, PageIntro, SectionLabel } from "@/components/Elements";
 import { PartnerGroups } from "@/components/PartnerLogo";
 import { createPageMetadata } from "@/content/metadata";
+import { sitePage } from "@/content/pages";
+import { JsonLd } from "@/components/JsonLd";
+import { schemaIds, webPageJsonLd } from "@/lib/structured-data";
 import { site } from "@/content/site";
 import { inKindGroups, partnerDates, partnerReasons, sponsorshipTiers } from "@/content/sponsorship";
 
-export const metadata: Metadata = createPageMetadata({
-  title: "Sponsors & Partners",
-  description: "Meet our supporters and explore sponsorship and partnership opportunities for NASA Space Apps Kandy 2026.",
-  path: "/sponsors-and-partners",
-});
+const page = sitePage("/sponsors-and-partners");
+
+export const metadata: Metadata = createPageMetadata(page);
 
 export default function SponsorsAndPartners() {
   const supporter = sponsorshipTiers[6];
   return (
     <main id="main" className="sponsors-partners-page">
+      <JsonLd data={webPageJsonLd({ ...page, about: schemaIds.event })} />
       <PageIntro label="SPONSORS & PARTNERS / 2026" title="Make the next idea possible." description="Help curious minds across Sri Lanka learn, connect and build through bootcamps in Colombo and Kandy, an island-wide webinar and the Kandy hackathon." />
       <nav className="support-section-nav" aria-label="Sponsors and partners sections">
         <a href="#our-supporters">Our supporters</a>

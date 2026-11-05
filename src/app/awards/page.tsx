@@ -5,16 +5,18 @@ import { PageIntro, CommunityBand, SectionLabel } from "@/components/Elements";
 import program from "@/content/official-program.json";
 import { LocalizedText as L } from "@/components/LocalizedText";
 import { createPageMetadata } from "@/content/metadata";
+import { sitePage } from "@/content/pages";
+import { JsonLd } from "@/components/JsonLd";
+import { webPageJsonLd } from "@/lib/structured-data";
 
-export const metadata: Metadata = createPageMetadata({
-  title: "Awards & recognition",
-  description: "Discover NASA Space Apps awards and the ways outstanding ideas, storytelling, science, and community impact are recognised.",
-  path: "/awards",
-});
+const page = sitePage("/awards");
+
+export const metadata: Metadata = createPageMetadata(page);
 
 export default function Awards() {
   return (
     <main id="main">
+      <JsonLd data={webPageJsonLd({ ...page })} />
       <PageIntro
         label={<L id="awards.intro.label" />}
         title={<L id="awards.intro.title" />}

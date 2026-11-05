@@ -17,6 +17,8 @@ export type PartnerRole = {
   caption?: string;
   /** "wide" takes a full row on phones; "full" takes a full row everywhere. */
   span?: "wide" | "full";
+  /** Listed as an organizer of the hackathon in structured data, not only a partner. */
+  organizer?: boolean;
 };
 
 // Titles follow the official partner announcement posters; every partner is shown at the same size.
@@ -29,6 +31,7 @@ export const partnerRoles: PartnerRole[] = [
   {
     // U+2011 keeps "Co-Organizers" from splitting at the hyphen on narrow screens.
     title: "Co‑Organizers",
+    organizer: true,
     logos: [
       { src: "/sponsors/kandy-uni-student-interactive-society.png", alt: "Student Interactive Society, Kandy UNI", width: 1387, height: 1487 },
       { src: "/sponsors/university-of-peradeniya.png", alt: "University of Peradeniya", width: 338, height: 338 },

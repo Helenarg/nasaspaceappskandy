@@ -22,7 +22,7 @@ const conductItems = [
   ["participation.conduct.report.title", "participation.conduct.report.text"],
 ] as const;
 
-const page = sitePage("/register");
+const page = sitePage("/how-to-register");
 
 export const metadata = createPageMetadata(page);
 

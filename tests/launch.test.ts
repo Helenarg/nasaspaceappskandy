@@ -24,8 +24,9 @@ function readLaunchConfiguration(mode?: string) {
 }
 
 const kandyBootcampRedirect = { source: "/kandy-bootcamp", destination: "https://forms.gle/nyMXHHcMXP1bxx1bA", permanent: false };
+const registerRedirect = { source: "/register/:path*", destination: "https://www.spaceappschallenge.org/2026/local-events/kandy/", permanent: false };
 
-test("coming soon mode defaults to temporary official registration and hides unfinished routes", () => {
+test("coming soon mode hides unfinished routes, including the registration guide", () => {
   const configuration = readLaunchConfiguration();
   assert.equal(configuration.isComingSoon, true);
   assert.deepEqual(configuration.redirects.find(({ source }) => source === "/register/:path*"), {
@@ -34,16 +35,18 @@ test("coming soon mode defaults to temporary official registration and hides unf
     permanent: false,
   });
   assert.ok(configuration.redirects.some(({ source, destination }) => source === "/join/:path*" && destination === "/"));
+  assert.ok(configuration.redirects.some(({ source, destination }) => source === "/how-to-register/:path*" && destination === "/"));
   assert.ok(configuration.redirects.every(({ permanent }) => permanent === false));
   assert.ok(configuration.redirects.some((redirect) => redirect.source === kandyBootcampRedirect.source && redirect.destination === kandyBootcampRedirect.destination));
   assert.ok(configuration.sitemap.every(({ url }) => new URL(url).host === "www.nasaspaceapps.lk"));
   assert.deepEqual(configuration.sitemap.map(({ url }) => new URL(url).pathname), ["/", "/privacy", "/terms"]);
 });
 
-test("live mode restores normal routes and the full sitemap", () => {
+test("live mode restores normal routes and sends /register to the official page", () => {
   const configuration = readLaunchConfiguration("live");
   assert.equal(configuration.isComingSoon, false);
-  assert.deepEqual(configuration.redirects, [kandyBootcampRedirect]);
-  assert.ok(configuration.sitemap.some(({ url }) => new URL(url).pathname === "/register"));
+  assert.deepEqual(configuration.redirects, [kandyBootcampRedirect, registerRedirect]);
+  assert.ok(configuration.sitemap.some(({ url }) => new URL(url).pathname === "/how-to-register"));
+  assert.ok(!configuration.sitemap.some(({ url }) => new URL(url).pathname === "/register"));
   assert.ok(configuration.sitemap.some(({ url }) => new URL(url).pathname === "/news"));
 });

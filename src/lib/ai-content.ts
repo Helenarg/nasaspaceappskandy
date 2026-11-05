@@ -16,7 +16,11 @@ const en = (key: StringKey) => DICTIONARIES.en[key] ?? key;
 const link = (text: string, href: string) => `[${text}](${href})`;
 
 const visiblePath = (path: SitePath) => !isComingSoon || comingSoonPaths.includes(path);
-const registrationUrl = isComingSoon ? spaceAppsEvent.kandyUrl : absolute("/register");
+const linkable = (href: string) => {
+  const path = href.split("#")[0];
+  return !(path in sitePages) || visiblePath(path as SitePath);
+};
+const registrationUrl = isComingSoon ? spaceAppsEvent.kandyUrl : absolute("/how-to-register");
 const kandyBootcampUrl = absolute(bootcampDetails.Kandy.registrationUrl ?? "/");
 
 const summary = `NASA Space Apps Kandy is the Kandy, Sri Lanka local event of the NASA International Space Apps Challenge. The ${spaceAppsEvent.year} hackathon runs on ${spaceAppsEvent.dates} at ${spaceAppsEvent.venue}, in person and online. Participation is free; register on the official NASA Space Apps Challenge Kandy event page.`;
@@ -45,7 +49,7 @@ function pageLink(path: SitePath) {
 const pageLinks = (paths: SitePath[]) => paths.filter(visiblePath).map(pageLink);
 
 export function llmsTxt() {
-  const eventPages = pageLinks(["/", "/event-details", "/register", "/challenges", "/news"]);
+  const eventPages = pageLinks(["/", "/event-details", "/how-to-register", "/challenges", "/news"]);
   const involvement = pageLinks(["/sponsors-and-partners", "/join", "/ambassadors", "/contact"]);
   const optional = pageLinks(["/about", "/awards", "/privacy", "/terms"]);
 
@@ -76,7 +80,7 @@ export function llmsTxt() {
 }
 
 function faqMarkdown() {
-  return eventFaq.flatMap((entry) => [`### ${entry.question}`, "", faqAnswerMarkdown(entry.answer), ""]);
+  return eventFaq.flatMap((entry) => [`### ${entry.question}`, "", faqAnswerMarkdown(entry.answer, linkable), ""]);
 }
 
 function scheduleMarkdown() {

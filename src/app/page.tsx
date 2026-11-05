@@ -157,7 +157,7 @@ export default function Home() {
               <p>
                 <L id="home.journey.description" />
               </p>
-              <Link href="/register" className="text-link"><L id="home.journey.cta" /> <ArrowUpRight size={17} aria-hidden="true" /></Link>
+              <Link href="/how-to-register" className="text-link"><L id="home.journey.cta" /> <ArrowUpRight size={17} aria-hidden="true" /></Link>
             </div>
             <ol className="mission-steps" aria-label="Your Space Apps journey">
               <li><span>01</span> <L id="home.journey.step.explore" /></li>
@@ -176,7 +176,10 @@ export default function Home() {
           <L id="home.statement.title.second" />
         </h2>
         <p><L id="home.statement.description" /></p>
-        <ActionLink href="/register"><L id="home.statement.cta" /></ActionLink>
+        <a className="white-button" href="/register">
+          <span className="button-label"><L id="home.statement.cta" /></span>
+          <ArrowUpRight size={17} aria-hidden="true" />
+        </a>
       </section>
       <section className="world-section">
         <div className="section-heading">

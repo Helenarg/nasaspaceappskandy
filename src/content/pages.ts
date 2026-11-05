@@ -9,7 +9,7 @@ export const sitePages = {
     title: "2026 dates, venue & schedule",
     description: "NASA Space Apps Kandy 2026 runs November 14-15 at SLIIT Kandy UNI. See the schedule, the Kandy bootcamp, FAQs and how to join in person or online.",
   },
-  "/register": {
+  "/how-to-register": {
     title: "How to register",
     description: "Register free for NASA Space Apps Kandy 2026 on the official NASA Space Apps Challenge website. Steps, participant conduct and under-18 consent guidance.",
   },

@@ -30,7 +30,9 @@ export const eventFaq: FaqEntry[] = [
     answer: [
       "Registration is free. Register on the ",
       { text: "official NASA Space Apps Challenge Kandy event page", href: spaceAppsEvent.kandyUrl },
-      ". Registration opened on 26 August 2026.",
+      ". Registration opened on 26 August 2026. Our ",
+      { text: "step-by-step registration guide", href: "/how-to-register" },
+      " explains each step.",
     ],
   },
   {
@@ -75,7 +77,7 @@ export const eventFaq: FaqEntry[] = [
     question: "What is the minimum age to participate?",
     answer: [
       "Participants under 18 must be registered by a parent or legal guardian, who must accompany them throughout the event. Bring a signed parental consent letter. Read the ",
-      { text: "under-18 guidance and print the letter in English, Sinhala or Tamil", href: "/register#consent-letter" },
+      { text: "under-18 guidance and print the letter in English, Sinhala or Tamil", href: "/how-to-register#consent-letter" },
       " before attending. Contact the team to confirm guardian access arrangements.",
     ],
   },
@@ -97,10 +99,12 @@ export function faqAnswerText(answer: FaqAnswerPart[]) {
   return answer.map((part) => (typeof part === "string" ? part : part.text)).join("");
 }
 
-export function faqAnswerMarkdown(answer: FaqAnswerPart[]) {
+/** Links the current launch mode cannot serve are written as plain text. */
+export function faqAnswerMarkdown(answer: FaqAnswerPart[], isLinkable: (href: string) => boolean = () => true) {
   return answer
     .map((part) => {
       if (typeof part === "string") return part;
+      if (!isLinkable(part.href)) return part.text;
       if (part.href.startsWith("mailto:")) return `[${part.text}](${part.href.split("?")[0]})`;
       return `[${part.text}](${new URL(part.href, site.url)})`;
     })

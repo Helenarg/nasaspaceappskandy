@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { LocalLeadContacts } from "@/components/LocalLeadContacts";
 import type { Metadata } from "next";
 import { ArrowUpRightIcon as ArrowUpRight } from "@phosphor-icons/react/dist/ssr/ArrowUpRight";
@@ -87,6 +88,10 @@ export default function Events() {
           <L id="events.officialLink" />
           <ArrowUpRight size={16} aria-hidden="true" />
         </a>
+        <Link className="text-link" href="/how-to-register">
+          <L id="events.registrationGuide" />
+          <ArrowUpRight size={16} aria-hidden="true" />
+        </Link>
         <div className="venue-map">
           <div>
             <span className="technical-label">MAIN HACKATHON VENUE</span>

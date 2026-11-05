@@ -29,20 +29,21 @@ const config: NextConfig = {
         destination: kandyBootcampFormUrl,
         permanent: false,
       },
+      // The short registration link always opens the official NASA Space Apps Kandy page.
+      {
+        source: "/register/:path*",
+        destination: spaceAppsEvent.kandyUrl,
+        permanent: false,
+      },
     ];
 
     if (!isComingSoon) return sharedRedirects;
 
     return [
       ...sharedRedirects,
-      {
-        source: "/register/:path*",
-        destination: spaceAppsEvent.kandyUrl,
-        permanent: false,
-      },
       ...[
         "about", "ambassadors", "awards", "challenges", "contact",
-        "event-details", "events", "join", "news", "partners",
+        "event-details", "events", "how-to-register", "join", "news", "partners",
         "sponsors", "sponsors-and-partners",
       ].map((route) => ({
         source: `/${route}/:path*`,

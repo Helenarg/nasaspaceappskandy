@@ -54,7 +54,7 @@ test("FAQ structured data matches the visible questions in plain text", () => {
 
 test("coming soon AI summaries only link to public pages", () => {
   const { llms, full, index, event } = renderSeo();
-  const hidden = ["/event-details", "/sponsors-and-partners", "/join", "/about", "/contact", "/challenges", "/news"];
+  const hidden = ["/how-to-register", "/event-details", "/sponsors-and-partners", "/join", "/about", "/contact", "/challenges", "/news"];
   for (const markdown of [llms, full, index]) {
     for (const path of sitePaths(markdown)) {
       assert.ok(!hidden.some((route) => path.startsWith(route)), `links to hidden route ${path}`);

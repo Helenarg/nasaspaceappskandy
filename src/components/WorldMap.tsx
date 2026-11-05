@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { MapPinIcon } from "@phosphor-icons/react/dist/ssr/MapPin";
 import { ArrowUpRightIcon as ArrowUpRight } from "@phosphor-icons/react/dist/ssr/ArrowUpRight";
 import { CrosshairIcon as Crosshair } from "@phosphor-icons/react/dist/ssr/Crosshair";
@@ -122,12 +121,12 @@ export function WorldMap() {
           <br />
           <L id="world.summary.second" />
         </p>
-        <Link className="white-button" href="/register">
+        <a className="white-button" href="/register">
           <span className="button-label">
             <L id="world.cta" />
           </span>
           <ArrowUpRight size={18} aria-hidden="true" />
-        </Link>
+        </a>
       </div>
       <div className="network-source">
         <span>

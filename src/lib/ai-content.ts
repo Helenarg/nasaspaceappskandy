@@ -2,7 +2,7 @@ import { bootcampCities, bootcampDetails, bootcampWebinar, bootcampWindow } from
 import { kandySchedule, spaceAppsEvent } from "@/content/event";
 import { eventFaq, faqAnswerMarkdown } from "@/content/faq";
 import { comingSoonPaths, sitePages, type SitePath } from "@/content/pages";
-import { partnerRoles } from "@/content/partners";
+import { partnerName, partnerRoles } from "@/content/partners";
 import { site } from "@/content/site";
 import { sponsorshipTiers } from "@/content/sponsorship";
 import { localEventsDirectoryUrl, sriLankaEventNames, sriLankaLocalEvents } from "@/content/sri-lanka";
@@ -112,7 +112,7 @@ function bootcampMarkdown() {
 
 function partnersMarkdown() {
   return [
-    ...partnerRoles.map((role) => `- **${role.title.replace("‑", "-")}:** ${role.logos.map((logo) => role.caption ?? logo.alt).join("; ")}`),
+    ...partnerRoles.map((role) => `- **${role.title.replace("‑", "-")}:** ${role.logos.map((logo) => partnerName(role, logo)).join("; ")}`),
     "",
   ];
 }

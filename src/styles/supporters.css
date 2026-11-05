@@ -4,6 +4,10 @@
 .partner-logo { display: block; width: auto; height: auto; max-width: min(100%, var(--logo-max-width, 176px)); max-height: 52px; object-fit: contain; }
 .partner-logo[data-shape="mark"] { max-height: 72px; }
 .partner-logo-tile { border-radius: 8px; }
+/* A logo with a small line under it, such as the parent organisation, still fits the shared logo box. */
+.partner-logo-stack { display: flex; flex-direction: column; align-items: center; gap: 6px; max-width: 100%; }
+.partner-logo-stack .partner-logo { max-height: 46px; }
+.partner-note { color: #fff; font-size: 11px; font-weight: 600; letter-spacing: .04em; line-height: 1; }
 .partner-logo-plate { box-sizing: border-box; max-width: min(100%, var(--logo-max-width, 200px)); padding: 8px 12px; border-radius: 8px; background: #fff; }
 .sequence-identity { flex-direction: row; gap: 12px; min-height: 38px; }
 .sequence-identity img { flex: 0 0 38px; width: 38px; height: 36px; }
@@ -36,6 +40,9 @@
   .partner-logo { max-width: min(100%, var(--logo-max-width, 132px)); max-height: 40px; }
   .partner-logo[data-shape="mark"] { max-height: 56px; }
   .partner-logo-tile { max-width: min(100%, 120px); border-radius: 6px; }
+  .partner-logo-stack { gap: 4px; }
+  .partner-logo-stack .partner-logo { max-height: 36px; }
+  .partner-note { font-size: 10px; }
   .partner-logo-tile[data-shape="mark"] { max-height: 50px; }
   .partner-logo-plate { max-width: min(100%, var(--logo-max-width, 180px)); padding: 6px 10px; border-radius: 6px; }
   .sequence-identity { gap: 6px; }

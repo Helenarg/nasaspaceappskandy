@@ -21,19 +21,28 @@ function PartnerIdentity({ role }: { role: PartnerRole }) {
 
   return (
     <figure className="partner-identity">
-      {role.logos.map((logo) => (
-        <Image
-          key={logo.src}
-          src={logo.src}
-          alt={logo.alt}
-          width={logo.width}
-          height={logo.height}
-          sizes="320px"
-          className={logo.tile ? "partner-logo partner-logo-tile" : logo.plate ? "partner-logo partner-logo-plate" : "partner-logo"}
-          data-shape={logoShape(logo)}
-          style={logo.maxWidth ? ({ "--logo-max-width": `${logo.maxWidth}px` } as CSSProperties) : undefined}
-        />
-      ))}
+      {role.logos.map((logo) => {
+        const image = (
+          <Image
+            key={logo.src}
+            src={logo.src}
+            alt={logo.alt}
+            width={logo.width}
+            height={logo.height}
+            sizes="320px"
+            className={logo.tile ? "partner-logo partner-logo-tile" : logo.plate ? "partner-logo partner-logo-plate" : "partner-logo"}
+            data-shape={logoShape(logo)}
+            style={logo.maxWidth ? ({ "--logo-max-width": `${logo.maxWidth}px` } as CSSProperties) : undefined}
+          />
+        );
+        if (!logo.note) return image;
+        return (
+          <span className="partner-logo-stack" key={logo.src}>
+            {image}
+            <span className="partner-note">{logo.note}</span>
+          </span>
+        );
+      })}
     </figure>
   );
 }

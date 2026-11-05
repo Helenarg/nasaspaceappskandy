@@ -9,6 +9,8 @@ export type PartnerLogo = {
   plate?: boolean;
   /** Caps the rendered width when several logos share one identity. */
   maxWidth?: number;
+  /** A short line shown in small white text under the logo, such as the parent organisation. */
+  note?: string;
 };
 
 export type PartnerRole = {
@@ -20,6 +22,11 @@ export type PartnerRole = {
   /** Listed as an organizer of the hackathon in structured data, not only a partner. */
   organizer?: boolean;
 };
+
+/** The partner's full name, including a caption or a note such as "of NSBM". */
+export function partnerName(role: PartnerRole, logo: PartnerLogo) {
+  return role.caption ?? (logo.note ? `${logo.alt} ${logo.note}` : logo.alt);
+}
 
 // Titles follow the official partner announcement posters; every partner is shown at the same size.
 export const partnerRoles: PartnerRole[] = [
@@ -39,6 +46,11 @@ export const partnerRoles: PartnerRole[] = [
       { src: "/sponsors/uop-ieee-student-branch.png", alt: "University of Peradeniya IEEE Student Branch", width: 1456, height: 280, plate: true, maxWidth: 220 },
     ],
     span: "full",
+  },
+  {
+    title: "Ecosystem Partner",
+    logos: [{ src: "/sponsors/hackathon-hub.png", alt: "Hackathon Hub", width: 2131, height: 572, note: "of NSBM" }],
+    span: "wide",
   },
   {
     title: "Strategic Partner",

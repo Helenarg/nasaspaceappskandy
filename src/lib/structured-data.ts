@@ -1,7 +1,7 @@
 import { spaceAppsEvent } from "@/content/event";
 import { faqAnswerText, type FaqEntry } from "@/content/faq";
 import { defaultSocialImage } from "@/content/metadata";
-import { partnerRoles } from "@/content/partners";
+import { partnerName, partnerRoles } from "@/content/partners";
 import { site } from "@/content/site";
 import { isComingSoon } from "@/lib/launch-mode";
 
@@ -24,7 +24,7 @@ const kandyAddress = {
 function partnerOrganizations(organizers: boolean) {
   return partnerRoles
     .filter((role) => Boolean(role.organizer) === organizers)
-    .flatMap((role) => role.logos.map((logo) => ({ "@type": "Organization", name: role.caption ?? logo.alt })));
+    .flatMap((role) => role.logos.map((logo) => ({ "@type": "Organization", name: partnerName(role, logo) })));
 }
 
 export const organizationJsonLd = {

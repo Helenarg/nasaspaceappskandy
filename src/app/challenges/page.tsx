@@ -6,14 +6,16 @@ import { ChallengeCards } from "@/components/ProgramCards";
 import program from "@/content/official-program.json";
 import { LocalizedText as L } from "@/components/LocalizedText";
 import { createPageMetadata } from "@/content/metadata";
-export const metadata: Metadata = createPageMetadata({
-  title: "2026 challenges",
-  description: "Explore the official 2026 NASA Space Apps Challenge briefs and find a problem your Kandy team wants to solve.",
-  path: "/challenges",
-});
+import { sitePage } from "@/content/pages";
+import { JsonLd } from "@/components/JsonLd";
+import { webPageJsonLd } from "@/lib/structured-data";
+const page = sitePage("/challenges");
+
+export const metadata: Metadata = createPageMetadata(page);
 export default function Challenges() {
   return (
     <main id="main">
+      <JsonLd data={webPageJsonLd({ ...page, type: "CollectionPage" })} />
       <PageIntro
         label={<L id="challenges.intro.label" />}
         title={<L id="challenges.intro.title" />}

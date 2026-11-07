@@ -5,15 +5,17 @@ import { PageIntro } from "@/components/Elements";
 import { site } from "@/content/site";
 import { LocalizedText as L } from "@/components/LocalizedText";
 import { createPageMetadata } from "@/content/metadata";
+import { sitePage } from "@/content/pages";
+import { JsonLd } from "@/components/JsonLd";
+import { webPageJsonLd } from "@/lib/structured-data";
 
-export const metadata: Metadata = createPageMetadata({
-  title: "Privacy policy",
-  description: "Learn what information NASA Space Apps Kandy collects, why it is used, where it is stored, and how to manage your privacy choices.",
-  path: "/privacy",
-});
+const page = sitePage("/privacy");
+
+export const metadata: Metadata = createPageMetadata(page);
 export default function Privacy() {
   return (
     <main id="main">
+      <JsonLd data={webPageJsonLd({ ...page })} />
       {isComingSoon ? <div className="container"><Link className="text-link" href="/">Back to NASA Space Apps Kandy</Link></div> : null}
       <PageIntro
         label={<L id="privacy.intro.label" />}

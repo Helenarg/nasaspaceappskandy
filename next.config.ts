@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 import path from "node:path";
 import { isComingSoon } from "./src/lib/launch-mode";
 import { spaceAppsEvent } from "./src/content/event";
+import { kandyBootcampFormUrl } from "./src/content/bootcamps";
 
 const securityHeaders = [
   { key: "X-Frame-Options", value: "DENY" },
@@ -18,18 +19,31 @@ const securityHeaders = [
 ];
 
 const config: NextConfig = {
+  experimental: {
+    agentUpgrade: "security",
+  },
   async redirects() {
-    if (!isComingSoon) return [];
-
-    return [
+    const sharedRedirects = [
+      {
+        source: "/kandy-bootcamp",
+        destination: kandyBootcampFormUrl,
+        permanent: false,
+      },
+      // The short registration link always opens the official NASA Space Apps Kandy page.
       {
         source: "/register/:path*",
         destination: spaceAppsEvent.kandyUrl,
         permanent: false,
       },
+    ];
+
+    if (!isComingSoon) return sharedRedirects;
+
+    return [
+      ...sharedRedirects,
       ...[
         "about", "ambassadors", "awards", "challenges", "contact",
-        "event-details", "events", "join", "news", "partners",
+        "event-details", "events", "how-to-register", "join", "news", "partners",
         "sponsors", "sponsors-and-partners",
       ].map((route) => ({
         source: `/${route}/:path*`,

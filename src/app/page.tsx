@@ -11,42 +11,29 @@ import { WorldMap } from "@/components/WorldMap";
 import { ActionLink, CommunityBand, SectionLabel } from "@/components/Elements";
 import { LocalizedText as L } from "@/components/LocalizedText";
 import { createPageMetadata } from "@/content/metadata";
+import { sitePage } from "@/content/pages";
 import { isComingSoon } from "@/lib/launch-mode";
 import { ComingSoon } from "@/components/ComingSoon";
-import { site } from "@/content/site";
+import { JsonLd } from "@/components/JsonLd";
+import { hackathonEventJsonLd } from "@/lib/structured-data";
 
 export const metadata = {
-  ...createPageMetadata({
-    title: "NASA Space Apps Kandy 2026 | Ideas beyond boundaries",
-    description: "NASA Space Apps Kandy 2026 takes place November 14-15 in Kandy, Sri Lanka. Register for the local event on the official NASA Space Apps Challenge website.",
-    path: "/",
-  }),
+  ...createPageMetadata(sitePage("/")),
   alternates: {
     canonical: "/",
     types: { "text/markdown": "/index.md" },
   },
 };
 
-const websiteJsonLd = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  name: site.name,
-  url: site.url,
-  inLanguage: "en",
-}).replace(/</g, "\\u003c");
-
-function WebsiteIdentity() {
-  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: websiteJsonLd }} />;
-}
 
 export default function Home() {
   if (isComingSoon) {
-    return <><WebsiteIdentity /><ComingSoon year={new Date().getFullYear()} /></>;
+    return <><JsonLd data={hackathonEventJsonLd} /><ComingSoon year={new Date().getFullYear()} /></>;
   }
 
   return (
     <main id="main" className="home-page">
-      <WebsiteIdentity />
+      <JsonLd data={hackathonEventJsonLd} />
       <Hero />
       <section className="home-partner-strip" aria-label="Official partners">
         <PartnerGroups />
@@ -68,10 +55,16 @@ export default function Home() {
       <section className="home-bootcamp-teaser" aria-labelledby="home-bootcamp-title">
         <div>
           <SectionLabel>BEFORE THE HACKATHON</SectionLabel>
-          <h2 id="home-bootcamp-title">Four cities. One place to begin.</h2>
-          <p>Bootcamps are planned for Colombo, Kandy, Galle and Kurunegala in the first week of November. Meet the community and get ready to build.</p>
+          <h2 id="home-bootcamp-title">Two cities. One place to begin.</h2>
+          <p>Bootcamps in Colombo and Kandy run in the first week of November, plus an island-wide webinar open to students in every district. Kandy bootcamp registration is open now.</p>
         </div>
-        <ActionLink href="/event-details#bootcamps" outline>Explore bootcamps</ActionLink>
+        <div className="home-bootcamp-actions">
+          <a className="white-button" href="/kandy-bootcamp" target="_blank" rel="noopener noreferrer">
+            <span className="button-label">Register for Kandy bootcamp</span>
+            <ArrowUpRight size={17} aria-hidden="true" />
+          </a>
+          <ActionLink href="/event-details#bootcamps" outline>Explore bootcamps</ActionLink>
+        </div>
       </section>
       <section className="focus-section">
         <div className="section-heading">
@@ -164,7 +157,7 @@ export default function Home() {
               <p>
                 <L id="home.journey.description" />
               </p>
-              <Link href="/register" className="text-link"><L id="home.journey.cta" /> <ArrowUpRight size={17} aria-hidden="true" /></Link>
+              <Link href="/how-to-register" className="text-link"><L id="home.journey.cta" /> <ArrowUpRight size={17} aria-hidden="true" /></Link>
             </div>
             <ol className="mission-steps" aria-label="Your Space Apps journey">
               <li><span>01</span> <L id="home.journey.step.explore" /></li>
@@ -183,7 +176,10 @@ export default function Home() {
           <L id="home.statement.title.second" />
         </h2>
         <p><L id="home.statement.description" /></p>
-        <ActionLink href="/register"><L id="home.statement.cta" /></ActionLink>
+        <a className="white-button" href="/register">
+          <span className="button-label"><L id="home.statement.cta" /></span>
+          <ArrowUpRight size={17} aria-hidden="true" />
+        </a>
       </section>
       <section className="world-section">
         <div className="section-heading">

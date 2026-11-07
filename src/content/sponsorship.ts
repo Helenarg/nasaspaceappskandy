@@ -1,55 +1,64 @@
-// Source: NASA Space Apps Sponsorship Proposal @nasaspaceapps.lk (1).pdf, pages 13–31.
-// Slot counts are package capacities from the proposal, not live availability.
+// Source: NASA Space Apps Sponsorship Proposal (Kandy 2026), pages 13–22.
+// The proposal sets one company per industry rather than fixed place counts.
 export const sponsorshipTiers = [
   {
-    name: "Title Partner", amount: "1,000,000", slots: 1,
-    summary: "The headline partner, named on everything.",
-    payment: "50% on signing; 50% by 7 November 2026.",
-    benefits: ["Event naming and industry exclusivity", "10-minute opening speech, prime booth and 2 judging seats", "Grand Prize named after your brand"],
-    details: ["Use the Title Partner designation in your marketing; first partner announcement, dedicated launch post and press release.", "Largest linked website logo; logo on every poster, social creative and registration page; 4 dedicated social posts and mentions in press releases and media interviews.", "Signing by 31 October 2026 includes stage mentions and the largest backdrop logo at all 4 bootcamps, plus bootcamp certificate logos.", "Largest main backdrop and banner logo; lanyard, crew and volunteer T-shirt branding; MC mentions and bootcamp winners showcased under your name.", "5-minute prize-giving address, Grand Prize presentation, 6 invitations and an appreciation plaque.", "Largest logo on all certificates; featured in the recap video and photo album; impact report.", "Opt-in talent list limited to participants aged 18+ interested in jobs or internships."],
+    name: "Title Partner", label: "Exclusive", amount: "750,000",
+    summary: "The event carries your name, with industry exclusivity.",
+    payment: "50% on signing; 50% before the main event.",
+    benefits: ["Event naming and industry exclusivity", "10-minute opening speech and a prime booth", "Grand Prize in your name and 2 judging seats"],
+    details: ["Event named “NASA Space Apps Challenge Kandy 2026 presented by [Your Brand]”.", "Exclusive in your industry: no competing brand at any level.", "Largest logo on every backdrop, banner, poster, certificate and the website.", "Stage mention and largest logo at both bootcamps.", "Launch press release, named in all media, and 4 dedicated social posts.", "Logo on every lanyard and crew T-shirt.", "6 prize-giving invitations and an appreciation plaque.", "Opt-in list of participants aged 18+ open to jobs or internships, a recap video feature and an impact report."],
   },
   {
-    name: "Official Bootcamp Partner", amount: "500,000", slots: 1,
-    summary: "Four cities, your name on every bootcamp.",
-    payment: "100% before the first bootcamp.",
-    benefits: ["Bootcamp series naming rights", "Only paid university or education brand at the bootcamps", "10–15 minute session and booth at all 4 bootcamps"],
-    details: ["Space Apps Kandy Bootcamp Series powered by your brand; dedicated announcement and press release, large website logo and 3 dedicated social posts.", "Named in bootcamp promotions, posters and registration pages for all 4 cities; large logo on all bootcamp backdrops.", "Option to host the Colombo bootcamp at your campus; flyers in student packs and presentation of mini-hack awards at every bootcamp.", "Opt-in form for interested students, with parental consent for under-18s; no direct contact details shared.", "Main hackathon: 5-minute stage slot, booth, 1 mentor and a Best Bootcamp Team award named after your brand.", "Recognise bootcamp champions at the prize giving; 4 invitations and an appreciation plaque.", "Large logo on bootcamp certificates, feature in the Road to Space Apps Kandy video series and an impact report."],
-  },
-  {
-    name: "Platinum Partner", amount: "400,000", slots: 2,
+    name: "Platinum Partner", label: "Premium", amount: "350,000",
     summary: "Stage time, a judge seat and an award in your name.",
-    payment: "50% on signing; 50% by 7 November 2026.",
-    benefits: ["5-minute opening speech and a booth", "1 judging seat and a named category award", "Large logo on main event assets and certificates"],
-    details: ["Dedicated announcement and press release mentions; large logo on the website, posters and registration pages; 2 dedicated social posts.", "Signing by 31 October 2026 includes logos on all 4 bootcamp backdrops.", "Large main backdrop and banner logo; crew and volunteer T-shirt branding; optional Saturday afternoon tech talk in a side room.", "Present your category award at the prize giving; 4 invitations and an appreciation plaque.", "Feature in the recap video and an impact report; opt-in talent list limited to participants aged 18+ interested in jobs or internships."],
+    payment: "100% on signing.",
+    benefits: ["5-minute opening speech and a booth", "1 judging seat and a category award named after you", "Large logo on main event assets and certificates"],
+    details: ["Dedicated announcement post, 2 social posts and press release mentions.", "Large logo on the website, posters, backdrops, banners and certificates.", "Your logo at both bootcamps.", "Logo on crew T-shirts.", "Present your category award yourself.", "Opt-in 18+ talent list, recap video and impact report."],
   },
   {
-    name: "Gold Partner", amount: "200,000", slots: 4,
+    name: "Official Bootcamp Partner", label: "Exclusive · Education", amount: "250,000",
+    summary: "Own the bootcamp series in Colombo and Kandy.",
+    payment: "50% on signing; 50% before the first bootcamp.",
+    benefits: ["Bootcamp Series naming rights", "The only university or professional-qualification brand at the bootcamps", "10–15 minute session and a booth at both bootcamps"],
+    details: ["“Space Apps Kandy Bootcamp Series powered by [Your Brand]”.", "Large logo on bootcamp backdrops, posters and certificates.", "Present the mini-hack awards at both bootcamps.", "Flyers in student packs and an opt-in form for interested students, with parental consent for under-18s.", "“Best Bootcamp Team” award and a booth at the main hackathon.", "3 dedicated social posts and the bootcamp video series.", "4 prize-giving invitations, an appreciation plaque and an impact report."],
+  },
+  {
+    name: "Gold Partner", label: "Best for talent", amount: "150,000",
     summary: "A booth, a mentor on the floor and an award on stage.",
-    payment: "50% on signing; 50% by 7 November 2026.",
-    benefits: ["Booth and 1 mentor on the floor", "Award presentation and 2 prize-giving invitations", "Opt-in talent list for interested participants aged 18+"],
-    details: ["Dedicated announcement and 1 dedicated social post; medium logo on the website and posters.", "Signing by 31 October 2026 includes logos on all 4 bootcamp backdrops.", "Medium logo on the main backdrop and all certificates; MC mention.", "Appreciation plaque, logo in the recap video and an impact report. Talent-list opt-ins are for jobs or internships."],
+    payment: "100% on signing.",
+    benefits: ["Booth and 1 mentor on the hackathon floor", "Present an award at the prize giving", "Opt-in talent list for participants aged 18+"],
+    details: ["Dedicated announcement post.", "Medium logo on the website, posters, main backdrop and certificates.", "Your logo at both bootcamps.", "MC mentions, 2 invitations and an appreciation plaque.", "Recap video and impact report."],
   },
   {
-    name: "Silver Partner", amount: "100,000", slots: 6,
-    summary: "A shared booth and visibility across the main event.",
+    name: "Silver Partner", label: "Great value", amount: "75,000",
+    summary: "Your brand in front of every participant.",
     payment: "100% on signing.",
-    benefits: ["Shared booth table and MC mention", "Small logo on website, posters and main backdrop", "Certificate branding, recap video and impact report"],
-    details: ["Featured in a group sponsor post.", "2 prize-giving invitations and an appreciation plaque.", "Small logo on all certificates and logo in the recap video."],
+    benefits: ["Small logo on the website, posters and main backdrop", "Small logo on all certificates", "Shared booth table at the main hackathon"],
+    details: ["Featured in a group sponsor post.", "MC mention, 2 invitations and an appreciation plaque.", "Logo in the recap video and impact report."],
   },
   {
-    name: "Bronze Partner", amount: "50,000", slots: 8,
-    summary: "Put your brand behind the local community.",
+    name: "Bronze Partner", label: "Brand presence", amount: "50,000",
+    summary: "A simple way to stand behind the event.",
     payment: "100% on signing.",
-    benefits: ["Small logo on website, sponsors’ wall and certificates", "Group sponsor post and MC mention", "1 prize-giving invitation and appreciation plaque"],
-    details: ["Small logo on all certificates.", "Thank-you in the recap video and impact report."],
+    benefits: ["Small logo on the website and sponsors’ wall", "Small logo on all certificates", "Group sponsor post and MC mention at the main hackathon"],
+    details: ["1 invitation and an appreciation plaque.", "Thank-you in the recap video and impact report."],
   },
   {
-    name: "Supporter", amount: "25,000", slots: 10,
-    summary: "An accessible way for local and small businesses to help.",
+    name: "Supporter", label: "Small businesses", amount: "25,000",
+    summary: "For local and small businesses backing young innovators.",
     payment: "100% on signing.",
-    benefits: ["Small logo on website and sponsors’ wall", "Group thank-you post", "Certificate of appreciation and name in the impact report"],
+    benefits: ["Logo in the Supporters section of the website", "Logo on the sponsors’ wall at the main hackathon", "Group thank-you post, certificate of appreciation and name in the impact report"],
     details: [],
   },
+] as const;
+
+export const partnerReasons = [
+  { title: "A NASA-branded platform", description: "Your brand alongside NASA Space Apps Challenge Kandy 2026 on stage, backdrops, certificates and online." },
+  { title: "Direct access to STEM talent", description: "Meet Sri Lanka’s next engineers, developers and founders, with an opt-in talent list of participants aged 18+." },
+  { title: "Five touchpoints", description: "Bootcamps in Colombo and Kandy, an island-wide webinar, the 48-hour hackathon and the prize giving." },
+  { title: "National reach", description: "Presence in Colombo and Kandy, online in every district, plus our digital campaign." },
+  { title: "Purpose & CSR", description: "Invest visibly in STEM, AI literacy and entrepreneurship for young Sri Lankans." },
+  { title: "Measured results", description: "An impact report with attendance, engagement, media reach, photos and the recap video." },
 ] as const;
 
 export const inKindGroups = [
@@ -58,17 +67,9 @@ export const inKindGroups = [
   { name: "Bring the event to life", description: "Capture the stories and celebrate the work.", categories: ["Photography & Video", "TV & Digital Media", "Printing", "Apparel & Merch", "Stationery", "Prizes & Gifting"] },
 ] as const;
 
-export const inKindLevels = [
-  { value: "LKR 250,000+", level: "Gold-level benefits" },
-  { value: "LKR 100,000–249,999", level: "Silver-level benefits" },
-  { value: "Under LKR 100,000", level: "Bronze-level benefits" },
-] as const;
-
 export const partnerDates = [
-  { date: "Sign-up open", description: "Sponsorship slots are first come, first served; contact us for current availability" },
-  { date: "31 October", description: "Sign by this date for eligible bootcamp benefits; logos due for printed branding" },
-  { date: "First week of November", description: "Four bootcamps across Sri Lanka; Colombo is the finale" },
-  { date: "7 November", description: "Stage, booth and judge line-up locked" },
-  { date: "14-15 November", description: "48-hour hackathon in Kandy" },
-  { date: "Late November", description: "Prize giving and partner impact reports" },
+  { date: "First week of November", description: "Bootcamps in Colombo and Kandy, plus the island-wide webinar" },
+  { date: "14–15 November", description: "48-hour hackathon in Kandy" },
+  { date: "Late November", description: "Prize giving ceremony" },
+  { date: "December", description: "Recap video and partner impact reports" },
 ] as const;

@@ -215,10 +215,10 @@ export function SiteHeader() {
           ))}
         </nav>
         <LanguageChoices />
-        <Link href="/register" className="header-register">
+        <a href="/register" className="header-register">
           <span className="button-label">{t("nav.register")}</span>
           <ArrowUpRight size={15} aria-hidden="true" />
-        </Link>
+        </a>
         <button
           ref={buttonRef}
           className="menu-button"
@@ -285,14 +285,14 @@ export function SiteHeader() {
                     buttonRef.current?.focus();
                   }}
                 />
-                <Link
+                <a
                   href="/register"
                   className="mobile-register white-button"
                   onClick={() => setOpen(false)}
                 >
                   <span className="button-label">{t("nav.register")}</span>
                   <ArrowUpRight size={15} aria-hidden="true" />
-                </Link>
+                </a>
               </m.nav>
             </m.div>
           ) : null}
@@ -318,10 +318,10 @@ export function SiteFooter({ initialYear }: { initialYear: number }) {
           <div>
             <p>{t("footer.tagline")}</p>
             <h2>{t("footer.title")}</h2>
-            <Link href="/register" className="white-button">
+            <a href="/register" className="white-button">
               <span className="button-label">{t("footer.cta")}</span>
               <ArrowUpRight size={17} aria-hidden="true" />
-            </Link>
+            </a>
           </div>
         </div>
         <div className="footer-middle">
@@ -339,6 +339,7 @@ export function SiteFooter({ initialYear }: { initialYear: number }) {
               <Link href="/join">{t("nav.join")}</Link>
               <Link href="/ambassadors">{t("nav.ambassadors")}</Link>
               <Link href="/sponsors-and-partners">{t("nav.sponsors")}</Link>
+              <Link href="/how-to-register">{t("footer.howToRegister")}</Link>
               <Link href="/contact">{t("nav.contact")}</Link>
             </div>
           </nav>

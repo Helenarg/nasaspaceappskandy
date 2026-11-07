@@ -4,22 +4,25 @@ import { SponsorshipGrid } from "@/components/SponsorshipGrid";
 import { ActionLink, PageIntro, SectionLabel } from "@/components/Elements";
 import { PartnerGroups } from "@/components/PartnerLogo";
 import { createPageMetadata } from "@/content/metadata";
+import { sitePage } from "@/content/pages";
+import { JsonLd } from "@/components/JsonLd";
+import { schemaIds, webPageJsonLd } from "@/lib/structured-data";
 import { site } from "@/content/site";
-import { inKindGroups, inKindLevels, partnerDates, sponsorshipTiers } from "@/content/sponsorship";
+import { inKindGroups, partnerDates, partnerReasons, sponsorshipTiers } from "@/content/sponsorship";
 
-export const metadata: Metadata = createPageMetadata({
-  title: "Sponsors & Partners",
-  description: "Meet our supporters and explore sponsorship and partnership opportunities for NASA Space Apps Kandy 2026.",
-  path: "/sponsors-and-partners",
-});
+const page = sitePage("/sponsors-and-partners");
+
+export const metadata: Metadata = createPageMetadata(page);
 
 export default function SponsorsAndPartners() {
   const supporter = sponsorshipTiers[6];
   return (
     <main id="main" className="sponsors-partners-page">
-      <PageIntro label="SPONSORS & PARTNERS / 2026" title="Make the next idea possible." description="Help curious minds across Sri Lanka learn, connect and build through four city bootcamps and the Kandy hackathon." />
+      <JsonLd data={webPageJsonLd({ ...page, about: schemaIds.event })} />
+      <PageIntro label="SPONSORS & PARTNERS / 2026" title="Make the next idea possible." description="Help curious minds across Sri Lanka learn, connect and build through bootcamps in Colombo and Kandy, an island-wide webinar and the Kandy hackathon." />
       <nav className="support-section-nav" aria-label="Sponsors and partners sections">
         <a href="#our-supporters">Our supporters</a>
+        <a href="#why-partner">Why partner</a>
         <a href="#sponsorship">Sponsorship packages</a>
         <a href="#partnerships">Partnerships</a>
         <a href="#partner-dates">Key dates</a>
@@ -34,20 +37,28 @@ export default function SponsorsAndPartners() {
         <div className="support-heading">
           <SectionLabel>LOCAL OPPORTUNITY</SectionLabel>
           <h2 id="support-opportunity-title">Connect with the people building what comes next.</h2>
-          <p>Six opportunities to connect: four bootcamps in Colombo, Kandy, Galle and Kurunegala, the 48-hour Kandy hackathon, and the prize giving. Support school and university students, early-career technologists, designers, scientists and educators.</p>
+          <p>Five touchpoints: bootcamps in Colombo and Kandy, an island-wide webinar, the 48-hour Kandy hackathon and the prize giving. Reach school and university students, developers and technologists, designers, scientists and educators.</p>
         </div>
         <div className="sponsor-reach-grid">
-          <div><strong>40,000+</strong><span>Projected campaign reach</span><p>Students across Sri Lanka through university, school and community networks</p></div>
-          <div><strong>1,000–1,500</strong><span>Target bootcamp attendance</span><p>Across four free, half-day bootcamps in the first week of November</p></div>
-          <div><strong>~150</strong><span>Expected in-person builders</span><p>14-15 November 2026 in Kandy, plus virtual teams; main venue being confirmed</p></div>
+          <div><strong>40,000+</strong><span>Projected campaign reach</span><p>Students across Sri Lanka through IEEE student branches, school science associations, and our ecosystem and community partners</p></div>
+          <div><strong>1,000+</strong><span>Students in person</span><p>Across the free, half-day bootcamps in Colombo and Kandy, plus the main hackathon</p></div>
+          <div><strong>~200</strong><span>On site for 48 hours</span><p>Builders, mentors, judges and crew in Kandy on 14–15 November 2026, plus virtual teams</p></div>
         </div>
+      </section>
+
+      <section className="content-section" id="why-partner" aria-labelledby="why-partner-title">
+        <div className="support-heading">
+          <SectionLabel>WHY PARTNER WITH US</SectionLabel>
+          <h2 id="why-partner-title">Put your brand where the next builders start.</h2>
+        </div>
+        <ul className="support-reason-grid">{partnerReasons.map((reason) => <li key={reason.title}><h3>{reason.title}</h3><p>{reason.description}</p></li>)}</ul>
       </section>
 
       <section className="content-section" id="sponsorship" aria-labelledby="sponsorship-title">
         <div className="support-heading">
           <SectionLabel>SPONSORSHIP PACKAGES</SectionLabel>
           <h2 id="sponsorship-title">Choose how you make a difference.</h2>
-          <p>Find the right level of involvement, from event naming to a place on the sponsors’ wall. Each package supports the Kandy local event.</p>
+          <p>Find the right level of involvement, from event naming to a place on the sponsors’ wall. We partner with one company per industry, and the Title Partner holds category exclusivity.</p>
         </div>
         <SponsorshipGrid>
           {sponsorshipTiers.slice(0, 6).map((tier, index) => (
@@ -59,7 +70,7 @@ export default function SponsorsAndPartners() {
               <div className="package-price">
                 <div className="package-price-meta">
                   <span className="package-currency" aria-hidden="true">LKR</span>
-                  <span className="package-capacity">{tier.slots === 1 ? "1 exclusive place" : `${tier.slots} partner places`}</span>
+                  <span className="package-capacity">{tier.label}</span>
                 </div>
                 <div className="package-amount"><strong><span className="sr-only">LKR </span>{tier.amount}</strong></div>
                 <div className="package-terms"><p>{tier.payment}</p></div>
@@ -82,16 +93,16 @@ export default function SponsorsAndPartners() {
             <ul className="package-highlights">{supporter.benefits.map((benefit) => <li key={benefit}>{benefit}</li>)}</ul>
           </div>
           <div className="supporter-package-action">
-            <div className="package-price-meta"><span className="package-currency" aria-hidden="true">LKR</span><span className="package-capacity">{supporter.slots} partner places</span></div>
+            <div className="package-price-meta"><span className="package-currency" aria-hidden="true">LKR</span><span className="package-capacity">{supporter.label}</span></div>
             <div className="package-amount"><strong><span className="sr-only">LKR </span>{supporter.amount}</strong></div>
             <p>{supporter.payment}</p>
             <ActionLink href={`mailto:${site.sponsorshipEmail}?subject=Supporter%20enquiry`} outline>Become a supporter</ActionLink>
           </div>
         </article>
-        <p className="package-availability">Places shown are the allocation for each package. Contact us for current availability.</p>
+        <p className="package-availability">One company per industry. Contact us for current availability in your category.</p>
         <div className="support-deadline">
-          <h3>Sign by <time dateTime="2026-10-31">31 October 2026</time> to include eligible bootcamp benefits.</h3>
-          <p><strong>Title, Platinum and Gold partners</strong> receive their listed bootcamp benefits when signed by the deadline. <strong>After 31 October</strong>, the proposal offers extra main-event benefits in their place at the <strong>same tier and price</strong>: a longer stage slot, an extra social post and a named award. Discuss the arrangements for your package with our team.</p>
+          <h3>Bootcamp and print benefits apply from the date you join.</h3>
+          <p>Bootcamps run in the <strong>first week of November</strong>, so joining earlier means more of your package reaches students. Sponsorship is managed by <strong>UniStay (Pvt) Ltd</strong>, our organizer and fiscal sponsor approved by the NASA Space Apps Global Organizing Team, so every partner receives proper invoices and receipts.</p>
         </div>
       </section>
 
@@ -112,14 +123,14 @@ export default function SponsorsAndPartners() {
         </div>
         <div className="support-kind-value">
           <div><h3>Your contribution, recognised.</h3><p>The value of your in-kind contribution determines your benefit level. <strong>Cash and in-kind support can be combined.</strong></p></div>
-          <dl>{inKindLevels.map((item) => <div key={item.level}><dt>{item.level}</dt><dd><strong>{item.value}</strong></dd></div>)}</dl>
+          <div className="support-kind-action"><p>Tell us what you can bring and we’ll shape the right package with you.</p><ActionLink href={`mailto:${site.partnershipsEmail}?subject=In-kind%20partnership%20enquiry`} outline>Discuss an in-kind partnership</ActionLink></div>
         </div>
       </section>
 
       <section className="content-section" aria-labelledby="support-activation-title">
         <div className="support-heading"><SectionLabel>ACTIVATION & REPORTING</SectionLabel><h2 id="support-activation-title">Make your contribution count.</h2></div>
         <div className="support-contact-grid">
-          <div><h3>Build your involvement</h3><p>Explore a named award, challenge track or prize; on-site mentoring or judging; a bootcamp workshop; free or discounted product access; or a booth, demo or student-appropriate sampling. We’ll shape the activation around your package.</p></div>
+          <div><h3>Build your involvement</h3><p>Explore a named award, challenge track or prize; your team mentoring or judging on site; a bootcamp workshop or talk on your tools; free or discounted product access; or a booth, demo or student-appropriate sampling. Anything else in mind? We’ll shape it with you.</p></div>
           <div><h3>See the impact</h3><p>Post-event reporting covers attendance, participation, engagement, channel reach, photography, recap video, testimonials, media coverage and evidence of benefits delivered.</p></div>
         </div>
       </section>
@@ -135,7 +146,7 @@ export default function SponsorsAndPartners() {
           <div className="support-contact-primary">
             <SectionLabel>LET&apos;S WORK TOGETHER</SectionLabel>
             <h2 id="support-contact-title">Help bring the next frontier to Kandy.</h2>
-            <p>Choose a package, support the bootcamps or bring something the event needs. Let’s find the right fit.</p>
+            <p>Join us as a sponsor or adopt the bootcamp series. We’ll set up a short call and shape the right package with you.</p>
             <div className="support-contact-actions">
               <ActionLink href={`mailto:${site.sponsorshipEmail}?subject=Space%20Apps%20Kandy%20sponsorship&body=Organisation%3A%0AContact%20name%3A%0AInterested%20in%3A%0A`}>Discuss sponsorship</ActionLink>
               <ActionLink href={`mailto:${site.sponsorshipEmail}?subject=Request%20the%20sponsorship%20deck&body=Hello%2C%0A%0APlease%20send%20me%20the%20NASA%20Space%20Apps%20Kandy%202026%20sponsorship%20deck.%0A%0AOrganisation%3A%0AContact%20name%3A%0A`} outline>Request sponsorship deck</ActionLink>
@@ -152,7 +163,7 @@ export default function SponsorsAndPartners() {
             </div>
             <div className="support-contact-person">
               <h3>Rometh Sendinu</h3>
-              <p>Local Lead, NASA Space Apps Kandy</p>
+              <p>Local Lead, NASA Space Apps Challenge Kandy 2026</p>
               <a href="mailto:rometh@nasaspaceapps.lk">rometh@nasaspaceapps.lk</a>
               <a href="tel:+94777253796">+94 77 725 3796</a>
             </div>

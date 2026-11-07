@@ -4,6 +4,9 @@ import { LocalizedText as L } from "@/components/LocalizedText";
 import { spaceAppsEvent } from "@/content/event";
 import { site } from "@/content/site";
 import { createPageMetadata } from "@/content/metadata";
+import { sitePage } from "@/content/pages";
+import { JsonLd } from "@/components/JsonLd";
+import { schemaIds, webPageJsonLd } from "@/lib/structured-data";
 import { ConsentPanel } from "@/components/ConsentPanel";
 import { ApplicationForm } from "@/components/ApplicationForm";
 
@@ -19,11 +22,9 @@ const conductItems = [
   ["participation.conduct.report.title", "participation.conduct.report.text"],
 ] as const;
 
-export const metadata = createPageMetadata({
-  title: "Register for NASA Space Apps Kandy",
-  description: "Follow the steps to register for NASA Space Apps Kandy 2026 through the official NASA website. Review participant conduct and prepare to join.",
-  path: "/register",
-});
+const page = sitePage("/how-to-register");
+
+export const metadata = createPageMetadata(page);
 
 function RegistrationLink() {
   return (
@@ -44,6 +45,7 @@ function RegistrationLink() {
 export default function Register() {
   return (
     <main id="main" className="registration-guide">
+      <JsonLd data={webPageJsonLd({ ...page, about: schemaIds.event })} />
       <PageIntro
         label={<L id="participation.intro" />}
         title={<L id="register.intro.title" />}

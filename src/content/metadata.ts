@@ -11,7 +11,7 @@ const socialImage = {
   url: new URL("/og-image.jpg", site.url).toString(),
   width: 1200,
   height: 630,
-  alt: "NASA Space Apps Kandy. November 14-15, 2026 in Kandy, Sri Lanka",
+  alt: "NASA Space Apps Kandy 2026. November 14-15, 2026 in Kandy, Sri Lanka",
 };
 
 export function createPageMetadata({
@@ -29,6 +29,7 @@ export function createPageMetadata({
       type: "website",
       url: path,
       siteName: site.name,
+      locale: "en_LK",
       title: pageTitle,
       description,
       images: [socialImage],

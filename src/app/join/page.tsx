@@ -2,13 +2,16 @@ import type { Metadata } from "next";
 import { FormPage } from "@/components/FormPage";
 import { LocalizedText as L } from "@/components/LocalizedText";
 import { createPageMetadata } from "@/content/metadata";
-export const metadata: Metadata = createPageMetadata({
-  title: "Volunteers & mentors",
-  description: "Support NASA Space Apps Kandy as a volunteer or mentor and help local teams turn ideas into meaningful projects.",
-  path: "/join",
-});
+import { sitePage } from "@/content/pages";
+import { JsonLd } from "@/components/JsonLd";
+import { schemaIds, webPageJsonLd } from "@/lib/structured-data";
+const page = sitePage("/join");
+
+export const metadata: Metadata = createPageMetadata(page);
 export default function Join() {
   return (
+    <>
+    <JsonLd data={webPageJsonLd({ ...page, about: schemaIds.event })} />
     <FormPage
       kind="volunteers"
       label={<L id="join.intro.label" />}
@@ -26,5 +29,6 @@ export default function Join() {
         <L id="join.aside.third" />
       </p>
     </FormPage>
+    </>
   );
 }

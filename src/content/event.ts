@@ -9,9 +9,8 @@ export const spaceAppsEvent = {
   kandyUrl: "https://www.spaceappschallenge.org/2026/local-events/kandy/",
   directoryUrl: "https://www.spaceappschallenge.org/2026/local-events/",
   attendance: "In person + virtual",
-  venue: "Kandy venue to be announced",
-  venueAddress: null as string | null,
-  venueMapUrl: null as string | null,
+  venue: "SLIIT Kandy UNI",
+  venueMapUrl: "https://maps.app.goo.gl/kTG7PyocgTkZ8WvK8",
   localLead: {
     name: "Rometh Sendinu",
     email: "info@nasaspaceapps.lk",

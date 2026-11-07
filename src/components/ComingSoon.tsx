@@ -47,7 +47,7 @@ export function ComingSoon({ year }: { year: number }) {
           <div className="launch-copy">
             <p className="launch-eyebrow">THE NEXT FRONTIER</p>
             <div className="launch-title">
-              <h1 className="sr-only">NASA Space Apps Kandy 2026</h1>
+              <h1 className="sr-only">NASA Space Apps Challenge Kandy 2026, Sri Lanka</h1>
               <SplitFlapText
                 text="COMING SOON"
                 padTo={0}

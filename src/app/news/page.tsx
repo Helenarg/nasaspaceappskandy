@@ -5,6 +5,9 @@ import { PageIntro, ActionLink, CommunityBand, SectionLabel } from "@/components
 import { ArrowUpRightIcon } from "@phosphor-icons/react/dist/ssr/ArrowUpRight";
 import { LocalizedText as L } from "@/components/LocalizedText";
 import { createPageMetadata } from "@/content/metadata";
+import { sitePage } from "@/content/pages";
+import { JsonLd } from "@/components/JsonLd";
+import { webPageJsonLd } from "@/lib/structured-data";
 import { getOfficialNews } from "@/lib/officialNews";
 
 const dateFormatter = new Intl.DateTimeFormat("en-GB", {
@@ -18,16 +21,15 @@ const formatDate = (date: string) => dateFormatter.format(new Date(date));
 
 export const revalidate = 3600;
 
-export const metadata: Metadata = createPageMetadata({
-  title: "News & updates",
-  description: "Follow official NASA Space Apps news and updates relevant to the Kandy community and the 2026 challenge.",
-  path: "/news",
-});
+const page = sitePage("/news");
+
+export const metadata: Metadata = createPageMetadata(page);
 
 export default async function News() {
   const news = await getOfficialNews();
   return (
     <main id="main">
+      <JsonLd data={webPageJsonLd({ ...page, type: "CollectionPage" })} />
       <PageIntro
         label={<L id="news.intro.label" />}
         title={<L id="news.intro.title" />}

@@ -18,7 +18,7 @@ Registration takes place on the official NASA Space Apps website. The local site
 
 ## Run locally
 
-Requires Node.js 20.9 or newer and npm.
+Requires Node.js 24 and npm. The Firebase Cloud Functions in `functions/` run on Node.js 22.
 
 ```sh
 npm ci

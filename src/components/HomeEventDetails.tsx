@@ -1,6 +1,8 @@
+import { ArrowUpRightIcon } from "@phosphor-icons/react/dist/ssr/ArrowUpRight";
 import { CalendarDotsIcon } from "@phosphor-icons/react/dist/ssr/CalendarDots";
 import { ClockIcon } from "@phosphor-icons/react/dist/ssr/Clock";
 import { MapPinIcon } from "@phosphor-icons/react/dist/ssr/MapPin";
+import { spaceAppsEvent } from "@/content/event";
 import { ActionLink, SectionLabel } from "./Elements";
 import { LocalizedText as L } from "./LocalizedText";
 
@@ -48,9 +50,12 @@ export function HomeEventDetails() {
             <L id="events.card.venue.title" />
           </dt>
           <dd>
-            <L id="home.event.location" />
+            {spaceAppsEvent.venue}
             <small>
-              <L id="home.event.venueNote" />
+              <a className="text-link" href={spaceAppsEvent.venueMapUrl} target="_blank" rel="noopener noreferrer">
+                <L id="home.event.venueNote" />
+                <ArrowUpRightIcon size={15} aria-hidden="true" />
+              </a>
             </small>
           </dd>
         </div>

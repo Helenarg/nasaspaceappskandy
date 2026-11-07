@@ -76,7 +76,7 @@ test("ambassador contract and maximum lengths match existing rules", () => {
       .motivation,
   );
 });
-test("bootcamp interest requires one of the four cities and keeps it in the payload", () => {
+test("bootcamp interest requires a listed bootcamp city and keeps it in the payload", () => {
   const values = {
     ...initialValues.bootcamps,
     fullName: "Test Person",

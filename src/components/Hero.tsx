@@ -66,16 +66,17 @@ export function Hero() {
         <div className="hero-copy">
           <div className="mission-caption">{t("hero.caption")}</div>
           <h1 id="hero-title">
+            <span className="sr-only">NASA Space Apps Challenge Kandy 2026: </span>
             {t("hero.title.first")}
             <br />
             {t("hero.title.second")}<span className="hero-period">.</span>
           </h1>
           <p>{t("hero.description")}</p>
           <div className="button-row">
-            <Link href="/register" className="white-button">
+            <a href="/register" className="white-button">
               <span className="button-label">{t("hero.cta.primary")}</span>
               <ArrowUpRight size={17} aria-hidden="true" />
-            </Link>
+            </a>
             <Link href="/challenges" className="outline-button">
               <span className="button-label">{t("hero.cta.secondary")}</span>
               <ArrowUpRight size={17} aria-hidden="true" />

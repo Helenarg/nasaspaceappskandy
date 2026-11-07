@@ -1,4 +1,5 @@
 import * as admin from "firebase-admin";
+import { FieldValue } from "firebase-admin/firestore";
 import { onDocumentCreated, FirestoreEvent, QueryDocumentSnapshot } from "firebase-functions/v2/firestore";
 import { onRequest } from "firebase-functions/v2/https";
 import * as logger from "firebase-functions/logger";
@@ -51,7 +52,7 @@ async function processSubmission(
   try {
     await snapshot.ref.update({
       status: "notified",
-      notifiedAt: admin.firestore.FieldValue.serverTimestamp(),
+      notifiedAt: FieldValue.serverTimestamp(),
       notificationDetails: {
         organizerNotified: organizerResult.ok,
         applicantNotified: applicantResult ? applicantResult.ok : null,
